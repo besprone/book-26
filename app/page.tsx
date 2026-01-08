@@ -120,9 +120,9 @@ export default function Home() {
             {config.stack.categories.map((category, index) => {
               // Iconos específicos según la categoría
               const stackIcons = [
-                <Palette className="w-8 h-8 text-accent-600 dark:text-accent-400" />, // Diseño
-                <Code className="w-8 h-8 text-accent-600 dark:text-accent-400" />, // Desarrollo
-                <Database className="w-8 h-8 text-accent-600 dark:text-accent-400" />, // Datos
+                <Palette className="w-8 h-8 text-accent-500 dark:text-accent-400" />, // Diseño
+                <Code className="w-8 h-8 text-accent-500 dark:text-accent-400" />, // Desarrollo
+                <Database className="w-8 h-8 text-accent-500 dark:text-accent-400" />, // Datos
               ]
               return (
                 <Card key={index} className="p-6">

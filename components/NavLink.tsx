@@ -35,7 +35,7 @@ export default function NavLink({
     // Estado normal: gris, hover: blanco
     return variant === 'desktop'
       ? 'text-gray-700 dark:text-gray-300 hover:text-white dark:hover:text-white'
-      : 'block text-lg text-gray-700 dark:text-gray-300 hover:text-white dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 px-4 py-3 rounded-lg'
+      : 'block text-lg text-gray-700 dark:text-gray-300 hover:text-white dark:hover:text-white hover:bg-primary-50 dark:hover:bg-primary-900/20 px-4 py-3 rounded-lg'
   }
   
   const classes = `${baseStyles} ${getStateClasses()} ${className}`

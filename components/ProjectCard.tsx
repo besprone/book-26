@@ -21,7 +21,7 @@ export default function ProjectCard({
   return (
     <Link
       href={`/proyectos/${slug}`}
-      className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden hover:shadow-xl hover:border-accent-200 dark:hover:border-accent-800 transition-all duration-300 transform hover:-translate-y-2 group"
+      className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden hover:shadow-xl hover:border-primary-200 dark:hover:border-primary-800 transition-all duration-300 transform hover:-translate-y-2 group"
     >
       <div className="h-48 bg-gray-100 dark:bg-gray-700 relative overflow-hidden">
         {image ? (
@@ -37,7 +37,7 @@ export default function ProjectCard({
         )}
       </div>
       <div className="p-6">
-        <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-accent-600 dark:group-hover:text-accent-400 transition">
+        <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition">
           {title}
         </h3>
         <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">

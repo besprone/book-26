@@ -1,0 +1,221 @@
+{
+  "hero": {
+    "title": "Sobre mí",
+    "description": "Soy diseñador de producto con más de 10 años de experiencia combinando diseño, tecnología y estrategia para crear productos centrados en las personas. A lo largo de mi carrera he liderado equipos, sistemas de diseño y proyectos complejos, y actualmente complemento mi perfil con análisis de datos para tomar decisiones más informadas.",
+    "cvButton": {
+      "text": "Descargar CV",
+      "href": "/cv.pdf"
+    }
+  },
+  "resumenProfesional": {
+    "title": "Resumen profesional",
+    "cards": [
+      {
+        "title": "Pensamiento estratégico",
+        "description": "Trabajo alineando diseño y negocio."
+      },
+      {
+        "title": "Enfoque técnico",
+        "description": "También desarrollo lo que diseño."
+      },
+      {
+        "title": "Decisiones con datos",
+        "description": "Estoy formándome como Data Analyst"
+      }
+    ]
+  },
+  "experiencia": {
+    "title": "Experiencia",
+    "items": [
+      {
+        "title": "Motion Graphic Designer",
+        "company": "Applica2",
+        "period": "2013-2018",
+        "logo": "/logos/applica2.png"
+      },
+      {
+        "title": "Diseñador UI",
+        "company": "Nuxiba",
+        "period": "2018-2022",
+        "logo": "/logos/nuxiba.png"
+      },
+      {
+        "title": "Gerente UI",
+        "company": "Gentera",
+        "period": "2022",
+        "logo": "/logos/gentera.png"
+      },
+      {
+        "title": "Líder de diseño UI",
+        "company": "kubo.financiero",
+        "period": "2022-2023",
+        "logo": "/logos/kubo.png"
+      },
+      {
+        "title": "Product Design Manager",
+        "company": "kubo.financiero",
+        "period": "2023-Actualidad",
+        "logo": "/logos/kubo.png"
+      }
+    ]
+  },
+  "formacion": {
+    "title": "Formación y certificaciones",
+    "certificaciones": {
+      "title": "Certificaciones recientes",
+      "items": [
+        {
+          "nombre": "Data Analytics",
+          "institucion": "Le Wagon",
+          "año": "Cursando.."
+        },
+        {
+          "nombre": "Introducción a SQL",
+          "institucion": "SoloLearn",
+          "año": "2025"
+        },
+        {
+          "nombre": "Product Management",
+          "institucion": "Platzi",
+          "año": "2024"
+        },
+        {
+          "nombre": "Digital Product Design",
+          "institucion": "Colectivo 23",
+          "año": "2024"
+        },
+        {
+          "nombre": "User Research - Methods and Best Practices",
+          "institucion": "IxDF - Interaction Design Foundation",
+          "año": "2023"
+        },
+        {
+          "nombre": "Design Thinking for UX Design Managers",
+          "institucion": "LinkedIn",
+          "año": "2023"
+        },
+        {
+          "nombre": "Cómo administrar por objetivos",
+          "institucion": "LinkedIn",
+          "año": "2023"
+        },
+        {
+          "nombre": "Diseño UI",
+          "institucion": "Coderhouse",
+          "año": "2023"
+        }
+      ]
+    },
+    "educacion": {
+      "title": "Formación formal",
+      "items": [
+        {
+          "nombre": "Ingeniería en software",
+          "institucion": "UnADM",
+          "año": "2021"
+        },
+        {
+          "nombre": "Diseño y comunicación visual",
+          "institucion": "UNAM",
+          "año": "2013"
+        }
+      ]
+    }
+  },
+  "stack": {
+    "title": "Stack",
+    "categories": [
+      {
+        "title": "Diseño",
+        "items": [
+          {
+            "nombre": "Figma",
+            "descripcion": "Diseño UI, prototipado, Dev Mode"
+          },
+          {
+            "nombre": "FigJam",
+            "descripcion": "Mapeo de flujos, talleres"
+          },
+          {
+            "nombre": "Sistemas de diseño",
+            "descripcion": "Componentes, tokens, documentación"
+          },
+          {
+            "nombre": "Investigación UX",
+            "descripcion": "Entrevistas, métodos, decisiones centradas en el usuario"
+          },
+          {
+            "nombre": "Pensamiento de diseño",
+            "descripcion": "Enfoque estructurado para resolver problemas reales"
+          }
+        ]
+      },
+      {
+        "title": "Desarrollo",
+        "items": [
+          {
+            "nombre": "HTML",
+            "descripcion": "Base para entender la estructura visual y semántica"
+          },
+          {
+            "nombre": "Tailwind",
+            "descripcion": "Integración con tokens y diseño basado en utilidades"
+          },
+          {
+            "nombre": "React",
+            "descripcion": "Colaboración fluida con equipos frontend"
+          },
+          {
+            "nombre": "Next.js",
+            "descripcion": "Comprensión de arquitectura moderna y previews"
+          },
+          {
+            "nombre": "Git",
+            "descripcion": "Trabajo colaborativo en entornos reales"
+          }
+        ]
+      },
+      {
+        "title": "Datos",
+        "items": [
+          {
+            "nombre": "SQL",
+            "descripcion": "Consultas reales, análisis exploratorio (BigQuery)"
+          },
+          {
+            "nombre": "Python",
+            "descripcion": "EDA, visualización, limpieza de datos"
+          },
+          {
+            "nombre": "Pandas",
+            "descripcion": "Manipulación eficiente de datasets"
+          },
+          {
+            "nombre": "dbt",
+            "descripcion": "Modelado de datos, documentación, testing"
+          },
+          {
+            "nombre": "Power BI",
+            "descripcion": "Dashboards, storytelling para stakeholders"
+          }
+        ]
+      }
+    ]
+  },
+  "callToAction": {
+    "title": "¿Te interesa saber cómo podría aportar a tu equipo o proyecto?",
+    "buttons": {
+      "primary": {
+        "text": "Ver proyectos",
+        "href": "/proyectos",
+        "variant": "outline"
+      },
+      "secondary": {
+        "text": "Contáctame",
+        "href": "/contacto",
+        "variant": "solid"
+      }
+    }
+  }
+}
+

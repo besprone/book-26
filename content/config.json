@@ -1,0 +1,100 @@
+{
+  "hero": {
+    "title": "Diseñador de producto con visión técnica y enfoque en datos",
+    "description": "Combino UX, desarrollo y análisis para crear experiencias útiles, funcionales y medibles",
+    "buttons": {
+      "primary": {
+        "text": "Ver proyectos",
+        "href": "/proyectos",
+        "variant": "outline"
+      },
+      "secondary": {
+        "text": "Contáctame",
+        "href": "/contacto",
+        "variant": "solid"
+      }
+    }
+  },
+  "perfil": {
+    "title": "Perfil profesional",
+    "actionButton": {
+      "text": "Sobre mí",
+      "href": "/sobre-mi"
+    },
+    "cards": [
+      {
+        "title": "+5 años diseñando productos digitales",
+        "description": "Experiencia en diseño de interfaces y experiencia de usuario"
+      },
+      {
+        "title": "Formación en desarrollo y análisis de datos",
+        "description": "Conocimientos técnicos y analíticos combinados"
+      },
+      {
+        "title": "Experiencia en fintech, diseño estratégico y sistemas complejos",
+        "description": "Especialización en proyectos desafiantes"
+      }
+    ]
+  },
+  "proyectos": {
+    "title": "Proyectos",
+    "actionButton": {
+      "text": "Ver proyectos",
+      "href": "/proyectos"
+    },
+    "featuredCount": 3
+  },
+  "stack": {
+    "title": "Stack",
+    "actionButton": {
+      "text": "Sobre mí",
+      "href": "/sobre-mi"
+    },
+    "categories": [
+      {
+        "title": "Diseño",
+        "items": [
+          "Sistemas de diseño",
+          "Investigación UX",
+          "Pensamiento de diseño"
+        ]
+      },
+      {
+        "title": "Desarrollo",
+        "items": [
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "React",
+          "Next.js",
+          "Git"
+        ]
+      },
+      {
+        "title": "Datos",
+        "items": [
+          "SQL",
+          "Python",
+          "Análisis de datos"
+        ]
+      }
+    ]
+  },
+  "callToAction": {
+    "title": "Me encantaría ayudarte a dar vida a tu próximo producto",
+    "buttons": {
+      "primary": {
+        "text": "Ver proyectos",
+        "href": "/proyectos",
+        "variant": "outline"
+      },
+      "secondary": {
+        "text": "Contáctame",
+        "href": "/contacto",
+        "variant": "solid"
+      }
+    }
+  }
+}
+
+

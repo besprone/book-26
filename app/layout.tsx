@@ -4,8 +4,8 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
-  title: 'Mi Portafolio',
-  description: 'Portafolio de proyectos y experiencia profesional',
+  title: 'Marco De Castilla - Product & UX Designer',
+  description: 'Diseñador de producto con visión técnica y enfoque en datos. Combino UX, desarrollo y análisis para crear experiencias útiles, funcionales y medibles',
 }
 
 export default function RootLayout({

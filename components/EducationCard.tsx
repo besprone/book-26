@@ -22,7 +22,7 @@ export default function EducationCard({
 
   // Icono por defecto si no se proporciona uno personalizado
   const defaultIcon = isHighlighted ? (
-    <GraduationCap className="w-7 h-7 text-accent-500 dark:text-accent-400" />
+    <GraduationCap className="w-7 h-7 text-accent-600 dark:text-accent-400" />
   ) : (
     <Award className="w-6 h-6 text-primary-600 dark:text-primary-400" />
   )
@@ -33,8 +33,8 @@ export default function EducationCard({
         {/* Icono */}
         <div className={`flex-shrink-0 ${
           isHighlighted 
-            ? 'w-14 h-14 bg-accent-500/8 dark:bg-accent-500/15 rounded-xl flex items-center justify-center'
-            : 'w-12 h-12 bg-primary-500/8 dark:bg-primary-500/15 rounded-lg flex items-center justify-center'
+            ? 'w-14 h-14 bg-accent-500/12 dark:bg-accent-500/15 rounded-xl flex items-center justify-center'
+            : 'w-12 h-12 bg-primary-500/12 dark:bg-primary-500/15 rounded-lg flex items-center justify-center'
         }`}>
           {icon || defaultIcon}
         </div>

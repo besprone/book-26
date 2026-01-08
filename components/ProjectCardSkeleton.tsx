@@ -1,6 +1,6 @@
 export default function ProjectCardSkeleton() {
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden animate-pulse">
+    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden animate-pulse">
       {/* Imagen skeleton */}
       <div className="h-48 bg-gray-200 dark:bg-gray-700"></div>
       

@@ -43,7 +43,7 @@ export default function Home() {
           <div className="hidden lg:block">
             {/* Placeholder para ilustración - Reemplaza con tu imagen/ilustración */}
             <div className="bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-8 flex items-center justify-center h-96 shadow-lg">
-              <div className="text-center text-gray-400 dark:text-gray-500">
+              <div className="text-center text-gray-500 dark:text-gray-400">
                 <ImageIcon className="w-48 h-48 mx-auto mb-4" />
                 <p className="text-sm font-medium">Ilustración placeholder</p>
                 <p className="text-xs mt-2">Reemplaza con tu imagen</p>
@@ -120,14 +120,14 @@ export default function Home() {
             {config.stack.categories.map((category, index) => {
               // Iconos específicos según la categoría
               const stackIcons = [
-                <Palette className="w-8 h-8 text-accent-500 dark:text-accent-400" />, // Diseño
-                <Code className="w-8 h-8 text-accent-500 dark:text-accent-400" />, // Desarrollo
-                <Database className="w-8 h-8 text-accent-500 dark:text-accent-400" />, // Datos
+                <Palette className="w-8 h-8 text-accent-600 dark:text-accent-400" />, // Diseño
+                <Code className="w-8 h-8 text-accent-600 dark:text-accent-400" />, // Desarrollo
+                <Database className="w-8 h-8 text-accent-600 dark:text-accent-400" />, // Datos
               ]
               return (
                 <Card key={index} className="p-6">
                   <div className="mb-4">
-                    <div className="w-16 h-16 bg-accent-500/8 dark:bg-accent-500/15 rounded-xl flex items-center justify-center mb-4">
+                    <div className="w-16 h-16 bg-accent-500/12 dark:bg-accent-500/15 rounded-xl flex items-center justify-center mb-4">
                       {stackIcons[index]}
                     </div>
                   </div>

@@ -20,7 +20,7 @@ export default function ExperienceTimeline({ items }: ExperienceTimelineProps) {
             {items.map((item, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 w-60 lg:w-64 bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 p-6 hover:shadow-lg transition-all duration-300"
+                className="flex-shrink-0 w-60 lg:w-64 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6 hover:shadow-lg transition-all duration-300"
               >
                 <div className="flex flex-col items-center text-center">
                   {/* Logo */}
@@ -47,7 +47,7 @@ export default function ExperienceTimeline({ items }: ExperienceTimelineProps) {
                   <p className="text-gray-600 dark:text-gray-400 text-sm mb-3">
                     {item.company}
                   </p>
-                  <p className="text-gray-500 dark:text-gray-500 text-xs font-medium">
+                  <p className="text-gray-600 dark:text-gray-400 text-xs font-medium">
                     {item.period}
                   </p>
                 </div>
@@ -59,7 +59,7 @@ export default function ExperienceTimeline({ items }: ExperienceTimelineProps) {
 
       {/* Indicador de scroll en móvil */}
       <div className="lg:hidden text-center mt-4">
-        <p className="text-xs text-gray-500 dark:text-gray-400">
+        <p className="text-xs text-gray-600 dark:text-gray-400">
           ← Desliza para ver más →
         </p>
       </div>

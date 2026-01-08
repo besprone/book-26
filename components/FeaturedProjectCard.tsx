@@ -20,7 +20,7 @@ export default function FeaturedProjectCard({
 }: FeaturedProjectCardProps) {
   return (
     <div className="mb-12">
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden hover:shadow-xl transition-all duration-300">
+      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-xl transition-all duration-300">
         {/* Imagen arriba */}
         <div className="w-full h-64 md:h-80 lg:h-96 bg-gray-100 dark:bg-gray-700 relative overflow-hidden">
           {image ? (
@@ -31,7 +31,7 @@ export default function FeaturedProjectCard({
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center">
-              <ImageIcon className="w-24 h-24 text-gray-400" />
+              <ImageIcon className="w-24 h-24 text-gray-500 dark:text-gray-400" />
             </div>
           )}
         </div>

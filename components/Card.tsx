@@ -14,8 +14,8 @@ export default function Card({
   className = '',
   hover = false,
 }: CardProps) {
-  const baseStyles = 'bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800'
-  const hoverStyles = hover ? 'hover:shadow-lg hover:border-primary-200 dark:hover:border-primary-800 transition-all duration-300' : ''
+  const baseStyles = 'bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800'
+  const hoverStyles = hover ? 'hover:shadow-lg hover:border-primary-300 dark:hover:border-primary-800 transition-all duration-300' : ''
   
   const classes = `${baseStyles} ${hoverStyles} ${className}`
   

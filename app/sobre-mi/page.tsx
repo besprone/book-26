@@ -91,14 +91,14 @@ export default function SobreMi() {
               {config.formacion.certificaciones.items.map((item, index) => {
                 // Iconos específicos para cada certificación
                 const certificationIcons = [
-                  <BarChart className="w-6 h-6 text-primary-600 dark:text-primary-400" />, // Data Analytics
-                  <Database className="w-6 h-6 text-primary-600 dark:text-primary-400" />, // Introducción a SQL
-                  <Briefcase className="w-6 h-6 text-primary-600 dark:text-primary-400" />, // Product Management
-                  <Palette className="w-6 h-6 text-primary-600 dark:text-primary-400" />, // Digital Product Design
-                  <Users className="w-6 h-6 text-primary-600 dark:text-primary-400" />, // User Research
-                  <Lightbulb className="w-6 h-6 text-primary-600 dark:text-primary-400" />, // Design Thinking
-                  <TrendingUp className="w-6 h-6 text-primary-600 dark:text-primary-400" />, // Cómo administrar por objetivos
-                  <Layers className="w-6 h-6 text-primary-600 dark:text-primary-400" />, // Diseño UI
+                  <BarChart className="w-6 h-6 text-primary-500 dark:text-primary-400" />, // Data Analytics
+                  <Database className="w-6 h-6 text-primary-500 dark:text-primary-400" />, // Introducción a SQL
+                  <Briefcase className="w-6 h-6 text-primary-500 dark:text-primary-400" />, // Product Management
+                  <Palette className="w-6 h-6 text-primary-500 dark:text-primary-400" />, // Digital Product Design
+                  <Users className="w-6 h-6 text-primary-500 dark:text-primary-400" />, // User Research
+                  <Lightbulb className="w-6 h-6 text-primary-500 dark:text-primary-400" />, // Design Thinking
+                  <TrendingUp className="w-6 h-6 text-primary-500 dark:text-primary-400" />, // Cómo administrar por objetivos
+                  <Layers className="w-6 h-6 text-primary-500 dark:text-primary-400" />, // Diseño UI
                 ]
                 return (
                   <EducationCard
@@ -149,7 +149,7 @@ export default function SobreMi() {
               return (
                 <Card key={index} className="p-6">
                   <div className="mb-4">
-                    <div className="w-16 h-16 bg-accent-500/12 dark:bg-accent-500/15 rounded-xl flex items-center justify-center mb-4">
+                    <div className="w-16 h-16 bg-accent-50 dark:bg-accent-500/15 rounded-xl flex items-center justify-center mb-4">
                       {stackIcons[index]}
                     </div>
                   </div>

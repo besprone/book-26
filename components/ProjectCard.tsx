@@ -57,7 +57,7 @@ export default function ProjectCard({
           ))}
         </div>
         <div className="flex justify-end">
-          <span className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 px-3 py-1.5 rounded-lg hover:bg-primary-50 dark:hover:bg-primary-900/20 transition text-sm font-medium">
+          <span className="text-primary-500 dark:text-primary-400 hover:text-primary-600 dark:hover:text-primary-300 px-3 py-1.5 rounded-lg hover:bg-primary-50 dark:hover:bg-primary-900/20 transition text-sm font-medium">
             Ver caso
           </span>
         </div>

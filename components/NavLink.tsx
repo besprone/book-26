@@ -29,13 +29,13 @@ export default function NavLink({
     if (isActive) {
       // Estado activo: primario
       return variant === 'desktop'
-        ? 'text-primary-600 dark:text-primary-400'
-        : 'block text-lg text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/20 px-4 py-3 rounded-lg'
+        ? 'text-primary-500 dark:text-primary-400'
+        : 'block text-lg text-primary-500 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/20 px-4 py-3 rounded-lg'
     }
-    // Estado normal: gris, hover: blanco
+    // Estado normal: gris, hover: primario (light mode) o blanco (dark mode)
     return variant === 'desktop'
-      ? 'text-gray-700 dark:text-gray-300 hover:text-white dark:hover:text-white'
-      : 'block text-lg text-gray-700 dark:text-gray-300 hover:text-white dark:hover:text-white hover:bg-primary-50 dark:hover:bg-primary-900/20 px-4 py-3 rounded-lg'
+      ? 'text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-white'
+      : 'block text-lg text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-white hover:bg-primary-50 dark:hover:bg-primary-900/20 px-4 py-3 rounded-lg'
   }
   
   const classes = `${baseStyles} ${getStateClasses()} ${className}`

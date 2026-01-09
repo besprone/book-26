@@ -127,7 +127,7 @@ export default function Home() {
               return (
                 <Card key={index} className="p-6">
                   <div className="mb-4">
-                    <div className="w-16 h-16 bg-accent-500/12 dark:bg-accent-500/15 rounded-xl flex items-center justify-center mb-4">
+                    <div className="w-16 h-16 bg-accent-50 dark:bg-accent-500/15 rounded-xl flex items-center justify-center mb-4">
                       {stackIcons[index]}
                     </div>
                   </div>

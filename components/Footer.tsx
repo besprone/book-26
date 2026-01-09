@@ -15,7 +15,7 @@ export default function Footer() {
           <div className="flex space-x-6 mb-4 md:mb-0">
             <a
               href={`mailto:besprone@gmail.com?subject=${encodeURIComponent('Consulta desde portafolio')}&body=${encodeURIComponent('Hola Marco,\n\nMe gustaría contactarte para...')}`}
-              className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition"
+              className="text-primary-500 dark:text-primary-400 hover:text-primary-600 dark:hover:text-primary-300 transition"
               aria-label="Email"
             >
               <Mail className="w-6 h-6" />
@@ -24,7 +24,7 @@ export default function Footer() {
               href="https://www.linkedin.com/in/marco-antonio-de-castilla-vicelis-a91863108/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition"
+              className="text-primary-500 dark:text-primary-400 hover:text-primary-600 dark:hover:text-primary-300 transition"
               aria-label="LinkedIn"
             >
               <Linkedin className="w-6 h-6" />
@@ -33,7 +33,7 @@ export default function Footer() {
               href="https://github.com/besprone"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition"
+              className="text-primary-500 dark:text-primary-400 hover:text-primary-600 dark:hover:text-primary-300 transition"
               aria-label="GitHub"
             >
               <Github className="w-6 h-6" />

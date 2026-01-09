@@ -15,9 +15,9 @@ export default function ProfileCard({
   iconColor = 'primary',
 }: ProfileCardProps) {
   const colorClasses = {
-    primary: 'bg-primary-500/12 dark:bg-primary-500/15 text-primary-600 dark:text-primary-400',
-    accent: 'bg-accent-500/12 dark:bg-accent-500/15 text-accent-600 dark:text-accent-400',
-    green: 'bg-green-500/12 dark:bg-green-500/15 text-green-600 dark:text-green-400',
+    primary: 'bg-primary-50 dark:bg-primary-500/15 text-primary-500 dark:text-primary-400',
+    accent: 'bg-accent-50 dark:bg-accent-500/15 text-accent-600 dark:text-accent-400',
+    green: 'bg-green-50 dark:bg-green-500/15 text-green-600 dark:text-green-400',
   }
 
   const defaultIcon = (

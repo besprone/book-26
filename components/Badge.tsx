@@ -32,9 +32,9 @@ export default function Badge({
 
   // Variantes de color - Todos los badges usan el mismo estilo unificado
   const getVariantClasses = () => {
-    // Todos los badges del proyecto usan el mismo estilo: transparencia del color accent base (#11CED8)
-    // Aumentada opacidad en light mode para mejor visibilidad y contraste
-    return 'bg-accent-50 text-accent-700 dark:bg-accent-500/15 dark:text-accent-300'
+    // Todos los badges del proyecto usan el mismo estilo: tonos de la paleta accent para mejor contraste y accesibilidad
+    // Light mode: fondo claro (accent-50) con texto oscuro (accent-900) para cumplir WCAG AA y mejor legibilidad
+    return 'bg-accent-50 text-accent-900 dark:bg-accent-500/15 dark:text-accent-300'
   }
 
   const baseClasses = 'inline-flex items-center font-medium'

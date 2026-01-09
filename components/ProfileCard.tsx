@@ -16,7 +16,7 @@ export default function ProfileCard({
 }: ProfileCardProps) {
   const colorClasses = {
     primary: 'bg-primary-50 dark:bg-primary-500/15 text-primary-500 dark:text-primary-400',
-    accent: 'bg-accent-50 dark:bg-accent-500/15 text-accent-600 dark:text-accent-400',
+    accent: 'bg-accent-50 dark:bg-accent-500/15 text-accent-900 dark:text-accent-400',
     green: 'bg-green-50 dark:bg-green-500/15 text-green-600 dark:text-green-400',
   }
 

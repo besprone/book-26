@@ -22,7 +22,7 @@ export default function EducationCard({
 
   // Icono por defecto si no se proporciona uno personalizado
   const defaultIcon = isHighlighted ? (
-    <GraduationCap className="w-7 h-7 text-accent-600 dark:text-accent-400" />
+    <GraduationCap className="w-7 h-7 text-accent-900 dark:text-accent-400" />
   ) : (
     <Award className="w-6 h-6 text-primary-500 dark:text-primary-400" />
   )

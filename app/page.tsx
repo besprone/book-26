@@ -120,9 +120,9 @@ export default function Home() {
             {config.stack.categories.map((category, index) => {
               // Iconos específicos según la categoría
               const stackIcons = [
-                <Palette className="w-8 h-8 text-accent-600 dark:text-accent-400" />, // Diseño
-                <Code className="w-8 h-8 text-accent-600 dark:text-accent-400" />, // Desarrollo
-                <Database className="w-8 h-8 text-accent-600 dark:text-accent-400" />, // Datos
+                <Palette className="w-8 h-8 text-accent-900 dark:text-accent-400" />, // Diseño
+                <Code className="w-8 h-8 text-accent-900 dark:text-accent-400" />, // Desarrollo
+                <Database className="w-8 h-8 text-accent-900 dark:text-accent-400" />, // Datos
               ]
               return (
                 <Card key={index} className="p-6">
@@ -136,7 +136,7 @@ export default function Home() {
                   </h3>
                   <div className="space-y-3">
                     {category.items.map((item, itemIndex) => (
-                      <div key={itemIndex} className="border-l-2 border-accent-500/30 dark:border-accent-500/40 pl-3">
+                      <div key={itemIndex} className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-3">
                         <p className="font-semibold text-gray-900 dark:text-white text-sm">
                           {item}
                         </p>

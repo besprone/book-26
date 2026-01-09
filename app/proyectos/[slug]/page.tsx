@@ -39,19 +39,19 @@ export default async function ProyectoDetalle({
           {(proyecto.client || proyecto.year || proyecto.role) && (
             <div className="flex flex-wrap items-center gap-6 md:gap-8 mb-6 text-sm md:text-base">
               {proyecto.client && (
-                <div className="border-l-2 border-accent-500/30 dark:border-accent-500/40 pl-3">
+                <div className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-3">
                   <span className="text-gray-600 dark:text-gray-400">Cliente/Empresa:</span>
                   <span className="font-semibold text-gray-900 dark:text-white ml-1">{proyecto.client}</span>
                 </div>
               )}
               {proyecto.year && (
-                <div className="border-l-2 border-accent-500/30 dark:border-accent-500/40 pl-3">
+                <div className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-3">
                   <span className="text-gray-600 dark:text-gray-400">Año:</span>
                   <span className="font-semibold text-gray-900 dark:text-white ml-1">{proyecto.year}</span>
                 </div>
               )}
               {proyecto.role && (
-                <div className="border-l-2 border-accent-500/30 dark:border-accent-500/40 pl-3">
+                <div className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-3">
                   <span className="text-gray-600 dark:text-gray-400">Rol:</span>
                   <span className="font-semibold text-gray-900 dark:text-white ml-1">{proyecto.role}</span>
                 </div>
@@ -120,7 +120,7 @@ export default async function ProyectoDetalle({
                 {/* Bloque de texto (izquierda) */}
                 <div className="order-2 lg:order-1 space-y-6">
                   {proyecto.proceso.investigacion && (
-                    <div className="border-l-2 border-accent-500/30 dark:border-accent-500/40 pl-4">
+                    <div className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-4">
                       <h3 className="font-semibold text-lg mb-2 text-gray-900 dark:text-white">
                         Investigación
                       </h3>
@@ -130,7 +130,7 @@ export default async function ProyectoDetalle({
                     </div>
                   )}
                   {proyecto.proceso.diseno && (
-                    <div className="border-l-2 border-accent-500/30 dark:border-accent-500/40 pl-4">
+                    <div className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-4">
                       <h3 className="font-semibold text-lg mb-2 text-gray-900 dark:text-white">
                         Diseño
                       </h3>
@@ -140,7 +140,7 @@ export default async function ProyectoDetalle({
                     </div>
                   )}
                   {proyecto.proceso.desarrollo && (
-                    <div className="border-l-2 border-accent-500/30 dark:border-accent-500/40 pl-4">
+                    <div className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-4">
                       <h3 className="font-semibold text-lg mb-2 text-gray-900 dark:text-white">
                         Desarrollo / Automatización
                       </h3>
@@ -150,7 +150,7 @@ export default async function ProyectoDetalle({
                     </div>
                   )}
                   {proyecto.proceso.analisisDatos && (
-                    <div className="border-l-2 border-accent-500/30 dark:border-accent-500/40 pl-4">
+                    <div className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-4">
                       <h3 className="font-semibold text-lg mb-2 text-gray-900 dark:text-white">
                         Análisis de datos
                       </h3>
@@ -191,7 +191,7 @@ export default async function ProyectoDetalle({
                     </h3>
                     <div className="space-y-2">
                       {proyecto.rolYHerramientas.rol.map((rolItem, index) => (
-                        <div key={index} className="border-l-2 border-accent-500/30 dark:border-accent-500/40 pl-4">
+                        <div key={index} className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-4">
                           <p className="text-gray-600 dark:text-gray-400">{rolItem}</p>
                         </div>
                       ))}
@@ -205,7 +205,7 @@ export default async function ProyectoDetalle({
                     </h3>
                     <div className="space-y-2">
                       {proyecto.rolYHerramientas.herramientas.map((herramienta, index) => (
-                        <div key={index} className="border-l-2 border-accent-500/30 dark:border-accent-500/40 pl-4">
+                        <div key={index} className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-4">
                           <p className="text-gray-600 dark:text-gray-400">{herramienta}</p>
                         </div>
                       ))}
@@ -224,7 +224,7 @@ export default async function ProyectoDetalle({
               </h2>
               <div className="space-y-3">
                 {proyecto.resultados.map((resultado, index) => (
-                  <div key={index} className="border-l-2 border-accent-500/30 dark:border-accent-500/40 pl-4">
+                  <div key={index} className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-4">
                     <p className="text-lg text-gray-600 dark:text-gray-400">{resultado}</p>
                   </div>
                 ))}
@@ -238,7 +238,7 @@ export default async function ProyectoDetalle({
               <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-white">
                 Aprendizajes
               </h2>
-              <div className="border-l-2 border-accent-500/30 dark:border-accent-500/40 pl-4">
+              <div className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-4">
                 <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-prose">{proyecto.aprendizajes}</p>
               </div>
             </section>

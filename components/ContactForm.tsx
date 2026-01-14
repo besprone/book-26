@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { ContactoConfig } from '@/lib/markdown'
+import type { ContactoConfig } from '@/lib/types'
 
 interface ContactFormProps {
   config: ContactoConfig

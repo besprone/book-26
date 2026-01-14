@@ -31,14 +31,23 @@ export default function SobreMi() {
             </Button>
           </div>
           <div className="hidden lg:block">
-            {/* Placeholder para ilustración - Reemplaza con tu imagen/ilustración */}
-            <div className="bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-8 flex items-center justify-center h-96 shadow-lg">
-              <div className="text-center text-gray-500 dark:text-gray-400">
-                <User className="w-48 h-48 mx-auto mb-4" />
-                <p className="text-sm font-medium">Ilustración placeholder</p>
-                <p className="text-xs mt-2">Reemplaza con tu imagen</p>
+            {config.hero.image ? (
+              <div className="rounded-2xl overflow-hidden shadow-lg">
+                <img
+                  src={config.hero.image}
+                  alt={config.hero.title}
+                  className="w-full h-auto object-cover"
+                />
               </div>
-            </div>
+            ) : (
+              <div className="bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-8 flex items-center justify-center h-96 shadow-lg">
+                <div className="text-center text-gray-500 dark:text-gray-400">
+                  <User className="w-48 h-48 mx-auto mb-4" />
+                  <p className="text-sm font-medium">Ilustración placeholder</p>
+                  <p className="text-xs mt-2">Agrega hero.image en content/sobre-mi.json</p>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>

@@ -1,0 +1,48 @@
+{
+  "title": "Crédito Respaldo por Inversiones",
+  "description": "Solución que permite solicitar un préstamo utilizando inversiones activas como garantía, sin cancelarlas ni perder rendimientos, proporcionando acceso a liquidez inmediata",
+  "date": "2024-02-01",
+  "technologies": [
+    "Figma",
+    "FigJam"
+  ],
+  "image": "/proyectos/credito-respaldo-inversiones/hero.png",
+  "featured": false,
+  "type": [
+    "UX"
+  ],
+  "client": "kubo.financiero",
+  "year": "2024",
+  "role": "Product Design Manager",
+  "reto": "Muchos usuarios de la app de kubo.financiero cuentan con inversiones activas, pero enfrentan necesidades de liquidez inmediatas. El reto era diseñar una solución que permitiera solicitar un préstamo utilizando las inversiones existentes como garantía, sin tener que cancelarlas o perder los rendimientos generados. La solución debía ser clara, confiable y escalable, respetando las condiciones regulatorias y el comportamiento financiero de los usuarios.",
+  "proceso": {
+    "investigacion": "Exploración y definición del reto: Analizamos oportunidades a partir de la integración entre productos existentes (créditos e inversiones), conversaciones internas y casos de uso potenciales. Entrevistas con stakeholders: Conversamos con equipo de producto, riesgos, negocio y legal para entender restricciones, reglas de validación, cálculo de montos, flujos permitidos y riesgos operativos. Benchmarks y análisis de referencias: Revisamos productos similares en el sector financiero y exploramos soluciones de liquidez en otras fintechs.",
+    "investigacionImage": "/proyectos/credito-respaldo-inversiones/investigacion.jpg",
+    "diseno": "Ideación y flujos: Diseñamos una experiencia que parte del módulo de inversiones. El usuario ve una nueva opción que le permite solicitar hasta el 90% del valor invertido como préstamo, sin cancelar su inversión. Prototipado: Construimos prototipos de alta fidelidad en Figma, incluyendo variantes según número de inversiones y estado del préstamo.",
+    "desarrollo": "Pruebas internas y ajustes: Probamos el flujo con distintos escenarios, refinando mensajes, reglas visuales, compatibilidad con flujos actuales de préstamos y edge cases. Ajustes con legal y riesgos: Adaptamos textos y mensajes clave para comunicar claramente el uso de la inversión como garantía, el posible bloqueo de fondos y la política de riesgo.",
+    "analisisDatos": ""
+  },
+  "rolYHerramientas": {
+    "rol": [
+      "Product Design Manager"
+    ],
+    "herramientas": [
+      "Figma",
+      "FigJam",
+      "Slack",
+      "Google Meet",
+      "Google Slides"
+    ]
+  },
+  "resultados": [
+    "Se diseñó un flujo autogestivo claro, intuitivo y compatible con las inversiones actuales del usuario",
+    "Reducción de fricciones al evitar cancelar inversiones para obtener liquidez",
+    "Se establecieron reglas visuales y operativas para el cálculo de monto disponible, bloqueo temporal de fondos y continuidad de los rendimientos",
+    "El diseño permitió múltiples escenarios: con una o varias inversiones, solicitud parcial o máxima disponible",
+    "Preparación para A/B test del módulo con métricas de activación y conversión"
+  ],
+  "aprendizajes": "El diseño de productos que cruzan servicios requiere entender profundamente la lógica y reglas de ambos. Comunicar límites, garantías y condiciones de forma clara es clave para generar confianza. Las decisiones de diseño deben balancear oportunidad de negocio con seguridad del usuario y claridad legal. Incorporar variantes y escenarios desde el inicio permite escalar el flujo sin rediseños innecesarios.",
+  "images": {
+    "afterReto": "/proyectos/credito-respaldo-inversiones/after-reto.jpg"
+  }
+}

@@ -2,6 +2,7 @@
   "hero": {
     "title": "Sobre mí",
     "description": "Soy diseñador de producto con más de 10 años de experiencia combinando diseño, tecnología y estrategia para crear productos centrados en las personas. A lo largo de mi carrera he liderado equipos, sistemas de diseño y proyectos complejos, y actualmente complemento mi perfil con análisis de datos para tomar decisiones más informadas.",
+    "image": "/hero-sobre-mi.png",
     "cvButton": {
       "text": "Descargar CV",
       "href": "/cv.pdf"

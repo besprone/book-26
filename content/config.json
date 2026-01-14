@@ -2,6 +2,7 @@
   "hero": {
     "title": "Diseñador de producto con visión técnica y enfoque en datos",
     "description": "Combino UX, desarrollo y análisis para crear experiencias útiles, funcionales y medibles",
+    "image": "/hero-home.png",
     "buttons": {
       "primary": {
         "text": "Ver proyectos",

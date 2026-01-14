@@ -1,0 +1,48 @@
+{
+  "title": "Marco de Discovery Continuo",
+  "description": "Diseño e implementación de un marco de discovery colaborativo y estructurado que homologó prácticas entre equipos y generó insights accionables semanales con trazabilidad completa",
+  "date": "2023-09-01",
+  "technologies": [
+    "Google Sheets",
+    "FigJam",
+    "Figma",
+    "Miro"
+  ],
+  "image": "/proyectos/marco-discovery-continuo/hero.png",
+  "featured": false,
+  "type": [
+    "UX"
+  ],
+  "client": "kubo.financiero",
+  "year": "2023",
+  "role": "Líder de definición y activación del proceso de discovery",
+  "reto": "Cuando llegué, no existía un proceso claro ni homogéneo de descubrimiento de producto. Cada área trabajaba con información aislada, y las decisiones se tomaban más por intuición que por datos o evidencias. El reto fue diseñar e implementar un marco de discovery continuo, colaborativo y estructurado, que: Homologara prácticas entre equipos (UX, PM, Tech, asesores). Permitiera generar insights accionables semanales. Diera trazabilidad desde la evidencia hasta los aprendizajes, insights, hipótesis y experimentos. Fuera sostenible en el tiempo y no dependiera de iniciativas puntuales.",
+  "proceso": {
+    "investigacion": "Activación inicial: Presentación de principios clave (discovery continuo, participación del trío de producto UX/PM/Tech, visualización con OST - Opportunity Solution Tree). Walkthrough del árbol de oportunidades y formatos (evidencias, aprendizajes, insights). Asignación de fuentes y responsables.",
+    "investigacionImage": "/proyectos/marco-discovery-continuo/investigacion.jpg",
+    "diseno": "Ritmo de trabajo estructurado: Semanal - cada integrante analiza una fuente (Intercom, llamadas, reseñas, entrevistas), documenta evidencias y aprendizajes, reunión de síntesis y priorización los viernes. Mensual - elección de un resultado deseado (ej. mejorar conversión) y actualización del OST. Trimestral - presentación de Discovery Digest con insights clave, oportunidades priorizadas, experimentos realizados y ajustes al roadmap.",
+    "desarrollo": "Herramientas y colaboración: Google Sheets para documentación estructurada y trazable. FigJam/Miro para visualización de OST. Figma/Google Meet para validación de prototipos. Asesores como champions de discovery para compartir hallazgos. PM y Tech en revisiones mensuales. Uso de insights priorizados para decisiones de roadmap.",
+    "analisisDatos": ""
+  },
+  "rolYHerramientas": {
+    "rol": [
+      "Líder de definición y activación del proceso de discovery"
+    ],
+    "herramientas": [
+      "Google Sheets",
+      "FigJam",
+      "Figma",
+      "Google Meet"
+    ]
+  },
+  "resultados": [
+    "Se instauró un ritmo continuo de discovery (no dependiente de proyectos aislados)",
+    "El equipo logró alineación cross-funcional con participación real de UX, PM y Tech",
+    "Documentación viva y trazable de evidencias → aprendizajes → insights → hipótesis → experimentos",
+    "Se implementaron los primeros experimentos A/B y de usabilidad basados en insights priorizados"
+  ],
+  "aprendizajes": "El valor del discovery no está en acumular hallazgos, sino en convertirlos en oportunidades priorizadas que guían el roadmap. La trazabilidad es clave: cada insight debe poder rastrearse hasta la evidencia original. Involucrar a las áreas desde el inicio asegura adopción del proceso. Discovery no se pausa: requiere constancia y disciplina semanal.",
+  "images": {
+    "afterReto": "/proyectos/marco-discovery-continuo/after-reto.jpg"
+  }
+}

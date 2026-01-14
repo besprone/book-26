@@ -93,6 +93,30 @@ export default async function ProyectoDetalle({
 
         {/* Contenido Principal */}
         <article className="space-y-12 md:space-y-16">
+          {/* Video de YouTube */}
+          {proyecto.videoYoutube && (
+            <section>
+              <div className="w-full max-w-4xl mx-auto">
+                <div className="relative aspect-video rounded-xl overflow-hidden shadow-lg">
+                  <iframe
+                    src={proyecto.videoYoutube.includes('youtu.be') 
+                      ? `https://www.youtube.com/embed/${proyecto.videoYoutube.split('/').pop()?.split('?')[0]}`
+                      : proyecto.videoYoutube.includes('youtube.com/watch')
+                      ? `https://www.youtube.com/embed/${proyecto.videoYoutube.split('v=')[1]?.split('&')[0]}`
+                      : proyecto.videoYoutube.includes('youtube.com/embed')
+                      ? proyecto.videoYoutube
+                      : `https://www.youtube.com/embed/${proyecto.videoYoutube}`
+                    }
+                    title={`Video del proyecto ${proyecto.title}`}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="absolute top-0 left-0 w-full h-full"
+                  />
+                </div>
+              </div>
+            </section>
+          )}
+
           {/* El Reto */}
           {proyecto.reto && (
             <section>

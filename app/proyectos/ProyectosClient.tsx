@@ -26,14 +26,17 @@ export default function ProyectosClient({ initialProyectos }: ProyectosClientPro
     return initialProyectos.find(p => p.featured === true)
   }, [initialProyectos])
 
-  // Filtrar proyectos (excluyendo el destacado)
+  // Filtrar proyectos
   const filteredProyectos = useMemo(() => {
-    let proyectos = initialProyectos.filter(p => !p.featured)
+    let proyectos = initialProyectos
 
     if (activeFilter !== 'Todo') {
       proyectos = proyectos.filter(proyecto => {
         return proyecto.type && proyecto.type.includes(activeFilter)
       })
+    } else {
+      // Si es "Todo", excluir el destacado de la lista (se muestra separado)
+      proyectos = proyectos.filter(p => !p.featured)
     }
 
     return proyectos
@@ -87,8 +90,10 @@ export default function ProyectosClient({ initialProyectos }: ProyectosClientPro
           onFilterChange={setActiveFilter}
         />
 
-        {/* Proyecto Destacado */}
-        {featuredProject && activeFilter === 'Todo' && (
+        {/* Proyecto Destacado - Solo mostrar si el filtro es "Todo" o si el destacado coincide con el filtro */}
+        {featuredProject && 
+         (activeFilter === 'Todo' || 
+          (featuredProject.type && featuredProject.type.includes(activeFilter))) && (
           <FeaturedProjectCard
             title={featuredProject.title}
             description={featuredProject.description}

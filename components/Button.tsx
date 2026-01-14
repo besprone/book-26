@@ -37,6 +37,22 @@ export default function Button({
   const classes = `${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`
   
   if (href) {
+    // Si es un PDF, abrir en nueva pestaña para que el usuario pueda verlo y decidir descargarlo
+    const isPDF = href.endsWith('.pdf')
+    
+    if (isPDF) {
+      return (
+        <a 
+          href={href} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className={classes}
+        >
+          {children}
+        </a>
+      )
+    }
+    
     return (
       <Link href={href} className={classes}>
         {children}

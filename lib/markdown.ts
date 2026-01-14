@@ -22,6 +22,7 @@ export interface Proyecto {
   year?: string
   role?: string
   reto?: string
+  videoYoutube?: string // URL del video de YouTube (ej: https://youtu.be/xxx o https://www.youtube.com/watch?v=xxx)
   proceso?: {
     investigacion?: string
     investigacionImage?: string
@@ -315,6 +316,7 @@ export function getAllProyectos(): Proyecto[] {
         year: year,
         role: data.role,
         reto: data.reto,
+        videoYoutube: data.videoYoutube,
         proceso: data.proceso,
         rolYHerramientas: data.rolYHerramientas,
         resultados: data.resultados,
@@ -364,6 +366,7 @@ export async function getProyectoBySlug(slug: string): Promise<Proyecto | null> 
     year: year,
     role: data.role,
     reto: data.reto,
+    videoYoutube: data.videoYoutube,
     proceso: data.proceso,
     rolYHerramientas: data.rolYHerramientas,
     resultados: data.resultados,

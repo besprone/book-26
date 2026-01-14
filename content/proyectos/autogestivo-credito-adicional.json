@@ -1,0 +1,48 @@
+{
+  "title": "Autogestivo de Crédito Adicional",
+  "description": "Rediseño del flujo autogestivo para prevenir que usuarios en atraso vean ofertas de crédito adicional, implementando validación en tiempo real y comunicación clara del estatus",
+  "date": "2024-03-01",
+  "technologies": [
+    "Figma",
+    "Intercom",
+    "Miro"
+  ],
+  "image": "/proyectos/autogestivo-credito-adicional/hero.png",
+  "featured": false,
+  "type": [
+    "UX"
+  ],
+  "client": "kubo.financiero",
+  "year": "2024",
+  "role": "Líder de diseño de producto (Product Design Manager)",
+  "reto": "En kubo.financiero, detectamos que algunos usuarios en atraso podían ver ofertas activas de crédito adicional dentro del flujo autogestivo, debido a un desfase en la actualización del sistema. Esta situación generaba confusión e incrementaba la carga operativa para el equipo de atención y cobranza. El reto fue rediseñar el flujo para prevenir estos casos, asegurando que solo se mostraran ofertas a usuarios elegibles en tiempo real, y comunicar de forma clara el motivo en caso de no mostrar ofertas.",
+  "proceso": {
+    "investigacion": "Identificación del problema: Se detectó el bug a través de reportes de asesores y monitoreo de ATC. Análisis del flujo actual: Se mapearon los pasos del proceso autogestivo para crédito adicional, con especial foco en la validación de estatus del crédito anterior.",
+    "investigacionImage": "/proyectos/autogestivo-credito-adicional/investigacion.jpg",
+    "diseno": "Definición del nuevo flujo: Se planteó un punto de validación al inicio para verificar si el usuario ya está al corriente con su crédito. Diseño de pantallas: Se diseñó una nueva pantalla que informa claramente al usuario que su estatus ya cambió y que por ahora no hay una oferta disponible. Iteración visual y de contenido: Se revisó el mensaje para hacerlo más claro y empático, con sugerencia de ilustración que refuerce el mensaje.",
+    "desarrollo": "Sincronización con equipo de desarrollo: Se definieron los triggers y condiciones técnicas para hacer la validación en tiempo real.",
+    "analisisDatos": ""
+  },
+  "rolYHerramientas": {
+    "rol": [
+      "Líder de diseño de producto (Product Design Manager)"
+    ],
+    "herramientas": [
+      "Figma",
+      "Intercom",
+      "Google Sheets",
+      "Miro",
+      "Google Sites"
+    ]
+  },
+  "resultados": [
+    "Se redujeron casos de confusión y reclamos por inconsistencias en las ofertas",
+    "Se implementó una validación efectiva antes de mostrar la pantalla de ofertas",
+    "Se fortaleció la percepción de confiabilidad de la app al comunicar claramente los cambios en el estatus del crédito",
+    "Se alinearon áreas clave como diseño, tecnología, cobranza y ATC en un flujo coherente"
+  ],
+  "aprendizajes": "La comunicación clara en momentos de cambio de estatus es clave para evitar frustración. Es importante validar las condiciones de negocio no solo al momento de mostrar una oferta, sino también al ingresar al flujo. Las pantallas que no ofrecen acción (como \"no hay oferta disponible\") deben tener un mensaje positivo, empático y bien diseñado para no generar abandono.",
+  "images": {
+    "afterReto": "/proyectos/autogestivo-credito-adicional/after-reto.jpg"
+  }
+}

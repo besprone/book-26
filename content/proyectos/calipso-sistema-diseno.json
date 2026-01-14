@@ -1,0 +1,51 @@
+{
+  "title": "Calipso Sistema de Diseño",
+  "description": "Sistema de diseño unificado y escalable que homologó múltiples librerías existentes, estableciendo una fuente única de verdad para diseño y desarrollo",
+  "date": "2023-06-01",
+  "technologies": [
+    "Figma",
+    "Storybook",
+    "HTML",
+    "CSS"
+  ],
+  "image": "/proyectos/calipso-sistema-diseno/hero.png",
+  "featured": false,
+  "type": [
+    "UX",
+    "Dev"
+  ],
+  "client": "kubo.financiero",
+  "year": "2023",
+  "role": "Líder de diseño UI",
+  "reto": "Cuando llegué al equipo existían múltiples librerías y aproximaciones de sistema de diseño. Esto generaba inconsistencia visual, duplicación de esfuerzos y fricción con desarrollo. El objetivo fue homologar todo lo existente, rescatar buenas prácticas y definir nuevas reglas que funcionaran como la fuente única de verdad para diseño y desarrollo. Queríamos lograr: Un sistema de diseño unificado y escalable. Reglas claras para devs. Patrones reutilizables. Documentación accesible para todo el equipo.",
+  "proceso": {
+    "investigacion": "Entrevisté a devs, PMs y revisé las tecnologías usadas en frontend. Analicé flujos existentes para identificar los componentes base y reforcé mi conocimiento en Atomic Design aplicado a sistemas de diseño.",
+    "investigacionImage": "/proyectos/calipso-sistema-diseno/investigacion.jpg",
+    "diseno": "Partimos del manual de marca y ajustamos la paleta de colores para cumplir con criterios de accesibilidad. Se definieron tokens, átomos, moléculas, organismos, templates y páginas. Prototipamos las primeras animaciones y transiciones de estado.",
+    "desarrollo": "Documenté do's & don'ts de cada componente y construimos el Storybook del sistema. Además, sentamos bases para que en el futuro la documentación pueda generarse con IA y publicarse en un sitio web accesible para todos.",
+    "analisisDatos": "Evaluamos consistencia, adopción y tiempos de diseño vs prototipado antes y después del sistema."
+  },
+  "rolYHerramientas": {
+    "rol": [
+      "Líder de diseño UI"
+    ],
+    "herramientas": [
+      "Figma",
+      "FigJam",
+      "Storybook",
+      "Google Sites",
+      "HTML",
+      "CSS"
+    ]
+  },
+  "resultados": [
+    "Homologación de librerías y componentes",
+    "Mayor consistencia visual y patrones de diseño estandarizados",
+    "Reducción en tiempos de diseño UI y prototipado",
+    "Colaboración más fluida con desarrollo y reglas claras para implementación"
+  ],
+  "aprendizajes": "La importancia de incluir la visión de todas las áreas (diseño, dev, producto) antes de definir nuevos patrones. Mantener la documentación viva es clave para que el sistema se mantenga útil. Los devs, al tener reglas claras y un repositorio común, pueden proponer y evolucionar patrones junto al equipo de diseño.",
+  "images": {
+    "afterReto": "/proyectos/calipso-sistema-diseno/after-reto.jpg"
+  }
+}

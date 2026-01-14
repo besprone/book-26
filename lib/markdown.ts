@@ -63,6 +63,7 @@ export interface HomeConfig {
   hero: {
     title: string
     description: string
+    image?: string
     buttons: {
       primary: {
         text: string
@@ -171,6 +172,7 @@ export interface SobreMiConfig {
   hero: {
     title: string
     description: string
+    image?: string
     cvButton: {
       text: string
       href: string

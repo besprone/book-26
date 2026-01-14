@@ -7,11 +7,13 @@ Esta carpeta contiene todos los archivos de contenido que puedes editar para act
 ```
 content/
 ├── config.json          # Configuración del Home (títulos, textos, botones)
-├── cv.md                # Tu CV / Sobre Mí
+├── sobre-mi.json        # Configuración de Sobre Mí (experiencia, formación, stack)
+├── contacto.json        # Configuración de Contacto (textos, formulario)
+├── cv.md                # Tu CV (Markdown con frontmatter)
 └── proyectos/
-    ├── proyecto-1.md    # Proyecto 1
-    ├── proyecto-2.md    # Proyecto 2
-    └── ...              # Más proyectos
+    ├── proyecto-1.json  # Proyecto 1
+    ├── proyecto-2.json   # Proyecto 2
+    └── ...              # Más proyectos (todos en JSON)
 ```
 
 ## 🏠 Editar el Home (`config.json`)
@@ -84,45 +86,79 @@ Escribe tu CV en Markdown. Puedes usar:
 - `**texto**` para negrita
 - `*texto*` para cursiva
 
-## 🚀 Editar Proyectos (`proyectos/*.md`)
+## 👤 Editar Sobre Mí (`sobre-mi.json`)
 
-Cada proyecto es un archivo Markdown con frontmatter.
+El archivo `sobre-mi.json` contiene toda la configuración de la página "Sobre Mí". Puedes editar:
+- Hero (título, descripción, botón CV)
+- Resumen profesional (tarjetas)
+- Experiencia (timeline de trabajos)
+- Formación (certificaciones y educación)
+- Stack (categorías con tecnologías)
+- Call to Action
 
-### Frontmatter (metadatos):
-```yaml
----
-title: Nombre del Proyecto
-description: Descripción corta
-date: 2024-01-15
-technologies:
-  - React
-  - Node.js
-  - MongoDB
-image: https://url-de-tu-imagen.com/imagen.jpg
-github: https://github.com/tu-usuario/proyecto
-demo: https://demo-del-proyecto.com
----
+## 📧 Editar Contacto (`contacto.json`)
+
+El archivo `contacto.json` contiene toda la configuración de la página de contacto. Puedes editar:
+- Hero (título y descripción)
+- Formulario (labels, placeholders, mensajes)
+- CTA (título y botón)
+- Texto final motivacional
+
+## 🚀 Editar Proyectos (`proyectos/*.json`)
+
+Cada proyecto es un archivo JSON con toda la información del proyecto.
+
+### Estructura básica:
+```json
+{
+  "title": "Nombre del Proyecto",
+  "description": "Descripción corta",
+  "date": "2024-01-15",
+  "technologies": ["React", "Node.js", "MongoDB"],
+  "image": "https://url-de-tu-imagen.com/imagen.jpg",
+  "github": "https://github.com/tu-usuario/proyecto",
+  "demo": "https://demo-del-proyecto.com",
+  "featured": false,
+  "type": ["UX", "Dev", "Data"],
+  "client": "Nombre del Cliente",
+  "year": "2024",
+  "role": "Product designer",
+  "reto": "Descripción del reto...",
+  "proceso": {
+    "investigacion": "Descripción...",
+    "investigacionImage": "https://...",
+    "diseno": "Descripción...",
+    "desarrollo": "Descripción...",
+    "analisisDatos": "Descripción..."
+  },
+  "rolYHerramientas": {
+    "rol": ["UX Research", "UI Design"],
+    "herramientas": ["Figma", "React"]
+  },
+  "resultados": ["Resultado 1", "Resultado 2"],
+  "aprendizajes": "Descripción de aprendizajes...",
+  "images": {
+    "afterReto": "https://..."
+  }
+}
 ```
 
-### Contenido:
-Escribe la descripción detallada del proyecto en Markdown.
-
 ### Agregar un nuevo proyecto:
-1. Crea un nuevo archivo `.md` en la carpeta `proyectos/`
-2. Usa el formato de frontmatter mostrado arriba
-3. Escribe el contenido en Markdown
-4. El nombre del archivo será el slug (ej: `mi-proyecto.md` → `/proyectos/mi-proyecto`)
+1. Crea un nuevo archivo `.json` en la carpeta `proyectos/`
+2. Usa el formato JSON mostrado arriba
+3. El nombre del archivo será el slug (ej: `mi-proyecto.json` → `/proyectos/mi-proyecto`)
 
 ## 💡 Tips
 
-1. **Validación JSON**: Si editas `config.json`, asegúrate de que el JSON sea válido (comas, llaves, etc.)
+1. **Validación JSON**: Si editas cualquier archivo `.json`, asegúrate de que el JSON sea válido (comas, llaves, etc.). Puedes usar un validador JSON online.
 2. **Recargar**: Después de editar cualquier archivo, recarga la página para ver los cambios
-3. **Markdown**: Usa un editor con preview de Markdown para ver cómo se verá
+3. **Markdown**: Solo `cv.md` usa Markdown. El resto del contenido está en JSON.
 4. **Imágenes**: Para proyectos, puedes usar URLs de imágenes o subirlas a una carpeta `public/`
+5. **Consistencia**: Todos los archivos de configuración (Home, Sobre Mí, Contacto) y proyectos usan JSON para mantener consistencia
 
 ## 🔄 Flujo de Trabajo
 
-1. Edita el archivo que necesites (`config.json`, `cv.md`, o un proyecto)
+1. Edita el archivo que necesites (`config.json`, `sobre-mi.json`, `contacto.json`, `cv.md`, o un proyecto `.json`)
 2. Guarda el archivo
 3. Recarga la página en el navegador
 4. ¡Listo! Los cambios deberían aparecer

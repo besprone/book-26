@@ -1,9 +1,11 @@
 'use client'
 
 import { useState } from 'react'
+import { getContactoConfig } from '@/lib/markdown'
 import Button from '@/components/Button'
 
 export default function Contacto() {
+  const config = getContactoConfig()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -50,10 +52,10 @@ export default function Contacto() {
           {/* Columna Izquierda: Texto */}
           <div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 dark:text-white leading-tight">
-              ¿Tienes un proyecto en mente?
+              {config.hero.title}
             </h1>
             <p className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
-              Estoy disponible para colaboraciones freelance, consultorías, asesorías UX o simplemente para charlar sobre ideas.
+              {config.hero.description}
             </p>
           </div>
 
@@ -62,7 +64,7 @@ export default function Contacto() {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Nombre
+                  {config.form.fields.name.label}
                 </label>
                 <input
                   type="text"
@@ -72,13 +74,13 @@ export default function Contacto() {
                   value={formData.name}
                   onChange={handleChange}
                   className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition"
-                  placeholder="Tu nombre"
+                  placeholder={config.form.fields.name.placeholder}
                 />
               </div>
 
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Correo electrónico
+                  {config.form.fields.email.label}
                 </label>
                 <input
                   type="email"
@@ -88,13 +90,13 @@ export default function Contacto() {
                   value={formData.email}
                   onChange={handleChange}
                   className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition"
-                  placeholder="tu@email.com"
+                  placeholder={config.form.fields.email.placeholder}
                 />
               </div>
 
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Mensaje
+                  {config.form.fields.message.label}
                 </label>
                 <textarea
                   id="message"
@@ -104,7 +106,7 @@ export default function Contacto() {
                   value={formData.message}
                   onChange={handleChange}
                   className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition resize-none"
-                  placeholder="Cuéntame sobre tu proyecto..."
+                  placeholder={config.form.fields.message.placeholder}
                 />
               </div>
 
@@ -113,13 +115,13 @@ export default function Contacto() {
                 disabled={status === 'loading'}
                 className="w-full bg-primary-500 text-white px-8 py-3 rounded-lg hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed font-medium text-base inline-flex items-center justify-center"
               >
-                {status === 'loading' ? 'Enviando...' : 'Contáctame'}
+                {status === 'loading' ? config.form.submitButton.loadingText : config.form.submitButton.text}
               </button>
 
               {status === 'success' && (
                 <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
                   <p className="text-green-800 dark:text-green-200 text-sm">
-                    ¡Mensaje enviado con éxito! Te responderé pronto.
+                    {config.form.messages.success}
                   </p>
                 </div>
               )}
@@ -127,7 +129,7 @@ export default function Contacto() {
               {status === 'error' && (
                 <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
                   <p className="text-red-800 dark:text-red-200 text-sm">
-                    Hubo un error al enviar el mensaje. Por favor intenta de nuevo.
+                    {config.form.messages.error}
                   </p>
                 </div>
               )}
@@ -140,14 +142,14 @@ export default function Contacto() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white">
-            ¿Te interesa saber cómo podría aportar a tu equipo o proyecto?
+            {config.cta.title}
           </h2>
           <Button
-            href="mailto:besprone@gmail.com?subject=Agendar una llamada&body=Hola Marco,%0D%0A%0D%0AMe gustaría agendar una llamada para hablar sobre..."
-            variant="outline"
+            href={config.cta.button.href}
+            variant={config.cta.button.variant}
             size="lg"
           >
-            Agendar una llamada
+            {config.cta.button.text}
           </Button>
         </div>
       </section>
@@ -155,7 +157,7 @@ export default function Contacto() {
       {/* Sección Final: Texto Motivacional */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <p className="text-center text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
-          Me interesa trabajar con personas que valoran el diseño como herramienta de impacto. Si tienes una idea, me encantará escucharla.
+          {config.final.text}
         </p>
       </section>
     </div>

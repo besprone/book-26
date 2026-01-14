@@ -13,7 +13,6 @@ export interface Proyecto {
   image?: string
   technologies: string[]
   date: string
-  content: string
   github?: string
   demo?: string
   featured?: boolean
@@ -291,12 +290,12 @@ export function getAllProyectos(): Proyecto[] {
 
   const fileNames = fs.readdirSync(proyectosDirectory)
   const allProyectos = fileNames
-    .filter(name => name.endsWith('.md'))
+    .filter(name => name.endsWith('.json'))
     .map((fileName) => {
-      const slug = fileName.replace(/\.md$/, '')
+      const slug = fileName.replace(/\.json$/, '')
       const fullPath = path.join(proyectosDirectory, fileName)
       const fileContents = fs.readFileSync(fullPath, 'utf8')
-      const { data, content } = matter(fileContents)
+      const data = JSON.parse(fileContents)
 
       // Extraer año de la fecha si no está en year
       const year = data.year || (data.date ? new Date(data.date).getFullYear().toString() : '')
@@ -308,7 +307,6 @@ export function getAllProyectos(): Proyecto[] {
         image: data.image,
         technologies: data.technologies || [],
         date: data.date || '',
-        content,
         github: data.github,
         demo: data.demo,
         featured: data.featured || false,
@@ -339,19 +337,14 @@ export function getAllProyectos(): Proyecto[] {
 // Obtener un proyecto por slug
 export async function getProyectoBySlug(slug: string): Promise<Proyecto | null> {
   const proyectosDirectory = path.join(contentDirectory, 'proyectos')
-  const fullPath = path.join(proyectosDirectory, `${slug}.md`)
+  const fullPath = path.join(proyectosDirectory, `${slug}.json`)
 
   if (!fs.existsSync(fullPath)) {
     return null
   }
 
   const fileContents = fs.readFileSync(fullPath, 'utf8')
-  const { data, content } = matter(fileContents)
-
-  const processedContent = await remark()
-    .use(html)
-    .process(content)
-  const contentHtml = processedContent.toString()
+  const data = JSON.parse(fileContents)
 
   // Extraer año de la fecha si no está en year
   const year = data.year || (data.date ? new Date(data.date).getFullYear().toString() : '')
@@ -363,7 +356,6 @@ export async function getProyectoBySlug(slug: string): Promise<Proyecto | null> 
     image: data.image,
     technologies: data.technologies || [],
     date: data.date || '',
-    content: contentHtml,
     github: data.github,
     demo: data.demo,
     featured: data.featured || false,
@@ -379,6 +371,101 @@ export async function getProyectoBySlug(slug: string): Promise<Proyecto | null> 
     aprendizajes: data.aprendizajes,
     images: data.images,
   }
+}
+
+export interface ContactoConfig {
+  hero: {
+    title: string
+    description: string
+  }
+  form: {
+    fields: {
+      name: {
+        label: string
+        placeholder: string
+      }
+      email: {
+        label: string
+        placeholder: string
+      }
+      message: {
+        label: string
+        placeholder: string
+      }
+    }
+    submitButton: {
+      text: string
+      loadingText: string
+    }
+    messages: {
+      success: string
+      error: string
+    }
+  }
+  cta: {
+    title: string
+    button: {
+      text: string
+      href: string
+      variant: 'ghost' | 'solid' | 'outline'
+    }
+  }
+  final: {
+    text: string
+  }
+}
+
+// Obtener la configuración de Contacto
+export function getContactoConfig(): ContactoConfig {
+  const configPath = path.join(contentDirectory, 'contacto.json')
+  
+  if (!fs.existsSync(configPath)) {
+    // Configuración por defecto si no existe el archivo
+    return {
+      hero: {
+        title: '¿Tienes un proyecto en mente?',
+        description: 'Estoy disponible para colaboraciones freelance, consultorías, asesorías UX o simplemente para charlar sobre ideas.',
+      },
+      form: {
+        fields: {
+          name: {
+            label: 'Nombre',
+            placeholder: 'Tu nombre',
+          },
+          email: {
+            label: 'Correo electrónico',
+            placeholder: 'tu@email.com',
+          },
+          message: {
+            label: 'Mensaje',
+            placeholder: 'Cuéntame sobre tu proyecto...',
+          },
+        },
+        submitButton: {
+          text: 'Contáctame',
+          loadingText: 'Enviando...',
+        },
+        messages: {
+          success: '¡Mensaje enviado con éxito! Te responderé pronto.',
+          error: 'Hubo un error al enviar el mensaje. Por favor intenta de nuevo.',
+        },
+      },
+      cta: {
+        title: '¿Te interesa saber cómo podría aportar a tu equipo o proyecto?',
+        button: {
+          text: 'Agendar una llamada',
+          href: 'mailto:besprone@gmail.com?subject=Agendar una llamada&body=Hola Marco,%0D%0A%0D%0AMe gustaría agendar una llamada para hablar sobre...',
+          variant: 'outline' as const,
+        },
+      },
+      final: {
+        text: 'Me interesa trabajar con personas que valoran el diseño como herramienta de impacto. Si tienes una idea, me encantará escucharla.',
+      },
+    }
+  }
+
+  const fileContents = fs.readFileSync(configPath, 'utf8')
+  return JSON.parse(fileContents) as ContactoConfig
 }
 
 // Obtener el CV

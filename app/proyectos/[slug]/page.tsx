@@ -244,18 +244,8 @@ export default async function ProyectoDetalle({
             </section>
           )}
 
-          {/* Contenido adicional (markdown) - fallback para proyectos antiguos */}
-          {proyecto.content && (!proyecto.reto || proyecto.content.trim().length > 0) && (
-            <section>
-              <div
-                className="prose prose-lg dark:prose-invert max-w-none"
-                dangerouslySetInnerHTML={{ __html: proyecto.content }}
-              />
-            </section>
-          )}
-
-          {/* Mensaje si no hay contenido nuevo ni markdown */}
-          {!proyecto.reto && !proyecto.proceso && !proyecto.rolYHerramientas && !proyecto.resultados && !proyecto.aprendizajes && (!proyecto.content || proyecto.content.trim().length === 0) && (
+          {/* Mensaje si no hay contenido */}
+          {!proyecto.reto && !proyecto.proceso && !proyecto.rolYHerramientas && !proyecto.resultados && !proyecto.aprendizajes && (
             <section>
               <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
                 {proyecto.description || 'Proyecto en desarrollo...'}

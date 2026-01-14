@@ -4,6 +4,7 @@ import SectionHeader from '@/components/SectionHeader'
 import Card from '@/components/Card'
 import ProfileCard from '@/components/ProfileCard'
 import ProjectCard from '@/components/ProjectCard'
+import ImageWithSkeleton from '@/components/ImageWithSkeleton'
 import { Image as ImageIcon, Code, Briefcase, GraduationCap, Target, Palette, Database } from 'lucide-react'
 
 export default function Home() {
@@ -42,11 +43,13 @@ export default function Home() {
           </div>
           <div className="hidden lg:block">
             {config.hero.image ? (
-              <div className="rounded-2xl overflow-hidden shadow-lg">
-                <img
+              <div className="rounded-2xl overflow-hidden">
+                <ImageWithSkeleton
                   src={config.hero.image}
                   alt={config.hero.title}
-                  className="w-full h-auto object-cover"
+                  className="w-full h-auto object-cover rounded-2xl"
+                  aspectRatio="landscape"
+                  skeletonClassName="rounded-2xl"
                 />
               </div>
             ) : (

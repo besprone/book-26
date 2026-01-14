@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { ReactNode } from 'react'
+import { LucideIcon } from 'lucide-react'
 
 interface ButtonProps {
   children: ReactNode
@@ -9,6 +10,8 @@ interface ButtonProps {
   className?: string
   onClick?: () => void
   type?: 'button' | 'submit' | 'reset'
+  icon?: LucideIcon
+  iconPosition?: 'left' | 'right'
 }
 
 export default function Button({
@@ -19,8 +22,10 @@ export default function Button({
   className = '',
   onClick,
   type = 'button',
+  icon: Icon,
+  iconPosition = 'left',
 }: ButtonProps) {
-  const baseStyles = 'font-medium transition rounded-lg inline-flex items-center justify-center'
+  const baseStyles = 'font-medium transition rounded-lg inline-flex items-center justify-center gap-2'
   
   const variants = {
     ghost: 'text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 hover:bg-primary-50 dark:hover:bg-primary-900/20',
@@ -34,7 +39,41 @@ export default function Button({
     lg: 'px-8 py-3 text-base',
   }
   
+  // Tamaños de icono según el tamaño del botón
+  const iconSizes = {
+    sm: 'w-4 h-4',
+    md: 'w-5 h-5',
+    lg: 'w-5 h-5',
+  }
+  
   const classes = `${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`
+  
+  // Renderizar icono
+  const renderIcon = () => {
+    if (!Icon) return null
+    return <Icon className={iconSizes[size]} />
+  }
+  
+  // Renderizar contenido con icono
+  const renderContent = () => {
+    if (!Icon) return children
+    
+    if (iconPosition === 'left') {
+      return (
+        <>
+          {renderIcon()}
+          {children}
+        </>
+      )
+    } else {
+      return (
+        <>
+          {children}
+          {renderIcon()}
+        </>
+      )
+    }
+  }
   
   if (href) {
     // Si es un PDF, abrir en nueva pestaña para que el usuario pueda verlo y decidir descargarlo
@@ -48,21 +87,21 @@ export default function Button({
           rel="noopener noreferrer" 
           className={classes}
         >
-          {children}
+          {renderContent()}
         </a>
       )
     }
     
     return (
       <Link href={href} className={classes}>
-        {children}
+        {renderContent()}
       </Link>
     )
   }
   
   return (
     <button type={type} onClick={onClick} className={classes}>
-      {children}
+      {renderContent()}
     </button>
   )
 }

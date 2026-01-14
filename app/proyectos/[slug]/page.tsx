@@ -2,9 +2,8 @@ import { getProyectoBySlug, getAllProyectos } from '@/lib/markdown'
 import { notFound } from 'next/navigation'
 import Badge from '@/components/Badge'
 import Button from '@/components/Button'
-import ProjectImageFullWidth from '@/components/ProjectImageFullWidth'
-import ProjectImageTwoColumns from '@/components/ProjectImageTwoColumns'
-import { Image as ImageIcon } from 'lucide-react'
+import ImageWithSkeleton from '@/components/ImageWithSkeleton'
+import { Image as ImageIcon, ArrowLeft } from 'lucide-react'
 
 export async function generateStaticParams() {
   const proyectos = getAllProyectos()
@@ -29,6 +28,19 @@ export default async function ProyectoDetalle({
   return (
     <div className="bg-white dark:bg-gray-900 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+        {/* Botón Volver */}
+        <div className="mb-8">
+          <Button
+            href="/proyectos"
+            variant="ghost"
+            size="md"
+            icon={ArrowLeft}
+            iconPosition="left"
+          >
+            Volver a proyectos
+          </Button>
+        </div>
+
         {/* Header: Título y Metadata */}
         <header className="mb-12 md:mb-16">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-gray-900 dark:text-white leading-tight">
@@ -81,11 +93,13 @@ export default async function ProyectoDetalle({
         {/* Hero Illustration */}
         {proyecto.image && (
           <div className="mb-16">
-            <div className="w-full h-64 md:h-80 lg:h-96 bg-gray-100 dark:bg-gray-700 rounded-xl overflow-hidden flex items-center justify-center">
-              <img
+            <div className="w-full h-64 md:h-80 lg:h-96 bg-gray-100 dark:bg-gray-700 rounded-xl overflow-hidden">
+              <ImageWithSkeleton
                 src={proyecto.image}
                 alt={proyecto.title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover rounded-xl"
+                aspectRatio="wide"
+                skeletonClassName="rounded-xl"
               />
             </div>
           </div>
@@ -123,14 +137,9 @@ export default async function ProyectoDetalle({
               <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-white">
                 El reto
               </h2>
-              <ProjectImageTwoColumns
-                imageSrc={proyecto.images?.afterReto}
-                imageAlt={`Imagen relacionada con el reto de ${proyecto.title}`}
-              >
-                <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-prose">
-                  {proyecto.reto}
-                </p>
-              </ProjectImageTwoColumns>
+              <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-prose">
+                {proyecto.reto}
+              </p>
             </section>
           )}
 
@@ -140,9 +149,7 @@ export default async function ProyectoDetalle({
               <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-white">
                 Proceso
               </h2>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-                {/* Bloque de texto (izquierda) */}
-                <div className="order-2 lg:order-1 space-y-6">
+              <div className="space-y-6 max-w-prose">
                   {proyecto.proceso.investigacion && (
                     <div className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-4">
                       <h3 className="font-semibold text-lg mb-2 text-gray-900 dark:text-white">
@@ -183,20 +190,6 @@ export default async function ProyectoDetalle({
                       </p>
                     </div>
                   )}
-                </div>
-                
-                {/* Imagen (derecha) */}
-                {proyecto.proceso.investigacionImage && (
-                  <div className="order-1 lg:order-2">
-                    <div className="w-full h-64 md:h-80 lg:h-96 bg-gray-100 dark:bg-gray-700 rounded-xl overflow-hidden flex items-center justify-center sticky top-8">
-                      <img
-                        src={proyecto.proceso.investigacionImage}
-                        alt={`Imagen del proceso de investigación - ${proyecto.title}`}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  </div>
-                )}
               </div>
             </section>
           )}

@@ -5,6 +5,7 @@ import SectionHeader from '@/components/SectionHeader'
 import ProfileCard from '@/components/ProfileCard'
 import ExperienceTimeline from '@/components/ExperienceTimeline'
 import EducationCard from '@/components/EducationCard'
+import ImageWithSkeleton from '@/components/ImageWithSkeleton'
 import { User, Code, Target, Wrench, BarChart, Palette, Database, Award, Briefcase, PenTool, Users, Lightbulb, TrendingUp, Layers } from 'lucide-react'
 
 export default function SobreMi() {
@@ -32,11 +33,13 @@ export default function SobreMi() {
           </div>
           <div className="hidden lg:block">
             {config.hero.image ? (
-              <div className="rounded-2xl overflow-hidden shadow-lg">
-                <img
+              <div className="rounded-2xl overflow-hidden">
+                <ImageWithSkeleton
                   src={config.hero.image}
                   alt={config.hero.title}
-                  className="w-full h-auto object-cover"
+                  className="w-full h-auto object-cover rounded-2xl"
+                  aspectRatio="landscape"
+                  skeletonClassName="rounded-2xl"
                 />
               </div>
             ) : (

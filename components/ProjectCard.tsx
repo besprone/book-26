@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Button from './Button'
 import Badge from './Badge'
 import { Image as ImageIcon } from 'lucide-react'
+import ImageWithSkeleton from './ImageWithSkeleton'
 
 interface ProjectCardProps {
   title: string
@@ -23,13 +24,16 @@ export default function ProjectCard({
       href={`/proyectos/${slug}`}
       className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-xl hover:border-primary-300 dark:hover:border-primary-800 transition-all duration-300 transform hover:-translate-y-2 group"
     >
-      <div className="h-48 bg-gray-100 dark:bg-gray-700 relative overflow-hidden">
+      <div className="h-48 bg-gray-100 dark:bg-gray-700 relative overflow-hidden rounded-t-xl">
         {image ? (
-          <img
-            src={image}
-            alt={title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          />
+          <div className="absolute inset-0 w-full h-full">
+            <ImageWithSkeleton
+              src={image}
+              alt={title}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              aspectRatio="landscape"
+            />
+          </div>
         ) : (
           <div className="w-full h-full flex items-center justify-center">
             <ImageIcon className="w-16 h-16 text-gray-500 dark:text-gray-400" />

@@ -373,6 +373,7 @@ export async function getProyectoBySlug(slug: string): Promise<Proyecto | null> 
   }
 }
 
+// Exportar la interfaz para uso en componentes cliente
 export interface ContactoConfig {
   hero: {
     title: string

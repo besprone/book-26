@@ -46,9 +46,16 @@ export default function Button({
             button_location: buttonLocation,
             button_variant: variant,
           })
+          if (process.env.NODE_ENV === 'development') {
+            console.log('📊 Button clicked tracked:', buttonText, buttonLocation)
+          }
+        } else if (process.env.NODE_ENV === 'development') {
+          console.warn('⚠️ PostHog not loaded, event not tracked:', buttonText)
         }
       } catch (error) {
-        // Silenciar errores de tracking
+        if (process.env.NODE_ENV === 'development') {
+          console.error('❌ PostHog tracking error:', error)
+        }
       }
     }
     

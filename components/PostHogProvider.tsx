@@ -22,6 +22,9 @@ function PostHogPageView() {
           posthog.capture('$pageview', {
             $current_url: url,
           })
+          if (process.env.NODE_ENV === 'development') {
+            console.log('📊 Page view tracked:', url)
+          }
         } else {
           // Reintentar después de un breve delay
           setTimeout(trackPageView, 100)

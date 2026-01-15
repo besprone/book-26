@@ -17,10 +17,13 @@ export const initPostHog = () => {
     return
   }
 
-  const posthogKey = process.env.NEXT_PUBLIC_POSTHOG_KEY
+  const posthogKey = process.env.NEXT_PUBLIC_POSTHOG_PROJECT_API_KEY
   const posthogHost = process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://us.posthog.com'
 
   if (!posthogKey) {
+    if (process.env.NODE_ENV === 'development') {
+      console.warn('⚠️ PostHog Key not found. Set NEXT_PUBLIC_POSTHOG_PROJECT_API_KEY in .env.local')
+    }
     return
   }
 
@@ -48,7 +51,9 @@ export const initPostHog = () => {
             isInitialized = true
             isInitializing = false
             if (process.env.NODE_ENV === 'development') {
-              console.log('PostHog loaded')
+              console.log('✅ PostHog loaded successfully')
+              console.log('PostHog Project API Key:', posthogKey ? `${posthogKey.substring(0, 10)}...` : 'NOT SET')
+              console.log('PostHog Host:', posthogHost)
             }
           },
           // Session recordings

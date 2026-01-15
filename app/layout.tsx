@@ -3,6 +3,7 @@ import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import PostHogProvider from '@/components/PostHogProvider'
+import PostHogDebug from '@/components/PostHogDebug'
 
 export const metadata: Metadata = {
   title: 'Marco De Castilla - Product & UX Designer',
@@ -31,6 +32,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+          <PostHogDebug />
         </PostHogProvider>
       </body>
     </html>

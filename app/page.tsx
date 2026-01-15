@@ -5,6 +5,8 @@ import Card from '@/components/Card'
 import ProfileCard from '@/components/ProfileCard'
 import ProjectCard from '@/components/ProjectCard'
 import ImageWithSkeleton from '@/components/ImageWithSkeleton'
+import SectionViewTracker from '@/components/SectionViewTracker'
+import ScrollDepthTracker from '@/components/ScrollDepthTracker'
 import { Image as ImageIcon, Code, Briefcase, GraduationCap, Target, Palette, Database } from 'lucide-react'
 
 export default function Home() {
@@ -14,8 +16,10 @@ export default function Home() {
 
   return (
     <div className="bg-white dark:bg-gray-900">
+      <ScrollDepthTracker />
       {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 relative">
+        <SectionViewTracker sectionName="hero" className="absolute top-0 left-0 w-full h-1" />
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 dark:text-white leading-tight">
@@ -66,7 +70,8 @@ export default function Home() {
       </section>
 
       {/* Perfil Profesional Section */}
-      <section className="bg-gray-50 dark:bg-gray-800 py-20">
+      <section className="bg-gray-50 dark:bg-gray-800 py-20 relative">
+        <SectionViewTracker sectionName="perfil" className="absolute top-0 left-0 w-full h-1" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader
             title={config.perfil.title}
@@ -97,7 +102,8 @@ export default function Home() {
 
       {/* Proyectos Section */}
       {featuredProyectos.length > 0 && (
-        <section className="py-20">
+        <section className="py-20 relative">
+          <SectionViewTracker sectionName="proyectos" className="absolute top-0 left-0 w-full h-1" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <SectionHeader
               title={config.proyectos.title}
@@ -121,7 +127,8 @@ export default function Home() {
       )}
 
       {/* Stack Section */}
-      <section className="bg-gray-50 dark:bg-gray-800 py-20">
+      <section className="bg-gray-50 dark:bg-gray-800 py-20 relative">
+        <SectionViewTracker sectionName="stack" className="absolute top-0 left-0 w-full h-1" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader
             title={config.stack.title}
@@ -163,7 +170,8 @@ export default function Home() {
       </section>
 
       {/* Call to Action Section */}
-      <section className="pt-20 pb-12">
+      <section className="pt-20 pb-12 relative">
+        <SectionViewTracker sectionName="cta" className="absolute top-0 left-0 w-full h-1" />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-8 text-gray-900 dark:text-white">
             {config.callToAction.title}

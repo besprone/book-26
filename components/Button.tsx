@@ -1,6 +1,10 @@
+'use client'
+
 import Link from 'next/link'
 import { ReactNode } from 'react'
 import { LucideIcon } from 'lucide-react'
+import { usePathname } from 'next/navigation'
+import { getPostHog } from '@/lib/posthog'
 
 interface ButtonProps {
   children: ReactNode
@@ -25,7 +29,33 @@ export default function Button({
   icon: Icon,
   iconPosition = 'left',
 }: ButtonProps) {
+  const pathname = usePathname()
   const baseStyles = 'font-medium transition rounded-lg inline-flex items-center justify-center gap-2'
+  
+  // Handler para trackear clicks en botones
+  const handleClick = () => {
+    if (typeof window !== 'undefined') {
+      const buttonText = typeof children === 'string' ? children : 'Button'
+      const buttonLocation = pathname || 'unknown'
+      
+      try {
+        const posthog = getPostHog()
+        if (posthog && (posthog as any).__loaded) {
+          posthog.capture('button_clicked', {
+            button_text: buttonText,
+            button_location: buttonLocation,
+            button_variant: variant,
+          })
+        }
+      } catch (error) {
+        // Silenciar errores de tracking
+      }
+    }
+    
+    if (onClick) {
+      onClick()
+    }
+  }
   
   const variants = {
     ghost: 'text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 hover:bg-primary-50 dark:hover:bg-primary-900/20',
@@ -80,12 +110,36 @@ export default function Button({
     const isPDF = href.endsWith('.pdf')
     
     if (isPDF) {
+      const handlePDFClick = () => {
+        if (typeof window !== 'undefined') {
+          const buttonText = typeof children === 'string' ? children : 'Button'
+          const buttonLocation = pathname || 'unknown'
+          
+          try {
+            const posthog = getPostHog()
+            if (posthog && (posthog as any).__loaded) {
+              posthog.capture('cv_downloaded', {
+                source_page: buttonLocation,
+              })
+              posthog.capture('button_clicked', {
+                button_text: buttonText,
+                button_location: buttonLocation,
+                button_variant: variant,
+              })
+            }
+          } catch (error) {
+            // Silenciar errores de tracking
+          }
+        }
+      }
+      
       return (
         <a 
           href={href} 
           target="_blank" 
           rel="noopener noreferrer" 
           className={classes}
+          onClick={handlePDFClick}
         >
           {renderContent()}
         </a>
@@ -93,14 +147,18 @@ export default function Button({
     }
     
     return (
-      <Link href={href} className={classes}>
+      <Link 
+        href={href} 
+        className={classes}
+        onClick={handleClick}
+      >
         {renderContent()}
       </Link>
     )
   }
   
   return (
-    <button type={type} onClick={onClick} className={classes}>
+    <button type={type} onClick={handleClick} className={classes}>
       {renderContent()}
     </button>
   )

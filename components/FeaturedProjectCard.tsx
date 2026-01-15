@@ -1,7 +1,11 @@
+'use client'
+
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import Button from './Button'
 import Badge from './Badge'
 import { Image as ImageIcon } from 'lucide-react'
+import { getPostHog } from '@/lib/posthog'
 
 interface FeaturedProjectCardProps {
   title: string
@@ -18,6 +22,24 @@ export default function FeaturedProjectCard({
   technologies,
   slug,
 }: FeaturedProjectCardProps) {
+  const pathname = usePathname()
+  
+  const handleClick = () => {
+    if (typeof window !== 'undefined') {
+      const sourcePage = pathname || 'unknown'
+      try {
+        const posthog = getPostHog()
+        if (posthog && (posthog as any).__loaded) {
+          posthog.capture('project_clicked', {
+            project_slug: slug,
+            project_title: title,
+            source_page: sourcePage,
+          })
+        }
+      } catch (e) {}
+    }
+  }
+
   return (
     <div className="mb-12">
       <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-xl transition-all duration-300">
@@ -67,7 +89,7 @@ export default function FeaturedProjectCard({
             ))}
           </div>
           
-          <Link href={`/proyectos/${slug}`}>
+          <Link href={`/proyectos/${slug}`} onClick={handleClick}>
             <Button variant="ghost" size="lg">
               Ver caso
             </Button>

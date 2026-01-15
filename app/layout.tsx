@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import PostHogProvider from '@/components/PostHogProvider'
 
 export const metadata: Metadata = {
   title: 'Marco De Castilla - Product & UX Designer',
@@ -24,11 +25,13 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans">
-        <Navbar />
-        <main className="min-h-screen">
-          {children}
-        </main>
-        <Footer />
+        <PostHogProvider>
+          <Navbar />
+          <main className="min-h-screen">
+            {children}
+          </main>
+          <Footer />
+        </PostHogProvider>
       </body>
     </html>
   )

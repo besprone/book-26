@@ -7,6 +7,7 @@ import FeaturedProjectCard from '@/components/FeaturedProjectCard'
 import ProjectCard from '@/components/ProjectCard'
 import ProjectCardSkeleton from '@/components/ProjectCardSkeleton'
 import Button from '@/components/Button'
+import { getPostHog } from '@/lib/posthog'
 
 const PROJECTS_PER_PAGE = 6
 
@@ -48,11 +49,40 @@ export default function ProyectosClient({ initialProyectos }: ProyectosClientPro
 
   const handleLoadMore = () => {
     setIsLoading(true)
+    if (typeof window !== 'undefined') {
+      try {
+        const posthog = getPostHog()
+        if (posthog && (posthog as any).__loaded) {
+          posthog.capture('load_more_clicked', {
+            current_count: visibleCount,
+            filter_active: activeFilter,
+          })
+        }
+      } catch (e) {}
+    }
     // Simular delay de carga
     setTimeout(() => {
       setVisibleCount(prev => prev + PROJECTS_PER_PAGE)
       setIsLoading(false)
     }, 500)
+  }
+
+  const handleFilterChange = (filter: string) => {
+    setActiveFilter(filter)
+    const filteredCount = filter === 'Todo' 
+      ? initialProyectos.filter(p => !p.featured).length
+      : initialProyectos.filter(p => p.type && p.type.includes(filter)).length
+    if (typeof window !== 'undefined') {
+      try {
+        const posthog = getPostHog()
+        if (posthog && (posthog as any).__loaded) {
+          posthog.capture('filter_applied', {
+            filter_type: filter,
+            projects_count: filteredCount,
+          })
+        }
+      } catch (e) {}
+    }
   }
 
   if (initialProyectos.length === 0) {
@@ -87,7 +117,7 @@ export default function ProyectosClient({ initialProyectos }: ProyectosClientPro
         <FilterChips
           filters={filters}
           activeFilter={activeFilter}
-          onFilterChange={setActiveFilter}
+          onFilterChange={handleFilterChange}
         />
 
         {/* Proyecto Destacado - Solo mostrar si el filtro es "Todo" o si el destacado coincide con el filtro */}

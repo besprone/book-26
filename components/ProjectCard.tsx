@@ -1,8 +1,12 @@
+'use client'
+
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import Button from './Button'
 import Badge from './Badge'
 import { Image as ImageIcon } from 'lucide-react'
 import ImageWithSkeleton from './ImageWithSkeleton'
+import { getPostHog } from '@/lib/posthog'
 
 interface ProjectCardProps {
   title: string
@@ -19,9 +23,28 @@ export default function ProjectCard({
   technologies,
   slug,
 }: ProjectCardProps) {
+  const pathname = usePathname()
+  
+  const handleClick = () => {
+    if (typeof window !== 'undefined') {
+      const sourcePage = pathname || 'unknown'
+      try {
+        const posthog = getPostHog()
+        if (posthog && (posthog as any).__loaded) {
+          posthog.capture('project_clicked', {
+            project_slug: slug,
+            project_title: title,
+            source_page: sourcePage,
+          })
+        }
+      } catch (e) {}
+    }
+  }
+
   return (
     <Link
       href={`/proyectos/${slug}`}
+      onClick={handleClick}
       className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-xl hover:border-primary-300 dark:hover:border-primary-800 transition-all duration-300 transform hover:-translate-y-2 group"
     >
       <div className="h-48 bg-gray-100 dark:bg-gray-700 relative overflow-hidden rounded-t-xl">

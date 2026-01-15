@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import type { ContactoConfig } from '@/lib/types'
+import { getPostHog } from '@/lib/posthog'
 
 interface ContactFormProps {
   config: ContactoConfig
@@ -31,11 +32,41 @@ export default function ContactForm({ config }: ContactFormProps) {
       if (response.ok) {
         setStatus('success')
         setFormData({ name: '', email: '', message: '' })
+        try {
+          const posthog = getPostHog()
+          if (posthog && (posthog as any).__loaded) {
+            posthog.capture('contact_form_submitted', {
+              form_status: 'success',
+              has_name: !!formData.name,
+              has_email: !!formData.email,
+            })
+          }
+        } catch (e) {}
       } else {
         setStatus('error')
+        try {
+          const posthog = getPostHog()
+          if (posthog && (posthog as any).__loaded) {
+            posthog.capture('contact_form_submitted', {
+              form_status: 'error',
+              has_name: !!formData.name,
+              has_email: !!formData.email,
+            })
+          }
+        } catch (e) {}
       }
     } catch (error) {
       setStatus('error')
+      try {
+        const posthog = getPostHog()
+        if (posthog && (posthog as any).__loaded) {
+          posthog.capture('contact_form_submitted', {
+            form_status: 'error',
+            has_name: !!formData.name,
+            has_email: !!formData.email,
+          })
+        }
+      } catch (e) {}
     }
   }
 

@@ -1,9 +1,14 @@
 import { getProyectoBySlug, getAllProyectos } from '@/lib/markdown'
 import { notFound } from 'next/navigation'
+import dynamic from 'next/dynamic'
 import Badge from '@/components/Badge'
-import Button from '@/components/Button'
 import ImageWithSkeleton from '@/components/ImageWithSkeleton'
 import { Image as ImageIcon, ArrowLeft } from 'lucide-react'
+
+// Dynamic imports para evitar problemas de serialización en SSR
+const ProjectViewTracker = dynamic(() => import('@/components/ProjectViewTracker'), { ssr: false })
+const VideoTracker = dynamic(() => import('@/components/VideoTracker'), { ssr: false })
+const Button = dynamic(() => import('@/components/Button'), { ssr: false })
 
 export async function generateStaticParams() {
   const proyectos = getAllProyectos()
@@ -27,18 +32,21 @@ export default async function ProyectoDetalle({
 
   return (
     <div className="bg-white dark:bg-gray-900 min-h-screen">
+      <ProjectViewTracker
+        projectSlug={proyecto.slug}
+        projectTitle={proyecto.title}
+        projectType={proyecto.type}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
         {/* Botón Volver */}
         <div className="mb-8">
-          <Button
+          <a
             href="/proyectos"
-            variant="ghost"
-            size="md"
-            icon={ArrowLeft}
-            iconPosition="left"
+            className="font-medium transition rounded-lg inline-flex items-center justify-center gap-2 text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 px-4 py-2 text-base"
           >
+            <ArrowLeft className="w-5 h-5" />
             Volver a proyectos
-          </Button>
+          </a>
         </div>
 
         {/* Header: Título y Metadata */}
@@ -111,6 +119,7 @@ export default async function ProyectoDetalle({
           {proyecto.videoYoutube && (
             <section>
               <div className="w-full max-w-4xl mx-auto">
+                <VideoTracker projectSlug={proyecto.slug} videoUrl={proyecto.videoYoutube} />
                 <div className="relative aspect-video rounded-xl overflow-hidden shadow-lg">
                   <iframe
                     src={proyecto.videoYoutube.includes('youtu.be') 

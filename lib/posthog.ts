@@ -72,7 +72,7 @@ export const initPostHog = () => {
           //   // maskAllInputs: true,
           //   // maskAllText: false,
           // },
-          session_recording: false, // Deshabilitado para reducir $snapshot events
+          // session_recording deshabilitado (no se incluye en la config) para reducir $snapshot events
           // Autocapture para eventos básicos
           autocapture: true,
           // Capturar clicks en enlaces externos

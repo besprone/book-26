@@ -59,11 +59,13 @@ function checkRateLimit(ip: string): { allowed: boolean; resetTime?: number } {
 // Limpiar entradas antiguas del rate limit map periódicamente
 setInterval(() => {
   const now = Date.now()
-  for (const [ip, record] of rateLimitMap.entries()) {
+  const keysToDelete: string[] = []
+  rateLimitMap.forEach((record, ip) => {
     if (now > record.resetTime) {
-      rateLimitMap.delete(ip)
+      keysToDelete.push(ip)
     }
-  }
+  })
+  keysToDelete.forEach(ip => rateLimitMap.delete(ip))
 }, 60 * 60 * 1000) // Limpiar cada hora
 
 export async function POST(request: NextRequest) {

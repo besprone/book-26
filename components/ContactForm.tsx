@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import type { ContactoConfig } from '@/lib/types'
 import { getPostHog } from '@/lib/posthog'
 
@@ -15,10 +15,16 @@ export default function ContactForm({ config }: ContactFormProps) {
     message: '',
   })
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [formLoadTime] = useState(() => Date.now()) // Timestamp cuando se carga el formulario
+  const formRef = useRef<HTMLFormElement>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setStatus('loading')
+
+    // Obtener el valor del honeypot (debe estar vacío)
+    const honeypotInput = formRef.current?.querySelector<HTMLInputElement>('input[name="company_website"]')
+    const honeypotValue = honeypotInput?.value || ''
 
     try {
       const response = await fetch('/api/contact', {
@@ -26,7 +32,11 @@ export default function ContactForm({ config }: ContactFormProps) {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          company_website: honeypotValue, // Campo honeypot
+          form_load_time: formLoadTime, // Timestamp para validar tiempo mínimo
+        }),
       })
 
       if (response.ok) {
@@ -78,7 +88,7 @@ export default function ContactForm({ config }: ContactFormProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
       <div>
         <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
           {config.form.fields.name.label}
@@ -124,6 +134,27 @@ export default function ContactForm({ config }: ContactFormProps) {
           onChange={handleChange}
           className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition resize-none"
           placeholder={config.form.fields.message.placeholder}
+        />
+      </div>
+
+      {/* Honeypot field - oculto para usuarios, visible para bots */}
+      <div
+        style={{
+          position: 'absolute',
+          left: '-9999px',
+          opacity: 0,
+          pointerEvents: 'none',
+        }}
+        aria-hidden="true"
+      >
+        <label htmlFor="company_website">Company Website (leave blank)</label>
+        <input
+          type="text"
+          id="company_website"
+          name="company_website"
+          tabIndex={-1}
+          autoComplete="off"
+          defaultValue=""
         />
       </div>
 

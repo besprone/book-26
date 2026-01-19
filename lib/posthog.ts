@@ -21,9 +21,7 @@ export const initPostHog = () => {
   const posthogHost = process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://us.posthog.com'
 
   if (!posthogKey) {
-    if (process.env.NODE_ENV === 'development') {
-      console.warn('⚠️ PostHog Key not found. Set NEXT_PUBLIC_POSTHOG_PROJECT_API_KEY in .env.local')
-    }
+    // PostHog Key no configurada - silenciar en producción
     return
   }
 
@@ -50,16 +48,31 @@ export const initPostHog = () => {
             posthogInstance = loadedInstance
             isInitialized = true
             isInitializing = false
+            // Test: enviar un evento de prueba inmediatamente (solo en desarrollo, sin logs)
             if (process.env.NODE_ENV === 'development') {
-              console.log('✅ PostHog loaded successfully')
-              console.log('PostHog Project API Key:', posthogKey ? `${posthogKey.substring(0, 10)}...` : 'NOT SET')
-              console.log('PostHog Host:', posthogHost)
+              setTimeout(() => {
+                try {
+                  loadedInstance.capture('test_event_from_localhost', {
+                    test: true,
+                    timestamp: new Date().toISOString(),
+                  })
+                } catch (error) {
+                  // Silenciar errores de test event
+                }
+              }, 1000)
             }
           },
-          // Session recordings
-          session_recording: {
-            recordCrossOriginIframes: true,
-          },
+          // Session recordings - DESHABILITADO para reducir eventos
+          // Si necesitas session recordings, descomenta y configura:
+          // session_recording: {
+          //   recordCrossOriginIframes: true,
+          //   // Opción 1: Sampling - solo grabar X% de sesiones
+          //   // sampleRate: 0.1, // 10% de sesiones
+          //   // Opción 2: Solo grabar en ciertas páginas
+          //   // maskAllInputs: true,
+          //   // maskAllText: false,
+          // },
+          session_recording: false, // Deshabilitado para reducir $snapshot events
           // Autocapture para eventos básicos
           autocapture: true,
           // Capturar clicks en enlaces externos

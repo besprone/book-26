@@ -11,9 +11,6 @@ export const trackEvent = (eventName: string, properties?: Record<string, any>) 
     }
   } catch (error) {
     // Silenciar errores si posthog no está disponible
-    if (process.env.NODE_ENV === 'development') {
-      console.warn('PostHog tracking error:', error)
-    }
   }
 }
 

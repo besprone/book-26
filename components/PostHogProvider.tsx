@@ -19,11 +19,12 @@ function PostHogPageView() {
           if (searchParams && searchParams.toString()) {
             url = url + `?${searchParams.toString()}`
           }
-          posthog.capture('$pageview', {
-            $current_url: url,
-          })
-          if (process.env.NODE_ENV === 'development') {
-            console.log('📊 Page view tracked:', url)
+          try {
+            posthog.capture('$pageview', {
+              $current_url: url,
+            })
+          } catch (error) {
+            // Silenciar errores de tracking
           }
         } else {
           // Reintentar después de un breve delay
@@ -42,28 +43,7 @@ export default function PostHogProvider({ children }: { children: React.ReactNod
     // Inicializar PostHog solo una vez
     initPostHog()
     
-    // En desarrollo local, silenciar errores comunes de PostHog que no afectan funcionalidad
-    // Estos errores (404, 401, MIME type) son normales en local y desaparecen en producción
-    if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {
-      const originalError = console.error
-      
-      console.error = (...args: any[]) => {
-        const message = args.join(' ')
-        // Filtrar errores conocidos de PostHog en desarrollo local
-        if (
-          message.includes('posthog') &&
-          (message.includes('404') || 
-           message.includes('401') || 
-           message.includes('MIME type') ||
-           message.includes('Failed to load resource') ||
-           message.includes('ERR_ABORTED'))
-        ) {
-          // Silenciar estos errores en desarrollo (son normales en local)
-          return
-        }
-        originalError.apply(console, args)
-      }
-    }
+    // Interceptación de red deshabilitada para reducir logs
   }, [])
 
   return (

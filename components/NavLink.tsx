@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { ReactNode } from 'react'
+import { analytics } from '@/lib/analytics'
 
 interface NavLinkProps {
   href: string
@@ -24,6 +25,20 @@ export default function NavLink({
   
   const baseStyles = 'transition font-medium'
   
+  // Handler para trackear clicks del menú
+  const handleClick = () => {
+    if (typeof window !== 'undefined') {
+      const ctaName = typeof children === 'string' ? children : 'Menu Item'
+      const ctaLocation = pathname || 'unknown'
+      
+      analytics.ctaClicked(ctaName, 'header_menu', ctaLocation, href)
+    }
+    
+    if (onClick) {
+      onClick()
+    }
+  }
+  
   // Estados: normal (gris), hover (blanco), active (primario)
   const getStateClasses = () => {
     if (isActive) {
@@ -41,7 +56,7 @@ export default function NavLink({
   const classes = `${baseStyles} ${getStateClasses()} ${className}`
   
   return (
-    <Link href={href} onClick={onClick} className={classes}>
+    <Link href={href} onClick={handleClick} className={classes}>
       {children}
     </Link>
   )

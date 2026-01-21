@@ -2,11 +2,10 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import Button from './Button'
 import Badge from './Badge'
 import { Image as ImageIcon } from 'lucide-react'
 import ImageWithSkeleton from './ImageWithSkeleton'
-import { getPostHog } from '@/lib/posthog'
+import { analytics } from '@/lib/analytics'
 
 interface ProjectCardProps {
   title: string
@@ -27,17 +26,17 @@ export default function ProjectCard({
   
   const handleClick = () => {
     if (typeof window !== 'undefined') {
-      const sourcePage = pathname || 'unknown'
-      try {
-        const posthog = getPostHog()
-        if (posthog && (posthog as any).__loaded) {
-          posthog.capture('project_clicked', {
-            project_slug: slug,
-            project_title: title,
-            source_page: sourcePage,
-          })
-        }
-      } catch (e) {}
+      const ctaLocation = pathname || 'unknown'
+      const ctaDestination = `/proyectos/${slug}`
+      
+      // Usar cta_clicked homologado con el resto del sistema
+      analytics.ctaClicked(
+        title, // cta_name: nombre del proyecto
+        'section_cta', // cta_type
+        ctaLocation,
+        ctaDestination,
+        'proyectos' // section_name
+      )
     }
   }
 

@@ -6,6 +6,8 @@ import ProfileCard from '@/components/ProfileCard'
 import ExperienceTimeline from '@/components/ExperienceTimeline'
 import EducationCard from '@/components/EducationCard'
 import ImageWithSkeleton from '@/components/ImageWithSkeleton'
+import ScrollDepthTracker from '@/components/ScrollDepthTracker'
+import SectionViewTracker from '@/components/SectionViewTracker'
 import { User, Code, Target, Wrench, BarChart, Palette, Database, Award, Briefcase, PenTool, Users, Lightbulb, TrendingUp, Layers } from 'lucide-react'
 
 export default function SobreMi() {
@@ -13,8 +15,10 @@ export default function SobreMi() {
 
   return (
     <div className="bg-white dark:bg-gray-900">
+      <ScrollDepthTracker />
       {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 relative">
+        <SectionViewTracker sectionName="hero" className="absolute top-0 left-0 w-full h-1" />
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 dark:text-white leading-tight">
@@ -27,6 +31,8 @@ export default function SobreMi() {
               href={config.hero.cvButton.href}
               variant="solid"
               size="lg"
+              ctaType="cv_download"
+              sectionName="hero"
             >
               {config.hero.cvButton.text}
             </Button>
@@ -56,9 +62,10 @@ export default function SobreMi() {
       </section>
 
       {/* Resumen Profesional Section */}
-      <section className="bg-gray-50 dark:bg-gray-800 py-20">
+      <section className="bg-gray-50 dark:bg-gray-800 py-20 relative">
+        <SectionViewTracker sectionName="resumen_profesional" className="absolute top-0 left-0 w-full h-1" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader title={config.resumenProfesional.title} />
+          <SectionHeader title={config.resumenProfesional.title} sectionName="resumen_profesional" />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {config.resumenProfesional.cards.map((card, index) => {
               // Iconos específicos según el contenido de cada card
@@ -82,20 +89,23 @@ export default function SobreMi() {
       </section>
 
       {/* Experiencia Section */}
-      <section className="py-20">
+      <section className="py-20 relative">
+        <SectionViewTracker sectionName="experiencia" className="absolute top-0 left-0 w-full h-1" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader title={config.experiencia.title} />
+          <SectionHeader title={config.experiencia.title} sectionName="experiencia" />
           <ExperienceTimeline items={config.experiencia.items} />
         </div>
       </section>
 
       {/* Formación y Certificaciones Section */}
-      <section className="bg-gray-50 dark:bg-gray-800 py-20">
+      <section className="bg-gray-50 dark:bg-gray-800 py-20 relative">
+        <SectionViewTracker sectionName="formacion" className="absolute top-0 left-0 w-full h-1" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader title={config.formacion.title} />
+          <SectionHeader title={config.formacion.title} sectionName="formacion" />
           
           {/* Certificaciones */}
           <div className="mb-16">
+            <SectionViewTracker sectionName="formacion_certificaciones" className="w-full h-1 mb-6" />
             <h3 className="text-xl font-semibold mb-6 text-gray-900 dark:text-white">
               {config.formacion.certificaciones.title}
             </h3>
@@ -128,6 +138,7 @@ export default function SobreMi() {
 
           {/* Formación Formal */}
           <div>
+            <SectionViewTracker sectionName="formacion_educacion" className="w-full h-1 mb-6" />
             <h3 className="text-xl font-semibold mb-6 text-gray-900 dark:text-white">
               {config.formacion.educacion.title}
             </h3>
@@ -147,9 +158,10 @@ export default function SobreMi() {
       </section>
 
       {/* Stack Section */}
-      <section className="py-20">
+      <section className="py-20 relative">
+        <SectionViewTracker sectionName="stack" className="absolute top-0 left-0 w-full h-1" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader title={config.stack.title} />
+          <SectionHeader title={config.stack.title} sectionName="stack" />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {config.stack.categories.map((category, index) => {
               // Iconos específicos según la categoría
@@ -188,7 +200,8 @@ export default function SobreMi() {
       </section>
 
       {/* Call to Action Section */}
-      <section className="bg-gray-50 dark:bg-gray-800 pt-20 pb-12">
+      <section className="bg-gray-50 dark:bg-gray-800 pt-20 pb-12 relative">
+        <SectionViewTracker sectionName="cta" className="absolute top-0 left-0 w-full h-1" />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-8 text-gray-900 dark:text-white">
             {config.callToAction.title}
@@ -198,6 +211,8 @@ export default function SobreMi() {
               href={config.callToAction.buttons.primary.href}
               variant={config.callToAction.buttons.primary.variant}
               size="lg"
+              ctaType="cta_section"
+              sectionName="cta"
             >
               {config.callToAction.buttons.primary.text}
             </Button>
@@ -205,6 +220,8 @@ export default function SobreMi() {
               href={config.callToAction.buttons.secondary.href}
               variant={config.callToAction.buttons.secondary.variant}
               size="lg"
+              ctaType="cta_section"
+              sectionName="cta"
             >
               {config.callToAction.buttons.secondary.text}
             </Button>

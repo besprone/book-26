@@ -1,26 +1,58 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import type { ContactoConfig } from '@/lib/types'
-import { getPostHog } from '@/lib/posthog'
+import { analytics } from '@/lib/analytics'
+import { usePathname } from 'next/navigation'
 
 interface ContactFormProps {
   config: ContactoConfig
 }
 
+// Función para detectar tipo de dispositivo
+const getDeviceType = (): 'mobile' | 'desktop' | 'tablet' => {
+  if (typeof window === 'undefined') return 'desktop'
+  const width = window.innerWidth
+  if (width < 768) return 'mobile'
+  if (width < 1024) return 'tablet'
+  return 'desktop'
+}
+
 export default function ContactForm({ config }: ContactFormProps) {
+  const pathname = usePathname()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: '',
   })
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
-  const [formLoadTime] = useState(() => Date.now()) // Timestamp cuando se carga el formulario
+  const [submissionAttempts, setSubmissionAttempts] = useState(0)
+  const formLoadTime = useRef(Date.now()) // Timestamp cuando se carga el formulario
+  const pageLoadTime = useRef(typeof window !== 'undefined' ? Date.now() : Date.now()) // Timestamp cuando se carga la página
   const formRef = useRef<HTMLFormElement>(null)
+
+  // Trackear cuando se carga la página (solo una vez)
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      pageLoadTime.current = Date.now()
+    }
+  }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setStatus('loading')
+    
+    // Incrementar intentos de envío
+    const currentAttempts = submissionAttempts + 1
+    setSubmissionAttempts(currentAttempts)
+
+    // Calcular métricas antes de enviar
+    const submitTime = Date.now()
+    const timeToSubmit = Math.round((submitTime - formLoadTime.current) / 1000) // en segundos
+    const timeOnPage = Math.round((submitTime - pageLoadTime.current) / 1000) // en segundos
+    const messageLength = formData.message.length
+    const deviceType = getDeviceType()
+    const referrer = typeof document !== 'undefined' ? document.referrer || 'direct' : 'unknown'
 
     // Obtener el valor del honeypot (debe estar vacío)
     const honeypotInput = formRef.current?.querySelector<HTMLInputElement>('input[name="company_website"]')
@@ -35,48 +67,55 @@ export default function ContactForm({ config }: ContactFormProps) {
         body: JSON.stringify({
           ...formData,
           company_website: honeypotValue, // Campo honeypot
-          form_load_time: formLoadTime, // Timestamp para validar tiempo mínimo
+          form_load_time: formLoadTime.current, // Timestamp para validar tiempo mínimo
         }),
       })
 
       if (response.ok) {
         setStatus('success')
         setFormData({ name: '', email: '', message: '' })
-        try {
-          const posthog = getPostHog()
-          if (posthog && (posthog as any).__loaded) {
-            posthog.capture('contact_form_submitted', {
-              form_status: 'success',
-              has_name: !!formData.name,
-              has_email: !!formData.email,
-            })
-          }
-        } catch (e) {}
+        setSubmissionAttempts(0) // Resetear intentos en éxito
+        
+        // Enviar evento de éxito con todos los parámetros
+        analytics.contactFormSubmitted('success', {
+          time_to_submit: timeToSubmit,
+          message_length: messageLength,
+          submission_attempts: currentAttempts,
+          device_type: deviceType,
+          referrer: referrer,
+          time_on_page: timeOnPage,
+          has_name: !!formData.name,
+          has_email: !!formData.email,
+        })
       } else {
         setStatus('error')
-        try {
-          const posthog = getPostHog()
-          if (posthog && (posthog as any).__loaded) {
-            posthog.capture('contact_form_submitted', {
-              form_status: 'error',
-              has_name: !!formData.name,
-              has_email: !!formData.email,
-            })
-          }
-        } catch (e) {}
+        
+        // Enviar evento de error con todos los parámetros
+        analytics.contactFormSubmitted('error', {
+          time_to_submit: timeToSubmit,
+          message_length: messageLength,
+          submission_attempts: currentAttempts,
+          device_type: deviceType,
+          referrer: referrer,
+          time_on_page: timeOnPage,
+          has_name: !!formData.name,
+          has_email: !!formData.email,
+        })
       }
     } catch (error) {
       setStatus('error')
-      try {
-        const posthog = getPostHog()
-        if (posthog && (posthog as any).__loaded) {
-          posthog.capture('contact_form_submitted', {
-            form_status: 'error',
-            has_name: !!formData.name,
-            has_email: !!formData.email,
-          })
-        }
-      } catch (e) {}
+      
+      // Enviar evento de error con todos los parámetros
+      analytics.contactFormSubmitted('error', {
+        time_to_submit: timeToSubmit,
+        message_length: messageLength,
+        submission_attempts: currentAttempts,
+        device_type: deviceType,
+        referrer: referrer,
+        time_on_page: timeOnPage,
+        has_name: !!formData.name,
+        has_email: !!formData.email,
+      })
     }
   }
 

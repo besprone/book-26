@@ -1,3 +1,8 @@
+'use client'
+
+import { useEffect, useRef } from 'react'
+import { analytics } from '@/lib/analytics'
+
 interface ExperienceItem {
   title: string
   company: string
@@ -10,10 +15,46 @@ interface ExperienceTimelineProps {
 }
 
 export default function ExperienceTimeline({ items }: ExperienceTimelineProps) {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const trackedScrolls = useRef<Set<number>>(new Set())
+
+  useEffect(() => {
+    const container = containerRef.current
+    if (!container) return
+
+    const handleScroll = () => {
+      if (!container) return
+      
+      const scrollLeft = container.scrollLeft
+      const scrollWidth = container.scrollWidth
+      const clientWidth = container.clientWidth
+      const maxScroll = scrollWidth - clientWidth
+      
+      if (maxScroll > 0) {
+        const scrollPercentage = Math.round((scrollLeft / maxScroll) * 100)
+        
+        // Trackear en 25%, 50%, 75%, 100%
+        const milestones = [25, 50, 75, 100]
+        milestones.forEach((milestone) => {
+          if (scrollPercentage >= milestone && !trackedScrolls.current.has(milestone)) {
+            trackedScrolls.current.add(milestone)
+            analytics.experienceSectionScrolled(milestone)
+          }
+        })
+      }
+    }
+
+    container.addEventListener('scroll', handleScroll, { passive: true })
+    
+    return () => {
+      container.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
   return (
     <div className="relative">
       {/* Scroll horizontal container */}
-      <div className="overflow-x-auto pb-6 -mx-4 px-4 md:mx-0 md:px-0">
+      <div className="overflow-x-auto pb-6 -mx-4 px-4 md:mx-0 md:px-0" ref={containerRef}>
         <div className="relative min-w-max md:min-w-0">
           {/* Cards de experiencia - scroll horizontal */}
           <div className="flex gap-6 lg:gap-8 relative z-10" style={{ minWidth: 'max-content' }}>

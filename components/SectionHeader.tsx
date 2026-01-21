@@ -5,6 +5,7 @@ interface SectionHeaderProps {
   actionLabel?: string
   actionHref?: string
   className?: string
+  sectionName?: string
 }
 
 export default function SectionHeader({
@@ -12,6 +13,7 @@ export default function SectionHeader({
   actionLabel,
   actionHref,
   className = '',
+  sectionName,
 }: SectionHeaderProps) {
   return (
     <div className={`flex justify-between items-center mb-12 ${className}`}>
@@ -19,7 +21,13 @@ export default function SectionHeader({
         {title}
       </h2>
       {actionLabel && actionHref && (
-        <Button href={actionHref} variant="ghost" size="md">
+        <Button 
+          href={actionHref} 
+          variant="ghost" 
+          size="md"
+          ctaType="section_cta"
+          sectionName={sectionName}
+        >
           {actionLabel}
         </Button>
       )}

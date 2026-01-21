@@ -1,7 +1,7 @@
 'use client'
 
-import { useEffect } from 'react'
-import { getPostHog } from '@/lib/posthog'
+import { useEffect, useRef } from 'react'
+import { analytics } from '@/lib/analytics'
 
 interface ProjectViewTrackerProps {
   projectSlug: string
@@ -14,24 +14,28 @@ export default function ProjectViewTracker({
   projectTitle,
   projectType,
 }: ProjectViewTrackerProps) {
+  const hasTracked = useRef(false)
+
   useEffect(() => {
-    if (typeof window === 'undefined') return
+    // Prevenir múltiples envíos del mismo proyecto
+    if (hasTracked.current) return
     
-    const trackProjectView = () => {
-      const posthog = getPostHog()
-      if (posthog && (posthog as any).__loaded) {
-        const typeArray = Array.isArray(projectType) && projectType.length > 0 ? projectType : undefined
-        posthog.capture('project_viewed', {
-          project_slug: projectSlug,
-          project_title: projectTitle,
-          project_type: typeArray,
-        })
-      } else {
-        setTimeout(trackProjectView, 100)
+    // Pequeño delay para asegurar que el DOM esté listo
+    const timeoutId = setTimeout(() => {
+      const typeArray = Array.isArray(projectType) && projectType.length > 0 ? projectType : undefined
+      
+      // Log temporal para debug (solo en desarrollo)
+      if (process.env.NODE_ENV === 'development') {
+        console.log(`📄 Project viewed: ${projectTitle} (${projectSlug})`)
       }
+      
+      analytics.projectViewed(projectSlug, projectTitle, typeArray)
+      hasTracked.current = true
+    }, 100)
+
+    return () => {
+      clearTimeout(timeoutId)
     }
-    
-    trackProjectView()
   }, [projectSlug, projectTitle, projectType])
 
   return <></>

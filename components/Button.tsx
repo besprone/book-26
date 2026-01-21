@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { ReactNode } from 'react'
 import { LucideIcon } from 'lucide-react'
 import { usePathname } from 'next/navigation'
-import { getPostHog } from '@/lib/posthog'
+import { analytics, type CTAType } from '@/lib/analytics'
 
 interface ButtonProps {
   children: ReactNode
@@ -16,6 +16,9 @@ interface ButtonProps {
   type?: 'button' | 'submit' | 'reset'
   icon?: LucideIcon
   iconPosition?: 'left' | 'right'
+  // Props para tracking
+  ctaType?: CTAType
+  sectionName?: string
 }
 
 export default function Button({
@@ -28,6 +31,8 @@ export default function Button({
   type = 'button',
   icon: Icon,
   iconPosition = 'left',
+  ctaType,
+  sectionName,
 }: ButtonProps) {
   const pathname = usePathname()
   const baseStyles = 'font-medium transition rounded-lg inline-flex items-center justify-center gap-2'
@@ -35,20 +40,18 @@ export default function Button({
   // Handler para trackear clicks en botones
   const handleClick = () => {
     if (typeof window !== 'undefined') {
-      const buttonText = typeof children === 'string' ? children : 'Button'
-      const buttonLocation = pathname || 'unknown'
+      const ctaName = typeof children === 'string' ? children : 'Button'
+      const ctaLocation = pathname || 'unknown'
+      const ctaDestination = href || 'unknown'
       
-      try {
-        const posthog = getPostHog()
-        if (posthog && (posthog as any).__loaded) {
-          posthog.capture('button_clicked', {
-            button_text: buttonText,
-            button_location: buttonLocation,
-            button_variant: variant,
-          })
-        }
-      } catch (error) {
-        // Silenciar errores de tracking
+      // Determinar tipo de CTA si no se proporciona
+      const finalCtaType: CTAType = ctaType || (type === 'submit' ? 'form_submit' : 'section_cta')
+      
+      analytics.ctaClicked(ctaName, finalCtaType, ctaLocation, ctaDestination, sectionName)
+      
+      // Si es PDF, también trackear como CV download
+      if (href && href.endsWith('.pdf')) {
+        analytics.cvDownloaded(ctaLocation)
       }
     }
     
@@ -111,26 +114,7 @@ export default function Button({
     
     if (isPDF) {
       const handlePDFClick = () => {
-        if (typeof window !== 'undefined') {
-          const buttonText = typeof children === 'string' ? children : 'Button'
-          const buttonLocation = pathname || 'unknown'
-          
-          try {
-            const posthog = getPostHog()
-            if (posthog && (posthog as any).__loaded) {
-              posthog.capture('cv_downloaded', {
-                source_page: buttonLocation,
-              })
-              posthog.capture('button_clicked', {
-                button_text: buttonText,
-                button_location: buttonLocation,
-                button_variant: variant,
-              })
-            }
-          } catch (error) {
-            // Silenciar errores de tracking
-          }
-        }
+        handleClick()
       }
       
       return (

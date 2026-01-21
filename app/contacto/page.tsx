@@ -1,14 +1,18 @@
 import { getContactoConfig } from '@/lib/markdown'
 import Button from '@/components/Button'
 import ContactForm from '@/components/ContactForm'
+import ScrollDepthTracker from '@/components/ScrollDepthTracker'
+import SectionViewTracker from '@/components/SectionViewTracker'
 
 export default function Contacto() {
   const config = getContactoConfig()
 
   return (
     <div className="bg-white dark:bg-gray-900">
+      <ScrollDepthTracker />
       {/* Sección Principal: Dos Columnas */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 relative">
+        <SectionViewTracker sectionName="contacto" className="absolute top-0 left-0 w-full h-1" />
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Columna Izquierda: Texto */}
           <div>
@@ -28,7 +32,8 @@ export default function Contacto() {
       </section>
 
       {/* Sección CTA Media */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative">
+        <SectionViewTracker sectionName="cta" className="absolute top-0 left-0 w-full h-1" />
         <div className="text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white">
             {config.cta.title}
@@ -37,6 +42,8 @@ export default function Contacto() {
             href={config.cta.button.href}
             variant={config.cta.button.variant}
             size="lg"
+            ctaType="cta_section"
+            sectionName="cta"
           >
             {config.cta.button.text}
           </Button>

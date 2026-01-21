@@ -3,7 +3,10 @@ import { notFound } from 'next/navigation'
 import dynamic from 'next/dynamic'
 import Badge from '@/components/Badge'
 import ImageWithSkeleton from '@/components/ImageWithSkeleton'
-import { Image as ImageIcon, ArrowLeft } from 'lucide-react'
+import ScrollDepthTracker from '@/components/ScrollDepthTracker'
+import SectionViewTracker from '@/components/SectionViewTracker'
+import BackButton from '@/components/BackButton'
+import { Image as ImageIcon } from 'lucide-react'
 
 // Dynamic imports para evitar problemas de serialización en SSR
 const ProjectViewTracker = dynamic(() => import('@/components/ProjectViewTracker'), { ssr: false })
@@ -32,21 +35,17 @@ export default async function ProyectoDetalle({
 
   return (
     <div className="bg-white dark:bg-gray-900 min-h-screen">
+      <ScrollDepthTracker />
       <ProjectViewTracker
         projectSlug={proyecto.slug}
         projectTitle={proyecto.title}
         projectType={proyecto.type}
       />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 relative">
+        <SectionViewTracker sectionName="proyecto_detalle" className="absolute top-0 left-0 w-full h-1" />
         {/* Botón Volver */}
         <div className="mb-8">
-          <a
-            href="/proyectos"
-            className="font-medium transition rounded-lg inline-flex items-center justify-center gap-2 text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 px-4 py-2 text-base"
-          >
-            <ArrowLeft className="w-5 h-5" />
-            Volver a proyectos
-          </a>
+          <BackButton />
         </div>
 
         {/* Header: Título y Metadata */}
@@ -122,14 +121,14 @@ export default async function ProyectoDetalle({
                 <VideoTracker projectSlug={proyecto.slug} videoUrl={proyecto.videoYoutube} />
                 <div className="relative aspect-video rounded-xl overflow-hidden shadow-lg">
                   <iframe
-                    src={proyecto.videoYoutube.includes('youtu.be') 
+                    src={`${proyecto.videoYoutube.includes('youtu.be') 
                       ? `https://www.youtube.com/embed/${proyecto.videoYoutube.split('/').pop()?.split('?')[0]}`
                       : proyecto.videoYoutube.includes('youtube.com/watch')
                       ? `https://www.youtube.com/embed/${proyecto.videoYoutube.split('v=')[1]?.split('&')[0]}`
                       : proyecto.videoYoutube.includes('youtube.com/embed')
                       ? proyecto.videoYoutube
                       : `https://www.youtube.com/embed/${proyecto.videoYoutube}`
-                    }
+                    }?enablejsapi=1`}
                     title={`Video del proyecto ${proyecto.title}`}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
@@ -142,7 +141,8 @@ export default async function ProyectoDetalle({
 
           {/* El Reto */}
           {proyecto.reto && (
-            <section>
+            <section className="relative">
+              <SectionViewTracker sectionName="reto" className="absolute top-0 left-0 w-full h-1" />
               <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-white">
                 El reto
               </h2>
@@ -154,7 +154,8 @@ export default async function ProyectoDetalle({
 
           {/* Proceso */}
           {proyecto.proceso && (
-            <section>
+            <section className="relative">
+              <SectionViewTracker sectionName="proceso" className="absolute top-0 left-0 w-full h-1" />
               <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-white">
                 Proceso
               </h2>
@@ -205,7 +206,8 @@ export default async function ProyectoDetalle({
 
           {/* Rol y Herramientas */}
           {proyecto.rolYHerramientas && (
-            <section>
+            <section className="relative">
+              <SectionViewTracker sectionName="rol_herramientas" className="absolute top-0 left-0 w-full h-1" />
               <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-white">
                 Rol y herramientas
               </h2>
@@ -244,7 +246,8 @@ export default async function ProyectoDetalle({
 
           {/* Resultados */}
           {proyecto.resultados && proyecto.resultados.length > 0 && (
-            <section>
+            <section className="relative">
+              <SectionViewTracker sectionName="resultados" className="absolute top-0 left-0 w-full h-1" />
               <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-white">
                 Resultados
               </h2>
@@ -260,7 +263,8 @@ export default async function ProyectoDetalle({
 
           {/* Aprendizajes */}
           {proyecto.aprendizajes && (
-            <section>
+            <section className="relative">
+              <SectionViewTracker sectionName="aprendizajes" className="absolute top-0 left-0 w-full h-1" />
               <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-white">
                 Aprendizajes
               </h2>
@@ -281,15 +285,28 @@ export default async function ProyectoDetalle({
         </article>
 
         {/* Call to Action */}
-        <section className="mt-16 md:mt-20 text-center">
+        <section className="mt-16 md:mt-20 text-center relative">
+          <SectionViewTracker sectionName="cta" className="absolute top-0 left-0 w-full h-1" />
           <h2 className="text-2xl md:text-3xl font-bold mb-8 text-gray-900 dark:text-white">
             ¿Te gustó este proyecto?
           </h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button href="/proyectos" variant="outline" size="lg">
+            <Button 
+              href="/proyectos" 
+              variant="outline" 
+              size="lg"
+              ctaType="cta_section"
+              sectionName="cta"
+            >
               Ver proyectos
             </Button>
-            <Button href="/contacto" variant="solid" size="lg">
+            <Button 
+              href="/contacto" 
+              variant="solid" 
+              size="lg"
+              ctaType="cta_section"
+              sectionName="cta"
+            >
               Contáctame
             </Button>
           </div>

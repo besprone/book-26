@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 import { usePathname } from 'next/navigation'
-import { getPostHog } from '@/lib/posthog'
+import { analytics } from '@/lib/analytics'
 
 export default function ScrollDepthTracker() {
   const pathname = usePathname()
@@ -22,15 +22,8 @@ export default function ScrollDepthTracker() {
       milestones.forEach((milestone) => {
         if (scrollPercentage >= milestone && !trackedDepths.current.has(milestone)) {
           trackedDepths.current.add(milestone)
-          try {
-            const posthog = getPostHog()
-            if (posthog && (posthog as any).__loaded) {
-              posthog.capture('scroll_depth', {
-                page: pathname || 'unknown',
-                depth_percentage: milestone,
-              })
-            }
-          } catch (e) {}
+          const page = pathname || 'unknown'
+          analytics.scrollDepth(page, milestone)
         }
       })
     }

@@ -33,6 +33,8 @@ export default function Home() {
                 href={config.hero.buttons.primary.href} 
                 variant={config.hero.buttons.primary.variant} 
                 size="lg"
+                ctaType="hero_primary"
+                sectionName="hero"
               >
                 {config.hero.buttons.primary.text}
               </Button>
@@ -40,6 +42,8 @@ export default function Home() {
                 href={config.hero.buttons.secondary.href} 
                 variant={config.hero.buttons.secondary.variant} 
                 size="lg"
+                ctaType="hero_secondary"
+                sectionName="hero"
               >
                 {config.hero.buttons.secondary.text}
               </Button>
@@ -77,6 +81,7 @@ export default function Home() {
             title={config.perfil.title}
             actionLabel={config.perfil.actionButton.text}
             actionHref={config.perfil.actionButton.href}
+            sectionName="perfil"
           />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {config.perfil.cards.map((card, index) => {
@@ -109,6 +114,7 @@ export default function Home() {
               title={config.proyectos.title}
               actionLabel={config.proyectos.actionButton.text}
               actionHref={config.proyectos.actionButton.href}
+              sectionName="proyectos"
             />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {featuredProyectos.map((proyecto) => (
@@ -134,6 +140,7 @@ export default function Home() {
             title={config.stack.title}
             actionLabel={config.stack.actionButton.text}
             actionHref={config.stack.actionButton.href}
+            sectionName="stack"
           />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {config.stack.categories.map((category, index) => {
@@ -181,6 +188,8 @@ export default function Home() {
               href={config.callToAction.buttons.primary.href} 
               variant={config.callToAction.buttons.primary.variant} 
               size="lg"
+              ctaType="cta_section"
+              sectionName="cta"
             >
               {config.callToAction.buttons.primary.text}
             </Button>
@@ -188,6 +197,8 @@ export default function Home() {
               href={config.callToAction.buttons.secondary.href} 
               variant={config.callToAction.buttons.secondary.variant} 
               size="lg"
+              ctaType="cta_section"
+              sectionName="cta"
             >
               {config.callToAction.buttons.secondary.text}
             </Button>

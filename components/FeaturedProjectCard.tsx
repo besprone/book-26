@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 import Button from './Button'
 import Badge from './Badge'
 import { Image as ImageIcon } from 'lucide-react'
-import { getPostHog } from '@/lib/posthog'
+import { analytics } from '@/lib/analytics'
 
 interface FeaturedProjectCardProps {
   title: string
@@ -26,17 +26,17 @@ export default function FeaturedProjectCard({
   
   const handleClick = () => {
     if (typeof window !== 'undefined') {
-      const sourcePage = pathname || 'unknown'
-      try {
-        const posthog = getPostHog()
-        if (posthog && (posthog as any).__loaded) {
-          posthog.capture('project_clicked', {
-            project_slug: slug,
-            project_title: title,
-            source_page: sourcePage,
-          })
-        }
-      } catch (e) {}
+      const ctaLocation = pathname || 'unknown'
+      const ctaDestination = `/proyectos/${slug}`
+      
+      // Usar cta_clicked homologado con el resto del sistema
+      analytics.ctaClicked(
+        title, // cta_name: nombre del proyecto
+        'section_cta', // cta_type
+        ctaLocation,
+        ctaDestination,
+        'proyectos' // section_name
+      )
     }
   }
 
@@ -89,10 +89,14 @@ export default function FeaturedProjectCard({
             ))}
           </div>
           
-          <Link href={`/proyectos/${slug}`} onClick={handleClick}>
-            <Button variant="ghost" size="lg">
+          <Link 
+            href={`/proyectos/${slug}`}
+            onClick={handleClick}
+            className="inline-block"
+          >
+            <span className="font-medium transition rounded-lg inline-flex items-center justify-center gap-2 text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 px-8 py-3 text-base">
               Ver caso
-            </Button>
+            </span>
           </Link>
         </div>
       </div>

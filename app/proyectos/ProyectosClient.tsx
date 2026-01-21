@@ -7,7 +7,9 @@ import FeaturedProjectCard from '@/components/FeaturedProjectCard'
 import ProjectCard from '@/components/ProjectCard'
 import ProjectCardSkeleton from '@/components/ProjectCardSkeleton'
 import Button from '@/components/Button'
-import { getPostHog } from '@/lib/posthog'
+import ScrollDepthTracker from '@/components/ScrollDepthTracker'
+import SectionViewTracker from '@/components/SectionViewTracker'
+import { analytics } from '@/lib/analytics'
 
 const PROJECTS_PER_PAGE = 6
 
@@ -49,17 +51,7 @@ export default function ProyectosClient({ initialProyectos }: ProyectosClientPro
 
   const handleLoadMore = () => {
     setIsLoading(true)
-    if (typeof window !== 'undefined') {
-      try {
-        const posthog = getPostHog()
-        if (posthog && (posthog as any).__loaded) {
-          posthog.capture('load_more_clicked', {
-            current_count: visibleCount,
-            filter_active: activeFilter,
-          })
-        }
-      } catch (e) {}
-    }
+    // El tracking del botón se hace automáticamente en Button.tsx
     // Simular delay de carga
     setTimeout(() => {
       setVisibleCount(prev => prev + PROJECTS_PER_PAGE)
@@ -69,18 +61,15 @@ export default function ProyectosClient({ initialProyectos }: ProyectosClientPro
 
   const handleFilterChange = (filter: string) => {
     setActiveFilter(filter)
+    // El tracking del filtro se hace automáticamente en FilterChips.tsx
+    // Pero también trackeamos el evento filter_applied para análisis
     const filteredCount = filter === 'Todo' 
       ? initialProyectos.filter(p => !p.featured).length
       : initialProyectos.filter(p => p.type && p.type.includes(filter)).length
     if (typeof window !== 'undefined') {
       try {
-        const posthog = getPostHog()
-        if (posthog && (posthog as any).__loaded) {
-          posthog.capture('filter_applied', {
-            filter_type: filter,
-            projects_count: filteredCount,
-          })
-        }
+        const { analytics } = require('@/lib/analytics')
+        analytics.filterApplied(filter, filteredCount)
       } catch (e) {}
     }
   }
@@ -102,7 +91,9 @@ export default function ProyectosClient({ initialProyectos }: ProyectosClientPro
 
   return (
     <div className="bg-white dark:bg-gray-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <ScrollDepthTracker />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative">
+        <SectionViewTracker sectionName="proyectos" className="absolute top-0 left-0 w-full h-1" />
         {/* Header */}
         <div className="mb-12">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-gray-900 dark:text-white leading-tight">
@@ -165,6 +156,8 @@ export default function ProyectosClient({ initialProyectos }: ProyectosClientPro
                   onClick={handleLoadMore}
                   variant="ghost"
                   size="lg"
+                  ctaType="section_cta"
+                  sectionName="proyectos"
                 >
                   Ver más proyectos
                 </Button>

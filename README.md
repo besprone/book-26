@@ -128,9 +128,25 @@ book-2026/
 ├── content/              # Contenido en Markdown
 │   ├── cv.md            # Tu CV
 │   └── proyectos/       # Proyectos
+├── docs/                 # Documentación
+│   └── ANALYTICS.md     # Documentación de eventos de analytics
 ├── lib/                  # Utilidades
 └── public/               # Archivos estáticos
 ```
+
+## 📊 Analytics y Eventos
+
+El portafolio incluye tracking completo de eventos con PostHog. Para ver la documentación completa de todos los eventos, parámetros y cómo analizarlos, consulta:
+
+**[📖 Documentación de Eventos de Analytics](./docs/ANALYTICS.md)**
+
+Esta documentación incluye:
+- Lista completa de todos los eventos
+- Parámetros de cada evento
+- Cuándo se disparan
+- Guía de análisis en PostHog
+- Funnels recomendados
+- Dashboards sugeridos
 
 ## 🎨 Personalización
 

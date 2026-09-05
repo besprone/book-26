@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import posthog from 'posthog-js'
+import { getPostHog } from '@/lib/posthog'
 
 export default function PostHogDebug() {
   const [status, setStatus] = useState<{
@@ -20,6 +20,8 @@ export default function PostHogDebug() {
     if (typeof window === 'undefined') return
 
     const checkPostHog = () => {
+      getPostHog().then((posthog) => {
+      if (!posthog) return
       const key = process.env.NEXT_PUBLIC_POSTHOG_PROJECT_API_KEY
       const host = process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://us.posthog.com'
 
@@ -46,6 +48,7 @@ export default function PostHogDebug() {
         }
         ;(posthog as any).__captureIntercepted = true
       }
+      })
     }
 
     // Verificar cada segundo
@@ -61,13 +64,13 @@ export default function PostHogDebug() {
   }
 
   const sendTestEvent = () => {
-    if ((posthog as any).__loaded) {
-      posthog.capture('manual_test_event', {
+    getPostHog().then((posthog) =>
+      posthog?.capture('manual_test_event', {
         test: true,
         timestamp: new Date().toISOString(),
         source: 'debug_panel',
       })
-    }
+    )
   }
 
   return (

@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { ReactNode } from 'react'
 import { analytics } from '@/lib/analytics'
+import { rutas } from '@/lib/i18n'
 
 interface NavLinkProps {
   href: string
@@ -21,7 +22,15 @@ export default function NavLink({
   variant = 'desktop',
 }: NavLinkProps) {
   const pathname = usePathname()
-  const isActive = pathname === href || (href !== '/' && pathname.startsWith(href))
+
+  // Los enlaces al inicio ('/' y '/en') solo se marcan en coincidencia exacta:
+  // si no, '/en' marcaría todas las rutas en inglés por empezar igual.
+  const esInicio = (Object.values(rutas.home) as string[]).includes(href)
+  // Para el resto se compara por segmento completo ('/en/work/'), no por
+  // prefijo suelto: '/en/work' no debe marcarse estando en '/en/workshop'.
+  const isActive = esInicio
+    ? pathname === href
+    : pathname === href || pathname.startsWith(`${href}/`)
   
   const baseStyles = 'transition font-medium'
   

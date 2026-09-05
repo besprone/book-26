@@ -26,7 +26,11 @@ export default function ContactForm({ config }: ContactFormProps) {
     message: '',
   })
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  // El API devuelve motivos concretos (rate limit con minutos restantes,
+  // validaciones). Antes se descartaban y siempre se mostraba el texto genérico.
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const [submissionAttempts, setSubmissionAttempts] = useState(0)
+  const statusRef = useRef<HTMLDivElement>(null)
   const formLoadTime = useRef(Date.now()) // Timestamp cuando se carga el formulario
   const pageLoadTime = useRef(typeof window !== 'undefined' ? Date.now() : Date.now()) // Timestamp cuando se carga la página
   const formRef = useRef<HTMLFormElement>(null)
@@ -38,10 +42,19 @@ export default function ContactForm({ config }: ContactFormProps) {
     }
   }, [])
 
+  // Llevar el foco al mensaje de resultado. Sin esto, quien navega con teclado
+  // o lector de pantalla envía el formulario y no recibe ninguna señal.
+  useEffect(() => {
+    if (status === 'success' || status === 'error') {
+      statusRef.current?.focus()
+    }
+  }, [status])
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setStatus('loading')
-    
+    setErrorMessage(null)
+
     // Incrementar intentos de envío
     const currentAttempts = submissionAttempts + 1
     setSubmissionAttempts(currentAttempts)
@@ -88,8 +101,11 @@ export default function ContactForm({ config }: ContactFormProps) {
           has_email: !!formData.email,
         })
       } else {
+        // Mostrar el motivo real que devuelve el API cuando lo hay
+        const data = await response.json().catch(() => null)
+        setErrorMessage(data?.error || config.form.messages.error)
         setStatus('error')
-        
+
         // Enviar evento de error con todos los parámetros
         analytics.contactFormSubmitted('error', {
           time_to_submit: timeToSubmit,
@@ -103,8 +119,9 @@ export default function ContactForm({ config }: ContactFormProps) {
         })
       }
     } catch (error) {
+      setErrorMessage(config.form.messages.error)
       setStatus('error')
-      
+
       // Enviar evento de error con todos los parámetros
       analytics.contactFormSubmitted('error', {
         time_to_submit: timeToSubmit,
@@ -200,26 +217,41 @@ export default function ContactForm({ config }: ContactFormProps) {
       <button
         type="submit"
         disabled={status === 'loading'}
+        aria-busy={status === 'loading'}
         className="w-full bg-primary-500 text-white px-8 py-3 rounded-lg hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed font-medium text-base inline-flex items-center justify-center"
       >
         {status === 'loading' ? config.form.submitButton.loadingText : config.form.submitButton.text}
       </button>
 
-      {status === 'success' && (
-        <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
-          <p className="text-green-800 dark:text-green-200 text-sm">
-            {config.form.messages.success}
-          </p>
-        </div>
-      )}
+      {/*
+        El contenedor con aria-live existe siempre, aunque esté vacío: si se
+        montara al mismo tiempo que aparece el texto, muchos lectores de
+        pantalla no anuncian el cambio. `tabIndex={-1}` permite enfocarlo por
+        código sin meterlo en el orden de tabulación.
+      */}
+      <div
+        ref={statusRef}
+        tabIndex={-1}
+        role="status"
+        aria-live="polite"
+        className="focus:outline-none"
+      >
+        {status === 'success' && (
+          <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
+            <p className="text-green-800 dark:text-green-200 text-sm">
+              {config.form.messages.success}
+            </p>
+          </div>
+        )}
 
-      {status === 'error' && (
-        <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
-          <p className="text-red-800 dark:text-red-200 text-sm">
-            {config.form.messages.error}
-          </p>
-        </div>
-      )}
+        {status === 'error' && (
+          <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
+            <p className="text-red-800 dark:text-red-200 text-sm">
+              {errorMessage || config.form.messages.error}
+            </p>
+          </div>
+        )}
+      </div>
     </form>
   )
 }

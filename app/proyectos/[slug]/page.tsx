@@ -146,9 +146,9 @@ export default async function ProyectoDetalle({
               <ImageWithSkeleton
                 src={proyecto.image}
                 alt={proyecto.title}
-                className="w-full h-full object-cover rounded-xl"
-                aspectRatio="wide"
-                skeletonClassName="rounded-xl"
+                sizes="(min-width: 1280px) 1216px, 100vw"
+                priority
+                className="object-cover rounded-xl"
               />
             </div>
           </div>

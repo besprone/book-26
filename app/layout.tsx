@@ -1,10 +1,24 @@
 import type { Metadata } from 'next'
+import localFont from 'next/font/local'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import PostHogProvider from '@/components/PostHogProvider'
 import PostHogDebug from '@/components/PostHogDebug'
 import { siteConfig } from '@/lib/site'
+
+// Funnel Display se auto-hospeda en vez de usar next/font/google porque no
+// existe en el catálogo de fuentes que trae Next 14. Es una fuente variable:
+// un solo archivo (subset latin, 17 KB) cubre todo el rango 300-800.
+// Licencia OFL en app/fonts/OFL.txt.
+const funnelDisplay = localFont({
+  src: './fonts/FunnelDisplay-latin.woff2',
+  weight: '300 800',
+  style: 'normal',
+  display: 'swap',
+  variable: '--font-funnel-display',
+  fallback: ['ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -54,15 +68,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300;400;500;600;700;800&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html lang="es" className={funnelDisplay.variable}>
       <body className="font-sans">
         <PostHogProvider>
           <Navbar />

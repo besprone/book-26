@@ -1,4 +1,6 @@
+import type { Metadata } from 'next'
 import { getProyectoBySlug, getAllProyectos } from '@/lib/markdown'
+import { siteConfig } from '@/lib/site'
 import { notFound } from 'next/navigation'
 import dynamic from 'next/dynamic'
 import Badge from '@/components/Badge'
@@ -18,6 +20,46 @@ export async function generateStaticParams() {
   return proyectos.map((proyecto) => ({
     slug: proyecto.slug,
   }))
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }> | { slug: string }
+}): Promise<Metadata> {
+  const resolvedParams = await Promise.resolve(params)
+  const proyecto = await getProyectoBySlug(resolvedParams.slug)
+
+  if (!proyecto) {
+    return { title: 'Proyecto no encontrado' }
+  }
+
+  const url = `/proyectos/${proyecto.slug}`
+  // El hero del proyecto (1920x851) funciona como imagen de OpenGraph;
+  // si el proyecto no tiene, se cae a la imagen por defecto del sitio.
+  const image = proyecto.image || siteConfig.ogImage
+
+  return {
+    title: proyecto.title,
+    description: proyecto.description || siteConfig.description,
+    alternates: { canonical: url },
+    openGraph: {
+      type: 'article',
+      locale: siteConfig.locale,
+      url,
+      siteName: siteConfig.name,
+      title: proyecto.title,
+      description: proyecto.description || siteConfig.description,
+      publishedTime: proyecto.date || undefined,
+      images: [{ url: image, alt: proyecto.title }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: proyecto.title,
+      description: proyecto.description || siteConfig.description,
+      images: [image],
+    },
+  }
 }
 
 export default async function ProyectoDetalle({
@@ -104,9 +146,9 @@ export default async function ProyectoDetalle({
               <ImageWithSkeleton
                 src={proyecto.image}
                 alt={proyecto.title}
-                className="w-full h-full object-cover rounded-xl"
-                aspectRatio="wide"
-                skeletonClassName="rounded-xl"
+                sizes="(min-width: 1280px) 1216px, 100vw"
+                priority
+                className="object-cover rounded-xl"
               />
             </div>
           </div>

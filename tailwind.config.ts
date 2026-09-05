@@ -37,7 +37,9 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ['Funnel Display', 'sans-serif'],
+        // La variable ya incluye la fuente, el fallback ajustado por métricas
+        // que genera next/font y la cadena de fuentes de sistema.
+        sans: ['var(--font-funnel-display)', 'sans-serif'],
       },
     },
   },

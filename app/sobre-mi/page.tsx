@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import { getSobreMiConfig } from '@/lib/markdown'
 import Button from '@/components/Button'
 import Card from '@/components/Card'
@@ -18,6 +19,27 @@ const certificacionIcons = [BarChart, Database, Briefcase, Palette, Users, Light
 
 // Iconos por posición, alineados con el orden de config.stack.categories
 const stackIcons = [Palette, Code, Database]
+
+const description =
+  'Product & UX Designer con +5 años diseñando productos digitales en fintech. Experiencia en sistemas de diseño, investigación UX, desarrollo frontend y análisis de datos.'
+
+export const metadata: Metadata = {
+  title: 'Sobre mí',
+  description,
+  alternates: { canonical: '/sobre-mi' },
+  openGraph: {
+    title: 'Sobre mí',
+    description,
+    url: '/sobre-mi',
+    images: [{ url: '/hero-sobre-mi.png', alt: 'Sobre mí' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Sobre mí',
+    description,
+    images: ['/hero-sobre-mi.png'],
+  },
+}
 
 export default function SobreMi() {
   const config = getSobreMiConfig()
@@ -52,9 +74,11 @@ export default function SobreMi() {
                 <ImageWithSkeleton
                   src={config.hero.image}
                   alt={config.hero.title}
+                  width={1080}
+                  height={1080}
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  priority
                   className="w-full h-auto object-cover rounded-2xl"
-                  aspectRatio="landscape"
-                  skeletonClassName="rounded-2xl"
                 />
               </div>
             ) : (

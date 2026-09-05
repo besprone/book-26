@@ -76,7 +76,8 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
-          <PostHogDebug />
+          {/* Widget de debug: se elimina del bundle en producción */}
+          {process.env.NODE_ENV === 'development' && <PostHogDebug />}
         </PostHogProvider>
       </body>
     </html>

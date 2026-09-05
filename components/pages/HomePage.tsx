@@ -10,7 +10,7 @@ import SectionViewTracker from '@/components/SectionViewTracker'
 import ScrollDepthTracker from '@/components/ScrollDepthTracker'
 import { Image as ImageIcon, Code, Briefcase, GraduationCap, Target, Palette, Database } from 'lucide-react'
 import JsonLd from '@/components/JsonLd'
-import { siteConfig } from '@/lib/site'
+import { siteConfig, socials } from '@/lib/site'
 
 // Iconos por posición, alineados con el orden de config.perfil.cards
 const perfilIcons = [Briefcase, GraduationCap, Target]
@@ -35,7 +35,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
     description: siteConfig.description,
     image: `${siteConfig.url}${siteConfig.ogImage}`,
     worksFor: { '@type': 'Organization', name: siteConfig.employer },
-    sameAs: [...siteConfig.socials],
+    sameAs: socials,
   }
 
   return (

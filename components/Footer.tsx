@@ -4,6 +4,7 @@ import Logo from './Logo'
 import { Mail, Linkedin, Github } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { analytics } from '@/lib/analytics'
+import { siteConfig } from '@/lib/site'
 
 export default function Footer() {
   const pathname = usePathname()
@@ -29,28 +30,28 @@ export default function Footer() {
           
           <div className="flex space-x-6 mb-4 md:mb-0">
             <a
-              href={`mailto:besprone@gmail.com?subject=${encodeURIComponent('Consulta desde portafolio')}&body=${encodeURIComponent('Hola Marco,\n\nMe gustaría contactarte para...')}`}
-              onClick={() => handleSocialClick('email', 'mailto:besprone@gmail.com')}
+              href={`mailto:${siteConfig.email}?subject=${encodeURIComponent('Consulta desde portafolio')}&body=${encodeURIComponent('Hola Marco,\n\nMe gustaría contactarte para...')}`}
+              onClick={() => handleSocialClick('email', `mailto:${siteConfig.email}`)}
               className="text-primary-500 dark:text-primary-400 hover:text-primary-600 dark:hover:text-primary-300 transition"
               aria-label="Email"
             >
               <Mail className="w-6 h-6" />
             </a>
             <a
-              href="https://www.linkedin.com/in/marco-antonio-de-castilla-vicelis-a91863108/"
+              href={siteConfig.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => handleSocialClick('linkedin', 'https://www.linkedin.com/in/marco-antonio-de-castilla-vicelis-a91863108/')}
+              onClick={() => handleSocialClick('linkedin', siteConfig.linkedin)}
               className="text-primary-500 dark:text-primary-400 hover:text-primary-600 dark:hover:text-primary-300 transition"
               aria-label="LinkedIn"
             >
               <Linkedin className="w-6 h-6" />
             </a>
             <a
-              href="https://github.com/besprone"
+              href={siteConfig.github}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => handleSocialClick('github', 'https://github.com/besprone')}
+              onClick={() => handleSocialClick('github', siteConfig.github)}
               className="text-primary-500 dark:text-primary-400 hover:text-primary-600 dark:hover:text-primary-300 transition"
               aria-label="GitHub"
             >

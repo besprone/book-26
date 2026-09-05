@@ -1,0 +1,48 @@
+{
+  "title": "Investment-Backed Credit",
+  "description": "A product that lets customers borrow against their active investments as collateral, without cashing them out or giving up returns, giving them immediate access to liquidity",
+  "date": "2024-02-01",
+  "technologies": [
+    "Figma",
+    "FigJam"
+  ],
+  "image": "/proyectos/credito-respaldo-inversiones/hero.png",
+  "featured": false,
+  "type": [
+    "UX"
+  ],
+  "client": "kubo.financiero",
+  "year": "2024",
+  "role": "Product Design Manager",
+  "reto": "Many users of the kubo.financiero app hold active investments but still face immediate liquidity needs. The challenge was to design a way to request a loan using those existing investments as collateral, without having to cash them out or lose the returns already earned. The solution had to be clear, trustworthy and scalable, while respecting regulatory conditions and how users actually behave with their money.",
+  "proceso": {
+    "investigacion": "Exploring and framing the challenge: we looked at the opportunity created by connecting two existing products (loans and investments), through internal conversations and potential use cases. Stakeholder interviews: we spoke with product, risk, business and legal to understand constraints, validation rules, how amounts are calculated, permitted flows and operational risks. Benchmarking: we reviewed comparable products in financial services and studied how other fintechs solve liquidity.",
+    "investigacionImage": "/proyectos/credito-respaldo-inversiones/investigacion.jpg",
+    "diseno": "Ideation and flows: we designed an experience that starts from the investments module. The user sees a new option to borrow up to 90% of their invested value without cashing out. Prototyping: we built high-fidelity prototypes in Figma, including variants for the number of investments held and the state of the loan.",
+    "desarrollo": "Internal testing and adjustments: we tested the flow across scenarios, refining messaging, visual rules, compatibility with existing loan flows and edge cases. Legal and risk adjustments: we adapted key copy to clearly communicate the use of investments as collateral, the possible freezing of funds and the risk policy.",
+    "analisisDatos": ""
+  },
+  "rolYHerramientas": {
+    "rol": [
+      "Product Design Manager"
+    ],
+    "herramientas": [
+      "Figma",
+      "FigJam",
+      "Slack",
+      "Google Meet",
+      "Google Slides"
+    ]
+  },
+  "resultados": [
+    "A clear, intuitive self-service flow that works with the investments the user already holds",
+    "Less friction, by removing the need to cash out investments to access liquidity",
+    "Visual and operational rules established for calculating the available amount, temporarily freezing funds and keeping returns running",
+    "A design that supports multiple scenarios: one or several investments, partial or maximum available request",
+    "Ready for A/B testing of the module with activation and conversion metrics"
+  ],
+  "aprendizajes": "Designing products that sit across two services means deeply understanding the logic and rules of both. Communicating limits, collateral and conditions clearly is what builds trust. Design decisions have to balance business opportunity against user safety and legal clarity. Bringing in variants and edge scenarios from the start is what lets the flow scale without unnecessary redesigns.",
+  "images": {
+    "afterReto": "/proyectos/credito-respaldo-inversiones/after-reto.jpg"
+  }
+}

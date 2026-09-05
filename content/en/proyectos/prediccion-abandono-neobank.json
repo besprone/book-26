@@ -1,0 +1,56 @@
+{
+  "title": "Churn Prediction at Neo Bank",
+  "description": "Analysis of more than 19,000 users to identify churn-risk profiles and build a predictive model that could anticipate drop-off and inform targeted retention strategies",
+  "date": "2024-05-01",
+  "technologies": [
+    "Python",
+    "Pandas",
+    "Scikit-learn",
+    "Streamlit"
+  ],
+  "image": "/proyectos/prediccion-abandono-neobank/hero.png",
+  "featured": true,
+  "type": [
+    "Data"
+  ],
+  "client": "Neo Bank",
+  "year": "2024",
+  "role": "Product research and data analysis",
+  "videoYoutube": "https://youtu.be/mAniM9yA6z8",
+  "reto": "Neo Bank, a global neobank, faced a critical problem: many users signed up but never completed a single transaction. This produced a high early drop-off rate that hurt retention, customer value and product growth. The challenge was to identify which user profiles carried the highest churn risk, and how to anticipate that behaviour in order to design targeted solutions.",
+  "proceso": {
+    "investigacion": "Initial analysis: we explored over 19,000 records of users, transactions and notifications to understand behavioural patterns. Profile segmentation: we grouped users into three broad profiles based on age, plan, channel and app usage.",
+    "investigacionImage": "/proyectos/prediccion-abandono-neobank/investigacion.jpg",
+    "diseno": "Defining churn: we established that a user had churned if they had not transacted in the last 90 days, even if they were still opening the app.",
+    "desarrollo": "Predictive model: we trained and compared several classification models to predict drop-off based on key variables.",
+    "analisisDatos": "Simulation and recommendations: we tested the model against real profiles and proposed specific retention actions for each group."
+  },
+  "rolYHerramientas": {
+    "rol": [
+      "Product research",
+      "Data analysis",
+      "Machine learning",
+      "Visualisation",
+      "Cross-functional collaboration"
+    ],
+    "herramientas": [
+      "Python",
+      "Pandas",
+      "Matplotlib",
+      "Seaborn",
+      "Scikit-learn",
+      "Streamlit"
+    ]
+  },
+  "resultados": [
+    "Key profiles identified: three user types with distinct behaviours — mass market, premium and age extremes",
+    "Actionable findings: PUSH as the key conversion channel (~95%) versus EMAIL/SMS (~75%)",
+    "Churn rate measured: 24.36% of users drop off without transacting within 90 days",
+    "Working predictive model: Gradient Boosting correctly identified at-risk users with solid precision",
+    "Clear recommendations: PUSH campaigns, cashback on everyday spending, guided onboarding and geographic segmentation"
+  ],
+  "aprendizajes": "The value of exploratory analysis: spotting behavioural patterns was key to focusing the solutions. Definitions matter: refining how we defined churn let us detect \"silent\" drop-off. Engagement as an early signal: the first transactions and the channel used directly influence retention. Prediction without action is useless: the model only helps when paired with intervention strategies. Storytelling with data: I learned to build a business case through clear narrative and effective visualisations.",
+  "images": {
+    "afterReto": "/proyectos/prediccion-abandono-neobank/after-reto.jpg"
+  }
+}

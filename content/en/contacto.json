@@ -1,0 +1,41 @@
+{
+  "hero": {
+    "title": "Have a project in mind?",
+    "description": "I'm available for freelance work, consulting, UX advisory, or simply to talk through ideas."
+  },
+  "form": {
+    "fields": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Your name"
+      },
+      "email": {
+        "label": "Email address",
+        "placeholder": "you@email.com"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Tell me about your project..."
+      }
+    },
+    "submitButton": {
+      "text": "Get in touch",
+      "loadingText": "Sending..."
+    },
+    "messages": {
+      "success": "Message sent. I'll get back to you soon.",
+      "error": "Something went wrong sending your message. Please try again."
+    }
+  },
+  "cta": {
+    "title": "Curious how I could contribute to your team or project?",
+    "button": {
+      "text": "Schedule a call",
+      "href": "mailto:besprone@gmail.com?subject=Schedule a call&body=Hi Marco,%0D%0A%0D%0AI%27d like to schedule a call to talk about...",
+      "variant": "outline"
+    }
+  },
+  "final": {
+    "text": "I like working with people who see design as a tool for impact. If you have an idea, I'd love to hear it."
+  }
+}

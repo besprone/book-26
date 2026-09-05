@@ -1,0 +1,48 @@
+{
+  "title": "Self-Service Additional Credit Flow",
+  "description": "Redesign of the self-service flow to stop users behind on payments from seeing additional credit offers, with real-time eligibility checks and clear status communication",
+  "date": "2024-03-01",
+  "technologies": [
+    "Figma",
+    "Intercom",
+    "Miro"
+  ],
+  "image": "/proyectos/autogestivo-credito-adicional/hero.png",
+  "featured": false,
+  "type": [
+    "UX"
+  ],
+  "client": "kubo.financiero",
+  "year": "2024",
+  "role": "Product Design Manager",
+  "reto": "At kubo.financiero we found that some users behind on payments could still see active additional credit offers inside the self-service flow, because of a lag in how the system updated. This created confusion and added operational load for the support and collections teams. The challenge was to redesign the flow to prevent these cases, making sure offers only appeared to users who were eligible in real time, and clearly explaining why when no offer was available.",
+  "proceso": {
+    "investigacion": "Identifying the problem: the bug surfaced through advisor reports and support monitoring. Analysing the current flow: we mapped the steps of the self-service additional credit process, focusing on how the status of the previous loan was validated.",
+    "investigacionImage": "/proyectos/autogestivo-credito-adicional/investigacion.jpg",
+    "diseno": "Defining the new flow: we introduced a validation point at the start to check whether the user was up to date on their loan. Screen design: we designed a new screen that clearly tells the user their status has changed and no offer is available for now. Visual and copy iteration: we reworked the message to be clearer and more empathetic, with an illustration to reinforce it.",
+    "desarrollo": "Alignment with engineering: we defined the triggers and technical conditions needed to run the validation in real time.",
+    "analisisDatos": ""
+  },
+  "rolYHerramientas": {
+    "rol": [
+      "Product Design Manager"
+    ],
+    "herramientas": [
+      "Figma",
+      "Intercom",
+      "Google Sheets",
+      "Miro",
+      "Google Sites"
+    ]
+  },
+  "resultados": [
+    "Fewer cases of confusion and complaints caused by inconsistent offers",
+    "An effective validation in place before the offers screen is shown",
+    "Stronger perception of the app as trustworthy, by communicating credit status changes clearly",
+    "Design, engineering, collections and support aligned around one coherent flow"
+  ],
+  "aprendizajes": "Clear communication at moments of status change is what keeps frustration down. Business conditions need to be validated not only when an offer is displayed, but also on entry to the flow. Screens that offer no action — such as \"no offer available\" — need a positive, empathetic and well-designed message so they do not push people away.",
+  "images": {
+    "afterReto": "/proyectos/autogestivo-credito-adicional/after-reto.jpg"
+  }
+}

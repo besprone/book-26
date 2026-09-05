@@ -1,0 +1,221 @@
+{
+  "hero": {
+    "title": "About me",
+    "description": "I'm a product designer with over 10 years of experience combining design, technology and strategy to build people-centred products. Along the way I've led teams, design systems and complex projects, and I'm currently adding data analysis to my toolkit to make better-informed decisions.",
+    "image": "/hero-sobre-mi.png",
+    "cvButton": {
+      "text": "Download CV",
+      "href": "/cv.pdf"
+    }
+  },
+  "resumenProfesional": {
+    "title": "Professional summary",
+    "cards": [
+      {
+        "title": "Strategic thinking",
+        "description": "I work at the intersection of design and business."
+      },
+      {
+        "title": "Technical approach",
+        "description": "I also build what I design."
+      },
+      {
+        "title": "Data-informed decisions",
+        "description": "Currently training as a Data Analyst"
+      }
+    ]
+  },
+  "experiencia": {
+    "title": "Experience",
+    "items": [
+      {
+        "title": "Motion Graphic Designer",
+        "company": "Applica2",
+        "period": "2013-2018",
+        "logo": "/logos/applica2.png"
+      },
+      {
+        "title": "UI Designer",
+        "company": "Nuxiba",
+        "period": "2018-2022",
+        "logo": "/logos/nuxiba.png"
+      },
+      {
+        "title": "UI Manager",
+        "company": "Gentera",
+        "period": "2022",
+        "logo": "/logos/gentera.png"
+      },
+      {
+        "title": "UI Design Lead",
+        "company": "kubo.financiero",
+        "period": "2022-2023",
+        "logo": "/logos/kubo.png"
+      },
+      {
+        "title": "Product Design Manager",
+        "company": "kubo.financiero",
+        "period": "2023-Present",
+        "logo": "/logos/kubo.png"
+      }
+    ]
+  },
+  "formacion": {
+    "title": "Education and certifications",
+    "certificaciones": {
+      "title": "Recent certifications",
+      "items": [
+        {
+          "nombre": "Data Analytics",
+          "institucion": "Le Wagon",
+          "año": "In progress"
+        },
+        {
+          "nombre": "Introduction to SQL",
+          "institucion": "SoloLearn",
+          "año": "2025"
+        },
+        {
+          "nombre": "Product Management",
+          "institucion": "Platzi",
+          "año": "2024"
+        },
+        {
+          "nombre": "Digital Product Design",
+          "institucion": "Colectivo 23",
+          "año": "2024"
+        },
+        {
+          "nombre": "User Research - Methods and Best Practices",
+          "institucion": "IxDF - Interaction Design Foundation",
+          "año": "2023"
+        },
+        {
+          "nombre": "Design Thinking for UX Design Managers",
+          "institucion": "LinkedIn",
+          "año": "2023"
+        },
+        {
+          "nombre": "Managing by Objectives",
+          "institucion": "LinkedIn",
+          "año": "2023"
+        },
+        {
+          "nombre": "UI Design",
+          "institucion": "Coderhouse",
+          "año": "2023"
+        }
+      ]
+    },
+    "educacion": {
+      "title": "Formal education",
+      "items": [
+        {
+          "nombre": "Software Engineering",
+          "institucion": "UnADM",
+          "año": "2021"
+        },
+        {
+          "nombre": "Design and Visual Communication",
+          "institucion": "UNAM",
+          "año": "2013"
+        }
+      ]
+    }
+  },
+  "stack": {
+    "title": "Stack",
+    "categories": [
+      {
+        "title": "Design",
+        "items": [
+          {
+            "nombre": "Figma",
+            "descripcion": "UI design, prototyping, Dev Mode"
+          },
+          {
+            "nombre": "FigJam",
+            "descripcion": "Flow mapping, workshops"
+          },
+          {
+            "nombre": "Design systems",
+            "descripcion": "Components, tokens, documentation"
+          },
+          {
+            "nombre": "UX research",
+            "descripcion": "Interviews, methods, user-centred decisions"
+          },
+          {
+            "nombre": "Design thinking",
+            "descripcion": "A structured approach to solving real problems"
+          }
+        ]
+      },
+      {
+        "title": "Development",
+        "items": [
+          {
+            "nombre": "HTML",
+            "descripcion": "The basis for understanding visual and semantic structure"
+          },
+          {
+            "nombre": "Tailwind",
+            "descripcion": "Token integration and utility-based design"
+          },
+          {
+            "nombre": "React",
+            "descripcion": "Smooth collaboration with frontend teams"
+          },
+          {
+            "nombre": "Next.js",
+            "descripcion": "Understanding of modern architecture and previews"
+          },
+          {
+            "nombre": "Git",
+            "descripcion": "Collaborative work in real environments"
+          }
+        ]
+      },
+      {
+        "title": "Data",
+        "items": [
+          {
+            "nombre": "SQL",
+            "descripcion": "Real-world queries, exploratory analysis (BigQuery)"
+          },
+          {
+            "nombre": "Python",
+            "descripcion": "EDA, visualisation, data cleaning"
+          },
+          {
+            "nombre": "Pandas",
+            "descripcion": "Efficient dataset manipulation"
+          },
+          {
+            "nombre": "dbt",
+            "descripcion": "Data modelling, documentation, testing"
+          },
+          {
+            "nombre": "Power BI",
+            "descripcion": "Dashboards, storytelling for stakeholders"
+          }
+        ]
+      }
+    ]
+  },
+  "callToAction": {
+    "title": "Curious how I could contribute to your team or project?",
+    "buttons": {
+      "primary": {
+        "text": "View work",
+        "href": "/en/work",
+        "variant": "outline"
+      },
+      "secondary": {
+        "text": "Get in touch",
+        "href": "/en/contact",
+        "variant": "solid"
+      }
+    }
+  }
+}

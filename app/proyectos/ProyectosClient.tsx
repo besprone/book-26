@@ -73,7 +73,7 @@ export default function ProyectosClient({ initialProyectos }: ProyectosClientPro
         </h1>
         <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-6">
           <p className="text-yellow-800 dark:text-yellow-200">
-            No hay proyectos aún. Agrega archivos Markdown en la carpeta <code className="bg-yellow-100 dark:bg-yellow-900 px-2 py-1 rounded">content/proyectos/</code>
+            No hay proyectos aún. Agrega archivos JSON en la carpeta <code className="bg-yellow-100 dark:bg-yellow-900 px-2 py-1 rounded">content/proyectos/</code>
           </p>
         </div>
       </div>

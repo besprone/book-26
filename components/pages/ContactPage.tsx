@@ -3,6 +3,7 @@ import { type Locale } from '@/lib/i18n'
 import { siteConfig } from '@/lib/site'
 import Button from '@/components/Button'
 import ContactForm from '@/components/ContactForm'
+import DirectChannels from '@/components/DirectChannels'
 import ScrollDepthTracker from '@/components/ScrollDepthTracker'
 import SectionViewTracker from '@/components/SectionViewTracker'
 
@@ -24,6 +25,7 @@ export default function ContactPage({ locale }: { locale: Locale }) {
             <p className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
               {config.hero.description}
             </p>
+            <DirectChannels locale={locale} />
           </div>
 
           {/* Columna Derecha: Formulario */}

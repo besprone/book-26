@@ -59,7 +59,7 @@ export default function SiteShell({
         />
       </head>
       <body className="font-sans">
-        <PostHogProvider>
+        <PostHogProvider locale={locale}>
           {/*
             Salto al contenido: la barra de navegación va antes que el contenido
             en el orden de tabulación, así que sin esto hay que tabular por todo

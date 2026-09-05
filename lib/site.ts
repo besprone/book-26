@@ -15,8 +15,10 @@ export const siteConfig = {
   // silencio. Si cambia el puesto, se actualiza aquí.
   jobTitle: 'Product Design Manager',
   employer: 'kubo.financiero',
-  socials: [
-    'https://www.linkedin.com/in/marco-antonio-de-castilla-vicelis-a91863108/',
-    'https://github.com/besprone',
-  ],
+  email: 'besprone@gmail.com',
+  linkedin: 'https://www.linkedin.com/in/marco-antonio-de-castilla-vicelis-a91863108/',
+  github: 'https://github.com/besprone',
 } as const
+
+/** Perfiles públicos, para el `sameAs` de los datos estructurados. */
+export const socials = [siteConfig.linkedin, siteConfig.github]

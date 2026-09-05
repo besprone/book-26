@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { analytics } from '@/lib/analytics'
+import { analytics, recordarProyectoVisto } from '@/lib/analytics'
 
 interface ProjectViewTrackerProps {
   projectSlug: string
@@ -30,6 +30,8 @@ export default function ProjectViewTracker({
       }
       
       analytics.projectViewed(projectSlug, projectTitle, typeArray)
+      // Se guarda en la sesión para atribuir un contacto posterior a este caso
+      recordarProyectoVisto(projectSlug, projectTitle)
       hasTracked.current = true
     }, 100)
 

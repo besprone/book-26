@@ -3,6 +3,8 @@
 import { useEffect, Suspense } from 'react'
 import { usePathname, useSearchParams } from 'next/navigation'
 import { getPostHog } from '@/lib/posthog'
+import { registrarIdioma } from '@/lib/analytics'
+import type { Locale } from '@/lib/i18n'
 
 function PostHogPageView() {
   const pathname = usePathname()
@@ -26,7 +28,19 @@ function PostHogPageView() {
   return null
 }
 
-export default function PostHogProvider({ children }: { children: React.ReactNode }) {
+export default function PostHogProvider({
+  locale,
+  children,
+}: {
+  locale: Locale
+  children: React.ReactNode
+}) {
+  // Se registra antes de que se emita ningún $pageview, para que el primero
+  // de la sesión ya lleve el idioma.
+  useEffect(() => {
+    registrarIdioma(locale)
+  }, [locale])
+
   return (
     <>
       {/* useSearchParams obliga a envolver en Suspense para no forzar

@@ -8,6 +8,8 @@ import ImageWithSkeleton from '@/components/ImageWithSkeleton'
 import SectionViewTracker from '@/components/SectionViewTracker'
 import ScrollDepthTracker from '@/components/ScrollDepthTracker'
 import { Image as ImageIcon, Code, Briefcase, GraduationCap, Target, Palette, Database } from 'lucide-react'
+import JsonLd from '@/components/JsonLd'
+import { siteConfig } from '@/lib/site'
 
 // Iconos por posición, alineados con el orden de config.perfil.cards
 const perfilIcons = [Briefcase, GraduationCap, Target]
@@ -20,8 +22,23 @@ export default function Home() {
   const proyectos = getAllProyectos()
   const featuredProyectos = proyectos.slice(0, config.proyectos.featuredCount)
 
+  // Datos estructurados de la persona: ayudan a Google a relacionar el sitio
+  // con el perfil profesional y sus cuentas.
+  const personaJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: siteConfig.name,
+    url: siteConfig.url,
+    jobTitle: siteConfig.jobTitle,
+    description: siteConfig.description,
+    image: `${siteConfig.url}${siteConfig.ogImage}`,
+    worksFor: { '@type': 'Organization', name: siteConfig.employer },
+    sameAs: [...siteConfig.socials],
+  }
+
   return (
     <div className="bg-white dark:bg-gray-900">
+      <JsonLd data={personaJsonLd} />
       <ScrollDepthTracker />
       {/* Hero Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 relative">

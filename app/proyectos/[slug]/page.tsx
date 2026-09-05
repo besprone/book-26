@@ -10,6 +10,7 @@ import SectionViewTracker from '@/components/SectionViewTracker'
 import BackButton from '@/components/BackButton'
 import ProjectViewTracker from '@/components/ProjectViewTracker'
 import VideoTracker from '@/components/VideoTracker'
+import JsonLd from '@/components/JsonLd'
 import { Image as ImageIcon } from 'lucide-react'
 
 export async function generateStaticParams() {
@@ -69,8 +70,27 @@ export default async function ProyectoDetalle({
     notFound()
   }
 
+  // Datos estructurados del caso de estudio, para que aparezca como obra
+  // propia y no como una página suelta.
+  const proyectoJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: proyecto.title,
+    description: proyecto.description || siteConfig.description,
+    url: `${siteConfig.url}/proyectos/${proyecto.slug}`,
+    ...(proyecto.image && { image: `${siteConfig.url}${proyecto.image}` }),
+    ...(proyecto.date && { dateCreated: proyecto.date }),
+    ...(proyecto.technologies.length > 0 && { keywords: proyecto.technologies.join(', ') }),
+    author: {
+      '@type': 'Person',
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+  }
+
   return (
     <div className="bg-white dark:bg-gray-900 min-h-screen">
+      <JsonLd data={proyectoJsonLd} />
       <ScrollDepthTracker />
       <ProjectViewTracker
         projectSlug={proyecto.slug}

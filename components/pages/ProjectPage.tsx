@@ -1,7 +1,7 @@
-import type { Metadata } from 'next'
-import { getProyectoBySlug, getAllProyectos } from '@/lib/markdown'
+import { getProyectoBySlug } from '@/lib/markdown'
 import { siteConfig } from '@/lib/site'
 import { notFound } from 'next/navigation'
+import { rutas, t, type Locale } from '@/lib/i18n'
 import Badge from '@/components/Badge'
 import Button from '@/components/Button'
 import ImageWithSkeleton from '@/components/ImageWithSkeleton'
@@ -13,62 +13,20 @@ import VideoTracker from '@/components/VideoTracker'
 import JsonLd from '@/components/JsonLd'
 import { Image as ImageIcon } from 'lucide-react'
 
-export async function generateStaticParams() {
-  const proyectos = getAllProyectos()
-  return proyectos.map((proyecto) => ({
-    slug: proyecto.slug,
-  }))
-}
-
-export async function generateMetadata({
-  params,
+export default async function ProjectPage({
+  slug,
+  locale,
 }: {
-  params: { slug: string }
-}): Promise<Metadata> {
-  const proyecto = await getProyectoBySlug(params.slug)
-
-  if (!proyecto) {
-    return { title: 'Proyecto no encontrado' }
-  }
-
-  const url = `/proyectos/${proyecto.slug}`
-  // El hero del proyecto (1920x851) funciona como imagen de OpenGraph;
-  // si el proyecto no tiene, se cae a la imagen por defecto del sitio.
-  const image = proyecto.image || siteConfig.ogImage
-
-  return {
-    title: proyecto.title,
-    description: proyecto.description || siteConfig.description,
-    alternates: { canonical: url },
-    openGraph: {
-      type: 'article',
-      locale: siteConfig.locale,
-      url,
-      siteName: siteConfig.name,
-      title: proyecto.title,
-      description: proyecto.description || siteConfig.description,
-      publishedTime: proyecto.date || undefined,
-      images: [{ url: image, alt: proyecto.title }],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: proyecto.title,
-      description: proyecto.description || siteConfig.description,
-      images: [image],
-    },
-  }
-}
-
-export default async function ProyectoDetalle({
-  params,
-}: {
-  params: { slug: string }
+  slug: string
+  locale: Locale
 }) {
-  const proyecto = await getProyectoBySlug(params.slug)
+  const proyecto = await getProyectoBySlug(slug, locale)
 
   if (!proyecto) {
     notFound()
   }
+
+  const txt = t(locale).proyecto
 
   // Datos estructurados del caso de estudio, para que aparezca como obra
   // propia y no como una página suelta.
@@ -101,7 +59,7 @@ export default async function ProyectoDetalle({
         <SectionViewTracker sectionName="proyecto_detalle" className="absolute top-0 left-0 w-full h-1" />
         {/* Botón Volver */}
         <div className="mb-8">
-          <BackButton />
+          <BackButton locale={locale} />
         </div>
 
         {/* Header: Título y Metadata */}
@@ -115,19 +73,19 @@ export default async function ProyectoDetalle({
             <div className="flex flex-wrap items-center gap-6 md:gap-8 mb-6 text-sm md:text-base">
               {proyecto.client && (
                 <div className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-3">
-                  <span className="text-gray-600 dark:text-gray-400">Cliente/Empresa:</span>
+                  <span className="text-gray-600 dark:text-gray-400">{txt.cliente}</span>
                   <span className="font-semibold text-gray-900 dark:text-white ml-1">{proyecto.client}</span>
                 </div>
               )}
               {proyecto.year && (
                 <div className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-3">
-                  <span className="text-gray-600 dark:text-gray-400">Año:</span>
+                  <span className="text-gray-600 dark:text-gray-400">{txt.anio}</span>
                   <span className="font-semibold text-gray-900 dark:text-white ml-1">{proyecto.year}</span>
                 </div>
               )}
               {proyecto.role && (
                 <div className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-3">
-                  <span className="text-gray-600 dark:text-gray-400">Rol:</span>
+                  <span className="text-gray-600 dark:text-gray-400">{txt.rol}</span>
                   <span className="font-semibold text-gray-900 dark:text-white ml-1">{proyecto.role}</span>
                 </div>
               )}
@@ -137,7 +95,7 @@ export default async function ProyectoDetalle({
           {/* Tags */}
           {proyecto.type && proyecto.type.length > 0 && (
             <div className="flex flex-wrap items-center gap-2 mb-8">
-              <span className="text-sm text-gray-600 dark:text-gray-400 mr-2">Tags:</span>
+              <span className="text-sm text-gray-600 dark:text-gray-400 mr-2">{txt.tags}</span>
               {proyecto.type.map((tech) => (
                 <Badge
                   key={tech}
@@ -162,6 +120,7 @@ export default async function ProyectoDetalle({
                 alt={proyecto.title}
                 sizes="(min-width: 1280px) 1216px, 100vw"
                 priority
+                errorLabel={t(locale).imagen.error}
                 className="object-cover rounded-xl"
               />
             </div>
@@ -185,7 +144,7 @@ export default async function ProyectoDetalle({
                       ? proyecto.videoYoutube
                       : `https://www.youtube.com/embed/${proyecto.videoYoutube}`
                     }?enablejsapi=1`}
-                    title={`Video del proyecto ${proyecto.title}`}
+                    title={txt.videoDe(proyecto.title)}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                     className="absolute top-0 left-0 w-full h-full"
@@ -200,7 +159,7 @@ export default async function ProyectoDetalle({
             <section className="relative">
               <SectionViewTracker sectionName="reto" className="absolute top-0 left-0 w-full h-1" />
               <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-white">
-                El reto
+                {txt.reto}
               </h2>
               <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-prose">
                 {proyecto.reto}
@@ -213,13 +172,13 @@ export default async function ProyectoDetalle({
             <section className="relative">
               <SectionViewTracker sectionName="proceso" className="absolute top-0 left-0 w-full h-1" />
               <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-white">
-                Proceso
+                {txt.proceso}
               </h2>
               <div className="space-y-6 max-w-prose">
                   {proyecto.proceso.investigacion && (
                     <div className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-4">
                       <h3 className="font-semibold text-lg mb-2 text-gray-900 dark:text-white">
-                        Investigación
+                        {txt.investigacion}
                       </h3>
                       <p className="text-gray-600 dark:text-gray-400 leading-relaxed max-w-prose">
                         {proyecto.proceso.investigacion}
@@ -229,7 +188,7 @@ export default async function ProyectoDetalle({
                   {proyecto.proceso.diseno && (
                     <div className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-4">
                       <h3 className="font-semibold text-lg mb-2 text-gray-900 dark:text-white">
-                        Diseño
+                        {txt.diseno}
                       </h3>
                       <p className="text-gray-600 dark:text-gray-400 leading-relaxed max-w-prose">
                         {proyecto.proceso.diseno}
@@ -239,7 +198,7 @@ export default async function ProyectoDetalle({
                   {proyecto.proceso.desarrollo && (
                     <div className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-4">
                       <h3 className="font-semibold text-lg mb-2 text-gray-900 dark:text-white">
-                        Desarrollo / Automatización
+                        {txt.desarrollo}
                       </h3>
                       <p className="text-gray-600 dark:text-gray-400 leading-relaxed max-w-prose">
                         {proyecto.proceso.desarrollo}
@@ -249,7 +208,7 @@ export default async function ProyectoDetalle({
                   {proyecto.proceso.analisisDatos && (
                     <div className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-4">
                       <h3 className="font-semibold text-lg mb-2 text-gray-900 dark:text-white">
-                        Análisis de datos
+                        {txt.analisisDatos}
                       </h3>
                       <p className="text-gray-600 dark:text-gray-400 leading-relaxed max-w-prose">
                         {proyecto.proceso.analisisDatos}
@@ -265,13 +224,13 @@ export default async function ProyectoDetalle({
             <section className="relative">
               <SectionViewTracker sectionName="rol_herramientas" className="absolute top-0 left-0 w-full h-1" />
               <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-white">
-                Rol y herramientas
+                {txt.rolYHerramientas}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {proyecto.rolYHerramientas.rol && (
                   <div>
                     <h3 className="font-semibold text-lg mb-3 text-gray-900 dark:text-white">
-                      Rol
+                      {txt.soloRol}
                     </h3>
                     <div className="space-y-2">
                       {proyecto.rolYHerramientas.rol.map((rolItem, index) => (
@@ -285,7 +244,7 @@ export default async function ProyectoDetalle({
                 {proyecto.rolYHerramientas.herramientas && (
                   <div>
                     <h3 className="font-semibold text-lg mb-3 text-gray-900 dark:text-white">
-                      Herramientas
+                      {txt.herramientas}
                     </h3>
                     <div className="space-y-2">
                       {proyecto.rolYHerramientas.herramientas.map((herramienta, index) => (
@@ -305,7 +264,7 @@ export default async function ProyectoDetalle({
             <section className="relative">
               <SectionViewTracker sectionName="resultados" className="absolute top-0 left-0 w-full h-1" />
               <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-white">
-                Resultados
+                {txt.resultados}
               </h2>
               <div className="space-y-3">
                 {proyecto.resultados.map((resultado, index) => (
@@ -322,7 +281,7 @@ export default async function ProyectoDetalle({
             <section className="relative">
               <SectionViewTracker sectionName="aprendizajes" className="absolute top-0 left-0 w-full h-1" />
               <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-white">
-                Aprendizajes
+                {txt.aprendizajes}
               </h2>
               <div className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-4">
                 <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-prose">{proyecto.aprendizajes}</p>
@@ -334,7 +293,7 @@ export default async function ProyectoDetalle({
           {!proyecto.reto && !proyecto.proceso && !proyecto.rolYHerramientas && !proyecto.resultados && !proyecto.aprendizajes && (
             <section>
               <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-                {proyecto.description || 'Proyecto en desarrollo...'}
+                {proyecto.description || txt.enDesarrollo}
               </p>
             </section>
           )}
@@ -344,26 +303,26 @@ export default async function ProyectoDetalle({
         <section className="mt-16 md:mt-20 text-center relative">
           <SectionViewTracker sectionName="cta" className="absolute top-0 left-0 w-full h-1" />
           <h2 className="text-2xl md:text-3xl font-bold mb-8 text-gray-900 dark:text-white">
-            ¿Te gustó este proyecto?
+            {txt.ctaTitulo}
           </h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
-              href="/proyectos" 
+              href={rutas.proyectos[locale]}
               variant="outline" 
               size="lg"
               ctaType="cta_section"
               sectionName="cta"
             >
-              Ver proyectos
+              {t(locale).noEncontrado.verProyectos}
             </Button>
             <Button 
-              href="/contacto" 
+              href={rutas.contacto[locale]}
               variant="solid" 
               size="lg"
               ctaType="cta_section"
               sectionName="cta"
             >
-              Contáctame
+              {t(locale).nav.contacto}
             </Button>
           </div>
         </section>

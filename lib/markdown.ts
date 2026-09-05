@@ -10,13 +10,32 @@ import type {
   Proyecto,
   SobreMiConfig,
 } from './types'
+import { defaultLocale, type Locale } from './i18n'
 
 const contentDirectory = path.join(process.cwd(), 'content')
 
 // Re-export para no romper los imports existentes de tipos desde este módulo
 export type { CV, HomeConfig, Proyecto, SobreMiConfig }
 
-const proyectosDirectory = path.join(contentDirectory, 'proyectos')
+/**
+ * Carpeta de contenido de un idioma. El español vive en la raíz de content/
+ * para que el flujo de edición de siempre no cambie; los demás idiomas van en
+ * subcarpetas (content/en/).
+ */
+function dirContenido(locale: Locale): string {
+  return locale === defaultLocale ? contentDirectory : path.join(contentDirectory, locale)
+}
+
+/**
+ * Ruta de un archivo de contenido, con respaldo al español si la traducción
+ * todavía no existe. Así, al añadir un proyecto nuevo y olvidar traducirlo, el
+ * caso sigue apareciendo (en español) en vez de desaparecer sin aviso.
+ */
+function rutaContenido(locale: Locale, ...partes: string[]): string {
+  const propia = path.join(dirContenido(locale), ...partes)
+  if (fs.existsSync(propia)) return propia
+  return path.join(contentDirectory, ...partes)
+}
 
 /**
  * Convierte el JSON crudo de un proyecto en un Proyecto con los valores por
@@ -51,8 +70,8 @@ function normalizeProyecto(slug: string, data: Record<string, any>): Proyecto {
 }
 
 // Obtener la configuración del home
-export function getHomeConfig(): HomeConfig {
-  const configPath = path.join(contentDirectory, 'config.json')
+export function getHomeConfig(locale: Locale = defaultLocale): HomeConfig {
+  const configPath = rutaContenido(locale, 'config.json')
   
   if (!fs.existsSync(configPath)) {
     // Configuración por defecto si no existe el archivo
@@ -95,8 +114,8 @@ export function getHomeConfig(): HomeConfig {
 }
 
 // Obtener la configuración de Sobre Mí
-export function getSobreMiConfig(): SobreMiConfig {
-  const configPath = path.join(contentDirectory, 'sobre-mi.json')
+export function getSobreMiConfig(locale: Locale = defaultLocale): SobreMiConfig {
+  const configPath = rutaContenido(locale, 'sobre-mi.json')
   
   if (!fs.existsSync(configPath)) {
     // Configuración por defecto si no existe el archivo
@@ -138,18 +157,21 @@ export function getSobreMiConfig(): SobreMiConfig {
 }
 
 // Obtener todos los proyectos, del más reciente al más antiguo
-export function getAllProyectos(): Proyecto[] {
-  if (!fs.existsSync(proyectosDirectory)) {
+export function getAllProyectos(locale: Locale = defaultLocale): Proyecto[] {
+  // La lista de slugs siempre sale del español: es la fuente de verdad de qué
+  // proyectos existen. Cada uno se lee luego en su idioma, con respaldo.
+  const indice = path.join(contentDirectory, 'proyectos')
+  if (!fs.existsSync(indice)) {
     return []
   }
 
   return fs
-    .readdirSync(proyectosDirectory)
+    .readdirSync(indice)
     .filter((name) => name.endsWith('.json'))
     .map((fileName) => {
       const slug = fileName.replace(/\.json$/, '')
       const data = JSON.parse(
-        fs.readFileSync(path.join(proyectosDirectory, fileName), 'utf8')
+        fs.readFileSync(rutaContenido(locale, 'proyectos', fileName), 'utf8')
       )
       return normalizeProyecto(slug, data)
     })
@@ -157,8 +179,11 @@ export function getAllProyectos(): Proyecto[] {
 }
 
 // Obtener un proyecto por slug
-export async function getProyectoBySlug(slug: string): Promise<Proyecto | null> {
-  const fullPath = path.join(proyectosDirectory, `${slug}.json`)
+export async function getProyectoBySlug(
+  slug: string,
+  locale: Locale = defaultLocale
+): Promise<Proyecto | null> {
+  const fullPath = rutaContenido(locale, 'proyectos', `${slug}.json`)
 
   if (!fs.existsSync(fullPath)) {
     return null
@@ -168,8 +193,8 @@ export async function getProyectoBySlug(slug: string): Promise<Proyecto | null> 
 }
 
 // Obtener la configuración de Contacto
-export function getContactoConfig(): ContactoConfig {
-  const configPath = path.join(contentDirectory, 'contacto.json')
+export function getContactoConfig(locale: Locale = defaultLocale): ContactoConfig {
+  const configPath = rutaContenido(locale, 'contacto.json')
   
   if (!fs.existsSync(configPath)) {
     // Configuración por defecto si no existe el archivo
@@ -221,8 +246,8 @@ export function getContactoConfig(): ContactoConfig {
 }
 
 // Obtener el CV
-export async function getCV(): Promise<CV | null> {
-  const cvPath = path.join(contentDirectory, 'cv.md')
+export async function getCV(locale: Locale = defaultLocale): Promise<CV | null> {
+  const cvPath = rutaContenido(locale, 'cv.md')
 
   if (!fs.existsSync(cvPath)) {
     return null

@@ -6,9 +6,12 @@ import Logo from './Logo'
 import NavLink from './NavLink'
 import MobileMenu from './MobileMenu'
 import ThemeToggle from './ThemeToggle'
+import LanguageToggle from './LanguageToggle'
+import { rutas, t, type Locale } from '@/lib/i18n'
 
-export default function Navbar() {
+export default function Navbar({ locale }: { locale: Locale }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const txt = t(locale)
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
@@ -19,10 +22,10 @@ export default function Navbar() {
   }
 
   const menuItems = [
-    { href: '/', label: 'Home' },
-    { href: '/sobre-mi', label: 'Sobre mí' },
-    { href: '/proyectos', label: 'Proyectos' },
-    { href: '/contacto', label: 'Contacto' },
+    { href: rutas.home[locale], label: txt.nav.home },
+    { href: rutas.sobreMi[locale], label: txt.nav.sobreMi },
+    { href: rutas.proyectos[locale], label: txt.nav.proyectos },
+    { href: rutas.contacto[locale], label: txt.nav.contacto },
   ]
 
   return (
@@ -30,8 +33,8 @@ export default function Navbar() {
       <nav className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 sticky top-0 z-50 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Logo />
-            
+            <Logo href={rutas.home[locale]} />
+
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center space-x-6">
               {menuItems.map((item) => (
@@ -39,6 +42,7 @@ export default function Navbar() {
                   {item.label}
                 </NavLink>
               ))}
+              <LanguageToggle locale={locale} />
               <ThemeToggle />
             </div>
 
@@ -46,7 +50,7 @@ export default function Navbar() {
             <button
               onClick={toggleMenu}
               className="md:hidden text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition p-2"
-              aria-label="Toggle menu"
+              aria-label={isMenuOpen ? txt.cerrarMenu : txt.abrirMenu}
             >
               {isMenuOpen ? (
                 <X className="w-6 h-6" />
@@ -59,7 +63,12 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile Menu */}
-      <MobileMenu isOpen={isMenuOpen} onClose={closeMenu} menuItems={menuItems} />
+      <MobileMenu
+        isOpen={isMenuOpen}
+        onClose={closeMenu}
+        menuItems={menuItems}
+        locale={locale}
+      />
     </>
   )
 }

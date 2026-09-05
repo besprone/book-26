@@ -9,18 +9,23 @@ import Button from '@/components/Button'
 import ScrollDepthTracker from '@/components/ScrollDepthTracker'
 import SectionViewTracker from '@/components/SectionViewTracker'
 import { analytics } from '@/lib/analytics'
+import { t, type Locale } from '@/lib/i18n'
 
 const PROJECTS_PER_PAGE = 6
 
 interface ProyectosClientProps {
   initialProyectos: Proyecto[]
+  locale: Locale
 }
 
-export default function ProyectosClient({ initialProyectos }: ProyectosClientProps) {
+export default function ProyectosClient({ initialProyectos, locale }: ProyectosClientProps) {
+  const txt = t(locale)
+  // El valor "Todo" es la clave interna del filtro; solo su etiqueta se traduce
   const [activeFilter, setActiveFilter] = useState('Todo')
   const [visibleCount, setVisibleCount] = useState(PROJECTS_PER_PAGE)
 
   const filters = ['Todo', 'UX', 'Dev', 'Data']
+  const etiquetaFiltro = (f: string) => (f === 'Todo' ? txt.proyectos.filtroTodo : f)
 
   // Separar proyecto destacado
   const featuredProject = useMemo(() => {
@@ -69,11 +74,11 @@ export default function ProyectosClient({ initialProyectos }: ProyectosClientPro
     return (
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-gray-900 dark:text-white leading-tight">
-          Proyectos
+          {txt.proyectos.titulo}
         </h1>
         <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-6">
           <p className="text-yellow-800 dark:text-yellow-200">
-            No hay proyectos aún. Agrega archivos JSON en la carpeta <code className="bg-yellow-100 dark:bg-yellow-900 px-2 py-1 rounded">content/proyectos/</code>
+            {txt.proyectos.vacio} <code className="bg-yellow-100 dark:bg-yellow-900 px-2 py-1 rounded">content/proyectos/</code>
           </p>
         </div>
       </div>
@@ -88,10 +93,10 @@ export default function ProyectosClient({ initialProyectos }: ProyectosClientPro
         {/* Header */}
         <div className="mb-12">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-gray-900 dark:text-white leading-tight">
-            Proyectos
+            {txt.proyectos.titulo}
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl">
-            Una selección de proyectos donde he combinado diseño, desarrollo y análisis para resolver problemas reales. Puedes filtrar por tipo para explorar casos más específicos.
+            {txt.proyectos.intro}
           </p>
         </div>
 
@@ -100,6 +105,7 @@ export default function ProyectosClient({ initialProyectos }: ProyectosClientPro
           filters={filters}
           activeFilter={activeFilter}
           onFilterChange={handleFilterChange}
+          etiqueta={etiquetaFiltro}
         />
 
         {/* Proyecto Destacado - Solo mostrar si el filtro es "Todo" o si el destacado coincide con el filtro */}
@@ -112,6 +118,7 @@ export default function ProyectosClient({ initialProyectos }: ProyectosClientPro
             image={featuredProject.image}
             technologies={featuredProject.technologies}
             slug={featuredProject.slug}
+            locale={locale}
           />
         )}
 
@@ -127,6 +134,7 @@ export default function ProyectosClient({ initialProyectos }: ProyectosClientPro
                   image={proyecto.image}
                   technologies={proyecto.technologies}
                   slug={proyecto.slug}
+                  locale={locale}
                 />
               ))}
             </div>
@@ -141,7 +149,7 @@ export default function ProyectosClient({ initialProyectos }: ProyectosClientPro
                   ctaType="section_cta"
                   sectionName="proyectos"
                 >
-                  Ver más proyectos
+                  {txt.proyectos.verMas}
                 </Button>
               </div>
             )}
@@ -149,7 +157,7 @@ export default function ProyectosClient({ initialProyectos }: ProyectosClientPro
         ) : (
           <div className="text-center py-12">
             <p className="text-gray-600 dark:text-gray-400 text-lg">
-              No hay proyectos con el filtro seleccionado.
+              {txt.proyectos.sinResultados}
             </p>
           </div>
         )}

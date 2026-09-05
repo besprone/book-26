@@ -1,4 +1,5 @@
 import { getAllProyectos, getHomeConfig } from '@/lib/markdown'
+import { t, type Locale } from '@/lib/i18n'
 import Button from '@/components/Button'
 import SectionHeader from '@/components/SectionHeader'
 import Card from '@/components/Card'
@@ -17,9 +18,10 @@ const perfilIcons = [Briefcase, GraduationCap, Target]
 // Iconos por posición, alineados con el orden de config.stack.categories
 const stackIcons = [Palette, Code, Database]
 
-export default function Home() {
-  const config = getHomeConfig()
-  const proyectos = getAllProyectos()
+export default function HomePage({ locale }: { locale: Locale }) {
+  const txt = t(locale)
+  const config = getHomeConfig(locale)
+  const proyectos = getAllProyectos(locale)
   const featuredProyectos = proyectos.slice(0, config.proyectos.featuredCount)
 
   // Datos estructurados de la persona: ayudan a Google a relacionar el sitio
@@ -82,6 +84,7 @@ export default function Home() {
                   height={1080}
                   sizes="(min-width: 1024px) 50vw, 100vw"
                   priority
+                  errorLabel={txt.imagen.error}
                   className="w-full h-auto object-cover rounded-2xl"
                 />
               </div>
@@ -89,7 +92,7 @@ export default function Home() {
               <div className="bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-8 flex items-center justify-center h-96 shadow-lg">
                 <div className="text-center text-gray-500 dark:text-gray-400">
                   <ImageIcon className="w-48 h-48 mx-auto mb-4" />
-                  <p className="text-sm font-medium">Ilustración placeholder</p>
+                  <p className="text-sm font-medium">{txt.imagen.placeholder}</p>
                   <p className="text-xs mt-2">Agrega hero.image en content/config.json</p>
                 </div>
               </div>
@@ -145,6 +148,7 @@ export default function Home() {
                   image={proyecto.image}
                   technologies={proyecto.technologies}
                   slug={proyecto.slug}
+                  locale={locale}
                 />
               ))}
             </div>

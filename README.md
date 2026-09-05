@@ -67,6 +67,36 @@ Sin ellas el formulario funciona igual con las otras cinco capas.
 | `npm run lint` | ESLint (`next/core-web-vitals`) |
 | `npm run create-project` | Asistente interactivo para crear un proyecto |
 
+## Idiomas
+
+El sitio está en español e inglés.
+
+| Español | Inglés |
+|---|---|
+| `/` | `/en` |
+| `/sobre-mi` | `/en/about` |
+| `/proyectos` | `/en/work` |
+| `/proyectos/<slug>` | `/en/work/<slug>` |
+| `/contacto` | `/en/contact` |
+
+El español vive en la raíz para no romper las URLs ya publicadas. Los slugs de
+proyecto **no se traducen**: son los mismos en ambos idiomas.
+
+- **Contenido**: español en `content/`, inglés en `content/en/`. Misma
+  estructura de archivos y de claves.
+- **Textos de interfaz** (menús, títulos de sección, botones): `lib/i18n.ts`.
+- **Rutas equivalentes** entre idiomas: también en `lib/i18n.ts`. Es lo que
+  usa el selector para llevarte a la misma página en el otro idioma.
+
+Cada idioma tiene su propio layout raíz (`app/(es)` y `app/(en)`) porque el
+atributo `lang` de `<html>` solo puede fijarse ahí, y un `lang` incorrecto hace
+que un lector de pantalla pronuncie mal el texto.
+
+**Al añadir un proyecto**, crea el JSON en `content/proyectos/` y su traducción
+en `content/en/proyectos/` con el mismo nombre de archivo. Si falta la
+traducción, el proyecto sigue apareciendo en inglés pero con el texto en
+español, en vez de desaparecer sin aviso.
+
 ## Cómo actualizar el contenido
 
 Todo el contenido son archivos **JSON** en `content/`. La única excepción es

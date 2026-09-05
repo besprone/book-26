@@ -1,35 +1,13 @@
-import type { Metadata } from 'next'
 import { getContactoConfig } from '@/lib/markdown'
+import { type Locale } from '@/lib/i18n'
 import { siteConfig } from '@/lib/site'
 import Button from '@/components/Button'
 import ContactForm from '@/components/ContactForm'
 import ScrollDepthTracker from '@/components/ScrollDepthTracker'
 import SectionViewTracker from '@/components/SectionViewTracker'
 
-const description =
-  'Disponible para colaboraciones freelance, consultorías y asesorías UX. Cuéntame sobre tu proyecto y te respondo pronto.'
-
-export const metadata: Metadata = {
-  title: 'Contacto',
-  description,
-  alternates: { canonical: '/contacto' },
-  openGraph: {
-    title: 'Contacto',
-    description,
-    url: '/contacto',
-    // openGraph del hijo reemplaza al del layout, así que la imagen se repite aquí
-    images: [{ url: siteConfig.ogImage, alt: 'Contacto' }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Contacto',
-    description,
-    images: [siteConfig.ogImage],
-  },
-}
-
-export default function Contacto() {
-  const config = getContactoConfig()
+export default function ContactPage({ locale }: { locale: Locale }) {
+  const config = getContactoConfig(locale)
 
   return (
     <div className="bg-white dark:bg-gray-900">

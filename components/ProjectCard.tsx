@@ -6,6 +6,7 @@ import Badge from './Badge'
 import { Image as ImageIcon } from 'lucide-react'
 import ImageWithSkeleton from './ImageWithSkeleton'
 import { analytics } from '@/lib/analytics'
+import { rutaProyecto, t, type Locale } from '@/lib/i18n'
 
 interface ProjectCardProps {
   title: string
@@ -13,6 +14,7 @@ interface ProjectCardProps {
   image?: string
   technologies: string[]
   slug: string
+  locale: Locale
 }
 
 export default function ProjectCard({
@@ -21,13 +23,14 @@ export default function ProjectCard({
   image,
   technologies,
   slug,
+  locale,
 }: ProjectCardProps) {
   const pathname = usePathname()
   
   const handleClick = () => {
     if (typeof window !== 'undefined') {
       const ctaLocation = pathname || 'unknown'
-      const ctaDestination = `/proyectos/${slug}`
+      const ctaDestination = rutaProyecto(locale, slug)
       
       // Usar cta_clicked homologado con el resto del sistema
       analytics.ctaClicked(
@@ -42,7 +45,7 @@ export default function ProjectCard({
 
   return (
     <Link
-      href={`/proyectos/${slug}`}
+      href={rutaProyecto(locale, slug)}
       onClick={handleClick}
       className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-xl hover:border-primary-300 dark:hover:border-primary-800 transition-all duration-300 transform hover:-translate-y-2 group"
     >
@@ -53,6 +56,7 @@ export default function ProjectCard({
               src={image}
               alt={title}
               sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+              errorLabel={t(locale).imagen.error}
               className="object-cover group-hover:scale-105 transition-transform duration-300"
             />
           </div>
@@ -84,7 +88,7 @@ export default function ProjectCard({
         </div>
         <div className="flex justify-end">
           <span className="text-primary-500 dark:text-primary-400 hover:text-primary-600 dark:hover:text-primary-300 px-3 py-1.5 rounded-lg hover:bg-primary-50 dark:hover:bg-primary-900/20 transition text-sm font-medium">
-            Ver caso
+            {t(locale).proyectos.verCaso}
           </span>
         </div>
       </div>

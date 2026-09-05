@@ -10,6 +10,15 @@ import ScrollDepthTracker from '@/components/ScrollDepthTracker'
 import SectionViewTracker from '@/components/SectionViewTracker'
 import { User, Code, Target, Wrench, BarChart, Palette, Database, Award, Briefcase, PenTool, Users, Lightbulb, TrendingUp, Layers } from 'lucide-react'
 
+// Iconos por posición, alineados con el orden de config.resumenProfesional.cards
+const resumenIcons = [Target, Wrench, BarChart]
+
+// Iconos por posición, alineados con el orden de config.formacion.certificaciones.items
+const certificacionIcons = [BarChart, Database, Briefcase, Palette, Users, Lightbulb, TrendingUp, Layers]
+
+// Iconos por posición, alineados con el orden de config.stack.categories
+const stackIcons = [Palette, Code, Database]
+
 export default function SobreMi() {
   const config = getSobreMiConfig()
 
@@ -68,18 +77,13 @@ export default function SobreMi() {
           <SectionHeader title={config.resumenProfesional.title} sectionName="resumen_profesional" />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {config.resumenProfesional.cards.map((card, index) => {
-              // Iconos específicos según el contenido de cada card
-              const icons = [
-                <Target className="w-8 h-8" />, // Pensamiento estratégico
-                <Wrench className="w-8 h-8" />, // Enfoque técnico
-                <BarChart className="w-8 h-8" />, // Decisiones con datos
-              ]
+              const Icon = resumenIcons[index]
               return (
                 <ProfileCard
                   key={index}
                   title={card.title}
                   description={card.description}
-                  icon={icons[index]}
+                  icon={Icon ? <Icon className="w-8 h-8" /> : undefined}
                   iconColor="primary"
                 />
               )
@@ -111,17 +115,7 @@ export default function SobreMi() {
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {config.formacion.certificaciones.items.map((item, index) => {
-                // Iconos específicos para cada certificación
-                const certificationIcons = [
-                  <BarChart className="w-6 h-6 text-primary-500 dark:text-primary-400" />, // Data Analytics
-                  <Database className="w-6 h-6 text-primary-500 dark:text-primary-400" />, // Introducción a SQL
-                  <Briefcase className="w-6 h-6 text-primary-500 dark:text-primary-400" />, // Product Management
-                  <Palette className="w-6 h-6 text-primary-500 dark:text-primary-400" />, // Digital Product Design
-                  <Users className="w-6 h-6 text-primary-500 dark:text-primary-400" />, // User Research
-                  <Lightbulb className="w-6 h-6 text-primary-500 dark:text-primary-400" />, // Design Thinking
-                  <TrendingUp className="w-6 h-6 text-primary-500 dark:text-primary-400" />, // Cómo administrar por objetivos
-                  <Layers className="w-6 h-6 text-primary-500 dark:text-primary-400" />, // Diseño UI
-                ]
+                const Icon = certificacionIcons[index]
                 return (
                   <EducationCard
                     key={index}
@@ -129,7 +123,7 @@ export default function SobreMi() {
                     institucion={item.institucion}
                     año={item.año}
                     variant="default"
-                    icon={certificationIcons[index]}
+                    icon={Icon ? <Icon className="w-6 h-6 text-primary-500 dark:text-primary-400" /> : undefined}
                   />
                 )
               })}
@@ -164,17 +158,12 @@ export default function SobreMi() {
           <SectionHeader title={config.stack.title} sectionName="stack" />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {config.stack.categories.map((category, index) => {
-              // Iconos específicos según la categoría
-              const stackIcons = [
-                <Palette className="w-8 h-8 text-accent-900 dark:text-accent-400" />, // Diseño
-                <Code className="w-8 h-8 text-accent-900 dark:text-accent-400" />, // Desarrollo
-                <Database className="w-8 h-8 text-accent-900 dark:text-accent-400" />, // Datos
-              ]
+              const Icon = stackIcons[index]
               return (
                 <Card key={index} className="p-6">
                   <div className="mb-4">
                     <div className="w-16 h-16 bg-accent-50 dark:bg-accent-500/15 rounded-xl flex items-center justify-center mb-4">
-                      {stackIcons[index]}
+                      {Icon && <Icon className="w-8 h-8 text-accent-900 dark:text-accent-400" />}
                     </div>
                   </div>
                   <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">

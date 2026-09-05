@@ -4,14 +4,18 @@ import { X } from 'lucide-react'
 import Logo from './Logo'
 import NavLink from './NavLink'
 import ThemeToggle from './ThemeToggle'
+import LanguageToggle from './LanguageToggle'
+import { rutas, t, type Locale } from '@/lib/i18n'
 
 interface MobileMenuProps {
   isOpen: boolean
   onClose: () => void
   menuItems: Array<{ href: string; label: string }>
+  locale: Locale
 }
 
-export default function MobileMenu({ isOpen, onClose, menuItems }: MobileMenuProps) {
+export default function MobileMenu({ isOpen, onClose, menuItems, locale }: MobileMenuProps) {
+  const txt = t(locale)
   return (
     <>
       {/* Overlay */}
@@ -31,13 +35,14 @@ export default function MobileMenu({ isOpen, onClose, menuItems }: MobileMenuPro
         <div className="flex flex-col h-full">
           {/* Header */}
           <div className="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-800">
-            <Logo />
+            <Logo href={rutas.home[locale]} />
             <div className="flex items-center gap-1">
+              <LanguageToggle locale={locale} />
               <ThemeToggle />
               <button
                 onClick={onClose}
                 className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition p-2"
-                aria-label="Close menu"
+                aria-label={txt.cerrarMenu}
               >
                 <X className="w-6 h-6" />
               </button>

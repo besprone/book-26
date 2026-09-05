@@ -7,6 +7,7 @@ import Button from './Button'
 import Badge from './Badge'
 import { Image as ImageIcon } from 'lucide-react'
 import { analytics } from '@/lib/analytics'
+import { rutaProyecto, t, type Locale } from '@/lib/i18n'
 
 interface FeaturedProjectCardProps {
   title: string
@@ -14,6 +15,7 @@ interface FeaturedProjectCardProps {
   image?: string
   technologies: string[]
   slug: string
+  locale: Locale
 }
 
 export default function FeaturedProjectCard({
@@ -22,13 +24,14 @@ export default function FeaturedProjectCard({
   image,
   technologies,
   slug,
+  locale,
 }: FeaturedProjectCardProps) {
   const pathname = usePathname()
   
   const handleClick = () => {
     if (typeof window !== 'undefined') {
       const ctaLocation = pathname || 'unknown'
-      const ctaDestination = `/proyectos/${slug}`
+      const ctaDestination = rutaProyecto(locale, slug)
       
       // Usar cta_clicked homologado con el resto del sistema
       analytics.ctaClicked(
@@ -66,7 +69,7 @@ export default function FeaturedProjectCard({
           {/* Badge Destacado - Arriba del título */}
           <div className="mb-4">
             <Badge variant="featured" size="md" shape="rounded">
-              Destacado
+              {t(locale).proyectos.destacado}
             </Badge>
           </div>
           
@@ -93,12 +96,12 @@ export default function FeaturedProjectCard({
           </div>
           
           <Link 
-            href={`/proyectos/${slug}`}
+            href={rutaProyecto(locale, slug)}
             onClick={handleClick}
             className="inline-block"
           >
             <span className="font-medium transition rounded-lg inline-flex items-center justify-center gap-2 text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 px-8 py-3 text-base">
-              Ver caso
+              {t(locale).proyectos.verCaso}
             </span>
           </Link>
         </div>

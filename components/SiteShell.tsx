@@ -1,18 +1,16 @@
-import type { Metadata } from 'next'
 import localFont from 'next/font/local'
-import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import PostHogProvider from '@/components/PostHogProvider'
 import PostHogDebug from '@/components/PostHogDebug'
-import { siteConfig } from '@/lib/site'
+import { t, type Locale } from '@/lib/i18n'
 
 // Funnel Display se auto-hospeda en vez de usar next/font/google porque no
 // existe en el catálogo de fuentes que trae Next 14. Es una fuente variable:
 // un solo archivo (subset latin, 17 KB) cubre todo el rango 300-800.
 // Licencia OFL en app/fonts/OFL.txt.
 const funnelDisplay = localFont({
-  src: './fonts/FunnelDisplay-latin.woff2',
+  src: '../app/fonts/FunnelDisplay-latin.woff2',
   weight: '300 800',
   style: 'normal',
   display: 'swap',
@@ -20,58 +18,34 @@ const funnelDisplay = localFont({
   fallback: ['ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
 })
 
-export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
-  title: {
-    default: siteConfig.title,
-    // Las páginas internas definen solo su nombre y se completa con la marca
-    template: `%s | ${siteConfig.name}`,
-  },
-  description: siteConfig.description,
-  applicationName: siteConfig.name,
-  authors: [{ name: siteConfig.name, url: siteConfig.url }],
-  creator: siteConfig.name,
-  alternates: {
-    canonical: '/',
-  },
-  openGraph: {
-    type: 'website',
-    locale: siteConfig.locale,
-    url: '/',
-    siteName: siteConfig.name,
-    title: siteConfig.title,
-    description: siteConfig.description,
-    images: [
-      {
-        url: siteConfig.ogImage,
-        width: 1080,
-        height: 1080,
-        alt: siteConfig.title,
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: siteConfig.title,
-    description: siteConfig.description,
-    images: [siteConfig.ogImage],
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-}
-
-export default function RootLayout({
+/**
+ * Documento completo del sitio, compartido por los dos layouts raíz.
+ *
+ * Hay un layout raíz por idioma (app/(es) y app/(en)) porque el atributo `lang`
+ * de <html> solo puede fijarse ahí, y un `lang` incorrecto hace que un lector
+ * de pantalla pronuncie el inglés con fonética española. Todo lo que no cambia
+ * entre idiomas vive aquí para no duplicarlo.
+ */
+export default function SiteShell({
+  locale,
   children,
 }: {
+  locale: Locale
   children: React.ReactNode
 }) {
+  const txt = t(locale)
+
   return (
     // suppressHydrationWarning: el script de abajo añade la clase `dark` al
     // <html> antes de que React hidrate, así que el atributo class del cliente
     // no coincide con el del servidor. Es esperado y solo afecta a este nodo.
-    <html lang="es" className={funnelDisplay.variable} suppressHydrationWarning>
+    <html lang={locale} className={funnelDisplay.variable} suppressHydrationWarning>
+      {/*
+        eslint-disable-next-line @next/next/no-head-element --
+        La regla es del Pages Router, donde había que usar next/head. En App
+        Router el <head> del layout raíz es la forma correcta y next/head no
+        existe.
+      */}
       <head>
         {/*
           Se ejecuta de forma síncrona antes del primer pintado para evitar el
@@ -95,9 +69,9 @@ export default function RootLayout({
             href="#contenido"
             className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-lg focus:bg-primary-500 focus:px-4 focus:py-2 focus:text-white focus:outline-none focus:ring-2 focus:ring-primary-300"
           >
-            Saltar al contenido
+            {txt.saltarContenido}
           </a>
-          <Navbar />
+          <Navbar locale={locale} />
           <main id="contenido" className="min-h-screen">
             {children}
           </main>
@@ -109,4 +83,3 @@ export default function RootLayout({
     </html>
   )
 }
-

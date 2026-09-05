@@ -1,8 +1,11 @@
 import type { Metadata } from 'next'
 import Button from '@/components/Button'
+import { t } from '@/lib/i18n'
+
+const txt = t('es').noEncontrado
 
 export const metadata: Metadata = {
-  title: 'Página no encontrada',
+  title: txt.titulo,
   // Una 404 no debe indexarse ni repartir autoridad de enlace
   robots: { index: false, follow: true },
 }
@@ -14,19 +17,19 @@ export default function NotFound() {
         404
       </p>
       <h1 className="text-2xl md:text-3xl font-semibold mb-4 text-gray-900 dark:text-white">
-        Página no encontrada
+        {txt.titulo}
       </h1>
       <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-prose mx-auto">
-        La página que buscas no existe o cambió de dirección.
+        {txt.texto}
       </p>
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
         {/* Se ofrece también proyectos: si alguien llega desde un enlace roto
             a un caso, es lo que estaba buscando */}
         <Button href="/proyectos" variant="solid" size="lg" ctaType="section_cta" sectionName="404">
-          Ver proyectos
+          {txt.verProyectos}
         </Button>
         <Button href="/" variant="outline" size="lg" ctaType="section_cta" sectionName="404">
-          Volver al inicio
+          {txt.inicio}
         </Button>
       </div>
     </div>

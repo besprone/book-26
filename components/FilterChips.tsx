@@ -7,9 +7,17 @@ interface FilterChipsProps {
   filters: string[]
   activeFilter: string
   onFilterChange: (filter: string) => void
+  /** Traduce la clave del filtro a su etiqueta visible. El valor interno
+   *  ("Todo") no cambia entre idiomas para no romper el filtrado. */
+  etiqueta?: (filter: string) => string
 }
 
-export default function FilterChips({ filters, activeFilter, onFilterChange }: FilterChipsProps) {
+export default function FilterChips({
+  filters,
+  activeFilter,
+  onFilterChange,
+  etiqueta = (f) => f,
+}: FilterChipsProps) {
   const pathname = usePathname()
   
   const handleFilterClick = (filter: string) => {
@@ -32,7 +40,7 @@ export default function FilterChips({ filters, activeFilter, onFilterChange }: F
               : 'bg-white text-gray-700 dark:bg-gray-800 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 border border-gray-200 dark:border-gray-700'
           }`}
         >
-          {filter}
+          {etiqueta(filter)}
         </button>
       ))}
     </div>

@@ -1,0 +1,99 @@
+{
+  "hero": {
+    "title": "Product designer with a technical mindset and a data-driven approach",
+    "description": "I combine UX, development and analysis to build experiences that are useful, functional and measurable",
+    "image": "/hero-home.png",
+    "buttons": {
+      "primary": {
+        "text": "View work",
+        "href": "/en/work",
+        "variant": "outline"
+      },
+      "secondary": {
+        "text": "Get in touch",
+        "href": "/en/contact",
+        "variant": "solid"
+      }
+    }
+  },
+  "perfil": {
+    "title": "Professional profile",
+    "actionButton": {
+      "text": "About me",
+      "href": "/en/about"
+    },
+    "cards": [
+      {
+        "title": "5+ years designing digital products",
+        "description": "Experience in interface and user experience design"
+      },
+      {
+        "title": "Background in development and data analysis",
+        "description": "Technical and analytical skills combined"
+      },
+      {
+        "title": "Experience in fintech, design strategy and complex systems",
+        "description": "Focused on demanding, high-stakes projects"
+      }
+    ]
+  },
+  "proyectos": {
+    "title": "Work",
+    "actionButton": {
+      "text": "View work",
+      "href": "/en/work"
+    },
+    "featuredCount": 3
+  },
+  "stack": {
+    "title": "Stack",
+    "actionButton": {
+      "text": "About me",
+      "href": "/en/about"
+    },
+    "categories": [
+      {
+        "title": "Design",
+        "items": [
+          "Design systems",
+          "UX research",
+          "Design thinking"
+        ]
+      },
+      {
+        "title": "Development",
+        "items": [
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "React",
+          "Next.js",
+          "Git"
+        ]
+      },
+      {
+        "title": "Data",
+        "items": [
+          "SQL",
+          "Python",
+          "Data analysis"
+        ]
+      }
+    ]
+  },
+  "callToAction": {
+    "title": "I'd love to help bring your next product to life",
+    "buttons": {
+      "primary": {
+        "text": "View work",
+        "href": "/en/work",
+        "variant": "outline"
+      },
+      "secondary": {
+        "text": "Get in touch",
+        "href": "/en/contact",
+        "variant": "solid"
+      }
+    }
+  }
+}

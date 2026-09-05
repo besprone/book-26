@@ -2,11 +2,12 @@
 
 import Button from './Button'
 import { ArrowLeft } from 'lucide-react'
+import { rutas, t, type Locale } from '@/lib/i18n'
 
-export default function BackButton() {
+export default function BackButton({ locale }: { locale: Locale }) {
   return (
     <Button
-      href="/proyectos"
+      href={rutas.proyectos[locale]}
       variant="ghost"
       size="md"
       ctaType="section_cta"
@@ -14,7 +15,7 @@ export default function BackButton() {
       icon={ArrowLeft}
       iconPosition="left"
     >
-      Volver a proyectos
+      {t(locale).proyecto.volver}
     </Button>
   )
 }

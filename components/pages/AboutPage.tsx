@@ -1,5 +1,5 @@
-import type { Metadata } from 'next'
 import { getSobreMiConfig } from '@/lib/markdown'
+import { t, type Locale } from '@/lib/i18n'
 import Button from '@/components/Button'
 import Card from '@/components/Card'
 import SectionHeader from '@/components/SectionHeader'
@@ -20,29 +20,9 @@ const certificacionIcons = [BarChart, Database, Briefcase, Palette, Users, Light
 // Iconos por posición, alineados con el orden de config.stack.categories
 const stackIcons = [Palette, Code, Database]
 
-const description =
-  'Product & UX Designer con +5 años diseñando productos digitales en fintech. Experiencia en sistemas de diseño, investigación UX, desarrollo frontend y análisis de datos.'
-
-export const metadata: Metadata = {
-  title: 'Sobre mí',
-  description,
-  alternates: { canonical: '/sobre-mi' },
-  openGraph: {
-    title: 'Sobre mí',
-    description,
-    url: '/sobre-mi',
-    images: [{ url: '/hero-sobre-mi.png', alt: 'Sobre mí' }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Sobre mí',
-    description,
-    images: ['/hero-sobre-mi.png'],
-  },
-}
-
-export default function SobreMi() {
-  const config = getSobreMiConfig()
+export default function AboutPage({ locale }: { locale: Locale }) {
+  const txt = t(locale)
+  const config = getSobreMiConfig(locale)
 
   return (
     <div className="bg-white dark:bg-gray-900">
@@ -78,6 +58,7 @@ export default function SobreMi() {
                   height={1080}
                   sizes="(min-width: 1024px) 50vw, 100vw"
                   priority
+                  errorLabel={txt.imagen.error}
                   className="w-full h-auto object-cover rounded-2xl"
                 />
               </div>
@@ -85,7 +66,7 @@ export default function SobreMi() {
               <div className="bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-8 flex items-center justify-center h-96 shadow-lg">
                 <div className="text-center text-gray-500 dark:text-gray-400">
                   <User className="w-48 h-48 mx-auto mb-4" />
-                  <p className="text-sm font-medium">Ilustración placeholder</p>
+                  <p className="text-sm font-medium">{txt.imagen.placeholder}</p>
                   <p className="text-xs mt-2">Agrega hero.image en content/sobre-mi.json</p>
                 </div>
               </div>

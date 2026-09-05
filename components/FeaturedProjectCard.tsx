@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import Button from './Button'
 import Badge from './Badge'
@@ -46,10 +47,12 @@ export default function FeaturedProjectCard({
         {/* Imagen arriba */}
         <div className="w-full h-64 md:h-80 lg:h-96 bg-gray-100 dark:bg-gray-700 relative overflow-hidden">
           {image ? (
-            <img
+            <Image
               src={image}
               alt={title}
-              className="w-full h-full object-cover"
+              fill
+              sizes="(min-width: 1280px) 1216px, 100vw"
+              className="object-cover"
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center">

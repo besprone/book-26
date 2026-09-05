@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import Image from 'next/image'
 import { analytics } from '@/lib/analytics'
 
 interface ExperienceItem {
@@ -67,9 +68,11 @@ export default function ExperienceTimeline({ items }: ExperienceTimelineProps) {
                   {/* Logo */}
                   <div className="mb-5">
                     {item.logo ? (
-                      <img
+                      <Image
                         src={item.logo}
                         alt={item.company}
+                        width={64}
+                        height={64}
                         className="w-16 h-16 object-contain rounded-lg mx-auto"
                       />
                     ) : (

@@ -61,9 +61,11 @@ export default function Home() {
                 <ImageWithSkeleton
                   src={config.hero.image}
                   alt={config.hero.title}
+                  width={1080}
+                  height={1080}
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  priority
                   className="w-full h-auto object-cover rounded-2xl"
-                  aspectRatio="landscape"
-                  skeletonClassName="rounded-2xl"
                 />
               </div>
             ) : (

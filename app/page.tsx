@@ -9,6 +9,12 @@ import SectionViewTracker from '@/components/SectionViewTracker'
 import ScrollDepthTracker from '@/components/ScrollDepthTracker'
 import { Image as ImageIcon, Code, Briefcase, GraduationCap, Target, Palette, Database } from 'lucide-react'
 
+// Iconos por posición, alineados con el orden de config.perfil.cards
+const perfilIcons = [Briefcase, GraduationCap, Target]
+
+// Iconos por posición, alineados con el orden de config.stack.categories
+const stackIcons = [Palette, Code, Database]
+
 export default function Home() {
   const config = getHomeConfig()
   const proyectos = getAllProyectos()
@@ -85,18 +91,13 @@ export default function Home() {
           />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {config.perfil.cards.map((card, index) => {
-              // Iconos específicos según el contenido de cada card
-              const icons = [
-                <Briefcase className="w-8 h-8" />, // +5 años diseñando productos digitales
-                <GraduationCap className="w-8 h-8" />, // Formación en desarrollo y análisis de datos
-                <Target className="w-8 h-8" />, // Experiencia en fintech, diseño estratégico y sistemas complejos
-              ]
+              const Icon = perfilIcons[index]
               return (
                 <ProfileCard
                   key={index}
                   title={card.title}
                   description={card.description}
-                  icon={icons[index]}
+                  icon={Icon ? <Icon className="w-8 h-8" /> : undefined}
                   iconColor="primary"
                 />
               )
@@ -144,17 +145,12 @@ export default function Home() {
           />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {config.stack.categories.map((category, index) => {
-              // Iconos específicos según la categoría
-              const stackIcons = [
-                <Palette className="w-8 h-8 text-accent-900 dark:text-accent-400" />, // Diseño
-                <Code className="w-8 h-8 text-accent-900 dark:text-accent-400" />, // Desarrollo
-                <Database className="w-8 h-8 text-accent-900 dark:text-accent-400" />, // Datos
-              ]
+              const Icon = stackIcons[index]
               return (
                 <Card key={index} className="p-6">
                   <div className="mb-4">
                     <div className="w-16 h-16 bg-accent-50 dark:bg-accent-500/15 rounded-xl flex items-center justify-center mb-4">
-                      {stackIcons[index]}
+                      {Icon && <Icon className="w-8 h-8 text-accent-900 dark:text-accent-400" />}
                     </div>
                   </div>
                   <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">

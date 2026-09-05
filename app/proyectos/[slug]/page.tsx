@@ -2,18 +2,15 @@ import type { Metadata } from 'next'
 import { getProyectoBySlug, getAllProyectos } from '@/lib/markdown'
 import { siteConfig } from '@/lib/site'
 import { notFound } from 'next/navigation'
-import dynamic from 'next/dynamic'
 import Badge from '@/components/Badge'
+import Button from '@/components/Button'
 import ImageWithSkeleton from '@/components/ImageWithSkeleton'
 import ScrollDepthTracker from '@/components/ScrollDepthTracker'
 import SectionViewTracker from '@/components/SectionViewTracker'
 import BackButton from '@/components/BackButton'
+import ProjectViewTracker from '@/components/ProjectViewTracker'
+import VideoTracker from '@/components/VideoTracker'
 import { Image as ImageIcon } from 'lucide-react'
-
-// Dynamic imports para evitar problemas de serialización en SSR
-const ProjectViewTracker = dynamic(() => import('@/components/ProjectViewTracker'), { ssr: false })
-const VideoTracker = dynamic(() => import('@/components/VideoTracker'), { ssr: false })
-const Button = dynamic(() => import('@/components/Button'), { ssr: false })
 
 export async function generateStaticParams() {
   const proyectos = getAllProyectos()
@@ -25,10 +22,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }> | { slug: string }
+  params: { slug: string }
 }): Promise<Metadata> {
-  const resolvedParams = await Promise.resolve(params)
-  const proyecto = await getProyectoBySlug(resolvedParams.slug)
+  const proyecto = await getProyectoBySlug(params.slug)
 
   if (!proyecto) {
     return { title: 'Proyecto no encontrado' }
@@ -65,11 +61,9 @@ export async function generateMetadata({
 export default async function ProyectoDetalle({
   params,
 }: {
-  params: Promise<{ slug: string }> | { slug: string }
+  params: { slug: string }
 }) {
-  // Manejar params como Promise (Next.js 14+) o objeto directo
-  const resolvedParams = await Promise.resolve(params)
-  const proyecto = await getProyectoBySlug(resolvedParams.slug)
+  const proyecto = await getProyectoBySlug(params.slug)
 
   if (!proyecto) {
     notFound()

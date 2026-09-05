@@ -1,14 +1,14 @@
-import { getPostHog } from './posthog'
+import posthog from 'posthog-js'
 
-// Helper para trackear eventos de forma segura
+// Helper para trackear eventos de forma segura.
+// posthog-js es un singleton: lo inicializa PostHogProvider al cargarse el
+// módulo. `__loaded` evita encolar eventos si no hay key configurada.
 export const trackEvent = (eventName: string, properties?: Record<string, any>) => {
   if (typeof window === 'undefined') return
-  
+
   try {
-    const posthog = getPostHog()
-    if (posthog && (posthog as any).__loaded) {
-      posthog.capture(eventName, properties)
-    }
+    if (!(posthog as any).__loaded) return
+    posthog.capture(eventName, properties)
   } catch (error) {
     // Silenciar errores si posthog no está disponible
   }

@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useMemo } from 'react'
-import type { Proyecto } from '@/lib/markdown'
+import type { Proyecto } from '@/lib/types'
 import FilterChips from '@/components/FilterChips'
 import FeaturedProjectCard from '@/components/FeaturedProjectCard'
 import ProjectCard from '@/components/ProjectCard'

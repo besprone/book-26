@@ -3,124 +3,50 @@ import path from 'path'
 import matter from 'gray-matter'
 import { remark } from 'remark'
 import html from 'remark-html'
+import type {
+  CV,
+  ContactoConfig,
+  HomeConfig,
+  Proyecto,
+  SobreMiConfig,
+} from './types'
 
 const contentDirectory = path.join(process.cwd(), 'content')
 
-export interface Proyecto {
-  slug: string
-  title: string
-  description: string
-  image?: string
-  technologies: string[]
-  date: string
-  github?: string
-  demo?: string
-  featured?: boolean
-  type?: string[] // Array de tipos: ["UX", "Dev", "Data"]
-  // Campos adicionales para el detalle del proyecto
-  client?: string
-  year?: string
-  role?: string
-  reto?: string
-  videoYoutube?: string // URL del video de YouTube (ej: https://youtu.be/xxx o https://www.youtube.com/watch?v=xxx)
-  proceso?: {
-    investigacion?: string
-    investigacionImage?: string
-    diseno?: string
-    disenoImage?: string
-    desarrollo?: string
-    desarrolloImage?: string
-    analisisDatos?: string
-    analisisDatosImage?: string
-  }
-  rolYHerramientas?: {
-    rol?: string[]
-    herramientas?: string[]
-  }
-  resultados?: string[]
-  resultadosImages?: string[] // Galería de imágenes para resultados
-  aprendizajes?: string
-  // Imágenes entre secciones (full-width)
-  images?: {
-    afterReto?: string
-    afterProceso?: string
-    afterResultados?: string
-    afterAprendizajes?: string
-  }
-}
+// Re-export para no romper los imports existentes de tipos desde este módulo
+export type { CV, HomeConfig, Proyecto, SobreMiConfig }
 
-export interface CV {
-  content: string
-  data: {
-    nombre: string
-    email: string
-    titulo?: string
-    [key: string]: any
-  }
-}
+const proyectosDirectory = path.join(contentDirectory, 'proyectos')
 
-export interface HomeConfig {
-  hero: {
-    title: string
-    description: string
-    image?: string
-    buttons: {
-      primary: {
-        text: string
-        href: string
-        variant: 'ghost' | 'solid' | 'outline'
-      }
-      secondary: {
-        text: string
-        href: string
-        variant: 'ghost' | 'solid' | 'outline'
-      }
-    }
-  }
-  perfil: {
-    title: string
-    actionButton: {
-      text: string
-      href: string
-    }
-    cards: Array<{
-      title: string
-      description: string
-    }>
-  }
-  proyectos: {
-    title: string
-    actionButton: {
-      text: string
-      href: string
-    }
-    featuredCount: number
-  }
-  stack: {
-    title: string
-    actionButton: {
-      text: string
-      href: string
-    }
-    categories: Array<{
-      title: string
-      items: string[]
-    }>
-  }
-  callToAction: {
-    title: string
-    buttons: {
-      primary: {
-        text: string
-        href: string
-        variant: 'ghost' | 'solid' | 'outline'
-      }
-      secondary: {
-        text: string
-        href: string
-        variant: 'ghost' | 'solid' | 'outline'
-      }
-    }
+/**
+ * Convierte el JSON crudo de un proyecto en un Proyecto con los valores por
+ * defecto aplicados. Lo usan getAllProyectos y getProyectoBySlug, que antes
+ * repetían este mismo mapeo de 20 líneas cada una.
+ */
+function normalizeProyecto(slug: string, data: Record<string, any>): Proyecto {
+  return {
+    slug,
+    title: data.title || slug,
+    description: data.description || '',
+    image: data.image,
+    technologies: data.technologies || [],
+    date: data.date || '',
+    github: data.github,
+    demo: data.demo,
+    featured: data.featured || false,
+    type: data.type || [],
+    client: data.client,
+    // Si no hay `year` explícito se deriva de la fecha
+    year: data.year || (data.date ? new Date(data.date).getFullYear().toString() : ''),
+    role: data.role,
+    reto: data.reto,
+    videoYoutube: data.videoYoutube,
+    proceso: data.proceso,
+    rolYHerramientas: data.rolYHerramientas,
+    resultados: data.resultados,
+    resultadosImages: data.resultadosImages || [],
+    aprendizajes: data.aprendizajes,
+    images: data.images,
   }
 }
 
@@ -168,78 +94,6 @@ export function getHomeConfig(): HomeConfig {
   return JSON.parse(fileContents) as HomeConfig
 }
 
-export interface SobreMiConfig {
-  hero: {
-    title: string
-    description: string
-    image?: string
-    cvButton: {
-      text: string
-      href: string
-    }
-  }
-  resumenProfesional: {
-    title: string
-    cards: Array<{
-      title: string
-      description: string
-    }>
-  }
-  experiencia: {
-    title: string
-    items: Array<{
-      title: string
-      company: string
-      period: string
-      logo?: string
-    }>
-  }
-  formacion: {
-    title: string
-    certificaciones: {
-      title: string
-      items: Array<{
-        nombre: string
-        institucion: string
-        año: string
-      }>
-    }
-    educacion: {
-      title: string
-      items: Array<{
-        nombre: string
-        institucion: string
-        año: string
-      }>
-    }
-  }
-  stack: {
-    title: string
-    categories: Array<{
-      title: string
-      items: Array<{
-        nombre: string
-        descripcion: string
-      }>
-    }>
-  }
-  callToAction: {
-    title: string
-    buttons: {
-      primary: {
-        text: string
-        href: string
-        variant: 'ghost' | 'solid' | 'outline'
-      }
-      secondary: {
-        text: string
-        href: string
-        variant: 'ghost' | 'solid' | 'outline'
-      }
-    }
-  }
-}
-
 // Obtener la configuración de Sobre Mí
 export function getSobreMiConfig(): SobreMiConfig {
   const configPath = path.join(contentDirectory, 'sobre-mi.json')
@@ -283,103 +137,35 @@ export function getSobreMiConfig(): SobreMiConfig {
   return JSON.parse(fileContents) as SobreMiConfig
 }
 
-// Obtener todos los proyectos
+// Obtener todos los proyectos, del más reciente al más antiguo
 export function getAllProyectos(): Proyecto[] {
-  const proyectosDirectory = path.join(contentDirectory, 'proyectos')
-  
   if (!fs.existsSync(proyectosDirectory)) {
     return []
   }
 
-  const fileNames = fs.readdirSync(proyectosDirectory)
-  const allProyectos = fileNames
-    .filter(name => name.endsWith('.json'))
+  return fs
+    .readdirSync(proyectosDirectory)
+    .filter((name) => name.endsWith('.json'))
     .map((fileName) => {
       const slug = fileName.replace(/\.json$/, '')
-      const fullPath = path.join(proyectosDirectory, fileName)
-      const fileContents = fs.readFileSync(fullPath, 'utf8')
-      const data = JSON.parse(fileContents)
-
-      // Extraer año de la fecha si no está en year
-      const year = data.year || (data.date ? new Date(data.date).getFullYear().toString() : '')
-      
-      return {
-        slug,
-        title: data.title || slug,
-        description: data.description || '',
-        image: data.image,
-        technologies: data.technologies || [],
-        date: data.date || '',
-        github: data.github,
-        demo: data.demo,
-        featured: data.featured || false,
-        type: data.type || [],
-        client: data.client,
-        year: year,
-        role: data.role,
-        reto: data.reto,
-        videoYoutube: data.videoYoutube,
-        proceso: data.proceso,
-        rolYHerramientas: data.rolYHerramientas,
-        resultados: data.resultados,
-        resultadosImages: data.resultadosImages || [],
-        aprendizajes: data.aprendizajes,
-        images: data.images,
-      }
+      const data = JSON.parse(
+        fs.readFileSync(path.join(proyectosDirectory, fileName), 'utf8')
+      )
+      return normalizeProyecto(slug, data)
     })
-    .sort((a, b) => {
-      if (a.date < b.date) {
-        return 1
-      } else {
-        return -1
-      }
-    })
-
-  return allProyectos
+    .sort((a, b) => b.date.localeCompare(a.date))
 }
 
 // Obtener un proyecto por slug
 export async function getProyectoBySlug(slug: string): Promise<Proyecto | null> {
-  const proyectosDirectory = path.join(contentDirectory, 'proyectos')
   const fullPath = path.join(proyectosDirectory, `${slug}.json`)
 
   if (!fs.existsSync(fullPath)) {
     return null
   }
 
-  const fileContents = fs.readFileSync(fullPath, 'utf8')
-  const data = JSON.parse(fileContents)
-
-  // Extraer año de la fecha si no está en year
-  const year = data.year || (data.date ? new Date(data.date).getFullYear().toString() : '')
-  
-  return {
-    slug,
-    title: data.title || slug,
-    description: data.description || '',
-    image: data.image,
-    technologies: data.technologies || [],
-    date: data.date || '',
-    github: data.github,
-    demo: data.demo,
-    featured: data.featured || false,
-    type: data.type || [],
-    client: data.client,
-    year: year,
-    role: data.role,
-    reto: data.reto,
-    videoYoutube: data.videoYoutube,
-    proceso: data.proceso,
-    rolYHerramientas: data.rolYHerramientas,
-    resultados: data.resultados,
-    resultadosImages: data.resultadosImages || [],
-    aprendizajes: data.aprendizajes,
-    images: data.images,
-  }
+  return normalizeProyecto(slug, JSON.parse(fs.readFileSync(fullPath, 'utf8')))
 }
-
-// Importar tipos compartidos
-import type { ContactoConfig } from './types'
 
 // Obtener la configuración de Contacto
 export function getContactoConfig(): ContactoConfig {

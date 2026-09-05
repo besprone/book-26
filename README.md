@@ -34,6 +34,28 @@ devuelve error y no se envía analítica.
 | `NEXT_PUBLIC_POSTHOG_PROJECT_API_KEY` | No | Sin ella no se envía analítica |
 | `NEXT_PUBLIC_POSTHOG_HOST` | No | Por defecto `https://us.posthog.com` |
 | `NEXT_PUBLIC_SITE_URL` | No | Sobreescribe la URL canónica. Útil en previews; en producción se usa el valor de `lib/site.ts` |
+| `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | No | Activa el CAPTCHA del formulario. Va junto con la siguiente |
+| `TURNSTILE_SECRET_KEY` | No | Verifica el token en servidor. Va junto con la anterior |
+
+### Protección anti-spam del formulario
+
+El formulario se defiende en varias capas, todas en `app/api/contact/route.ts`:
+
+1. **Honeypot**: un campo oculto que las personas no ven y los bots rellenan.
+2. **Tiempo mínimo**: se rechaza lo enviado en menos de 3 segundos.
+3. **Longitud y formato** de nombre, email y mensaje.
+4. **Filtro de enlaces**: más de 2 URLs o correos en el mensaje.
+5. **Límite de envíos**: 3 por hora e IP. Vive en memoria, así que en Vercel se
+   reinicia con cada arranque en frío: protege menos de lo que parece.
+6. **Cloudflare Turnstile** (opcional), si están configuradas sus dos claves.
+
+Los rechazos por spam devuelven todos el mismo texto genérico a propósito: decir
+cuál saltó le indicaría al spammer qué cambiar.
+
+**Para activar Turnstile:** crea un sitio gratis en el
+[panel de Cloudflare](https://dash.cloudflare.com/?to=/:account/turnstile),
+añade el dominio, y copia las dos claves a las variables de entorno de Vercel.
+Sin ellas el formulario funciona igual con las otras cinco capas.
 
 ## Scripts
 

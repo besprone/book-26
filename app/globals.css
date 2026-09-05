@@ -48,6 +48,13 @@ body {
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+  /*
+    La barra de navegación es sticky y mide 4rem. Sin este margen, cualquier
+    salto a un ancla (empezando por el enlace "Saltar al contenido") deja el
+    destino debajo de la barra, tapado. El medio rem extra es aire para que
+    el destino no quede pegado al borde inferior del header.
+  */
+  scroll-padding-top: 4.5rem;
 }
 
 /*

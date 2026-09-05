@@ -20,6 +20,46 @@ function sanitizeHtml(text: string): string {
     .replace(/\//g, '&#x2F;')
 }
 
+/**
+ * Verifica el token de Cloudflare Turnstile.
+ *
+ * Devuelve `true` si no hay TURNSTILE_SECRET_KEY configurada: así el
+ * formulario sigue funcionando en instalaciones sin Turnstile, incluido el
+ * desarrollo local. Cuando la clave existe, la verificación es obligatoria.
+ */
+async function verificarTurnstile(token: unknown, ip: string): Promise<boolean> {
+  const secret = process.env.TURNSTILE_SECRET_KEY
+  if (!secret) return true
+
+  if (typeof token !== 'string' || token.length === 0) return false
+
+  try {
+    const body = new URLSearchParams({ secret, response: token })
+    // remoteip es opcional; se omite si no se pudo determinar
+    if (ip && ip !== 'unknown') body.append('remoteip', ip)
+
+    const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body,
+      // Si Cloudflare no responde, no dejar la petición colgada
+      signal: AbortSignal.timeout(8000),
+    })
+
+    const data = (await res.json()) as { success?: boolean; 'error-codes'?: string[] }
+    if (!data.success) {
+      console.warn('Turnstile rechazó el token:', data['error-codes'])
+    }
+    return data.success === true
+  } catch (error) {
+    // Ante un fallo de red con Cloudflare se rechaza el envío. El resto de
+    // defensas (honeypot, tiempo, rate limit) ya han pasado en este punto,
+    // pero aceptar sin verificar convertiría una caída en una puerta abierta.
+    console.error('Error verificando Turnstile:', error)
+    return false
+  }
+}
+
 // Función para validar email
 function isValidEmail(email: string): boolean {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -71,7 +111,7 @@ setInterval(() => {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { name, email, message, company_website, form_load_time } = body
+    const { name, email, message, company_website, form_load_time, turnstile_token } = body
 
     // 1. VALIDACIÓN DE HONEYPOT
     if (company_website && company_website.trim() !== '') {
@@ -176,7 +216,20 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // 7. VALIDACIÓN DE CONFIGURACIÓN DEL SERVIDOR
+    // 7. VERIFICACIÓN DE TURNSTILE
+    // Va después de las comprobaciones locales, que son gratis: no tiene
+    // sentido gastar una llamada a Cloudflare en un envío que ya se descartó.
+    const turnstileOk = await verificarTurnstile(turnstile_token, clientIP)
+    if (!turnstileOk) {
+      console.warn('Turnstile: verificación fallida')
+      // Mismo texto genérico que el resto de rechazos anti-spam
+      return NextResponse.json(
+        { error: 'Error al enviar el mensaje' },
+        { status: 400 }
+      )
+    }
+
+    // 8. VALIDACIÓN DE CONFIGURACIÓN DEL SERVIDOR
     if (!process.env.RESEND_API_KEY) {
       console.error('RESEND_API_KEY no está configurada')
       return NextResponse.json(
@@ -193,12 +246,12 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // 8. SANITIZACIÓN DE DATOS ANTES DE ENVIAR
+    // 9. SANITIZACIÓN DE DATOS ANTES DE ENVIAR
     const sanitizedName = sanitizeHtml(trimmedName)
     const sanitizedEmail = sanitizeHtml(trimmedEmail)
     const sanitizedMessage = sanitizeHtml(trimmedMessage).replace(/\n/g, '<br>')
 
-    // 9. ENVIAR EMAIL
+    // 10. ENVIAR EMAIL
     const resend = new Resend(process.env.RESEND_API_KEY)
     const data = await resend.emails.send({
       from: 'Portafolio <onboarding@resend.dev>', // Cambia esto por tu dominio verificado en Resend

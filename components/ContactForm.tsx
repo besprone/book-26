@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 import type { ContactoConfig } from '@/lib/types'
 import { analytics } from '@/lib/analytics'
 import { usePathname } from 'next/navigation'
+import TurnstileWidget, { reiniciarTurnstile } from './TurnstileWidget'
 
 interface ContactFormProps {
   config: ContactoConfig
@@ -30,6 +31,9 @@ export default function ContactForm({ config }: ContactFormProps) {
   // validaciones). Antes se descartaban y siempre se mostraba el texto genérico.
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const [submissionAttempts, setSubmissionAttempts] = useState(0)
+  // Token de Turnstile. Queda null si no hay clave configurada, en cuyo caso
+  // el servidor tampoco lo exige y el formulario funciona como siempre.
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null)
   const statusRef = useRef<HTMLDivElement>(null)
   const formLoadTime = useRef(Date.now()) // Timestamp cuando se carga el formulario
   const pageLoadTime = useRef(typeof window !== 'undefined' ? Date.now() : Date.now()) // Timestamp cuando se carga la página
@@ -81,8 +85,13 @@ export default function ContactForm({ config }: ContactFormProps) {
           ...formData,
           company_website: honeypotValue, // Campo honeypot
           form_load_time: formLoadTime.current, // Timestamp para validar tiempo mínimo
+          turnstile_token: turnstileToken,
         }),
       })
+
+      // El token es de un solo uso: haya ido bien o mal, hace falta uno nuevo
+      reiniciarTurnstile()
+      setTurnstileToken(null)
 
       if (response.ok) {
         setStatus('success')
@@ -119,6 +128,8 @@ export default function ContactForm({ config }: ContactFormProps) {
         })
       }
     } catch (error) {
+      reiniciarTurnstile()
+      setTurnstileToken(null)
       setErrorMessage(config.form.messages.error)
       setStatus('error')
 
@@ -213,6 +224,8 @@ export default function ContactForm({ config }: ContactFormProps) {
           defaultValue=""
         />
       </div>
+
+      <TurnstileWidget onToken={setTurnstileToken} />
 
       <button
         type="submit"

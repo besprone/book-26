@@ -5,7 +5,6 @@ import type { Proyecto } from '@/lib/markdown'
 import FilterChips from '@/components/FilterChips'
 import FeaturedProjectCard from '@/components/FeaturedProjectCard'
 import ProjectCard from '@/components/ProjectCard'
-import ProjectCardSkeleton from '@/components/ProjectCardSkeleton'
 import Button from '@/components/Button'
 import ScrollDepthTracker from '@/components/ScrollDepthTracker'
 import SectionViewTracker from '@/components/SectionViewTracker'
@@ -20,7 +19,6 @@ interface ProyectosClientProps {
 export default function ProyectosClient({ initialProyectos }: ProyectosClientProps) {
   const [activeFilter, setActiveFilter] = useState('Todo')
   const [visibleCount, setVisibleCount] = useState(PROJECTS_PER_PAGE)
-  const [isLoading, setIsLoading] = useState(false)
 
   const filters = ['Todo', 'UX', 'Dev', 'Data']
 
@@ -50,28 +48,21 @@ export default function ProyectosClient({ initialProyectos }: ProyectosClientPro
   const hasMore = visibleCount < filteredProyectos.length
 
   const handleLoadMore = () => {
-    setIsLoading(true)
+    // Los proyectos ya están en memoria: mostrar más es solo ampliar el slice.
     // El tracking del botón se hace automáticamente en Button.tsx
-    // Simular delay de carga
-    setTimeout(() => {
-      setVisibleCount(prev => prev + PROJECTS_PER_PAGE)
-      setIsLoading(false)
-    }, 500)
+    setVisibleCount((prev) => prev + PROJECTS_PER_PAGE)
   }
 
   const handleFilterChange = (filter: string) => {
     setActiveFilter(filter)
+    // Al cambiar de filtro se vuelve a la primera página de resultados
+    setVisibleCount(PROJECTS_PER_PAGE)
     // El tracking del filtro se hace automáticamente en FilterChips.tsx
     // Pero también trackeamos el evento filter_applied para análisis
-    const filteredCount = filter === 'Todo' 
+    const filteredCount = filter === 'Todo'
       ? initialProyectos.filter(p => !p.featured).length
       : initialProyectos.filter(p => p.type && p.type.includes(filter)).length
-    if (typeof window !== 'undefined') {
-      try {
-        const { analytics } = require('@/lib/analytics')
-        analytics.filterApplied(filter, filteredCount)
-      } catch (e) {}
-    }
+    analytics.filterApplied(filter, filteredCount)
   }
 
   if (initialProyectos.length === 0) {
@@ -140,17 +131,8 @@ export default function ProyectosClient({ initialProyectos }: ProyectosClientPro
               ))}
             </div>
 
-            {/* Skeleton mientras carga */}
-            {isLoading && (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                {[...Array(3)].map((_, i) => (
-                  <ProjectCardSkeleton key={i} />
-                ))}
-              </div>
-            )}
-
             {/* Botón Ver más proyectos */}
-            {hasMore && !isLoading && (
+            {hasMore && (
               <div className="text-center mt-8">
                 <Button
                   onClick={handleLoadMore}

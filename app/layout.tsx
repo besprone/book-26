@@ -68,7 +68,22 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es" className={funnelDisplay.variable}>
+    // suppressHydrationWarning: el script de abajo añade la clase `dark` al
+    // <html> antes de que React hidrate, así que el atributo class del cliente
+    // no coincide con el del servidor. Es esperado y solo afecta a este nodo.
+    <html lang="es" className={funnelDisplay.variable} suppressHydrationWarning>
+      <head>
+        {/*
+          Se ejecuta de forma síncrona antes del primer pintado para evitar el
+          flash de tema claro al cargar en oscuro. No puede ir en un useEffect:
+          para entonces el navegador ya pintó.
+        */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;var e=document.documentElement;e.classList.toggle('dark',d);e.style.colorScheme=d?'dark':'light';}catch(e){}})();`,
+          }}
+        />
+      </head>
       <body className="font-sans">
         <PostHogProvider>
           {/*

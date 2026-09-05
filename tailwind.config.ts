@@ -1,6 +1,9 @@
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
+  // 'class' en vez del 'media' por defecto: el tema lo decide el usuario con
+  // el toggle, con la preferencia del sistema solo como valor inicial.
+  darkMode: 'class',
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',

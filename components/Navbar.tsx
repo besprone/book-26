@@ -5,6 +5,7 @@ import { Menu, X } from 'lucide-react'
 import Logo from './Logo'
 import NavLink from './NavLink'
 import MobileMenu from './MobileMenu'
+import ThemeToggle from './ThemeToggle'
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -32,12 +33,13 @@ export default function Navbar() {
             <Logo />
             
             {/* Desktop Menu */}
-            <div className="hidden md:flex space-x-6">
+            <div className="hidden md:flex items-center space-x-6">
               {menuItems.map((item) => (
                 <NavLink key={item.href} href={item.href} variant="desktop">
                   {item.label}
                 </NavLink>
               ))}
+              <ThemeToggle />
             </div>
 
             {/* Mobile Menu Button */}

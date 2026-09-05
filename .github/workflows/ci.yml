@@ -1,0 +1,36 @@
+name: CI
+
+# Vercel ya construye cada push, pero solo falla ante errores de compilación.
+# Esto añade lint y comprobación de tipos, y deja el resultado visible en el PR.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Comprobar tipos
+        run: npx tsc --noEmit
+
+      - name: Build
+        run: npm run build
+        env:
+          # El build no necesita claves reales: el formulario de contacto valida
+          # su configuración en tiempo de ejecución, no de compilación.
+          NEXT_PUBLIC_SITE_URL: https://www.besprone.com.mx

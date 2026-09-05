@@ -131,22 +131,31 @@ export async function POST(request: NextRequest) {
     }
 
     // 5. DETECCIÓN DE PATRONES SOSPECHOSOS
+    // Los patrones DEBEN llevar la bandera /g: sin ella, String.match() devuelve
+    // [coincidencia, ...grupos] en vez de todas las apariciones, así que su
+    // length vale 1 por muchas URLs que haya y el umbral nunca se alcanza.
     const suspiciousPatterns = [
-      /http[s]?:\/\//i, // URLs en el mensaje
-      /www\./i,
+      /https?:\/\//gi, // URLs en el mensaje
+      /www\./gi,
       /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g, // Múltiples emails
     ]
 
-    const messageLower = trimmedMessage.toLowerCase()
-    const hasSuspiciousPattern = suspiciousPatterns.some(pattern => {
+    // Más de 2 enlaces o correos en un mensaje de contacto es señal de spam.
+    // Se deja margen para que alguien comparta legítimamente su web o su perfil.
+    const MAX_ENLACES = 2
+
+    const hasSuspiciousPattern = suspiciousPatterns.some((pattern) => {
       const matches = trimmedMessage.match(pattern)
-      return matches && matches.length > 2 // Más de 2 URLs o emails = sospechoso
+      return matches !== null && matches.length > MAX_ENLACES
     })
 
     if (hasSuspiciousPattern) {
       console.warn('Spam detectado: patrones sospechosos en el mensaje')
+      // Mismo mensaje genérico que el honeypot y el control de tiempo: no
+      // conviene decirle a un spammer qué filtro lo bloqueó, porque le indica
+      // qué cambiar para colarse en el siguiente intento.
       return NextResponse.json(
-        { error: 'El mensaje contiene contenido no permitido' },
+        { error: 'Error al enviar el mensaje' },
         { status: 400 }
       )
     }

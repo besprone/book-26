@@ -1,4 +1,55 @@
 import { getPostHog } from './posthog'
+import type { Locale } from './i18n'
+
+/**
+ * Registra el idioma como propiedad global: a partir de aquí TODOS los eventos
+ * la llevan sin tener que pasarla en cada llamada. Es lo que permite segmentar
+ * cualquier métrica por idioma sin tocar el resto del código.
+ */
+export const registrarIdioma = (locale: Locale) => {
+  if (typeof window === 'undefined') return
+  getPostHog()
+    .then((posthog) => posthog?.register({ site_locale: locale }))
+    .catch(() => {})
+}
+
+// --- Atribución del formulario de contacto -------------------------------
+// Guarda en la sesión qué proyectos ha visto la visita, para poder responder
+// la pregunta que importa: qué caso de estudio genera contactos.
+
+const CLAVE_ULTIMO = 'ultimo_proyecto_visto'
+const CLAVE_CUENTA = 'proyectos_vistos'
+
+export const recordarProyectoVisto = (slug: string, title: string) => {
+  if (typeof window === 'undefined') return
+  try {
+    const vistos: string[] = JSON.parse(sessionStorage.getItem(CLAVE_CUENTA) || '[]')
+    if (!vistos.includes(slug)) {
+      vistos.push(slug)
+      sessionStorage.setItem(CLAVE_CUENTA, JSON.stringify(vistos))
+    }
+    sessionStorage.setItem(CLAVE_ULTIMO, JSON.stringify({ slug, title }))
+  } catch (error) {
+    // Modo privado o almacenamiento bloqueado: se pierde la atribución,
+    // pero el evento de contacto se sigue enviando igual.
+  }
+}
+
+export const atribucionProyecto = () => {
+  if (typeof window === 'undefined') return {}
+  try {
+    const ultimo = sessionStorage.getItem(CLAVE_ULTIMO)
+    const vistos: string[] = JSON.parse(sessionStorage.getItem(CLAVE_CUENTA) || '[]')
+    const u = ultimo ? JSON.parse(ultimo) : null
+    return {
+      ultimo_proyecto_slug: u?.slug,
+      ultimo_proyecto_titulo: u?.title,
+      proyectos_vistos: vistos.length,
+    }
+  } catch (error) {
+    return {}
+  }
+}
 
 // Helper para trackear eventos de forma segura.
 // getPostHog() carga posthog-js bajo demanda, así que este módulo no arrastra
@@ -54,13 +105,6 @@ export const analytics = {
     })
   },
 
-  projectClicked: (projectSlug: string, projectTitle: string, sourcePage: string) => {
-    trackEvent('project_clicked', {
-      project_slug: projectSlug,
-      project_title: projectTitle,
-      source_page: sourcePage,
-    })
-  },
 
   contactFormSubmitted: (
     status: 'success' | 'error',
@@ -77,6 +121,8 @@ export const analytics = {
   ) => {
     const eventData = {
       form_status: status,
+      // Qué caso de estudio venía leyendo antes de escribir
+      ...atribucionProyecto(),
       time_to_submit: params.time_to_submit,
       message_length: params.message_length,
       submission_attempts: params.submission_attempts || 1,
@@ -109,12 +155,6 @@ export const analytics = {
     })
   },
 
-  loadMoreClicked: (currentCount: number, filterActive: string) => {
-    trackEvent('load_more_clicked', {
-      current_count: currentCount,
-      filter_active: filterActive,
-    })
-  },
 
   // Eventos de engagement
   sectionViewed: (sectionName: string, page: string) => {

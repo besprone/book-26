@@ -3,6 +3,7 @@
 import { X } from 'lucide-react'
 import Logo from './Logo'
 import NavLink from './NavLink'
+import ThemeToggle from './ThemeToggle'
 
 interface MobileMenuProps {
   isOpen: boolean
@@ -31,13 +32,16 @@ export default function MobileMenu({ isOpen, onClose, menuItems }: MobileMenuPro
           {/* Header */}
           <div className="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-800">
             <Logo />
-            <button
-              onClick={onClose}
-              className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition p-2"
-              aria-label="Close menu"
-            >
-              <X className="w-6 h-6" />
-            </button>
+            <div className="flex items-center gap-1">
+              <ThemeToggle />
+              <button
+                onClick={onClose}
+                className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition p-2"
+                aria-label="Close menu"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
           </div>
 
           {/* Menu Items */}

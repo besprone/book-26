@@ -40,10 +40,10 @@
     ]
   },
   "resultados": [
-    "Se instauró un ritmo continuo de discovery (no dependiente de proyectos aislados)",
-    "El equipo logró alineación cross-funcional con participación real de UX, PM y Tech",
-    "Documentación viva y trazable de evidencias → aprendizajes → insights → hipótesis → experimentos",
-    "Se implementaron los primeros experimentos A/B y de usabilidad basados en insights priorizados"
+    "Un ritmo continuo de discovery, ya no dependiente de proyectos aislados",
+    "Alineación cross-funcional con participación real de UX, PM y Tech",
+    "Documentación viva y trazable: de evidencias a aprendizajes, insights, hipótesis y experimentos",
+    "Los primeros experimentos A/B y de usabilidad, lanzados a partir de insights priorizados"
   ],
   "aprendizajes": "El valor del discovery no está en acumular hallazgos, sino en convertirlos en oportunidades priorizadas que guían el roadmap. La trazabilidad es clave: cada insight debe poder rastrearse hasta la evidencia original. Involucrar a las áreas desde el inicio asegura adopción del proceso. Discovery no se pausa: requiere constancia y disciplina semanal.",
   "images": {

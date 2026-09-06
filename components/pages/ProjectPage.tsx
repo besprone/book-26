@@ -202,21 +202,43 @@ export default async function ProjectPage({
             </section>
           )}
 
-          {/* Rol y Herramientas */}
-          {proyecto.rolYHerramientas && (
+          {/* Rol y Herramientas.
+
+              El rol de esta sección repetía palabra por palabra el de la
+              cabecera en cuatro de los cinco proyectos: se leía "Rol: Líder
+              de diseño UI" arriba y otra vez, casi dos mil píxeles más abajo,
+              en una columna con su propio encabezado.
+
+              De los dos sitios gana la cabecera: es la ficha de identidad del
+              proyecto y es lo primero que ve quien llega. Aquí se descartan
+              los valores que ya estén allí; si no queda ninguno, la sección
+              se queda sólo con las herramientas, cambia de título y ocupa
+              todo el ancho en vez de dejar media columna vacía.
+
+              No se borra el campo porque no siempre sobra: en Predicción de
+              Abandono no es el puesto sino cinco aportaciones al proyecto, y
+              eso sí aporta. */}
+          {proyecto.rolYHerramientas && (() => {
+            const rol = (proyecto.rolYHerramientas.rol ?? []).filter(
+              (r) => r.trim() !== (proyecto.role ?? '').trim()
+            )
+            const herramientas = proyecto.rolYHerramientas.herramientas ?? []
+            if (rol.length === 0 && herramientas.length === 0) return null
+
+            return (
             <section className="relative">
               <SectionViewTracker sectionName="rol_herramientas" className="absolute top-0 left-0 w-full h-1" />
               <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-white">
-                {txt.rolYHerramientas}
+                {rol.length > 0 ? txt.rolYHerramientas : txt.herramientas}
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {proyecto.rolYHerramientas.rol && (
+              <div className={`grid grid-cols-1 gap-6 ${rol.length > 0 ? 'md:grid-cols-2' : ''}`}>
+                {rol.length > 0 && (
                   <div>
                     <h3 className="font-semibold text-lg mb-3 text-gray-900 dark:text-white">
                       {txt.soloRol}
                     </h3>
                     <ListaMarcada className="space-y-2">
-                      {proyecto.rolYHerramientas.rol.map((rolItem) => (
+                      {rol.map((rolItem) => (
                         <ItemMarcado key={rolItem} className="text-gray-600 dark:text-gray-400">
                           {rolItem}
                         </ItemMarcado>
@@ -224,13 +246,17 @@ export default async function ProjectPage({
                     </ListaMarcada>
                   </div>
                 )}
-                {proyecto.rolYHerramientas.herramientas && (
+                {herramientas.length > 0 && (
                   <div>
-                    <h3 className="font-semibold text-lg mb-3 text-gray-900 dark:text-white">
-                      {txt.herramientas}
-                    </h3>
+                    {/* Sin la columna de rol, el h2 de la sección ya dice
+                        "Herramientas": repetirlo aquí sobraría. */}
+                    {rol.length > 0 && (
+                      <h3 className="font-semibold text-lg mb-3 text-gray-900 dark:text-white">
+                        {txt.herramientas}
+                      </h3>
+                    )}
                     <ListaMarcada className="space-y-2">
-                      {proyecto.rolYHerramientas.herramientas.map((herramienta) => (
+                      {herramientas.map((herramienta) => (
                         <ItemMarcado key={herramienta} className="text-gray-600 dark:text-gray-400">
                           {herramienta}
                         </ItemMarcado>
@@ -240,7 +266,8 @@ export default async function ProjectPage({
                 )}
               </div>
             </section>
-          )}
+            )
+          })()}
 
           {/* Resultados */}
           {proyecto.resultados && proyecto.resultados.length > 0 && (

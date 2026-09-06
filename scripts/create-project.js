@@ -16,7 +16,11 @@ const readline = require('readline')
 
 const rl = readline.createInterface({
   input: process.stdin,
-  output: process.stdout
+  output: process.stdout,
+  // Interactivo cuando se ejecuta desde una terminal; sin modo terminal cuando
+  // la entrada llega por tubería o archivo, que es lo que permite probarlo de
+  // forma automatizada y alimentarlo desde un script.
+  terminal: process.stdin.isTTY === true,
 })
 
 function question(prompt) {
@@ -164,7 +168,9 @@ async function createProject() {
   // Crear carpetas
   const imagesDir = path.join(process.cwd(), 'public', 'proyectos', slug)
   const proyectosDir = path.join(process.cwd(), 'content', 'proyectos')
+  const proyectosDirEn = path.join(process.cwd(), 'content', 'en', 'proyectos')
   const jsonPath = path.join(proyectosDir, `${slug}.json`)
+  const jsonPathEn = path.join(proyectosDirEn, `${slug}.json`)
 
   // Verificar si ya existe
   if (fs.existsSync(jsonPath)) {
@@ -182,14 +188,43 @@ async function createProject() {
     console.log(`✅ Carpeta creada: public/proyectos/${slug}/`)
   }
 
-  // Guardar JSON
+  // Guardar JSON en español
   fs.writeFileSync(jsonPath, JSON.stringify(proyecto, null, 2), 'utf8')
   console.log(`✅ Archivo creado: content/proyectos/${slug}.json`)
 
+  // Guardar la versión en inglés.
+  // Se copia el contenido en español como punto de partida en vez de dejarlo
+  // vacío: así el caso se ve completo en /en desde el primer momento, y basta
+  // con ir sustituyendo los textos. Los campos que no son prosa (fechas,
+  // tecnologías, rutas de imagen, tipo) ya son correctos y no se tocan.
+  const proyectoEn = JSON.parse(JSON.stringify(proyecto))
+  if (proyectoEn.role) proyectoEn.role = proyecto.role
+  if (!fs.existsSync(proyectosDirEn)) {
+    fs.mkdirSync(proyectosDirEn, { recursive: true })
+  }
+  fs.writeFileSync(jsonPathEn, JSON.stringify(proyectoEn, null, 2), 'utf8')
+  console.log(`✅ Archivo creado: content/en/proyectos/${slug}.json  (pendiente de traducir)`)
+
   console.log('\n📋 Resumen:')
   console.log(`   Slug: ${slug}`)
+  console.log(`   URL español: /proyectos/${slug}`)
+  console.log(`   URL inglés:  /en/work/${slug}`)
   console.log(`   Carpeta imágenes: public/proyectos/${slug}/`)
-  console.log(`   Archivo JSON: content/proyectos/${slug}.json`)
+  console.log(`   JSON español: content/proyectos/${slug}.json`)
+  console.log(`   JSON inglés:  content/en/proyectos/${slug}.json`)
+
+  console.log('\n🌐 Falta traducir al inglés en content/en/proyectos/' + slug + '.json')
+  console.log('   Campos con texto que hay que sustituir:')
+  const camposProsa = ['title', 'description', 'role', 'reto', 'aprendizajes']
+  camposProsa.forEach((c) => { if (proyecto[c]) console.log(`     · ${c}`) })
+  if (proyecto.proceso) {
+    Object.keys(proyecto.proceso)
+      .filter((k) => !k.endsWith('Image'))
+      .forEach((k) => console.log(`     · proceso.${k}`))
+  }
+  if (proyecto.resultados) console.log(`     · resultados (${proyecto.resultados.length} elementos)`)
+  if (proyecto.rolYHerramientas && proyecto.rolYHerramientas.rol) console.log('     · rolYHerramientas.rol')
+  console.log('   (fechas, tecnologías, tipo y rutas de imagen ya son correctas)')
   console.log('\n📸 Recuerda agregar las imágenes:')
   console.log(`   - public/proyectos/${slug}/hero.png (1920x800px)`)
   console.log(`   - public/proyectos/${slug}/after-reto.png (1200x600px)`)

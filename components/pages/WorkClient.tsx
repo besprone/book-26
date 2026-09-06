@@ -32,20 +32,25 @@ export default function ProyectosClient({ initialProyectos, locale }: ProyectosC
     return initialProyectos.find(p => p.featured === true)
   }, [initialProyectos])
 
+  // La tarjeta destacada es un recurso editorial de la vista por defecto:
+  // "empieza por aquí". En cuanto alguien filtra deja de comparar y pasa a
+  // buscar, y ahí un héroe repetido estorba en vez de ayudar.
+  //
+  // Antes se pintaba también al filtrar si el destacado casaba con el filtro,
+  // pero la rejilla sólo lo excluía en "Todo": filtrando por Data, que es la
+  // única disciplina del proyecto destacado, salía dos veces en la misma
+  // pantalla.
+  const mostrarDestacado = activeFilter === 'Todo'
+
   // Filtrar proyectos
   const filteredProyectos = useMemo(() => {
-    let proyectos = initialProyectos
-
     if (activeFilter !== 'Todo') {
-      proyectos = proyectos.filter(proyecto => {
-        return proyecto.type && proyecto.type.includes(activeFilter)
-      })
-    } else {
-      // Si es "Todo", excluir el destacado de la lista (se muestra separado)
-      proyectos = proyectos.filter(p => !p.featured)
+      return initialProyectos.filter(
+        (proyecto) => proyecto.type && proyecto.type.includes(activeFilter)
+      )
     }
-
-    return proyectos
+    // En "Todo" el destacado va aparte, así que no se repite en la rejilla.
+    return initialProyectos.filter((p) => !p.featured)
   }, [initialProyectos, activeFilter])
 
   // Proyectos visibles
@@ -109,10 +114,8 @@ export default function ProyectosClient({ initialProyectos, locale }: ProyectosC
           icono={iconoDeFiltro}
         />
 
-        {/* Proyecto Destacado - Solo mostrar si el filtro es "Todo" o si el destacado coincide con el filtro */}
-        {featuredProject && 
-         (activeFilter === 'Todo' || 
-          (featuredProject.type && featuredProject.type.includes(activeFilter))) && (
+        {/* Proyecto destacado: sólo en la vista sin filtrar (ver mostrarDestacado) */}
+        {featuredProject && mostrarDestacado && (
           <div className="mb-14">
             <ProjectCard
               destacado

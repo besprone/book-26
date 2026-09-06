@@ -81,6 +81,56 @@ export function ItemMarcado({ children, titulo, nivel, className = '' }: ItemMar
   )
 }
 
+interface ListaPasosProps {
+  children: ReactNode
+  className?: string
+}
+
+/**
+ * Secuencia numerada, para cuando el orden es parte del contenido: las fases
+ * del proceso de un proyecto van una después de otra y eso importa.
+ *
+ * Es un `<ol>`, no un `<ul>`. La barra de acento no decía nada del orden; una
+ * cifra sí, y además dice cuántos pasos quedan.
+ */
+export function ListaPasos({ children, className = '' }: ListaPasosProps) {
+  // Mismo `role` explícito que en ListaMarcada, y por lo mismo: sin viñetas,
+  // Safari deja de anunciar la lista.
+  return (
+    <ol role="list" className={`space-y-10 ${className}`}>
+      {children}
+    </ol>
+  )
+}
+
+interface PasoProps {
+  numero: number
+  titulo: ReactNode
+  children: ReactNode
+}
+
+export function Paso({ numero, titulo, children }: PasoProps) {
+  return (
+    <li>
+      {/* La cifra es decorativa: el <ol> ya comunica la posición, y leerla
+          además haría que un lector de pantalla dijera "cero uno
+          Investigación". */}
+      {/* Dos tonos distintos y no una sola clase con opacidad: el acento al
+          30% sobre blanco se queda en 1.25:1 de contraste y la cifra casi
+          desaparece, mientras que sobre el fondo oscuro se lee bien. En claro
+          hace falta un tono más hondo para llegar a la misma presencia. */}
+      <span
+        aria-hidden="true"
+        className="block text-3xl md:text-4xl font-bold leading-none tabular-nums mb-2 text-accent-600/50 dark:text-accent-400/30"
+      >
+        {String(numero).padStart(2, '0')}
+      </span>
+      <h3 className="font-semibold text-lg mb-2 text-gray-900 dark:text-white">{titulo}</h3>
+      {children}
+    </li>
+  )
+}
+
 interface BloqueMarcadoProps {
   children: ReactNode
   className?: string

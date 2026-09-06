@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 import { rutas, t, type Locale } from '@/lib/i18n'
 import Badge from '@/components/Badge'
 import { iconoDeCategoria } from '@/lib/iconos-badge'
-import { BloqueMarcado, ItemMarcado, ListaMarcada } from '@/components/ListaMarcada'
+import { BloqueMarcado, ItemMarcado, ListaMarcada, ListaPasos, Paso } from '@/components/ListaMarcada'
 import Button from '@/components/Button'
 import ImageWithSkeleton from '@/components/ImageWithSkeleton'
 import ScrollDepthTracker from '@/components/ScrollDepthTracker'
@@ -179,9 +179,11 @@ export default async function ProjectPage({
               <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-white">
                 {txt.proceso}
               </h2>
-              {/* Las cuatro fases son una serie, no cuatro bloques sueltos:
-                  van en una lista para que se anuncie como tal. */}
-              <ListaMarcada densidad="normal" className="max-w-prose">
+              {/* Las fases son una secuencia y el orden importa, así que van
+                  numeradas en un <ol>. Se numeran después de filtrar: si un
+                  proyecto no tiene fase de datos, la siguiente es la 03 y no
+                  hay hueco. */}
+              <ListaPasos className="max-w-prose">
                 {[
                   [txt.investigacion, proyecto.proceso.investigacion],
                   [txt.diseno, proyecto.proceso.diseno],
@@ -189,14 +191,14 @@ export default async function ProjectPage({
                   [txt.analisisDatos, proyecto.proceso.analisisDatos],
                 ]
                   .filter(([, texto]) => texto)
-                  .map(([titulo, texto]) => (
-                    <ItemMarcado key={titulo} titulo={titulo} nivel="h3">
+                  .map(([titulo, texto], i) => (
+                    <Paso key={titulo} numero={i + 1} titulo={titulo}>
                       <p className="text-gray-600 dark:text-gray-400 leading-relaxed max-w-prose">
                         {texto}
                       </p>
-                    </ItemMarcado>
+                    </Paso>
                   ))}
-              </ListaMarcada>
+              </ListaPasos>
             </section>
           )}
 

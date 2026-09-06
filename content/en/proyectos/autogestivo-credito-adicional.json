@@ -17,15 +17,19 @@
   "role": "Product Design Manager",
   "reto": "At kubo.financiero we found that some users behind on payments could still see active additional credit offers inside the self-service flow, because of a lag in how the system updated. This created confusion and added operational load for the support and collections teams. The challenge was to redesign the flow to prevent these cases, making sure offers only appeared to users who were eligible in real time, and clearly explaining why when no offer was available.",
   "proceso": {
-    "investigacion": "Identifying the problem: the bug surfaced through advisor reports and support monitoring. Analysing the current flow: we mapped the steps of the self-service additional credit process, focusing on how the status of the previous loan was validated.",
+    "investigacion": "I spotted the problem through advisor reports and support monitoring. I mapped the steps of the self-service additional credit process, focusing on how the status of the previous loan was validated.",
     "investigacionImage": "/proyectos/autogestivo-credito-adicional/investigacion.jpg",
-    "diseno": "Defining the new flow: we introduced a validation point at the start to check whether the user was up to date on their loan. Screen design: we designed a new screen that clearly tells the user their status has changed and no offer is available for now. Visual and copy iteration: we reworked the message to be clearer and more empathetic, with an illustration to reinforce it.",
-    "desarrollo": "Alignment with engineering: we defined the triggers and technical conditions needed to run the validation in real time.",
+    "diseno": "I defined a validation point at the start of the flow to check whether the user was up to date on their loan. I designed a screen that clearly tells them their status has changed and that no offer is available for now. I iterated on the message to make it clearer and more empathetic, and proposed an illustration to reinforce it.",
+    "desarrollo": "I worked with engineering to define the triggers and technical conditions needed to run the validation in real time.",
     "analisisDatos": ""
   },
   "rolYHerramientas": {
     "rol": [
-      "Product Design Manager"
+      "Problem detection",
+      "Flow mapping",
+      "Screen design",
+      "Copywriting",
+      "Engineering alignment"
     ],
     "herramientas": [
       "Figma",

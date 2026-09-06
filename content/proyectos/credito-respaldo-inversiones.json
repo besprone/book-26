@@ -16,15 +16,20 @@
   "role": "Product Design Manager",
   "reto": "Muchos usuarios de la app de kubo.financiero cuentan con inversiones activas, pero enfrentan necesidades de liquidez inmediatas. El reto era diseñar una solución que permitiera solicitar un préstamo utilizando las inversiones existentes como garantía, sin tener que cancelarlas o perder los rendimientos generados. La solución debía ser clara, confiable y escalable, respetando las condiciones regulatorias y el comportamiento financiero de los usuarios.",
   "proceso": {
-    "investigacion": "Exploración y definición del reto: Analizamos oportunidades a partir de la integración entre productos existentes (créditos e inversiones), conversaciones internas y casos de uso potenciales. Entrevistas con stakeholders: Conversamos con equipo de producto, riesgos, negocio y legal para entender restricciones, reglas de validación, cálculo de montos, flujos permitidos y riesgos operativos. Benchmarks y análisis de referencias: Revisamos productos similares en el sector financiero y exploramos soluciones de liquidez en otras fintechs.",
+    "investigacion": "Exploré la oportunidad que abría conectar dos productos existentes, créditos e inversiones, a partir de conversaciones internas y casos de uso potenciales. Entrevisté a los equipos de producto, riesgos, negocio y legal para entender restricciones, reglas de validación, cálculo de montos, flujos permitidos y riesgos operativos. Revisé productos comparables del sector financiero y cómo resuelven la liquidez otras fintechs.",
     "investigacionImage": "/proyectos/credito-respaldo-inversiones/investigacion.jpg",
-    "diseno": "Ideación y flujos: Diseñamos una experiencia que parte del módulo de inversiones. El usuario ve una nueva opción que le permite solicitar hasta el 90% del valor invertido como préstamo, sin cancelar su inversión. Prototipado: Construimos prototipos de alta fidelidad en Figma, incluyendo variantes según número de inversiones y estado del préstamo.",
-    "desarrollo": "Pruebas internas y ajustes: Probamos el flujo con distintos escenarios, refinando mensajes, reglas visuales, compatibilidad con flujos actuales de préstamos y edge cases. Ajustes con legal y riesgos: Adaptamos textos y mensajes clave para comunicar claramente el uso de la inversión como garantía, el posible bloqueo de fondos y la política de riesgo.",
+    "diseno": "Diseñé una experiencia que parte del módulo de inversiones: el usuario ve una opción nueva para solicitar hasta el 90% del valor invertido como préstamo, sin cancelar su inversión. Construí prototipos de alta fidelidad en Figma, con variantes según el número de inversiones y el estado del préstamo.",
+    "desarrollo": "Probé el flujo en distintos escenarios y refiné mensajes, reglas visuales, compatibilidad con los flujos de préstamos existentes y casos límite. Ajusté con legal y riesgos los textos clave para comunicar el uso de la inversión como garantía, el posible bloqueo de fondos y la política de riesgo.",
     "analisisDatos": ""
   },
   "rolYHerramientas": {
     "rol": [
-      "Product Design Manager"
+      "Definición del reto",
+      "Entrevistas con stakeholders",
+      "Benchmark del sector",
+      "Diseño de flujos",
+      "Prototipado de alta fidelidad",
+      "Alineación con legal y riesgos"
     ],
     "herramientas": [
       "Figma",

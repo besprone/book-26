@@ -18,15 +18,19 @@
   "role": "Lead for defining and rolling out the discovery process",
   "reto": "When I arrived there was no clear or consistent product discovery process. Each area worked from isolated information, and decisions were driven more by intuition than by data or evidence. The challenge was to design and roll out a continuous, collaborative and structured discovery framework that would: align practices across teams (UX, PM, Tech, advisors); produce actionable weekly insights; give traceability from evidence through to learnings, insights, hypotheses and experiments; and be sustainable over time rather than depending on one-off efforts.",
   "proceso": {
-    "investigacion": "Initial rollout: presenting the core principles (continuous discovery, the UX/PM/Tech product trio, visualisation through an Opportunity Solution Tree). A walkthrough of the opportunity tree and the templates (evidence, learnings, insights). Assigning sources and owners.",
+    "investigacion": "I rolled out the framework by presenting its core principles: continuous discovery, the UX/PM/Tech product trio, and visualisation through an Opportunity Solution Tree. I ran a walkthrough of the opportunity tree and of the templates for evidence, learnings and insights, and assigned sources and owners.",
     "investigacionImage": "/proyectos/marco-discovery-continuo/investigacion.jpg",
-    "diseno": "A structured working rhythm. Weekly: each member analyses one source (Intercom, calls, reviews, interviews), documents evidence and learnings, followed by a synthesis and prioritisation meeting on Fridays. Monthly: choosing a desired outcome (for example improving conversion) and updating the Opportunity Solution Tree. Quarterly: presenting a Discovery Digest with key insights, prioritised opportunities, experiments run and roadmap adjustments.",
-    "desarrollo": "Tools and collaboration: Google Sheets for structured, traceable documentation. FigJam and Miro for visualising the Opportunity Solution Tree. Figma and Google Meet for prototype validation. Advisors acting as discovery champions to share findings. PM and Tech in monthly reviews. Prioritised insights feeding roadmap decisions.",
+    "diseno": "I defined a structured working rhythm. Weekly: each member analyses one source (Intercom, calls, reviews, interviews) and documents evidence and learnings, and on Fridays we hold a synthesis and prioritisation meeting. Monthly: we choose a desired outcome, for example improving conversion, and update the tree. Quarterly: I present a Discovery Digest with key insights, prioritised opportunities, experiments run and roadmap adjustments.",
+    "desarrollo": "I chose the tools and the way we collaborate: Google Sheets for structured, traceable documentation, FigJam and Miro to visualise the tree, and Figma and Google Meet to validate prototypes. I brought advisors in as discovery champions to share findings, and added PM and Tech to the monthly reviews so prioritised insights feed roadmap decisions.",
     "analisisDatos": ""
   },
   "rolYHerramientas": {
     "rol": [
-      "Lead for defining and rolling out the discovery process"
+      "Framework definition",
+      "Session facilitation",
+      "Opportunity Solution Tree",
+      "Synthesis and prioritisation",
+      "Quarterly Discovery Digest"
     ],
     "herramientas": [
       "Google Sheets",

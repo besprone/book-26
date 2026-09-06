@@ -19,15 +19,19 @@
   "role": "UI Design Lead",
   "reto": "When I joined the team there were several competing libraries and approaches to the design system. This caused visual inconsistency, duplicated effort and friction with engineering. The goal was to consolidate what already existed, keep the good practices, and define new rules that would act as the single source of truth for design and engineering. We wanted: a unified and scalable design system, clear rules for developers, reusable patterns, and documentation the whole team could reach.",
   "proceso": {
-    "investigacion": "I interviewed developers and PMs and reviewed the technologies used on the frontend. I analysed existing flows to identify the base components, and deepened my knowledge of Atomic Design applied to design systems.",
+    "investigacion": "I interviewed developers and PMs and reviewed the technologies used on the frontend. I analysed the existing flows to identify the base components, and deepened my knowledge of Atomic Design applied to design systems.",
     "investigacionImage": "/proyectos/calipso-sistema-diseno/investigacion.jpg",
-    "diseno": "We started from the brand guidelines and adjusted the colour palette to meet accessibility criteria. We defined tokens, atoms, molecules, organisms, templates and pages, and prototyped the first animations and state transitions.",
-    "desarrollo": "I documented the do's and don'ts for each component and we built the system's Storybook. We also laid the groundwork so documentation could later be generated with AI and published on a site accessible to everyone.",
-    "analisisDatos": "We measured consistency, adoption, and design and prototyping times before and after the system."
+    "diseno": "I started from the brand guidelines and adjusted the colour palette to meet accessibility criteria. I defined tokens, atoms, molecules, organisms, templates and pages, and prototyped the first animations and state transitions.",
+    "desarrollo": "I documented the do’s and don’ts for each component and built the system’s Storybook with the team. We also laid the groundwork so documentation could later be generated with AI and published on a site accessible to everyone.",
+    "analisisDatos": "I measured consistency, adoption, and design and prototyping times before and after the system."
   },
   "rolYHerramientas": {
     "rol": [
-      "UI Design Lead"
+      "Stakeholder research",
+      "Flow analysis",
+      "Tokens and components",
+      "System documentation",
+      "Adoption measurement"
     ],
     "herramientas": [
       "Figma",

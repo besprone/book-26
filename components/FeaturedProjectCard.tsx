@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Button from './Button'
 import Badge from './Badge'
-import { Image as ImageIcon } from 'lucide-react'
+import { Image as ImageIcon, Star } from 'lucide-react'
 import { rutaProyecto, t, type Locale } from '@/lib/i18n'
 
 interface FeaturedProjectCardProps {
@@ -47,7 +47,7 @@ export default function FeaturedProjectCard({
         <div className="p-6 md:p-8 lg:p-10">
           {/* Badge Destacado - Arriba del título */}
           <div className="mb-4">
-            <Badge variant="estado">
+            <Badge variant="estado" icon={Star}>
               {t(locale).proyectos.destacado}
             </Badge>
           </div>

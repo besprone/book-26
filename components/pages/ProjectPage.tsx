@@ -3,6 +3,7 @@ import { siteConfig } from '@/lib/site'
 import { notFound } from 'next/navigation'
 import { rutas, t, type Locale } from '@/lib/i18n'
 import Badge from '@/components/Badge'
+import { iconoDeCategoria } from '@/lib/iconos-badge'
 import Button from '@/components/Button'
 import ImageWithSkeleton from '@/components/ImageWithSkeleton'
 import ScrollDepthTracker from '@/components/ScrollDepthTracker'
@@ -100,6 +101,7 @@ export default async function ProjectPage({
                 <Badge
                   key={tech}
                   variant="categoria"
+                  icon={iconoDeCategoria(tech)}
                 >
                   {tech}
                 </Badge>

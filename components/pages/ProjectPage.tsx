@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 import { rutas, t, type Locale } from '@/lib/i18n'
 import Badge from '@/components/Badge'
 import { iconoDeCategoria } from '@/lib/iconos-badge'
-import { BloqueMarcado, ItemMarcado, ListaMarcada, ListaPasos, Paso } from '@/components/ListaMarcada'
+import { BloqueMarcado, ItemMarcado, ListaEtiquetas, ListaMarcada, ListaPasos, Paso } from '@/components/ListaMarcada'
 import Button from '@/components/Button'
 import ImageWithSkeleton from '@/components/ImageWithSkeleton'
 import ScrollDepthTracker from '@/components/ScrollDepthTracker'
@@ -70,30 +70,49 @@ export default async function ProjectPage({
             {proyecto.title || 'Proyecto'}
           </h1>
           
-          {/* Metadata de la ficha.
-              Antes usaba la misma barra de acento que las listas, pero en
-              horizontal una barra vertical no lee como "marca de ítem" sino
-              como separador de columnas: el mismo símbolo diciendo otra cosa.
-              Aquí son pares etiqueta/valor, así que van en un <dl>, que es lo
-              que un lector de pantalla anuncia como tal. */}
+          {/* Metadata de la ficha, en un <dl> porque son pares
+              etiqueta/valor y eso es lo que un lector de pantalla anuncia
+              como tal. Antes usaba la misma barra de acento que las listas,
+              pero en horizontal una barra vertical no lee como marca de ítem
+              sino como separador de columnas.
+
+              Los tres datos no valen lo mismo y antes iban al mismo peso:
+              cliente y año son contexto, el rol es lo único que dice qué
+              hiciste tú. Así que el rol sube a subtítulo de la ficha y los
+              otros dos bajan a una línea menor. Ahí las etiquetas se ocultan
+              a la vista —"kubo.financiero · 2023" se entiende solo— pero
+              siguen en el DOM para quien lo escuche. */}
           {(proyecto.client || proyecto.year || proyecto.role) && (
-            <dl className="flex flex-wrap items-baseline gap-x-8 gap-y-2 mb-6 text-sm md:text-base">
-              {proyecto.client && (
-                <div>
-                  <dt className="inline text-gray-600 dark:text-gray-400">{txt.cliente}</dt>{' '}
-                  <dd className="inline font-semibold text-gray-900 dark:text-white">{proyecto.client}</dd>
-                </div>
-              )}
-              {proyecto.year && (
-                <div>
-                  <dt className="inline text-gray-600 dark:text-gray-400">{txt.anio}</dt>{' '}
-                  <dd className="inline font-semibold text-gray-900 dark:text-white">{proyecto.year}</dd>
-                </div>
-              )}
+            <dl className="mb-6">
               {proyecto.role && (
-                <div>
-                  <dt className="inline text-gray-600 dark:text-gray-400">{txt.rol}</dt>{' '}
-                  <dd className="inline font-semibold text-gray-900 dark:text-white">{proyecto.role}</dd>
+                <div className="mb-3">
+                  <dt className="text-xs font-medium uppercase tracking-wider text-accent-700 dark:text-accent-400 mb-1">
+                    {txt.miRol}
+                  </dt>
+                  <dd className="text-lg md:text-xl font-semibold text-gray-900 dark:text-white leading-snug">
+                    {proyecto.role}
+                  </dd>
+                </div>
+              )}
+              {(proyecto.client || proyecto.year) && (
+                <div className="flex flex-wrap items-baseline gap-x-3 text-sm text-gray-600 dark:text-gray-400">
+                  {proyecto.client && (
+                    <>
+                      <dt className="sr-only">{txt.cliente}</dt>
+                      <dd>{proyecto.client}</dd>
+                    </>
+                  )}
+                  {proyecto.year && (
+                    <>
+                      <dt className="sr-only">{txt.anio}</dt>
+                      <dd>
+                        {/* El punto va dentro del <dd> y no suelto entre
+                            pares: dentro de un <dl> sólo caben <dt> y <dd>. */}
+                        {proyecto.client && <span aria-hidden="true" className="mr-3">·</span>}
+                        {proyecto.year}
+                      </dd>
+                    </>
+                  )}
                 </div>
               )}
             </dl>
@@ -237,13 +256,7 @@ export default async function ProjectPage({
                     <h3 className="font-semibold text-lg mb-3 text-gray-900 dark:text-white">
                       {txt.soloRol}
                     </h3>
-                    <ListaMarcada className="space-y-2">
-                      {rol.map((rolItem) => (
-                        <ItemMarcado key={rolItem} className="text-gray-600 dark:text-gray-400">
-                          {rolItem}
-                        </ItemMarcado>
-                      ))}
-                    </ListaMarcada>
+                    <ListaEtiquetas items={rol} />
                   </div>
                 )}
                 {herramientas.length > 0 && (
@@ -255,13 +268,7 @@ export default async function ProjectPage({
                         {txt.herramientas}
                       </h3>
                     )}
-                    <ListaMarcada className="space-y-2">
-                      {herramientas.map((herramienta) => (
-                        <ItemMarcado key={herramienta} className="text-gray-600 dark:text-gray-400">
-                          {herramienta}
-                        </ItemMarcado>
-                      ))}
-                    </ListaMarcada>
+                    <ListaEtiquetas items={herramientas} />
                   </div>
                 )}
               </div>

@@ -99,10 +99,7 @@ export default async function ProjectPage({
               {proyecto.type.map((tech) => (
                 <Badge
                   key={tech}
-                  variant="technology"
-                  technology={tech as 'UX' | 'Dev' | 'Data'}
-                  size="md"
-                  shape="rounded"
+                  variant="categoria"
                 >
                   {tech}
                 </Badge>

@@ -47,7 +47,7 @@ export default function FeaturedProjectCard({
         <div className="p-6 md:p-8 lg:p-10">
           {/* Badge Destacado - Arriba del título */}
           <div className="mb-4">
-            <Badge variant="featured" size="md" shape="rounded">
+            <Badge variant="estado">
               {t(locale).proyectos.destacado}
             </Badge>
           </div>
@@ -64,10 +64,7 @@ export default function FeaturedProjectCard({
             {technologies.map((tech) => (
               <Badge
                 key={tech}
-                variant="technology"
-                technology={tech as 'UX' | 'Dev' | 'Data'}
-                size="md"
-                shape="rounded"
+                variant="categoria"
               >
                 {tech}
               </Badge>

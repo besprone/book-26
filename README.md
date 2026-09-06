@@ -232,6 +232,23 @@ proyecto.
 | `rounded-full` | Píldoras y conmutadores |
 | `rounded-2xl` | Media grande: ilustraciones de portada |
 
+### Etiquetas (Badge)
+
+`Badge` es informativo, nunca pulsable. Las variantes se agrupan por lo que
+comunican, no por dónde aparecen:
+
+| Variante | Comunica | Ejemplos |
+|---|---|---|
+| `categoria` | Clasifica | UX, Dev, Data, Figma, Python |
+| `metadato` | Dato de contexto sin énfasis | 2023, "Cursando.." |
+| `estado` | Vigente o destacado, atrae la vista | "Actual", "Destacado" |
+
+Tamaño según el contexto: `sm` cuando va en línea junto a un título, `md`
+cuando va sola como etiqueta de una tarjeta.
+
+Todas son `rounded-full`, que es lo que las distingue de un botón
+(`rounded-lg`) de un vistazo.
+
 ### Foco
 
 `anilloFoco` se aplica a **todo** lo enfocable, no solo a los botones:

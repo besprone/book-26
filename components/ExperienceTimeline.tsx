@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Badge from './Badge'
 import { t, type Locale } from '@/lib/i18n'
 
 interface ExperienceItem {
@@ -83,11 +84,7 @@ export default function ExperienceTimeline({ items, locale }: ExperienceTimeline
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                   {item.title}
                 </h3>
-                {esActual && (
-                  <span className="rounded-full bg-primary-50 px-2.5 py-0.5 text-xs font-medium text-primary-700 dark:bg-primary-500/15 dark:text-primary-300">
-                    {t(locale).experiencia.actual}
-                  </span>
-                )}
+                {esActual && <Badge variant="estado" size="sm">{t(locale).experiencia.actual}</Badge>}
               </div>
               <p className="mt-0.5 text-gray-700 dark:text-gray-300">{item.company}</p>
               <p className="mt-0.5 text-sm text-gray-500 dark:text-gray-400">{item.period}</p>

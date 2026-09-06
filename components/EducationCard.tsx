@@ -53,10 +53,7 @@ export default function EducationCard({
           </p>
           <div className="flex items-center gap-2">
             <Badge
-              variant="status"
-              status={isCursando ? 'active' : 'inactive'}
-              size="md"
-              shape="rounded"
+              variant="metadato"
             >
               {año}
             </Badge>

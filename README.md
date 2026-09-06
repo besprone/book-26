@@ -66,6 +66,7 @@ Sin ellas el formulario funciona igual con las otras cinco capas.
 | `npm start` | Sirve el build de producción |
 | `npm run lint` | ESLint (`next/core-web-vitals`) |
 | `npm run create-project` | Asistente interactivo para crear un proyecto |
+| `npm run check-i18n` | Lista qué contenido falta por traducir al inglés |
 
 ## Idiomas
 
@@ -92,10 +93,22 @@ Cada idioma tiene su propio layout raíz (`app/(es)` y `app/(en)`) porque el
 atributo `lang` de `<html>` solo puede fijarse ahí, y un `lang` incorrecto hace
 que un lector de pantalla pronuncie mal el texto.
 
-**Al añadir un proyecto**, crea el JSON en `content/proyectos/` y su traducción
-en `content/en/proyectos/` con el mismo nombre de archivo. Si falta la
-traducción, el proyecto sigue apareciendo en inglés pero con el texto en
-español, en vez de desaparecer sin aviso.
+**Al añadir un proyecto**, `npm run create-project` genera los dos archivos:
+el español y una copia en `content/en/proyectos/` lista para traducir, y te
+dice al terminar qué campos tienen texto pendiente.
+
+Para saber en cualquier momento qué queda por traducir:
+
+```bash
+npm run check-i18n
+```
+
+Compara cada archivo con su versión en inglés y marca los textos que siguen
+en español. Ignora nombres propios (empresas, certificaciones, puestos) y
+valores que no se traducen, como fechas y rutas de imagen.
+
+Si aun así faltara una traducción, el proyecto sigue apareciendo en inglés con
+el texto en español, en vez de desaparecer sin aviso.
 
 ## Cómo actualizar el contenido
 

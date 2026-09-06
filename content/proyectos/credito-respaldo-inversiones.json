@@ -40,11 +40,11 @@
     ]
   },
   "resultados": [
-    "Se diseñó un flujo autogestivo claro, intuitivo y compatible con las inversiones actuales del usuario",
-    "Reducción de fricciones al evitar cancelar inversiones para obtener liquidez",
-    "Se establecieron reglas visuales y operativas para el cálculo de monto disponible, bloqueo temporal de fondos y continuidad de los rendimientos",
-    "El diseño permitió múltiples escenarios: con una o varias inversiones, solicitud parcial o máxima disponible",
-    "Preparación para A/B test del módulo con métricas de activación y conversión"
+    "Un flujo autogestivo claro, intuitivo y compatible con las inversiones que el usuario ya tiene",
+    "Menos fricción, al evitar cancelar inversiones para obtener liquidez",
+    "Reglas visuales y operativas para el cálculo del monto disponible, el bloqueo temporal de fondos y la continuidad de los rendimientos",
+    "Un diseño que admite varios escenarios: una o varias inversiones, solicitud parcial o máxima disponible",
+    "Listo para un A/B test del módulo con métricas de activación y conversión"
   ],
   "aprendizajes": "El diseño de productos que cruzan servicios requiere entender profundamente la lógica y reglas de ambos. Comunicar límites, garantías y condiciones de forma clara es clave para generar confianza. Las decisiones de diseño deben balancear oportunidad de negocio con seguridad del usuario y claridad legal. Incorporar variantes y escenarios desde el inicio permite escalar el flujo sin rediseños innecesarios.",
   "images": {

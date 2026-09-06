@@ -40,10 +40,10 @@
     ]
   },
   "resultados": [
-    "Se redujeron casos de confusión y reclamos por inconsistencias en las ofertas",
-    "Se implementó una validación efectiva antes de mostrar la pantalla de ofertas",
-    "Se fortaleció la percepción de confiabilidad de la app al comunicar claramente los cambios en el estatus del crédito",
-    "Se alinearon áreas clave como diseño, tecnología, cobranza y ATC en un flujo coherente"
+    "Menos casos de confusión y reclamos por inconsistencias en las ofertas",
+    "Una validación efectiva antes de mostrar la pantalla de ofertas",
+    "Mayor percepción de confiabilidad de la app, al comunicar con claridad los cambios en el estatus del crédito",
+    "Diseño, tecnología, cobranza y ATC alineados en un flujo coherente"
   ],
   "aprendizajes": "La comunicación clara en momentos de cambio de estatus es clave para evitar frustración. Es importante validar las condiciones de negocio no solo al momento de mostrar una oferta, sino también al ingresar al flujo. Las pantallas que no ofrecen acción (como \"no hay oferta disponible\") deben tener un mensaje positivo, empático y bien diseñado para no generar abandono.",
   "images": {

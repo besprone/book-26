@@ -29,10 +29,19 @@ export default function NavLink({
   const esInicio = (Object.values(rutas.home) as string[]).includes(href)
   // Para el resto se compara por segmento completo ('/en/work/'), no por
   // prefijo suelto: '/en/work' no debe marcarse estando en '/en/workshop'.
-  const isActive = esInicio
-    ? pathname === href
-    : pathname === href || pathname.startsWith(`${href}/`)
-  
+  const esLaPagina = pathname === href
+  const esLaSeccion = !esInicio && pathname.startsWith(`${href}/`)
+  const isActive = esLaPagina || esLaSeccion
+
+  /**
+   * Estar *en* Proyectos y estar *dentro de* un proyecto no son lo mismo, y
+   * ARIA distingue las dos cosas: `page` para la página exacta, `true` para la
+   * sección que la contiene. Antes no había ninguno de los dos, así que quien
+   * navega con lector de pantalla no tenía forma de saber dónde estaba: los
+   * cinco enlaces sonaban idénticos.
+   */
+  const marcaActual = esLaPagina ? 'page' : esLaSeccion ? true : undefined
+
   const baseStyles = `transition font-medium rounded-lg ${anilloFoco}`
   
   // Handler para trackear clicks del menú
@@ -52,9 +61,14 @@ export default function NavLink({
   // Estados: normal (gris), hover (blanco), active (primario)
   const getStateClasses = () => {
     if (isActive) {
-      // Estado activo: primario
+      // En escritorio el activo se distinguía sólo por el color, que es justo
+      // lo que WCAG 1.4.1 pide no hacer: quien no separa bien el morado del
+      // gris no ve ninguna diferencia. La subraya una barra en pseudoelemento
+      // absoluto, así que no empuja el resto del menú. En móvil ya había un
+      // fondo, que cumple lo mismo.
       return variant === 'desktop'
-        ? 'text-primary-500 dark:text-primary-400'
+        ? 'relative text-primary-500 dark:text-primary-400 ' +
+            'after:absolute after:inset-x-0 after:-bottom-1.5 after:h-0.5 after:rounded-full after:bg-current'
         : 'block text-lg text-primary-500 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/20 px-4 py-3 rounded-lg'
     }
     // Estado normal: gris, hover: primario (light mode) o blanco (dark mode)
@@ -66,7 +80,7 @@ export default function NavLink({
   const classes = `${baseStyles} ${getStateClasses()} ${className}`
   
   return (
-    <Link href={href} onClick={handleClick} className={classes}>
+    <Link href={href} onClick={handleClick} aria-current={marcaActual} className={classes}>
       {children}
     </Link>
   )

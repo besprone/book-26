@@ -1,6 +1,6 @@
 import Card from './Card'
 import Badge from './Badge'
-import { GraduationCap, Award } from 'lucide-react'
+import { GraduationCap, Award, CircleDot } from 'lucide-react'
 
 interface EducationCardProps {
   nombre: string
@@ -18,7 +18,15 @@ export default function EducationCard({
   icon,
 }: EducationCardProps) {
   const isHighlighted = variant === 'highlighted'
-  const isCursando = año.toLowerCase().includes('cursando')
+
+  // Casi todos los valores de `año` son un año ("2024"), pero la certificación
+  // en curso dice "Cursando.." / "In progress": eso no es un dato de contexto,
+  // es lo único vigente de la lista, así que se pinta como estado.
+  //
+  // Se detecta por la forma del dato y no por su texto: la comprobación
+  // anterior buscaba la palabra "cursando", que sólo existe en español, así
+  // que en inglés nunca daba positivo.
+  const esAño = /^\d{4}$/.test(año.trim())
 
   // Icono por defecto si no se proporciona uno personalizado
   const defaultIcon = isHighlighted ? (
@@ -53,7 +61,8 @@ export default function EducationCard({
           </p>
           <div className="flex items-center gap-2">
             <Badge
-              variant="metadato"
+              variant={esAño ? 'metadato' : 'estado'}
+              icon={esAño ? undefined : CircleDot}
             >
               {año}
             </Badge>

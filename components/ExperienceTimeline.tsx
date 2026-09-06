@@ -64,11 +64,16 @@ export default function ExperienceTimeline({ items, locale }: ExperienceTimeline
                 )}
               </span>
 
-              {/* El trazo no se dibuja bajo el último elemento */}
+              {/*
+                El trazo va del borde inferior de un logo al superior del
+                siguiente. `-bottom-8` compensa el pb-8 del <li>: sin eso la
+                línea se corta al acabar el contenido y queda un hueco antes
+                del siguiente puesto. No se dibuja bajo el último.
+              */}
               {index < cronologiaInversa.length - 1 && (
                 <span
                   aria-hidden="true"
-                  className="absolute top-12 bottom-0 w-px bg-gray-200 dark:bg-gray-700 sm:top-14"
+                  className="absolute top-12 -bottom-8 w-px bg-gray-200 dark:bg-gray-700 sm:top-14"
                 />
               )}
             </div>

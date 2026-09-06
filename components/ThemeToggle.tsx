@@ -53,15 +53,21 @@ export default function ThemeToggle({ className = '' }: ThemeToggleProps) {
       aria-checked={isDark}
       aria-label="Tema oscuro"
       title={isDark ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'}
-      className={`relative inline-flex h-7 w-[52px] flex-shrink-0 items-center rounded-full border
-        border-gray-300 bg-gray-200 dark:border-gray-600 dark:bg-gray-700
+      className={`relative inline-flex h-11 w-[52px] flex-shrink-0 items-center justify-center rounded-full
         focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2
         focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900
-        ${anim} ${className}`}
+        ${className}`}
     >
-      {/* Pomo deslizante. Recorrido: 52 - 2*2 de padding - 24 de ancho = 24px */}
+      {/* La pista visual mantiene sus 28px de alto; el botón que la envuelve
+          mide 44px para dar un área táctil cómoda en el pulgar sin cambiar
+          el aspecto del control. El pomo se centra con top-1/2 y una
+          traslación vertical, que no depende del grosor del borde. */}
       <span
-        className={`absolute left-0.5 flex h-6 w-6 items-center justify-center rounded-full
+        className={`relative block h-7 w-[52px] rounded-full border border-gray-300 bg-gray-200
+          dark:border-gray-600 dark:bg-gray-700 ${anim}`}
+      >
+      <span
+        className={`absolute left-0.5 top-1/2 -translate-y-1/2 flex h-6 w-6 items-center justify-center rounded-full
           bg-white shadow-sm dark:bg-gray-900
           ${anim} ${isDark ? 'translate-x-6' : 'translate-x-0'}`}
       >
@@ -75,6 +81,7 @@ export default function ThemeToggle({ className = '' }: ThemeToggleProps) {
           className={`absolute h-3.5 w-3.5 text-primary-300 ${anim}
             ${isDark ? 'rotate-0 scale-100 opacity-100' : '-rotate-90 scale-50 opacity-0'}`}
         />
+        </span>
       </span>
     </button>
   )

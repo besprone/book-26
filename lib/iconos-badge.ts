@@ -1,4 +1,4 @@
-import { Code, Database, Palette, type LucideIcon } from 'lucide-react'
+import { Code, Database, LayoutGrid, Palette, type LucideIcon } from 'lucide-react'
 
 /**
  * Icono de cada disciplina, por su nombre en el contenido.
@@ -25,4 +25,20 @@ export const iconosCategoria: Record<string, LucideIcon> = {
 /** Devuelve el icono de una categoría, o `undefined` si no tiene. */
 export function iconoDeCategoria(valor: string): LucideIcon | undefined {
   return iconosCategoria[valor]
+}
+
+/**
+ * Icono de un filtro de la lista de proyectos.
+ *
+ * Son las mismas disciplinas más "Todo", que no es una disciplina sino la
+ * ausencia de filtro: le toca una cuadrícula, el gesto habitual para "ver
+ * todo". Sin ella los cuatro chips quedarían desalineados, tres con icono y
+ * uno sin él.
+ *
+ * Comparte iconos con las etiquetas a propósito: el chip que filtra y la
+ * etiqueta que aparece luego en la ficha del proyecto son la misma idea, y
+ * ahora se reconocen a simple vista.
+ */
+export function iconoDeFiltro(filtro: string): LucideIcon | undefined {
+  return filtro === 'Todo' ? LayoutGrid : iconosCategoria[filtro]
 }

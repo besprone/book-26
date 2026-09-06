@@ -10,6 +10,7 @@ import ScrollDepthTracker from '@/components/ScrollDepthTracker'
 import SectionViewTracker from '@/components/SectionViewTracker'
 import { analytics } from '@/lib/analytics'
 import { t, type Locale } from '@/lib/i18n'
+import { iconoDeFiltro } from '@/lib/iconos-badge'
 
 const PROJECTS_PER_PAGE = 6
 
@@ -106,6 +107,7 @@ export default function ProyectosClient({ initialProyectos, locale }: ProyectosC
           activeFilter={activeFilter}
           onFilterChange={handleFilterChange}
           etiqueta={etiquetaFiltro}
+          icono={iconoDeFiltro}
         />
 
         {/* Proyecto Destacado - Solo mostrar si el filtro es "Todo" o si el destacado coincide con el filtro */}

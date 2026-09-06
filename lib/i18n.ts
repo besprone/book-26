@@ -65,6 +65,9 @@ const textos = {
       cliente: 'Cliente/Empresa:',
       anio: 'Año:',
       rol: 'Rol:',
+      // Antecede al rol en la cabecera, donde ya no es un par
+      // etiqueta/valor en línea sino el subtítulo de la ficha.
+      miRol: 'Mi rol',
       tags: 'Tags:',
       reto: 'El reto',
       proceso: 'Proceso',
@@ -129,6 +132,7 @@ const textos = {
       cliente: 'Client:',
       anio: 'Year:',
       rol: 'Role:',
+      miRol: 'My role',
       tags: 'Tags:',
       reto: 'The challenge',
       proceso: 'Process',

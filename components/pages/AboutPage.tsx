@@ -1,5 +1,6 @@
 import { getSobreMiConfig } from '@/lib/markdown'
 import { t, type Locale } from '@/lib/i18n'
+import { ItemMarcado, ListaMarcada } from '@/components/ListaMarcada'
 import Button from '@/components/Button'
 import Card from '@/components/Card'
 import SectionHeader from '@/components/SectionHeader'
@@ -174,18 +175,15 @@ export default function AboutPage({ locale }: { locale: Locale }) {
                   <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">
                     {category.title}
                   </h3>
-                  <div className="space-y-3">
-                    {category.items.map((item, itemIndex) => (
-                      <div key={itemIndex} className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-3">
-                        <h4 className="font-semibold text-gray-900 dark:text-white text-sm mb-1">
-                          {item.nombre}
-                        </h4>
+                  <ListaMarcada>
+                    {category.items.map((item) => (
+                      <ItemMarcado key={item.nombre} titulo={item.nombre} nivel="h4">
                         <p className="text-gray-600 dark:text-gray-400 text-xs leading-relaxed">
                           {item.descripcion}
                         </p>
-                      </div>
+                      </ItemMarcado>
                     ))}
-                  </div>
+                  </ListaMarcada>
                 </Card>
               )
             })}

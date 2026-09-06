@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import { rutas, t, type Locale } from '@/lib/i18n'
 import Badge from '@/components/Badge'
 import { iconoDeCategoria } from '@/lib/iconos-badge'
+import { BloqueMarcado, ItemMarcado, ListaEtiquetas, ListaMarcada, ListaPasos, Paso } from '@/components/ListaMarcada'
 import Button from '@/components/Button'
 import ImageWithSkeleton from '@/components/ImageWithSkeleton'
 import ScrollDepthTracker from '@/components/ScrollDepthTracker'
@@ -69,28 +70,52 @@ export default async function ProjectPage({
             {proyecto.title || 'Proyecto'}
           </h1>
           
-          {/* Metadata con bullets homologados */}
+          {/* Metadata de la ficha, en un <dl> porque son pares
+              etiqueta/valor y eso es lo que un lector de pantalla anuncia
+              como tal. Antes usaba la misma barra de acento que las listas,
+              pero en horizontal una barra vertical no lee como marca de ítem
+              sino como separador de columnas.
+
+              Los tres datos no valen lo mismo y antes iban al mismo peso:
+              cliente y año son contexto, el rol es lo único que dice qué
+              hiciste tú. Así que el rol sube a subtítulo de la ficha y los
+              otros dos bajan a una línea menor. Ahí las etiquetas se ocultan
+              a la vista —"kubo.financiero · 2023" se entiende solo— pero
+              siguen en el DOM para quien lo escuche. */}
           {(proyecto.client || proyecto.year || proyecto.role) && (
-            <div className="flex flex-wrap items-center gap-6 md:gap-8 mb-6 text-sm md:text-base">
-              {proyecto.client && (
-                <div className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-3">
-                  <span className="text-gray-600 dark:text-gray-400">{txt.cliente}</span>
-                  <span className="font-semibold text-gray-900 dark:text-white ml-1">{proyecto.client}</span>
-                </div>
-              )}
-              {proyecto.year && (
-                <div className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-3">
-                  <span className="text-gray-600 dark:text-gray-400">{txt.anio}</span>
-                  <span className="font-semibold text-gray-900 dark:text-white ml-1">{proyecto.year}</span>
-                </div>
-              )}
+            <dl className="mb-6">
               {proyecto.role && (
-                <div className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-3">
-                  <span className="text-gray-600 dark:text-gray-400">{txt.rol}</span>
-                  <span className="font-semibold text-gray-900 dark:text-white ml-1">{proyecto.role}</span>
+                <div className="mb-3">
+                  <dt className="text-xs font-medium uppercase tracking-wider text-accent-700 dark:text-accent-400 mb-1">
+                    {txt.miRol}
+                  </dt>
+                  <dd className="text-lg md:text-xl font-semibold text-gray-900 dark:text-white leading-snug">
+                    {proyecto.role}
+                  </dd>
                 </div>
               )}
-            </div>
+              {(proyecto.client || proyecto.year) && (
+                <div className="flex flex-wrap items-baseline gap-x-3 text-sm text-gray-600 dark:text-gray-400">
+                  {proyecto.client && (
+                    <>
+                      <dt className="sr-only">{txt.cliente}</dt>
+                      <dd>{proyecto.client}</dd>
+                    </>
+                  )}
+                  {proyecto.year && (
+                    <>
+                      <dt className="sr-only">{txt.anio}</dt>
+                      <dd>
+                        {/* El punto va dentro del <dd> y no suelto entre
+                            pares: dentro de un <dl> sólo caben <dt> y <dd>. */}
+                        {proyecto.client && <span aria-hidden="true" className="mr-3">·</span>}
+                        {proyecto.year}
+                      </dd>
+                    </>
+                  )}
+                </div>
+              )}
+            </dl>
           )}
 
           {/* Tags */}
@@ -173,90 +198,83 @@ export default async function ProjectPage({
               <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-white">
                 {txt.proceso}
               </h2>
-              <div className="space-y-6 max-w-prose">
-                  {proyecto.proceso.investigacion && (
-                    <div className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-4">
-                      <h3 className="font-semibold text-lg mb-2 text-gray-900 dark:text-white">
-                        {txt.investigacion}
-                      </h3>
+              {/* Las fases son una secuencia y el orden importa, así que van
+                  numeradas en un <ol>. Se numeran después de filtrar: si un
+                  proyecto no tiene fase de datos, la siguiente es la 03 y no
+                  hay hueco. */}
+              <ListaPasos className="max-w-prose">
+                {[
+                  [txt.investigacion, proyecto.proceso.investigacion],
+                  [txt.diseno, proyecto.proceso.diseno],
+                  [txt.desarrollo, proyecto.proceso.desarrollo],
+                  [txt.analisisDatos, proyecto.proceso.analisisDatos],
+                ]
+                  .filter(([, texto]) => texto)
+                  .map(([titulo, texto], i) => (
+                    <Paso key={titulo} numero={i + 1} titulo={titulo}>
                       <p className="text-gray-600 dark:text-gray-400 leading-relaxed max-w-prose">
-                        {proyecto.proceso.investigacion}
+                        {texto}
                       </p>
-                    </div>
-                  )}
-                  {proyecto.proceso.diseno && (
-                    <div className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-4">
-                      <h3 className="font-semibold text-lg mb-2 text-gray-900 dark:text-white">
-                        {txt.diseno}
-                      </h3>
-                      <p className="text-gray-600 dark:text-gray-400 leading-relaxed max-w-prose">
-                        {proyecto.proceso.diseno}
-                      </p>
-                    </div>
-                  )}
-                  {proyecto.proceso.desarrollo && (
-                    <div className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-4">
-                      <h3 className="font-semibold text-lg mb-2 text-gray-900 dark:text-white">
-                        {txt.desarrollo}
-                      </h3>
-                      <p className="text-gray-600 dark:text-gray-400 leading-relaxed max-w-prose">
-                        {proyecto.proceso.desarrollo}
-                      </p>
-                    </div>
-                  )}
-                  {proyecto.proceso.analisisDatos && (
-                    <div className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-4">
-                      <h3 className="font-semibold text-lg mb-2 text-gray-900 dark:text-white">
-                        {txt.analisisDatos}
-                      </h3>
-                      <p className="text-gray-600 dark:text-gray-400 leading-relaxed max-w-prose">
-                        {proyecto.proceso.analisisDatos}
-                      </p>
-                    </div>
-                  )}
-              </div>
+                    </Paso>
+                  ))}
+              </ListaPasos>
             </section>
           )}
 
-          {/* Rol y Herramientas */}
-          {proyecto.rolYHerramientas && (
+          {/* Rol y Herramientas.
+
+              El rol de esta sección repetía palabra por palabra el de la
+              cabecera en cuatro de los cinco proyectos: se leía "Rol: Líder
+              de diseño UI" arriba y otra vez, casi dos mil píxeles más abajo,
+              en una columna con su propio encabezado.
+
+              De los dos sitios gana la cabecera: es la ficha de identidad del
+              proyecto y es lo primero que ve quien llega. Aquí se descartan
+              los valores que ya estén allí; si no queda ninguno, la sección
+              se queda sólo con las herramientas, cambia de título y ocupa
+              todo el ancho en vez de dejar media columna vacía.
+
+              No se borra el campo porque no siempre sobra: en Predicción de
+              Abandono no es el puesto sino cinco aportaciones al proyecto, y
+              eso sí aporta. */}
+          {proyecto.rolYHerramientas && (() => {
+            const rol = (proyecto.rolYHerramientas.rol ?? []).filter(
+              (r) => r.trim() !== (proyecto.role ?? '').trim()
+            )
+            const herramientas = proyecto.rolYHerramientas.herramientas ?? []
+            if (rol.length === 0 && herramientas.length === 0) return null
+
+            return (
             <section className="relative">
               <SectionViewTracker sectionName="rol_herramientas" className="absolute top-0 left-0 w-full h-1" />
               <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-white">
-                {txt.rolYHerramientas}
+                {rol.length > 0 ? txt.rolYHerramientas : txt.herramientas}
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {proyecto.rolYHerramientas.rol && (
+              <div className={`grid grid-cols-1 gap-6 ${rol.length > 0 ? 'md:grid-cols-2' : ''}`}>
+                {rol.length > 0 && (
                   <div>
                     <h3 className="font-semibold text-lg mb-3 text-gray-900 dark:text-white">
                       {txt.soloRol}
                     </h3>
-                    <div className="space-y-2">
-                      {proyecto.rolYHerramientas.rol.map((rolItem, index) => (
-                        <div key={index} className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-4">
-                          <p className="text-gray-600 dark:text-gray-400">{rolItem}</p>
-                        </div>
-                      ))}
-                    </div>
+                    <ListaEtiquetas items={rol} />
                   </div>
                 )}
-                {proyecto.rolYHerramientas.herramientas && (
+                {herramientas.length > 0 && (
                   <div>
-                    <h3 className="font-semibold text-lg mb-3 text-gray-900 dark:text-white">
-                      {txt.herramientas}
-                    </h3>
-                    <div className="space-y-2">
-                      {proyecto.rolYHerramientas.herramientas.map((herramienta, index) => (
-                        <div key={index} className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-4">
-                          <p className="text-gray-600 dark:text-gray-400">{herramienta}</p>
-                        </div>
-                      ))}
-                    </div>
+                    {/* Sin la columna de rol, el h2 de la sección ya dice
+                        "Herramientas": repetirlo aquí sobraría. */}
+                    {rol.length > 0 && (
+                      <h3 className="font-semibold text-lg mb-3 text-gray-900 dark:text-white">
+                        {txt.herramientas}
+                      </h3>
+                    )}
+                    <ListaEtiquetas items={herramientas} />
                   </div>
                 )}
               </div>
             </section>
-          )}
+            )
+          })()}
 
           {/* Resultados */}
           {proyecto.resultados && proyecto.resultados.length > 0 && (
@@ -265,13 +283,13 @@ export default async function ProjectPage({
               <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-white">
                 {txt.resultados}
               </h2>
-              <div className="space-y-3">
-                {proyecto.resultados.map((resultado, index) => (
-                  <div key={index} className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-4">
-                    <p className="text-lg text-gray-600 dark:text-gray-400">{resultado}</p>
-                  </div>
+              <ListaMarcada>
+                {proyecto.resultados.map((resultado) => (
+                  <ItemMarcado key={resultado} className="text-lg text-gray-600 dark:text-gray-400">
+                    {resultado}
+                  </ItemMarcado>
                 ))}
-              </div>
+              </ListaMarcada>
             </section>
           )}
 
@@ -282,9 +300,12 @@ export default async function ProjectPage({
               <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-white">
                 {txt.aprendizajes}
               </h2>
-              <div className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-4">
-                <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-prose">{proyecto.aprendizajes}</p>
-              </div>
+              {/* Un solo párrafo: no es una serie, así que no finge ser lista. */}
+              <BloqueMarcado>
+                <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-prose">
+                  {proyecto.aprendizajes}
+                </p>
+              </BloqueMarcado>
             </section>
           )}
 

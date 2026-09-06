@@ -1,5 +1,6 @@
 import { getAllProyectos, getHomeConfig } from '@/lib/markdown'
 import { t, type Locale } from '@/lib/i18n'
+import { ItemMarcado, ListaMarcada } from '@/components/ListaMarcada'
 import Button from '@/components/Button'
 import SectionHeader from '@/components/SectionHeader'
 import Card from '@/components/Card'
@@ -179,15 +180,16 @@ export default function HomePage({ locale }: { locale: Locale }) {
                   <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">
                     {category.title}
                   </h3>
-                  <div className="space-y-3">
-                    {category.items.map((item, itemIndex) => (
-                      <div key={itemIndex} className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-3">
-                        <p className="font-semibold text-gray-900 dark:text-white text-sm">
-                          {item}
-                        </p>
-                      </div>
+                  <ListaMarcada>
+                    {category.items.map((item) => (
+                      <ItemMarcado
+                        key={item}
+                        className="font-semibold text-gray-900 dark:text-white text-sm"
+                      >
+                        {item}
+                      </ItemMarcado>
                     ))}
-                  </div>
+                  </ListaMarcada>
                 </Card>
               )
             })}

@@ -8,6 +8,10 @@ const config: Config = {
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
+    // lib/ también: ahí viven los estilos compartidos de botones. Sin esta
+    // ruta, Tailwind no ve esas clases y las genera vacías: el marcado sale
+    // con la clase puesta pero sin ninguna regla CSS detrás.
+    './lib/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {

@@ -7,12 +7,12 @@
       "primary": {
         "text": "View work",
         "href": "/en/work",
-        "variant": "outline"
+        "variant": "secondary"
       },
       "secondary": {
         "text": "Get in touch",
         "href": "/en/contact",
-        "variant": "solid"
+        "variant": "primary"
       }
     }
   },
@@ -87,12 +87,12 @@
       "primary": {
         "text": "View work",
         "href": "/en/work",
-        "variant": "outline"
+        "variant": "secondary"
       },
       "secondary": {
         "text": "Get in touch",
         "href": "/en/contact",
-        "variant": "solid"
+        "variant": "primary"
       }
     }
   }

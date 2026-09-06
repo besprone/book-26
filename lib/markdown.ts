@@ -80,8 +80,8 @@ export function getHomeConfig(locale: Locale = defaultLocale): HomeConfig {
         title: 'Diseñador de producto con visión técnica y enfoque en datos',
         description: 'Combino UX, desarrollo y análisis para crear experiencias útiles, funcionales y medibles',
         buttons: {
-          primary: { text: 'Ver proyectos', href: '/proyectos', variant: 'outline' },
-          secondary: { text: 'Contáctame', href: '/contacto', variant: 'solid' },
+          primary: { text: 'Ver proyectos', href: '/proyectos', variant: 'secondary' },
+          secondary: { text: 'Contáctame', href: '/contacto', variant: 'primary' },
         },
       },
       perfil: {
@@ -102,8 +102,8 @@ export function getHomeConfig(locale: Locale = defaultLocale): HomeConfig {
       callToAction: {
         title: 'Me encantaría ayudarte a dar vida a tu próximo producto',
         buttons: {
-          primary: { text: 'Ver proyectos', href: '/proyectos', variant: 'outline' },
-          secondary: { text: 'Contáctame', href: '/contacto', variant: 'solid' },
+          primary: { text: 'Ver proyectos', href: '/proyectos', variant: 'secondary' },
+          secondary: { text: 'Contáctame', href: '/contacto', variant: 'primary' },
         },
       },
     }
@@ -145,8 +145,8 @@ export function getSobreMiConfig(locale: Locale = defaultLocale): SobreMiConfig 
       callToAction: {
         title: '¿Te interesa saber cómo podría aportar a tu equipo o proyecto?',
         buttons: {
-          primary: { text: 'Ver proyectos', href: '/proyectos', variant: 'outline' },
-          secondary: { text: 'Contáctame', href: '/contacto', variant: 'solid' },
+          primary: { text: 'Ver proyectos', href: '/proyectos', variant: 'secondary' },
+          secondary: { text: 'Contáctame', href: '/contacto', variant: 'primary' },
         },
       },
     }
@@ -232,7 +232,7 @@ export function getContactoConfig(locale: Locale = defaultLocale): ContactoConfi
         button: {
           text: 'Agendar una llamada',
           href: 'mailto:besprone@gmail.com?subject=Agendar una llamada&body=Hola Marco,%0D%0A%0D%0AMe gustaría agendar una llamada para hablar sobre...',
-          variant: 'outline' as const,
+          variant: 'secondary' as const,
         },
       },
       final: {

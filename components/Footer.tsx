@@ -5,6 +5,7 @@ import { Mail, Linkedin, Github } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { analytics } from '@/lib/analytics'
 import { siteConfig } from '@/lib/site'
+import { anilloFoco } from '@/lib/estilos-boton'
 
 export default function Footer() {
   const pathname = usePathname()
@@ -32,7 +33,7 @@ export default function Footer() {
             <a
               href={`mailto:${siteConfig.email}?subject=${encodeURIComponent('Consulta desde portafolio')}&body=${encodeURIComponent('Hola Marco,\n\nMe gustaría contactarte para...')}`}
               onClick={() => handleSocialClick('email', `mailto:${siteConfig.email}`)}
-              className="text-primary-500 dark:text-primary-400 hover:text-primary-600 dark:hover:text-primary-300 transition"
+              className={`rounded-lg p-1 text-primary-500 dark:text-primary-400 hover:text-primary-600 dark:hover:text-primary-300 transition ${anilloFoco}`}
               aria-label="Email"
             >
               <Mail className="w-6 h-6" />
@@ -42,7 +43,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => handleSocialClick('linkedin', siteConfig.linkedin)}
-              className="text-primary-500 dark:text-primary-400 hover:text-primary-600 dark:hover:text-primary-300 transition"
+              className={`rounded-lg p-1 text-primary-500 dark:text-primary-400 hover:text-primary-600 dark:hover:text-primary-300 transition ${anilloFoco}`}
               aria-label="LinkedIn"
             >
               <Linkedin className="w-6 h-6" />
@@ -52,7 +53,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => handleSocialClick('github', siteConfig.github)}
-              className="text-primary-500 dark:text-primary-400 hover:text-primary-600 dark:hover:text-primary-300 transition"
+              className={`rounded-lg p-1 text-primary-500 dark:text-primary-400 hover:text-primary-600 dark:hover:text-primary-300 transition ${anilloFoco}`}
               aria-label="GitHub"
             >
               <Github className="w-6 h-6" />

@@ -36,10 +36,10 @@ export default function Error({
         {txt.texto}
       </p>
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
-        <Button onClick={reset} variant="solid" size="lg" ctaType="section_cta" sectionName="error">
+        <Button onClick={reset} variant="primary" size="lg" ctaType="section_cta" sectionName="error">
           {txt.reintentar}
         </Button>
-        <Button href={'/'} variant="outline" size="lg" ctaType="section_cta" sectionName="error">
+        <Button href={'/'} variant="secondary" size="lg" ctaType="section_cta" sectionName="error">
           {txt.inicio}
         </Button>
       </div>

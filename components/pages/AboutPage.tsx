@@ -40,7 +40,7 @@ export default function AboutPage({ locale }: { locale: Locale }) {
             </p>
             <Button
               href={config.hero.cvButton.href}
-              variant="solid"
+              variant="primary"
               size="lg"
               ctaType="cv_download"
               sectionName="hero"

@@ -32,7 +32,7 @@
     "button": {
       "text": "Schedule a call",
       "href": "mailto:besprone@gmail.com?subject=Schedule a call&body=Hi Marco,%0D%0A%0D%0AI%27d like to schedule a call to talk about...",
-      "variant": "outline"
+      "variant": "secondary"
     }
   },
   "final": {

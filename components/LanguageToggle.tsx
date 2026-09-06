@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation'
 import { Languages } from 'lucide-react'
 import { rutaEquivalente, t, type Locale } from '@/lib/i18n'
 import { analytics } from '@/lib/analytics'
+import { baseBoton, tamanosBoton } from '@/lib/estilos-boton'
 
 interface LanguageToggleProps {
   locale: Locale
@@ -26,10 +27,9 @@ export default function LanguageToggle({ locale, className = '' }: LanguageToggl
         analytics.ctaClicked(destino.toUpperCase(), 'header_menu', pathname || '/', href, 'navbar')
       }
       aria-label={t(locale).cambiarIdioma}
-      className={`inline-flex h-11 items-center gap-1.5 rounded-lg px-3 text-sm font-medium
-        text-gray-700 transition hover:bg-gray-100 hover:text-gray-900
-        dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white
-        focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 ${className}`}
+      className={`${baseBoton} ${tamanosBoton.sm} h-11
+        text-gray-700 hover:bg-gray-100 hover:text-gray-900
+        dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white ${className}`}
     >
       <Languages className="h-4 w-4" aria-hidden="true" />
       <span>{destino.toUpperCase()}</span>

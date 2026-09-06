@@ -7,6 +7,7 @@ import { Image as ImageIcon } from 'lucide-react'
 import ImageWithSkeleton from './ImageWithSkeleton'
 import { analytics } from '@/lib/analytics'
 import { rutaProyecto, t, type Locale } from '@/lib/i18n'
+import { anilloFoco } from '@/lib/estilos-boton'
 
 interface ProjectCardProps {
   title: string
@@ -47,7 +48,7 @@ export default function ProjectCard({
     <Link
       href={rutaProyecto(locale, slug)}
       onClick={handleClick}
-      className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-xl hover:border-primary-300 dark:hover:border-primary-800 transition-all duration-300 transform hover:-translate-y-2 group"
+      className={`bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-xl hover:border-primary-300 dark:hover:border-primary-800 transition-all duration-300 transform hover:-translate-y-2 group ${anilloFoco}`}
     >
       <div className="h-48 bg-gray-100 dark:bg-gray-700 relative overflow-hidden rounded-t-xl">
         {image ? (

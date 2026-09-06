@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
+import IconButton from './IconButton'
 import Logo from './Logo'
 import NavLink from './NavLink'
 import MobileMenu from './MobileMenu'
@@ -47,17 +48,12 @@ export default function Navbar({ locale }: { locale: Locale }) {
             </div>
 
             {/* Mobile Menu Button */}
-            <button
+            <IconButton
               onClick={toggleMenu}
-              className="md:hidden flex h-11 w-11 items-center justify-center text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition"
-              aria-label={isMenuOpen ? txt.cerrarMenu : txt.abrirMenu}
-            >
-              {isMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
-            </button>
+              icon={isMenuOpen ? X : Menu}
+              label={isMenuOpen ? txt.cerrarMenu : txt.abrirMenu}
+              className="md:hidden"
+            />
           </div>
         </div>
       </nav>

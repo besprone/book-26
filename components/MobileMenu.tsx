@@ -1,6 +1,7 @@
 'use client'
 
 import { X } from 'lucide-react'
+import IconButton from './IconButton'
 import Logo from './Logo'
 import NavLink from './NavLink'
 import ThemeToggle from './ThemeToggle'
@@ -39,13 +40,7 @@ export default function MobileMenu({ isOpen, onClose, menuItems, locale }: Mobil
             <div className="flex items-center gap-1">
               <LanguageToggle locale={locale} />
               <ThemeToggle />
-              <button
-                onClick={onClose}
-                className="flex h-11 w-11 items-center justify-center text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition"
-                aria-label={txt.cerrarMenu}
-              >
-                <X className="w-6 h-6" />
-              </button>
+              <IconButton onClick={onClose} icon={X} label={txt.cerrarMenu} />
             </div>
           </div>
 

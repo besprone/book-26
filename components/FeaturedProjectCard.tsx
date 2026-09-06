@@ -1,12 +1,9 @@
 'use client'
 
-import Link from 'next/link'
 import Image from 'next/image'
-import { usePathname } from 'next/navigation'
 import Button from './Button'
 import Badge from './Badge'
 import { Image as ImageIcon } from 'lucide-react'
-import { analytics } from '@/lib/analytics'
 import { rutaProyecto, t, type Locale } from '@/lib/i18n'
 
 interface FeaturedProjectCardProps {
@@ -26,24 +23,6 @@ export default function FeaturedProjectCard({
   slug,
   locale,
 }: FeaturedProjectCardProps) {
-  const pathname = usePathname()
-  
-  const handleClick = () => {
-    if (typeof window !== 'undefined') {
-      const ctaLocation = pathname || 'unknown'
-      const ctaDestination = rutaProyecto(locale, slug)
-      
-      // Usar cta_clicked homologado con el resto del sistema
-      analytics.ctaClicked(
-        title, // cta_name: nombre del proyecto
-        'section_cta', // cta_type
-        ctaLocation,
-        ctaDestination,
-        'proyectos' // section_name
-      )
-    }
-  }
-
   return (
     <div className="mb-12">
       <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-xl transition-all duration-300">
@@ -95,15 +74,18 @@ export default function FeaturedProjectCard({
             ))}
           </div>
           
-          <Link 
+          {/* Usa el componente en vez de replicar sus clases a mano, que es
+              como estaba antes y por eso se quedó sin estado de foco. */}
+          <Button
             href={rutaProyecto(locale, slug)}
-            onClick={handleClick}
-            className="inline-block"
+            variant="ghost"
+            size="lg"
+            ctaType="section_cta"
+            sectionName="proyectos"
+            ctaName={title}
           >
-            <span className="font-medium transition rounded-lg inline-flex items-center justify-center gap-2 text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 px-8 py-3 text-base">
-              {t(locale).proyectos.verCaso}
-            </span>
-          </Link>
+            {t(locale).proyectos.verCaso}
+          </Button>
         </div>
       </div>
     </div>

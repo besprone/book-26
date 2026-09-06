@@ -22,7 +22,7 @@ export default function ProfileCard({
   tono = 'primary',
 }: ProfileCardProps) {
   return (
-    <Card hover className="p-6">
+    <Card className="p-6">
       <CajaIcono icon={icon} tamano="lg" tono={tono} className="mb-4" />
       <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">{title}</h3>
       <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">{description}</p>

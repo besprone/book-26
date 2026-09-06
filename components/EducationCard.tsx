@@ -33,7 +33,7 @@ export default function EducationCard({
   const Icono = icon ?? (isHighlighted ? GraduationCap : Award)
 
   return (
-    <Card hover className={isHighlighted ? 'p-6' : 'p-5'}>
+    <Card className={isHighlighted ? 'p-6' : 'p-5'}>
       <div className="flex items-start gap-4">
         <CajaIcono
           icon={Icono}

@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import { rutas, t, type Locale } from '@/lib/i18n'
 import Badge from '@/components/Badge'
 import { iconoDeCategoria } from '@/lib/iconos-badge'
+import { BloqueMarcado, ItemMarcado, ListaMarcada } from '@/components/ListaMarcada'
 import Button from '@/components/Button'
 import ImageWithSkeleton from '@/components/ImageWithSkeleton'
 import ScrollDepthTracker from '@/components/ScrollDepthTracker'
@@ -69,28 +70,33 @@ export default async function ProjectPage({
             {proyecto.title || 'Proyecto'}
           </h1>
           
-          {/* Metadata con bullets homologados */}
+          {/* Metadata de la ficha.
+              Antes usaba la misma barra de acento que las listas, pero en
+              horizontal una barra vertical no lee como "marca de ítem" sino
+              como separador de columnas: el mismo símbolo diciendo otra cosa.
+              Aquí son pares etiqueta/valor, así que van en un <dl>, que es lo
+              que un lector de pantalla anuncia como tal. */}
           {(proyecto.client || proyecto.year || proyecto.role) && (
-            <div className="flex flex-wrap items-center gap-6 md:gap-8 mb-6 text-sm md:text-base">
+            <dl className="flex flex-wrap items-baseline gap-x-8 gap-y-2 mb-6 text-sm md:text-base">
               {proyecto.client && (
-                <div className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-3">
-                  <span className="text-gray-600 dark:text-gray-400">{txt.cliente}</span>
-                  <span className="font-semibold text-gray-900 dark:text-white ml-1">{proyecto.client}</span>
+                <div>
+                  <dt className="inline text-gray-600 dark:text-gray-400">{txt.cliente}</dt>{' '}
+                  <dd className="inline font-semibold text-gray-900 dark:text-white">{proyecto.client}</dd>
                 </div>
               )}
               {proyecto.year && (
-                <div className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-3">
-                  <span className="text-gray-600 dark:text-gray-400">{txt.anio}</span>
-                  <span className="font-semibold text-gray-900 dark:text-white ml-1">{proyecto.year}</span>
+                <div>
+                  <dt className="inline text-gray-600 dark:text-gray-400">{txt.anio}</dt>{' '}
+                  <dd className="inline font-semibold text-gray-900 dark:text-white">{proyecto.year}</dd>
                 </div>
               )}
               {proyecto.role && (
-                <div className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-3">
-                  <span className="text-gray-600 dark:text-gray-400">{txt.rol}</span>
-                  <span className="font-semibold text-gray-900 dark:text-white ml-1">{proyecto.role}</span>
+                <div>
+                  <dt className="inline text-gray-600 dark:text-gray-400">{txt.rol}</dt>{' '}
+                  <dd className="inline font-semibold text-gray-900 dark:text-white">{proyecto.role}</dd>
                 </div>
               )}
-            </div>
+            </dl>
           )}
 
           {/* Tags */}
@@ -173,48 +179,24 @@ export default async function ProjectPage({
               <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-white">
                 {txt.proceso}
               </h2>
-              <div className="space-y-6 max-w-prose">
-                  {proyecto.proceso.investigacion && (
-                    <div className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-4">
-                      <h3 className="font-semibold text-lg mb-2 text-gray-900 dark:text-white">
-                        {txt.investigacion}
-                      </h3>
+              {/* Las cuatro fases son una serie, no cuatro bloques sueltos:
+                  van en una lista para que se anuncie como tal. */}
+              <ListaMarcada densidad="normal" className="max-w-prose">
+                {[
+                  [txt.investigacion, proyecto.proceso.investigacion],
+                  [txt.diseno, proyecto.proceso.diseno],
+                  [txt.desarrollo, proyecto.proceso.desarrollo],
+                  [txt.analisisDatos, proyecto.proceso.analisisDatos],
+                ]
+                  .filter(([, texto]) => texto)
+                  .map(([titulo, texto]) => (
+                    <ItemMarcado key={titulo} titulo={titulo} nivel="h3">
                       <p className="text-gray-600 dark:text-gray-400 leading-relaxed max-w-prose">
-                        {proyecto.proceso.investigacion}
+                        {texto}
                       </p>
-                    </div>
-                  )}
-                  {proyecto.proceso.diseno && (
-                    <div className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-4">
-                      <h3 className="font-semibold text-lg mb-2 text-gray-900 dark:text-white">
-                        {txt.diseno}
-                      </h3>
-                      <p className="text-gray-600 dark:text-gray-400 leading-relaxed max-w-prose">
-                        {proyecto.proceso.diseno}
-                      </p>
-                    </div>
-                  )}
-                  {proyecto.proceso.desarrollo && (
-                    <div className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-4">
-                      <h3 className="font-semibold text-lg mb-2 text-gray-900 dark:text-white">
-                        {txt.desarrollo}
-                      </h3>
-                      <p className="text-gray-600 dark:text-gray-400 leading-relaxed max-w-prose">
-                        {proyecto.proceso.desarrollo}
-                      </p>
-                    </div>
-                  )}
-                  {proyecto.proceso.analisisDatos && (
-                    <div className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-4">
-                      <h3 className="font-semibold text-lg mb-2 text-gray-900 dark:text-white">
-                        {txt.analisisDatos}
-                      </h3>
-                      <p className="text-gray-600 dark:text-gray-400 leading-relaxed max-w-prose">
-                        {proyecto.proceso.analisisDatos}
-                      </p>
-                    </div>
-                  )}
-              </div>
+                    </ItemMarcado>
+                  ))}
+              </ListaMarcada>
             </section>
           )}
 
@@ -231,13 +213,13 @@ export default async function ProjectPage({
                     <h3 className="font-semibold text-lg mb-3 text-gray-900 dark:text-white">
                       {txt.soloRol}
                     </h3>
-                    <div className="space-y-2">
-                      {proyecto.rolYHerramientas.rol.map((rolItem, index) => (
-                        <div key={index} className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-4">
-                          <p className="text-gray-600 dark:text-gray-400">{rolItem}</p>
-                        </div>
+                    <ListaMarcada className="space-y-2">
+                      {proyecto.rolYHerramientas.rol.map((rolItem) => (
+                        <ItemMarcado key={rolItem} className="text-gray-600 dark:text-gray-400">
+                          {rolItem}
+                        </ItemMarcado>
                       ))}
-                    </div>
+                    </ListaMarcada>
                   </div>
                 )}
                 {proyecto.rolYHerramientas.herramientas && (
@@ -245,13 +227,13 @@ export default async function ProjectPage({
                     <h3 className="font-semibold text-lg mb-3 text-gray-900 dark:text-white">
                       {txt.herramientas}
                     </h3>
-                    <div className="space-y-2">
-                      {proyecto.rolYHerramientas.herramientas.map((herramienta, index) => (
-                        <div key={index} className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-4">
-                          <p className="text-gray-600 dark:text-gray-400">{herramienta}</p>
-                        </div>
+                    <ListaMarcada className="space-y-2">
+                      {proyecto.rolYHerramientas.herramientas.map((herramienta) => (
+                        <ItemMarcado key={herramienta} className="text-gray-600 dark:text-gray-400">
+                          {herramienta}
+                        </ItemMarcado>
                       ))}
-                    </div>
+                    </ListaMarcada>
                   </div>
                 )}
               </div>
@@ -265,13 +247,13 @@ export default async function ProjectPage({
               <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-white">
                 {txt.resultados}
               </h2>
-              <div className="space-y-3">
-                {proyecto.resultados.map((resultado, index) => (
-                  <div key={index} className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-4">
-                    <p className="text-lg text-gray-600 dark:text-gray-400">{resultado}</p>
-                  </div>
+              <ListaMarcada>
+                {proyecto.resultados.map((resultado) => (
+                  <ItemMarcado key={resultado} className="text-lg text-gray-600 dark:text-gray-400">
+                    {resultado}
+                  </ItemMarcado>
                 ))}
-              </div>
+              </ListaMarcada>
             </section>
           )}
 
@@ -282,9 +264,12 @@ export default async function ProjectPage({
               <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-white">
                 {txt.aprendizajes}
               </h2>
-              <div className="border-l-2 border-accent-500/50 dark:border-accent-500/40 pl-4">
-                <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-prose">{proyecto.aprendizajes}</p>
-              </div>
+              {/* Un solo párrafo: no es una serie, así que no finge ser lista. */}
+              <BloqueMarcado>
+                <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-prose">
+                  {proyecto.aprendizajes}
+                </p>
+              </BloqueMarcado>
             </section>
           )}
 

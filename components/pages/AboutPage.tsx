@@ -29,7 +29,7 @@ export default function AboutPage({ locale }: { locale: Locale }) {
     <div className="bg-white dark:bg-gray-900">
       <ScrollDepthTracker />
       {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 relative">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20 lg:py-24 relative">
         <SectionViewTracker sectionName="hero" className="absolute top-0 left-0 w-full h-1" />
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
@@ -77,7 +77,7 @@ export default function AboutPage({ locale }: { locale: Locale }) {
       </section>
 
       {/* Resumen Profesional Section */}
-      <section className="bg-gray-50 dark:bg-gray-800 py-20 relative">
+      <section className="bg-gray-50 dark:bg-gray-800 py-14 md:py-16 relative">
         <SectionViewTracker sectionName="resumen_profesional" className="absolute top-0 left-0 w-full h-1" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader title={config.resumenProfesional.title} sectionName="resumen_profesional" />
@@ -99,7 +99,7 @@ export default function AboutPage({ locale }: { locale: Locale }) {
       </section>
 
       {/* Experiencia Section */}
-      <section className="py-20 relative">
+      <section className="py-14 md:py-16 relative">
         <SectionViewTracker sectionName="experiencia" className="absolute top-0 left-0 w-full h-1" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader title={config.experiencia.title} sectionName="experiencia" />
@@ -108,7 +108,7 @@ export default function AboutPage({ locale }: { locale: Locale }) {
       </section>
 
       {/* Formación y Certificaciones Section */}
-      <section className="bg-gray-50 dark:bg-gray-800 py-20 relative">
+      <section className="bg-gray-50 dark:bg-gray-800 py-14 md:py-16 relative">
         <SectionViewTracker sectionName="formacion" className="absolute top-0 left-0 w-full h-1" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader title={config.formacion.title} sectionName="formacion" />
@@ -158,7 +158,7 @@ export default function AboutPage({ locale }: { locale: Locale }) {
       </section>
 
       {/* Stack Section */}
-      <section className="py-20 relative">
+      <section className="py-14 md:py-16 relative">
         <SectionViewTracker sectionName="stack" className="absolute top-0 left-0 w-full h-1" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader title={config.stack.title} sectionName="stack" />

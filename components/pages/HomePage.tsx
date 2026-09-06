@@ -44,7 +44,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
       <JsonLd data={personaJsonLd} />
       <ScrollDepthTracker />
       {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 relative">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20 lg:py-24 relative">
         <SectionViewTracker sectionName="hero" className="absolute top-0 left-0 w-full h-1" />
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
@@ -103,7 +103,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
       </section>
 
       {/* Perfil Profesional Section */}
-      <section className="bg-gray-50 dark:bg-gray-800 py-20 relative">
+      <section className="bg-gray-50 dark:bg-gray-800 py-14 md:py-16 relative">
         <SectionViewTracker sectionName="perfil" className="absolute top-0 left-0 w-full h-1" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader
@@ -131,7 +131,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
 
       {/* Proyectos Section */}
       {featuredProyectos.length > 0 && (
-        <section className="py-20 relative">
+        <section className="py-14 md:py-16 relative">
           <SectionViewTracker sectionName="proyectos" className="absolute top-0 left-0 w-full h-1" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <SectionHeader
@@ -140,16 +140,17 @@ export default function HomePage({ locale }: { locale: Locale }) {
               actionHref={config.proyectos.actionButton.href}
               sectionName="proyectos"
             />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
               {featuredProyectos.map((proyecto) => (
                 <ProjectCard
                   key={proyecto.slug}
                   title={proyecto.title}
-                  description={proyecto.description}
                   image={proyecto.image}
-                  technologies={proyecto.technologies}
                   slug={proyecto.slug}
                   locale={locale}
+                  client={proyecto.client}
+                  year={proyecto.year}
+                  type={proyecto.type}
                 />
               ))}
             </div>
@@ -158,7 +159,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
       )}
 
       {/* Stack Section */}
-      <section className="bg-gray-50 dark:bg-gray-800 py-20 relative">
+      <section className="bg-gray-50 dark:bg-gray-800 py-14 md:py-16 relative">
         <SectionViewTracker sectionName="stack" className="absolute top-0 left-0 w-full h-1" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader

@@ -14,7 +14,7 @@ export default function ContactPage({ locale }: { locale: Locale }) {
     <div className="bg-white dark:bg-gray-900">
       <ScrollDepthTracker />
       {/* Sección Principal: Dos Columnas */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 relative">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20 lg:py-24 relative">
         <SectionViewTracker sectionName="contacto" className="absolute top-0 left-0 w-full h-1" />
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Columna Izquierda: Texto */}

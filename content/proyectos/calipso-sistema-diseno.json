@@ -19,15 +19,19 @@
   "role": "Líder de diseño UI",
   "reto": "Cuando llegué al equipo existían múltiples librerías y aproximaciones de sistema de diseño. Esto generaba inconsistencia visual, duplicación de esfuerzos y fricción con desarrollo. El objetivo fue homologar todo lo existente, rescatar buenas prácticas y definir nuevas reglas que funcionaran como la fuente única de verdad para diseño y desarrollo. Queríamos lograr: Un sistema de diseño unificado y escalable. Reglas claras para devs. Patrones reutilizables. Documentación accesible para todo el equipo.",
   "proceso": {
-    "investigacion": "Entrevisté a devs, PMs y revisé las tecnologías usadas en frontend. Analicé flujos existentes para identificar los componentes base y reforcé mi conocimiento en Atomic Design aplicado a sistemas de diseño.",
+    "investigacion": "Entrevisté a devs y PMs, y revisé las tecnologías usadas en frontend. Analicé los flujos existentes para identificar los componentes base y reforcé mi conocimiento en Atomic Design aplicado a sistemas de diseño.",
     "investigacionImage": "/proyectos/calipso-sistema-diseno/investigacion.jpg",
-    "diseno": "Partimos del manual de marca y ajustamos la paleta de colores para cumplir con criterios de accesibilidad. Se definieron tokens, átomos, moléculas, organismos, templates y páginas. Prototipamos las primeras animaciones y transiciones de estado.",
-    "desarrollo": "Documenté do's & don'ts de cada componente y construimos el Storybook del sistema. Además, sentamos bases para que en el futuro la documentación pueda generarse con IA y publicarse en un sitio web accesible para todos.",
-    "analisisDatos": "Evaluamos consistencia, adopción y tiempos de diseño vs prototipado antes y después del sistema."
+    "diseno": "Partí del manual de marca y ajusté la paleta de colores para cumplir criterios de accesibilidad. Definí tokens, átomos, moléculas, organismos, templates y páginas, y prototipé las primeras animaciones y transiciones de estado.",
+    "desarrollo": "Documenté los do’s & don’ts de cada componente y construí con el equipo el Storybook del sistema. Sentamos además las bases para que la documentación pueda generarse con IA y publicarse en un sitio accesible para todos.",
+    "analisisDatos": "Evalué consistencia, adopción y tiempos de diseño frente a prototipado, antes y después del sistema."
   },
   "rolYHerramientas": {
     "rol": [
-      "Líder de diseño UI"
+      "Investigación con stakeholders",
+      "Análisis de flujos",
+      "Definición de tokens y componentes",
+      "Documentación del sistema",
+      "Medición de adopción"
     ],
     "herramientas": [
       "Figma",

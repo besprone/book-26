@@ -16,15 +16,20 @@
   "role": "Product Design Manager",
   "reto": "Many users of the kubo.financiero app hold active investments but still face immediate liquidity needs. The challenge was to design a way to request a loan using those existing investments as collateral, without having to cash them out or lose the returns already earned. The solution had to be clear, trustworthy and scalable, while respecting regulatory conditions and how users actually behave with their money.",
   "proceso": {
-    "investigacion": "Exploring and framing the challenge: we looked at the opportunity created by connecting two existing products (loans and investments), through internal conversations and potential use cases. Stakeholder interviews: we spoke with product, risk, business and legal to understand constraints, validation rules, how amounts are calculated, permitted flows and operational risks. Benchmarking: we reviewed comparable products in financial services and studied how other fintechs solve liquidity.",
+    "investigacion": "I explored the opportunity created by connecting two existing products, loans and investments, through internal conversations and potential use cases. I interviewed the product, risk, business and legal teams to understand constraints, validation rules, how amounts are calculated, permitted flows and operational risks. I reviewed comparable products in financial services and studied how other fintechs solve liquidity.",
     "investigacionImage": "/proyectos/credito-respaldo-inversiones/investigacion.jpg",
-    "diseno": "Ideation and flows: we designed an experience that starts from the investments module. The user sees a new option to borrow up to 90% of their invested value without cashing out. Prototyping: we built high-fidelity prototypes in Figma, including variants for the number of investments held and the state of the loan.",
-    "desarrollo": "Internal testing and adjustments: we tested the flow across scenarios, refining messaging, visual rules, compatibility with existing loan flows and edge cases. Legal and risk adjustments: we adapted key copy to clearly communicate the use of investments as collateral, the possible freezing of funds and the risk policy.",
+    "diseno": "I designed an experience that starts from the investments module: the user sees a new option to borrow up to 90% of their invested value without cashing out. I built high-fidelity prototypes in Figma, including variants for the number of investments held and the state of the loan.",
+    "desarrollo": "I tested the flow across scenarios and refined messaging, visual rules, compatibility with existing loan flows and edge cases. I worked with legal and risk to adapt the key copy, so it clearly communicates the use of investments as collateral, the possible freezing of funds and the risk policy.",
     "analisisDatos": ""
   },
   "rolYHerramientas": {
     "rol": [
-      "Product Design Manager"
+      "Framing the challenge",
+      "Stakeholder interviews",
+      "Sector benchmarking",
+      "Flow design",
+      "High-fidelity prototyping",
+      "Legal and risk alignment"
     ],
     "herramientas": [
       "Figma",

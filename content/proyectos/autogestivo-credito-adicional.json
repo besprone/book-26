@@ -17,15 +17,19 @@
   "role": "Líder de diseño de producto (Product Design Manager)",
   "reto": "En kubo.financiero, detectamos que algunos usuarios en atraso podían ver ofertas activas de crédito adicional dentro del flujo autogestivo, debido a un desfase en la actualización del sistema. Esta situación generaba confusión e incrementaba la carga operativa para el equipo de atención y cobranza. El reto fue rediseñar el flujo para prevenir estos casos, asegurando que solo se mostraran ofertas a usuarios elegibles en tiempo real, y comunicar de forma clara el motivo en caso de no mostrar ofertas.",
   "proceso": {
-    "investigacion": "Identificación del problema: Se detectó el bug a través de reportes de asesores y monitoreo de ATC. Análisis del flujo actual: Se mapearon los pasos del proceso autogestivo para crédito adicional, con especial foco en la validación de estatus del crédito anterior.",
+    "investigacion": "Detecté el problema a partir de reportes de asesores y del monitoreo de ATC. Mapeé los pasos del proceso autogestivo para crédito adicional, con foco en cómo se validaba el estatus del crédito anterior.",
     "investigacionImage": "/proyectos/autogestivo-credito-adicional/investigacion.jpg",
-    "diseno": "Definición del nuevo flujo: Se planteó un punto de validación al inicio para verificar si el usuario ya está al corriente con su crédito. Diseño de pantallas: Se diseñó una nueva pantalla que informa claramente al usuario que su estatus ya cambió y que por ahora no hay una oferta disponible. Iteración visual y de contenido: Se revisó el mensaje para hacerlo más claro y empático, con sugerencia de ilustración que refuerce el mensaje.",
-    "desarrollo": "Sincronización con equipo de desarrollo: Se definieron los triggers y condiciones técnicas para hacer la validación en tiempo real.",
+    "diseno": "Definí un punto de validación al inicio del flujo para verificar si el usuario ya está al corriente con su crédito. Diseñé una pantalla que le informa con claridad de que su estatus cambió y de que por ahora no hay una oferta disponible. Iteré el mensaje para hacerlo más claro y empático, y propuse una ilustración que lo refuerza.",
+    "desarrollo": "Definí con el equipo de desarrollo los triggers y las condiciones técnicas necesarias para hacer la validación en tiempo real.",
     "analisisDatos": ""
   },
   "rolYHerramientas": {
     "rol": [
-      "Líder de diseño de producto (Product Design Manager)"
+      "Detección del problema",
+      "Mapeo del flujo",
+      "Diseño de pantallas",
+      "Redacción de contenido",
+      "Sincronización con desarrollo"
     ],
     "herramientas": [
       "Figma",

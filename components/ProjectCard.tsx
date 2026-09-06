@@ -78,10 +78,7 @@ export default function ProjectCard({
           {technologies.slice(0, 3).map((tech) => (
             <Badge
               key={tech}
-              variant="technology"
-              technology={tech as 'UX' | 'Dev' | 'Data'}
-              size="md"
-              shape="rounded"
+              variant="categoria"
             >
               {tech}
             </Badge>

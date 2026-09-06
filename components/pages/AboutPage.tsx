@@ -3,6 +3,7 @@ import { t, type Locale } from '@/lib/i18n'
 import { ItemMarcado, ListaMarcada } from '@/components/ListaMarcada'
 import Button from '@/components/Button'
 import Card from '@/components/Card'
+import CajaIcono from '@/components/CajaIcono'
 import SectionHeader from '@/components/SectionHeader'
 import ProfileCard from '@/components/ProfileCard'
 import ExperienceTimeline from '@/components/ExperienceTimeline'
@@ -89,8 +90,7 @@ export default function AboutPage({ locale }: { locale: Locale }) {
                   key={index}
                   title={card.title}
                   description={card.description}
-                  icon={Icon ? <Icon className="w-8 h-8" /> : undefined}
-                  iconColor="primary"
+                  icon={Icon}
                 />
               )
             })}
@@ -129,7 +129,7 @@ export default function AboutPage({ locale }: { locale: Locale }) {
                     institucion={item.institucion}
                     año={item.año}
                     variant="default"
-                    icon={Icon ? <Icon className="w-6 h-6 text-primary-500 dark:text-primary-400" /> : undefined}
+                    icon={Icon}
                   />
                 )
               })}
@@ -167,11 +167,7 @@ export default function AboutPage({ locale }: { locale: Locale }) {
               const Icon = stackIcons[index]
               return (
                 <Card key={index} className="p-6">
-                  <div className="mb-4">
-                    <div className="w-16 h-16 bg-accent-50 dark:bg-accent-500/15 rounded-xl flex items-center justify-center mb-4">
-                      {Icon && <Icon className="w-8 h-8 text-accent-900 dark:text-accent-400" />}
-                    </div>
-                  </div>
+                  {Icon && <CajaIcono icon={Icon} tamano="lg" tono="accent" className="mb-4" />}
                   <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">
                     {category.title}
                   </h3>

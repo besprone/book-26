@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { ReactNode } from 'react'
 import { analytics } from '@/lib/analytics'
-import { rutas } from '@/lib/i18n'
 import { anilloFoco } from '@/lib/estilos-boton'
 
 interface NavLinkProps {
@@ -24,23 +23,24 @@ export default function NavLink({
 }: NavLinkProps) {
   const pathname = usePathname()
 
-  // Los enlaces al inicio ('/' y '/en') solo se marcan en coincidencia exacta:
-  // si no, '/en' marcaría todas las rutas en inglés por empezar igual.
-  const esInicio = (Object.values(rutas.home) as string[]).includes(href)
-  // Para el resto se compara por segmento completo ('/en/work/'), no por
-  // prefijo suelto: '/en/work' no debe marcarse estando en '/en/workshop'.
-  const esLaPagina = pathname === href
-  const esLaSeccion = !esInicio && pathname.startsWith(`${href}/`)
-  const isActive = esLaPagina || esLaSeccion
-
   /**
-   * Estar *en* Proyectos y estar *dentro de* un proyecto no son lo mismo, y
-   * ARIA distingue las dos cosas: `page` para la página exacta, `true` para la
-   * sección que la contiene. Antes no había ninguno de los dos, así que quien
-   * navega con lector de pantalla no tenía forma de saber dónde estaba: los
-   * cinco enlaces sonaban idénticos.
+   * Un enlace se marca sólo en la página exacta, no en las que cuelgan de
+   * ella: dentro de la ficha de un proyecto, "Proyectos" no va marcado.
+   *
+   * La convención más extendida es la contraria —marcar la sección entera—,
+   * y la razón de peso para hacerlo es que si no, dentro de una ficha no
+   * queda nada marcado y se pierde la referencia de dónde estás. Aquí eso no
+   * pasa: la ficha abre con un "Volver a proyectos" que ya dice de dónde
+   * vienes, así que el menú no tiene que hacer ese trabajo y puede decir algo
+   * más preciso: "seleccionado" es la página en la que estás.
+   *
+   * El `aria-current` acompaña a lo que se ve, para que quien oye la página y
+   * quien la mira reciban lo mismo. Antes no había ninguno: medido en
+   * producción, `null` en los cinco enlaces, así que con un lector de
+   * pantalla no había forma de saber en qué página estabas.
    */
-  const marcaActual = esLaPagina ? 'page' : esLaSeccion ? true : undefined
+  const isActive = pathname === href
+  const marcaActual = isActive ? 'page' : undefined
 
   const baseStyles = `transition font-medium rounded-lg ${anilloFoco}`
   

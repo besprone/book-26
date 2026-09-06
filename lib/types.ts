@@ -38,7 +38,7 @@ export interface ContactoConfig {
     button: {
       text: string
       href: string
-      variant: 'ghost' | 'solid' | 'outline'
+      variant: 'primary' | 'secondary' | 'tonal' | 'ghost'
     }
   }
   final: {
@@ -106,12 +106,12 @@ export interface HomeConfig {
       primary: {
         text: string
         href: string
-        variant: 'ghost' | 'solid' | 'outline'
+        variant: 'primary' | 'secondary' | 'tonal' | 'ghost'
       }
       secondary: {
         text: string
         href: string
-        variant: 'ghost' | 'solid' | 'outline'
+        variant: 'primary' | 'secondary' | 'tonal' | 'ghost'
       }
     }
   }
@@ -151,12 +151,12 @@ export interface HomeConfig {
       primary: {
         text: string
         href: string
-        variant: 'ghost' | 'solid' | 'outline'
+        variant: 'primary' | 'secondary' | 'tonal' | 'ghost'
       }
       secondary: {
         text: string
         href: string
-        variant: 'ghost' | 'solid' | 'outline'
+        variant: 'primary' | 'secondary' | 'tonal' | 'ghost'
       }
     }
   }
@@ -222,12 +222,12 @@ export interface SobreMiConfig {
       primary: {
         text: string
         href: string
-        variant: 'ghost' | 'solid' | 'outline'
+        variant: 'primary' | 'secondary' | 'tonal' | 'ghost'
       }
       secondary: {
         text: string
         href: string
-        variant: 'ghost' | 'solid' | 'outline'
+        variant: 'primary' | 'secondary' | 'tonal' | 'ghost'
       }
     }
   }

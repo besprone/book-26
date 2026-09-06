@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 import { ReactNode } from 'react'
 import { analytics } from '@/lib/analytics'
 import { rutas } from '@/lib/i18n'
+import { anilloFoco } from '@/lib/estilos-boton'
 
 interface NavLinkProps {
   href: string
@@ -32,7 +33,7 @@ export default function NavLink({
     ? pathname === href
     : pathname === href || pathname.startsWith(`${href}/`)
   
-  const baseStyles = 'transition font-medium'
+  const baseStyles = `transition font-medium rounded-lg ${anilloFoco}`
   
   // Handler para trackear clicks del menú
   const handleClick = () => {

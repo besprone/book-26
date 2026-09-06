@@ -308,7 +308,7 @@ export default async function ProjectPage({
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               href={rutas.proyectos[locale]}
-              variant="outline" 
+              variant="secondary" 
               size="lg"
               ctaType="cta_section"
               sectionName="cta"
@@ -317,7 +317,7 @@ export default async function ProjectPage({
             </Button>
             <Button 
               href={rutas.contacto[locale]}
-              variant="solid" 
+              variant="primary" 
               size="lg"
               ctaType="cta_section"
               sectionName="cta"

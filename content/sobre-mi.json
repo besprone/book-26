@@ -209,12 +209,12 @@
       "primary": {
         "text": "Ver proyectos",
         "href": "/proyectos",
-        "variant": "outline"
+        "variant": "secondary"
       },
       "secondary": {
         "text": "Contáctame",
         "href": "/contacto",
-        "variant": "solid"
+        "variant": "primary"
       }
     }
   }

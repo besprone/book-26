@@ -25,10 +25,10 @@ export default function NotFound() {
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
         {/* Se ofrece también proyectos: si alguien llega desde un enlace roto
             a un caso, es lo que estaba buscando */}
-        <Button href="/en/work" variant="solid" size="lg" ctaType="section_cta" sectionName="404">
+        <Button href="/en/work" variant="primary" size="lg" ctaType="section_cta" sectionName="404">
           {txt.verProyectos}
         </Button>
-        <Button href="/en" variant="outline" size="lg" ctaType="section_cta" sectionName="404">
+        <Button href="/en" variant="secondary" size="lg" ctaType="section_cta" sectionName="404">
           {txt.inicio}
         </Button>
       </div>

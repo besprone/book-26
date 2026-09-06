@@ -195,6 +195,52 @@ public/           Imágenes, logos, CV en PDF
 docs/             Guías de analítica y despliegue
 ```
 
+## Sistema de botones
+
+Todo lo clicable sale de `lib/estilos-boton.ts`, para que no haya dos
+tratamientos distintos del mismo elemento.
+
+### Jerarquía
+
+| Variante | Cuándo usarla |
+|---|---|
+| `primary` | La acción principal de la vista. **Una sola por pantalla** |
+| `secondary` | Alternativa de peso comparable a la principal |
+| `tonal` | Apoyo frecuente que no debe competir con la principal |
+| `ghost` | Terciaria: navegación, acciones dentro de tarjetas |
+
+### Componentes
+
+- **`Button`** — con texto, admite icono a izquierda o derecha y `fullWidth`.
+- **`IconButton`** — solo icono, cuadrado. `label` es obligatorio: sin texto
+  visible, es lo único que oye un lector de pantalla.
+
+Ambos registran el clic automáticamente. Si el texto del botón es genérico
+("Ver caso"), `ctaName` permite registrar algo más útil, como el nombre del
+proyecto.
+
+### Tamaños
+
+`sm` 36px · `md` 44px (por defecto, el área táctil recomendada) · `lg` 48px
+
+### Radios
+
+| Clase | Para |
+|---|---|
+| `rounded-lg` | Controles: botones, chips, campos |
+| `rounded-xl` | Contenedores: tarjetas, cajas de icono |
+| `rounded-full` | Píldoras y conmutadores |
+| `rounded-2xl` | Media grande: ilustraciones de portada |
+
+### Foco
+
+`anilloFoco` se aplica a **todo** lo enfocable, no solo a los botones:
+también a enlaces de navegación, logo, tarjetas de proyecto y enlaces del pie.
+
+> Si añades estilos compartidos en `lib/`, esa ruta ya está en el `content` de
+> `tailwind.config.ts`. Sin ella, Tailwind no ve esas clases y las genera
+> vacías: el marcado sale con la clase pero sin ninguna regla CSS detrás.
+
 ## Imágenes
 
 Se sirven con `next/image`, que genera AVIF y WebP y redimensiona según el

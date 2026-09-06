@@ -144,7 +144,7 @@ export default function ProyectosClient({ initialProyectos, locale }: ProyectosC
               <div className="text-center mt-8">
                 <Button
                   onClick={handleLoadMore}
-                  variant="ghost"
+                  variant="tonal"
                   size="lg"
                   ctaType="section_cta"
                   sectionName="proyectos"

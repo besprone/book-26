@@ -5,6 +5,7 @@ import type { ContactoConfig } from '@/lib/types'
 import { analytics } from '@/lib/analytics'
 import { usePathname } from 'next/navigation'
 import TurnstileWidget, { reiniciarTurnstile } from './TurnstileWidget'
+import Button from './Button'
 
 interface ContactFormProps {
   config: ContactoConfig
@@ -227,14 +228,17 @@ export default function ContactForm({ config }: ContactFormProps) {
 
       <TurnstileWidget onToken={setTurnstileToken} />
 
-      <button
+      <Button
         type="submit"
+        variant="primary"
+        size="lg"
+        fullWidth
         disabled={status === 'loading'}
-        aria-busy={status === 'loading'}
-        className="w-full bg-primary-500 text-white px-8 py-3 rounded-lg hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed font-medium text-base inline-flex items-center justify-center"
+        ctaType="form_submit"
+        sectionName="contacto"
       >
         {status === 'loading' ? config.form.submitButton.loadingText : config.form.submitButton.text}
-      </button>
+      </Button>
 
       {/*
         El contenedor con aria-live existe siempre, aunque esté vacío: si se

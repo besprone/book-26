@@ -171,11 +171,6 @@ export const analytics = {
     })
   },
 
-  experienceSectionScrolled: (scrollPercentage: number) => {
-    trackEvent('experience_section_scrolled', {
-      scroll_percentage: scrollPercentage,
-    })
-  },
 
   videoPlayed: (projectSlug: string, videoUrl: string) => {
     trackEvent('video_played', {

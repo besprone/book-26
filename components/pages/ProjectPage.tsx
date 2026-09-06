@@ -57,7 +57,7 @@ export default async function ProjectPage({
         projectTitle={proyecto.title}
         projectType={proyecto.type}
       />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16 relative">
         <SectionViewTracker sectionName="proyecto_detalle" className="absolute top-0 left-0 w-full h-1" />
         {/* Botón Volver */}
         <div className="mb-8">

@@ -3,7 +3,6 @@
 import { useState, useMemo } from 'react'
 import type { Proyecto } from '@/lib/types'
 import FilterChips from '@/components/FilterChips'
-import FeaturedProjectCard from '@/components/FeaturedProjectCard'
 import ProjectCard from '@/components/ProjectCard'
 import Button from '@/components/Button'
 import ScrollDepthTracker from '@/components/ScrollDepthTracker'
@@ -89,7 +88,7 @@ export default function ProyectosClient({ initialProyectos, locale }: ProyectosC
   return (
     <div className="bg-white dark:bg-gray-900">
       <ScrollDepthTracker />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-16 relative">
         <SectionViewTracker sectionName="proyectos" className="absolute top-0 left-0 w-full h-1" />
         {/* Header */}
         <div className="mb-12">
@@ -114,29 +113,35 @@ export default function ProyectosClient({ initialProyectos, locale }: ProyectosC
         {featuredProject && 
          (activeFilter === 'Todo' || 
           (featuredProject.type && featuredProject.type.includes(activeFilter))) && (
-          <FeaturedProjectCard
-            title={featuredProject.title}
-            description={featuredProject.description}
-            image={featuredProject.image}
-            technologies={featuredProject.technologies}
-            slug={featuredProject.slug}
-            locale={locale}
-          />
+          <div className="mb-14">
+            <ProjectCard
+              destacado
+              title={featuredProject.title}
+              description={featuredProject.description}
+              image={featuredProject.image}
+              slug={featuredProject.slug}
+              locale={locale}
+              client={featuredProject.client}
+              year={featuredProject.year}
+              type={featuredProject.type}
+            />
+          </div>
         )}
 
         {/* Grid de Proyectos */}
         {visibleProyectos.length > 0 ? (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12 mb-8">
               {visibleProyectos.map((proyecto) => (
                 <ProjectCard
                   key={proyecto.slug}
                   title={proyecto.title}
-                  description={proyecto.description}
                   image={proyecto.image}
-                  technologies={proyecto.technologies}
                   slug={proyecto.slug}
                   locale={locale}
+                  client={proyecto.client}
+                  year={proyecto.year}
+                  type={proyecto.type}
                 />
               ))}
             </div>

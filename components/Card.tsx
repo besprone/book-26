@@ -1,32 +1,28 @@
 import { ReactNode } from 'react'
-import Link from 'next/link'
 
 interface CardProps {
   children: ReactNode
-  href?: string
   className?: string
   hover?: boolean
 }
 
-export default function Card({
-  children,
-  href,
-  className = '',
-  hover = false,
-}: CardProps) {
-  const baseStyles = 'bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800'
-  const hoverStyles = hover ? 'hover:shadow-lg hover:border-primary-300 dark:hover:border-primary-800 transition-all duration-300' : ''
-  
-  const classes = `${baseStyles} ${hoverStyles} ${className}`
-  
-  if (href) {
-    return (
-      <Link href={href} className={classes}>
-        {children}
-      </Link>
-    )
-  }
-  
-  return <div className={classes}>{children}</div>
-}
+/**
+ * Contenedor con fondo, borde y radio de tarjeta.
+ *
+ * Aceptaba un `href` que la convertía en un `<Link>`, pero nadie lo usaba y
+ * esa rama no llevaba anillo de foco: habría sido el único control enfocable
+ * del sitio sin él, y el fallo lo habría estrenado quien la usara por primera
+ * vez sin saberlo. Fuera.
+ *
+ * Si algún día hace falta una tarjeta clicable, ProjectCard es el ejemplo de
+ * cómo se hace: el enlace envuelve el contenido y lleva `anilloFoco`.
+ */
+export default function Card({ children, className = '', hover = false }: CardProps) {
+  const base =
+    'bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800'
+  const alPasar = hover
+    ? 'hover:shadow-lg hover:border-primary-300 dark:hover:border-primary-800 transition-all duration-300'
+    : ''
 
+  return <div className={`${base} ${alPasar} ${className}`}>{children}</div>
+}

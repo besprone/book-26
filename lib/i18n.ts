@@ -106,6 +106,7 @@ const textos = {
       inicio: 'Volver al inicio',
     },
     imagen: { error: 'Error al cargar imagen', placeholder: 'Ilustración placeholder' },
+    experiencia: { actual: 'Actual' },
     directo: {
       titulo: 'O escríbeme directo',
       intro: 'Si prefieres no llenar el formulario.',
@@ -168,6 +169,7 @@ const textos = {
       inicio: 'Back to home',
     },
     imagen: { error: 'Failed to load image', placeholder: 'Illustration placeholder' },
+    experiencia: { actual: 'Current' },
     directo: {
       titulo: 'Or reach me directly',
       intro: "If you'd rather skip the form.",

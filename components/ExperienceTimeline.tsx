@@ -1,8 +1,5 @@
-'use client'
-
-import { useEffect, useRef } from 'react'
 import Image from 'next/image'
-import { analytics } from '@/lib/analytics'
+import { t, type Locale } from '@/lib/i18n'
 
 interface ExperienceItem {
   title: string
@@ -13,100 +10,91 @@ interface ExperienceItem {
 
 interface ExperienceTimelineProps {
   items: ExperienceItem[]
+  locale: Locale
 }
 
-export default function ExperienceTimeline({ items }: ExperienceTimelineProps) {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const trackedScrolls = useRef<Set<number>>(new Set())
-
-  useEffect(() => {
-    const container = containerRef.current
-    if (!container) return
-
-    const handleScroll = () => {
-      if (!container) return
-      
-      const scrollLeft = container.scrollLeft
-      const scrollWidth = container.scrollWidth
-      const clientWidth = container.clientWidth
-      const maxScroll = scrollWidth - clientWidth
-      
-      if (maxScroll > 0) {
-        const scrollPercentage = Math.round((scrollLeft / maxScroll) * 100)
-        
-        // Trackear en 25%, 50%, 75%, 100%
-        const milestones = [25, 50, 75, 100]
-        milestones.forEach((milestone) => {
-          if (scrollPercentage >= milestone && !trackedScrolls.current.has(milestone)) {
-            trackedScrolls.current.add(milestone)
-            analytics.experienceSectionScrolled(milestone)
-          }
-        })
-      }
-    }
-
-    container.addEventListener('scroll', handleScroll, { passive: true })
-    
-    return () => {
-      container.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
+/**
+ * Historial profesional como línea vertical, del puesto más reciente al más
+ * antiguo.
+ *
+ * Antes era un carrusel horizontal. El problema no era el mecanismo sino que
+ * escondía contenido: el JSON está en orden cronológico, así que el puesto
+ * actual quedaba en la última tarjeta y había que deslizar hasta el final para
+ * verlo. Cualquier patrón que oculte elementos entierra justo lo más relevante
+ * para quien lee.
+ *
+ * En vertical todo queda visible sin interacción, se escanea de arriba abajo
+ * como un CV, y no hace falta un patrón distinto para móvil y escritorio.
+ */
+export default function ExperienceTimeline({ items, locale }: ExperienceTimelineProps) {
+  // El contenido se edita en orden cronológico (lo natural al añadir un puesto
+  // nuevo al final), pero se muestra al revés: lo más reciente primero.
+  const cronologiaInversa = [...items].reverse()
 
   return (
-    <div className="relative">
-      {/* Scroll horizontal container */}
-      <div className="overflow-x-auto pb-6 -mx-4 px-4 md:mx-0 md:px-0" ref={containerRef}>
-        <div className="relative min-w-max md:min-w-0">
-          {/* Cards de experiencia - scroll horizontal */}
-          <div className="flex gap-6 lg:gap-8 relative z-10" style={{ minWidth: 'max-content' }}>
-            {items.map((item, index) => (
-              <div
-                key={index}
-                className="flex-shrink-0 w-60 lg:w-64 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6 hover:shadow-lg transition-all duration-300"
-              >
-                <div className="flex flex-col items-center text-center">
-                  {/* Logo */}
-                  <div className="mb-5">
-                    {item.logo ? (
-                      <Image
-                        src={item.logo}
-                        alt={item.company}
-                        width={64}
-                        height={64}
-                        className="w-16 h-16 object-contain rounded-lg mx-auto"
-                      />
-                    ) : (
-                      <div className="w-16 h-16 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 rounded-lg flex items-center justify-center mx-auto">
-                        <span className="text-gray-600 dark:text-gray-300 font-bold text-xl">
-                          {item.company.charAt(0).toUpperCase()}
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                  
-                  {/* Contenido */}
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 leading-tight">
-                    {item.title}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm mb-3">
-                    {item.company}
-                  </p>
-                  <p className="text-gray-600 dark:text-gray-400 text-xs font-medium">
-                    {item.period}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+    <ol className="relative">
+      {cronologiaInversa.map((item, index) => {
+        const esActual = index === 0
 
-      {/* Indicador de scroll en móvil */}
-      <div className="lg:hidden text-center mt-4">
-        <p className="text-xs text-gray-600 dark:text-gray-400">
-          ← Desliza para ver más →
-        </p>
-      </div>
-    </div>
+        return (
+          <li key={`${item.company}-${item.period}`} className="relative flex gap-4 pb-8 last:pb-0 sm:gap-6">
+            {/* Columna de la línea: marca y trazo hacia el siguiente puesto */}
+            <div className="relative flex flex-col items-center">
+              <span
+                className={`relative z-10 flex h-12 w-12 flex-shrink-0 items-center justify-center
+                  overflow-hidden rounded-xl border sm:h-14 sm:w-14
+                  ${
+                    esActual
+                      ? 'border-primary-300 bg-white dark:border-primary-700 dark:bg-gray-800'
+                      : 'border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800'
+                  }`}
+              >
+                {item.logo ? (
+                  <Image
+                    src={item.logo}
+                    alt={item.company}
+                    width={56}
+                    height={56}
+                    className="h-8 w-8 object-contain sm:h-10 sm:w-10"
+                  />
+                ) : (
+                  <span className="text-lg font-bold text-gray-600 dark:text-gray-300">
+                    {item.company.charAt(0).toUpperCase()}
+                  </span>
+                )}
+              </span>
+
+              {/*
+                El trazo va del borde inferior de un logo al superior del
+                siguiente. `-bottom-8` compensa el pb-8 del <li>: sin eso la
+                línea se corta al acabar el contenido y queda un hueco antes
+                del siguiente puesto. No se dibuja bajo el último.
+              */}
+              {index < cronologiaInversa.length - 1 && (
+                <span
+                  aria-hidden="true"
+                  className="absolute top-12 -bottom-8 w-px bg-gray-200 dark:bg-gray-700 sm:top-14"
+                />
+              )}
+            </div>
+
+            <div className="min-w-0 flex-1 pt-1 pb-2">
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                  {item.title}
+                </h3>
+                {esActual && (
+                  <span className="rounded-full bg-primary-50 px-2.5 py-0.5 text-xs font-medium text-primary-700 dark:bg-primary-500/15 dark:text-primary-300">
+                    {t(locale).experiencia.actual}
+                  </span>
+                )}
+              </div>
+              <p className="mt-0.5 text-gray-700 dark:text-gray-300">{item.company}</p>
+              <p className="mt-0.5 text-sm text-gray-500 dark:text-gray-400">{item.period}</p>
+            </div>
+          </li>
+        )
+      })}
+    </ol>
   )
 }

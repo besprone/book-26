@@ -49,7 +49,7 @@ export default function Navbar({ locale }: { locale: Locale }) {
             {/* Mobile Menu Button */}
             <button
               onClick={toggleMenu}
-              className="md:hidden text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition p-2"
+              className="md:hidden flex h-11 w-11 items-center justify-center text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition"
               aria-label={isMenuOpen ? txt.cerrarMenu : txt.abrirMenu}
             >
               {isMenuOpen ? (

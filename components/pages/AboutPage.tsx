@@ -102,7 +102,7 @@ export default function AboutPage({ locale }: { locale: Locale }) {
         <SectionViewTracker sectionName="experiencia" className="absolute top-0 left-0 w-full h-1" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader title={config.experiencia.title} sectionName="experiencia" />
-          <ExperienceTimeline items={config.experiencia.items} />
+          <ExperienceTimeline items={config.experiencia.items} locale={locale} />
         </div>
       </section>
 

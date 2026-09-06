@@ -41,7 +41,7 @@ export default function MobileMenu({ isOpen, onClose, menuItems, locale }: Mobil
               <ThemeToggle />
               <button
                 onClick={onClose}
-                className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition p-2"
+                className="flex h-11 w-11 items-center justify-center text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition"
                 aria-label={txt.cerrarMenu}
               >
                 <X className="w-6 h-6" />

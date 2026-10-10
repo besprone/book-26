@@ -5,6 +5,7 @@ import { Languages } from 'lucide-react'
 import { rutaEquivalente, t, type Locale } from '@/lib/i18n'
 import { analytics } from '@/lib/analytics'
 import { baseBoton, tamanosBoton } from '@/lib/estilos-boton'
+import { COOKIE_IDIOMA, COOKIE_MAX_AGE } from '@/lib/cookie-idioma'
 
 interface LanguageToggleProps {
   locale: Locale
@@ -23,9 +24,13 @@ export default function LanguageToggle({ locale, className = '' }: LanguageToggl
     // Next fuerza una recarga completa al cruzar entre ellos de todas formas.
     <a
       href={href}
-      onClick={() =>
+      onClick={() => {
+        // Deja constancia de la elección para que el middleware deje de
+        // detectar: sin esto, elegir español con el navegador en inglés
+        // duraría hasta la siguiente página.
+        document.cookie = `${COOKIE_IDIOMA}=${destino}; path=/; max-age=${COOKIE_MAX_AGE}; samesite=lax`
         analytics.ctaClicked(destino.toUpperCase(), 'header_menu', pathname || '/', href, 'navbar')
-      }
+      }}
       aria-label={t(locale).cambiarIdioma}
       className={`${baseBoton} ${tamanosBoton.sm} h-11
         text-gray-700 hover:bg-gray-100 hover:text-gray-900

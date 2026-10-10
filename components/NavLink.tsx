@@ -50,7 +50,10 @@ export default function NavLink({
       const ctaName = typeof children === 'string' ? children : 'Menu Item'
       const ctaLocation = pathname || 'unknown'
       
-      analytics.ctaClicked(ctaName, 'header_menu', ctaLocation, href)
+      // El `variant` se envía como `section_name`: sin él, en PostHog un clic
+      // desde el menú de escritorio y otro desde el cajón del móvil llegaban
+      // los dos como "unknown" y eran indistinguibles.
+      analytics.ctaClicked(ctaName, 'header_menu', ctaLocation, href, `nav_${variant}`)
     }
     
     if (onClick) {

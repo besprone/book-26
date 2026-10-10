@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import IconButton from './IconButton'
 import Logo from './Logo'
@@ -9,12 +10,17 @@ import MobileMenu from './MobileMenu'
 import ThemeToggle from './ThemeToggle'
 import LanguageToggle from './LanguageToggle'
 import { rutas, t, type Locale } from '@/lib/i18n'
+import { analytics } from '@/lib/analytics'
 
 export default function Navbar({ locale }: { locale: Locale }) {
+  const pathname = usePathname()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const txt = t(locale)
 
   const toggleMenu = () => {
+    // Se mide sólo al abrir: el cierre ocurre también al pulsar un enlace,
+    // que ya se mide por su cuenta.
+    if (!isMenuOpen) analytics.mobileMenuOpened(pathname || 'unknown')
     setIsMenuOpen(!isMenuOpen)
   }
 

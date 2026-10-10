@@ -171,6 +171,32 @@ export const analytics = {
     })
   },
 
+  /**
+   * Cambio de tema. No se medía, así que no había forma de saber si alguien
+   * usaba el modo oscuro: una función que se mantiene en todos los
+   * componentes y de la que no se tenía un solo dato.
+   *
+   * Se envía el tema al que se cambia, no el que se deja.
+   */
+  themeToggled: (theme: 'light' | 'dark', page: string) => {
+    trackEvent('theme_toggled', {
+      theme,
+      page,
+    })
+  },
+
+  /**
+   * Apertura del menú del móvil. Los enlaces de dentro ya se medían, pero no
+   * cuánta gente llega a abrirlo: si muchos lo abren y pocos pulsan algo, el
+   * problema está en el menú y no en el contenido.
+   *
+   * Sólo la apertura. El cierre se dispara también al pulsar un enlace, que
+   * ya se mide aparte, así que contarlo duplicaría volumen sin responder
+   * ninguna pregunta nueva.
+   */
+  mobileMenuOpened: (page: string) => {
+    trackEvent('mobile_menu_opened', { page })
+  },
 
   videoPlayed: (projectSlug: string, videoUrl: string) => {
     trackEvent('video_played', {

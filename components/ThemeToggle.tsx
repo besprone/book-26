@@ -1,13 +1,16 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { usePathname } from 'next/navigation'
 import { Sun, Moon } from 'lucide-react'
+import { analytics } from '@/lib/analytics'
 
 interface ThemeToggleProps {
   className?: string
 }
 
 export default function ThemeToggle({ className = '' }: ThemeToggleProps) {
+  const pathname = usePathname()
   const [isDark, setIsDark] = useState(false)
   // El tema real solo se conoce en cliente: lo aplica el script del layout
   // antes de hidratar, así que el primer render siempre parte de "claro".
@@ -41,6 +44,10 @@ export default function ThemeToggle({ className = '' }: ThemeToggleProps) {
       // Modo privado o almacenamiento bloqueado: el tema no persiste,
       // pero el switch sigue funcionando durante la sesión.
     }
+
+    // Se mide el tema al que se cambia. Hasta ahora no se medía nada, así que
+    // no había un solo dato sobre si alguien usa el modo oscuro.
+    analytics.themeToggled(next ? 'dark' : 'light', pathname || 'unknown')
   }
 
   const anim = animado ? 'transition-all duration-300 ease-out' : 'transition-none'

@@ -21,9 +21,10 @@ El script:
 ### Opción 2: Manual
 
 1. Crea un nuevo archivo `[slug].json` en esta carpeta
-2. Usa la estructura de `EJEMPLO-IMAGENES.json` como referencia
-3. Crea la carpeta `public/proyectos/[slug]/` para las imágenes
-4. Guarda las imágenes con los nombres: `hero.png`, `after-reto.png`, `investigacion.png`
+2. Usa la estructura de cualquier proyecto existente como referencia, por ejemplo `calipso-sistema-diseno.json`
+3. Crea la carpeta `public/proyectos/[slug]/` para la imagen
+4. Guarda la imagen de portada como `hero.png`
+5. Crea también la versión en inglés en `content/en/proyectos/[slug].json`
 
 ## 📋 Estructura del JSON
 
@@ -43,7 +44,6 @@ El script:
   "reto": "Descripción del reto...",
   "proceso": {
     "investigacion": "...",
-    "investigacionImage": "/proyectos/[slug]/investigacion.jpg",
     "diseno": "...",
     "desarrollo": "...",
     "analisisDatos": "..."
@@ -53,20 +53,21 @@ El script:
     "herramientas": ["Figma", "React"]
   },
   "resultados": ["Resultado 1", "Resultado 2"],
-  "aprendizajes": "Texto de aprendizajes...",
-  "images": {
-    "afterReto": "/proyectos/[slug]/after-reto.jpg"
-  }
+  "aprendizajes": "Texto de aprendizajes..."
 }
 ```
 
-## 📸 Imágenes requeridas
+## 📸 Imagen requerida
 
-Para cada proyecto, guarda estas imágenes en `public/proyectos/[slug]/`:
+Cada proyecto lleva una sola imagen, en `public/proyectos/[slug]/`:
 
 - **`hero.png`** - Imagen principal (1920x800px, ratio 2.4:1)
-- **`after-reto.jpg`** - Imagen después del reto (1200x600px, ratio 2:1)
-- **`investigacion.jpg`** - Imagen de investigación (1200x600px, ratio 2:1)
+
+La ficha no muestra imágenes dentro de las secciones. Antes la plantilla
+reservaba huecos para `investigacion` y `after-reto`, pero nunca se
+programó la parte que los pinta: el contenido apuntaba a archivos que no
+existían y no se veían. Si algún día se quieren imágenes dentro del caso,
+hay que añadir a la vez el campo y el código que lo muestra.
 
 ## 🔗 Rutas de imágenes
 

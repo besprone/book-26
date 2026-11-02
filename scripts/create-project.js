@@ -122,7 +122,6 @@ async function createProject() {
     reto: reto || undefined,
     proceso: {
       ...(investigacion && { investigacion }),
-      ...(investigacion && { investigacionImage: `/proyectos/${slug}/investigacion.png` }),
       ...(diseno && { diseno }),
       ...(desarrollo && { desarrollo }),
       ...(analisisDatos && { analisisDatos }),
@@ -133,9 +132,8 @@ async function createProject() {
     },
     ...(resultados.length > 0 && { resultados }),
     ...(aprendizajes && { aprendizajes }),
-    images: {
-      afterReto: `/proyectos/${slug}/after-reto.png`,
-    },
+    // Sin campos de imagen por sección: la ficha no los pinta. Reservarlos
+    // aquí sólo dejaba rutas a archivos que nadie subía y nadie veía.
   }
 
   // Eliminar campos undefined
@@ -218,19 +216,13 @@ async function createProject() {
   const camposProsa = ['title', 'description', 'role', 'reto', 'aprendizajes']
   camposProsa.forEach((c) => { if (proyecto[c]) console.log(`     · ${c}`) })
   if (proyecto.proceso) {
-    Object.keys(proyecto.proceso)
-      .filter((k) => !k.endsWith('Image'))
-      .forEach((k) => console.log(`     · proceso.${k}`))
+    Object.keys(proyecto.proceso).forEach((k) => console.log(`     · proceso.${k}`))
   }
   if (proyecto.resultados) console.log(`     · resultados (${proyecto.resultados.length} elementos)`)
   if (proyecto.rolYHerramientas && proyecto.rolYHerramientas.rol) console.log('     · rolYHerramientas.rol')
   console.log('   (fechas, tecnologías, tipo y rutas de imagen ya son correctas)')
-  console.log('\n📸 Recuerda agregar las imágenes:')
+  console.log('\n📸 Recuerda agregar la imagen de portada:')
   console.log(`   - public/proyectos/${slug}/hero.png (1920x800px)`)
-  console.log(`   - public/proyectos/${slug}/after-reto.png (1200x600px)`)
-  if (investigacion) {
-    console.log(`   - public/proyectos/${slug}/investigacion.png (1200x600px)`)
-  }
 
   rl.close()
 }

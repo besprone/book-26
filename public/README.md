@@ -11,9 +11,7 @@ public/
 ├── cv.pdf                 # CV en formato PDF
 ├── proyectos/             # Imágenes de proyectos
 │   └── [slug]/
-│       ├── hero.png
-│       ├── after-reto.png
-│       └── investigacion.png
+│       └── hero.png
 └── logos/                 # Logos de empresas (si aplica)
     ├── applica2.png
     ├── nuxiba.png

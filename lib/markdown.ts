@@ -63,9 +63,7 @@ function normalizeProyecto(slug: string, data: Record<string, any>): Proyecto {
     proceso: data.proceso,
     rolYHerramientas: data.rolYHerramientas,
     resultados: data.resultados,
-    resultadosImages: data.resultadosImages || [],
     aprendizajes: data.aprendizajes,
-    images: data.images,
   }
 }
 

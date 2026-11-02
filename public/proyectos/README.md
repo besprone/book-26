@@ -8,11 +8,13 @@ Cada proyecto tiene su propia carpeta con el mismo nombre que el slug del proyec
 
 ## Nombres de archivos
 
-Para cada proyecto, guarda las imágenes con estos nombres:
+Cada proyecto lleva una sola imagen:
 
 - **`hero.png`** - Imagen principal del proyecto (1920x800px recomendado)
-- **`after-reto.png`** - Imagen después de la sección "El reto" (1200x600px recomendado)
-- **`investigacion.png`** - Imagen de la sección de investigación del proceso (1200x600px recomendado)
+
+La ficha sólo usa `hero.png`. Antes se documentaban también `after-reto.png` e
+`investigacion.png`, pero la ficha nunca llegó a mostrarlas, así que no hace
+falta exportarlas.
 
 **Formato estándar**: PNG (exportado desde Figma)
 
@@ -21,15 +23,12 @@ Para cada proyecto, guarda las imágenes con estos nombres:
 ```
 public/proyectos/
   └── calipso-sistema-diseno/
-      ├── hero.png
-      ├── after-reto.png
-      └── investigacion.png
+      └── hero.png
 ```
 
 ## Dimensiones recomendadas
 
 - **Hero**: 1920x800px (ratio 2.4:1)
-- **After Reto / Investigación**: 1200x600px (ratio 2:1)
 
 ## Formato estándar: PNG
 

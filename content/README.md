@@ -126,7 +126,6 @@ Cada proyecto es un archivo JSON con toda la información del proyecto.
   "reto": "Descripción del reto...",
   "proceso": {
     "investigacion": "Descripción...",
-    "investigacionImage": "https://...",
     "diseno": "Descripción...",
     "desarrollo": "Descripción...",
     "analisisDatos": "Descripción..."
@@ -136,10 +135,7 @@ Cada proyecto es un archivo JSON con toda la información del proyecto.
     "herramientas": ["Figma", "React"]
   },
   "resultados": ["Resultado 1", "Resultado 2"],
-  "aprendizajes": "Descripción de aprendizajes...",
-  "images": {
-    "afterReto": "https://..."
-  }
+  "aprendizajes": "Descripción de aprendizajes..."
 }
 ```
 

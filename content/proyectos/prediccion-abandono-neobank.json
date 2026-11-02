@@ -20,7 +20,6 @@
   "reto": "Neo Bank, un neobanco global, enfrentaba un problema crítico: muchos usuarios se registraban pero nunca llegaban a realizar una transacción. Esto generaba una alta tasa de abandono temprano, afectando la retención, el valor del cliente y el crecimiento del producto. El reto consistía en identificar qué perfiles de usuarios presentaban mayor riesgo de churn y cómo anticipar ese comportamiento para diseñar soluciones específicas.",
   "proceso": {
     "investigacion": "Análisis inicial: Exploramos más de 19,000 registros de usuarios, transacciones y notificaciones para entender patrones de comportamiento. Segmentación de perfiles: Clasificamos a los usuarios en tres grandes perfiles según edad, plan, canal y uso de la app.",
-    "investigacionImage": "/proyectos/prediccion-abandono-neobank/investigacion.jpg",
     "diseno": "Definición del churn: Establecimos que un usuario churned si no transaccionaba en los últimos 90 días, incluso si aún usaba la app.",
     "desarrollo": "Modelo predictivo: Entrenamos y comparamos varios modelos de clasificación para predecir el abandono con base en variables clave.",
     "analisisDatos": "Simulación y recomendaciones: Probamos el modelo con perfiles reales y propusimos acciones específicas de retención para cada grupo."
@@ -49,8 +48,5 @@
     "Modelo predictivo funcional: Gradient Boosting logró identificar correctamente usuarios en riesgo, con buena precisión",
     "Recomendaciones claras: Campañas PUSH, cashback en consumo diario, onboarding guiado y segmentación geográfica"
   ],
-  "aprendizajes": "Valor del análisis exploratorio: Observar patrones de comportamiento fue clave para enfocar soluciones. La definición importa: Ajustar la definición de churn nos permitió detectar abandono \"silencioso\". Engagement como señal temprana: Las primeras transacciones y el canal usado influyen directamente en la retención. Predicción sin acción no sirve: El modelo es útil solo si va acompañado de estrategias de intervención. Storytelling con datos: Aprendí a estructurar un caso de negocio usando narrativa clara y visualizaciones efectivas.",
-  "images": {
-    "afterReto": "/proyectos/prediccion-abandono-neobank/after-reto.jpg"
-  }
+  "aprendizajes": "Valor del análisis exploratorio: Observar patrones de comportamiento fue clave para enfocar soluciones. La definición importa: Ajustar la definición de churn nos permitió detectar abandono \"silencioso\". Engagement como señal temprana: Las primeras transacciones y el canal usado influyen directamente en la retención. Predicción sin acción no sirve: El modelo es útil solo si va acompañado de estrategias de intervención. Storytelling con datos: Aprendí a estructurar un caso de negocio usando narrativa clara y visualizaciones efectivas."
 }

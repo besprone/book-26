@@ -42,15 +42,9 @@ Si el archivo PNG es muy pesado (> 500KB):
 - **Ubicación**: `public/proyectos/[slug]/hero.png`
 - **Peso recomendado**: < 800KB
 
-### After Reto (`after-reto.png`)
-- **Tamaño**: 1200 x 600px (ratio 2:1)
-- **Ubicación**: `public/proyectos/[slug]/after-reto.png`
-- **Peso recomendado**: < 400KB
-
-### Investigación (`investigacion.png`)
-- **Tamaño**: 1200 x 600px (ratio 2:1)
-- **Ubicación**: `public/proyectos/[slug]/investigacion.png`
-- **Peso recomendado**: < 400KB
+La ficha sólo usa `hero.png`. Antes se documentaban también `after-reto.png` e
+`investigacion.png`, pero la ficha nunca llegó a mostrarlas, así que no hace
+falta exportarlas.
 
 ---
 
@@ -60,8 +54,6 @@ Si el archivo PNG es muy pesado (> 500KB):
 |------|-------|------|-------|----------|
 | Hero Home/Sobre Mí | 1200px | 800px | 3:2 | 500KB |
 | Hero Proyecto | 1920px | 800px | 2.4:1 | 800KB |
-| After Reto | 1200px | 600px | 2:1 | 400KB |
-| Investigación | 1200px | 600px | 2:1 | 400KB |
 
 ---
 

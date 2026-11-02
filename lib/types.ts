@@ -65,28 +65,22 @@ export interface Proyecto {
   videoYoutube?: string // URL del video de YouTube (ej: https://youtu.be/xxx o https://www.youtube.com/watch?v=xxx)
   proceso?: {
     investigacion?: string
-    investigacionImage?: string
     diseno?: string
-    disenoImage?: string
     desarrollo?: string
-    desarrolloImage?: string
     analisisDatos?: string
-    analisisDatosImage?: string
   }
   rolYHerramientas?: {
     rol?: string[]
     herramientas?: string[]
   }
   resultados?: string[]
-  resultadosImages?: string[] // Galería de imágenes para resultados
   aprendizajes?: string
-  // Imágenes entre secciones (full-width)
-  images?: {
-    afterReto?: string
-    afterProceso?: string
-    afterResultados?: string
-    afterAprendizajes?: string
-  }
+  // No hay campos de imagen por sección. El generador de proyectos reservaba
+  // nueve huecos (investigación, diseño, galería de resultados, imágenes entre
+  // secciones…) pero la ficha nunca llegó a pintarlos, así que el contenido
+  // apuntaba a archivos que no existían y no se veían. Si algún día se quieren
+  // imágenes dentro del caso, hay que añadir a la vez el campo y el código que
+  // lo muestra.
 }
 export interface CV {
   content: string

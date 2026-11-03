@@ -17,12 +17,12 @@
   "year": "2025",
   "role": "Data analysis",
   "videoYoutube": "https://youtu.be/mAniM9yA6z8",
-  "reto": "Neo Bank, a global neobank, faced a critical problem: many users signed up but never completed a single transaction. This produced a high early drop-off rate that hurt retention, customer value and product growth. The challenge was to identify which user profiles carried the highest churn risk, and how to anticipate that behaviour in order to design targeted solutions.",
+  "reto": "Neo Bank, a global neobank, faced a critical problem. Many users signed up but never completed a single transaction. This produced a high early drop-off rate that hurt retention, customer value and product growth. The challenge was to identify which user profiles carried the highest churn risk, and how to anticipate that behaviour in order to design targeted solutions.",
   "proceso": {
-    "investigacion": "Initial analysis: we explored over 19,000 records of users, transactions and notifications to understand behavioural patterns. Profile segmentation: we grouped users into three broad profiles based on age, plan, channel and app usage.",
-    "diseno": "Defining churn: we established that a user had churned if they had not transacted in the last 90 days, even if they were still opening the app.",
-    "desarrollo": "Predictive model: we trained and compared several classification models to predict drop-off based on key variables.",
-    "analisisDatos": "Simulation and recommendations: we tested the model against real profiles and proposed specific retention actions for each group."
+    "investigacion": "We explored over 19,000 records of users, transactions and notifications to understand behavioural patterns. Then we grouped users into three broad profiles based on age, plan, channel and app usage.",
+    "diseno": "We defined a user as churned if they had not transacted in the last 90 days, even if they were still opening the app.",
+    "desarrollo": "We trained and compared several classification models to predict drop-off based on key variables.",
+    "analisisDatos": "We tested the model against real profiles and proposed specific retention actions for each group."
   },
   "rolYHerramientas": {
     "rol": [
@@ -42,11 +42,11 @@
     ]
   },
   "resultados": [
-    "Key profiles identified: three user types with distinct behaviours — mass market, premium and age extremes",
-    "Actionable findings: PUSH as the key conversion channel (~95%) versus EMAIL/SMS (~75%)",
-    "Churn rate measured: 24.36% of users drop off without transacting within 90 days",
-    "Working predictive model: Gradient Boosting correctly identified at-risk users with solid precision",
-    "Clear recommendations: PUSH campaigns, cashback on everyday spending, guided onboarding and geographic segmentation"
+    "Three user types with distinct behaviours (mass market, premium and age extremes)",
+    "PUSH as the key conversion channel (~95%) versus EMAIL/SMS (~75%)",
+    "A churn rate of 24.36%, users who drop off without transacting within 90 days",
+    "A Gradient Boosting model that identified at-risk users with solid precision",
+    "Recommendations for PUSH campaigns, cashback on everyday spending, guided onboarding and geographic segmentation"
   ],
-  "aprendizajes": "The value of exploratory analysis: spotting behavioural patterns was key to focusing the solutions. Definitions matter: refining how we defined churn let us detect \"silent\" drop-off. Engagement as an early signal: the first transactions and the channel used directly influence retention. Prediction without action is useless: the model only helps when paired with intervention strategies. Storytelling with data: I learned to build a business case through clear narrative and effective visualisations."
+  "aprendizajes": "Spotting behavioural patterns in the exploratory analysis was key to focusing the solutions. Refining how we defined churn let us detect \"silent\" drop-off. The first transactions and the channel used directly influence retention, so they work as an early signal. Prediction without action is useless, because the model only helps when paired with intervention strategies. And I learned to build a business case through clear narrative and effective visualisations."
 }

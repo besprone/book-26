@@ -3,14 +3,14 @@
   "titulo": "Product Design Manager",
   "contacto": {
     "email": "besprone@gmail.com",
-    "telefono": "+52-55-6487-0007",
+    "telefono": "+52 55 6487 0007",
     "web": "https://besprone.com.mx",
     "linkedin": {
       "url": "https://www.linkedin.com/in/marco-antonio-de-castilla-vicelis-a91863108/",
       "texto": "Marco De Castilla"
     }
   },
-  "resumen": "Product Design Manager with 10+ years in UX/UI, design systems and front-end development, focused on fintech (credit, investments and accounts). I led a team of 4 designers, I own a multi-brand design system in code, and I build working prototypes with AI (Claude Code) to test ideas with real users before they are developed. I measure what I test and analyze it with SQL and Python.",
+  "resumen": "Product Design Manager with 10+ years in UX/UI, design systems and front-end development, focused on fintech (lending, investments and accounts). I led a team of 4 designers and now own a multi-brand design system in code. I build working prototypes with AI (Claude Code) to test ideas with real users before development, and I analyze the results with SQL and Python.",
   "experiencia": [
     {
       "cargo": "kubo.financiero – Product Design Manager",
@@ -18,7 +18,7 @@
       "logros": [
         "Own Calipso, a multi-brand design system in code (55 React components, web + React Native, CI checks).",
         "Built working prototypes with AI (React, Vercel) and field-tested a loan application flow with 4 advisors.",
-        "Led discovery, prototyping and usability testing for credit and investment products.",
+        "Led discovery, prototyping and usability testing for lending and investment products.",
         "Managed and mentored a team of 4 product designers."
       ]
     },
@@ -39,17 +39,17 @@
     }
   ],
   "educacion": [
-    "Le Wagon – Data Analytics, Bootcamp (2025)",
+    "Le Wagon – Data Analytics Bootcamp (2025)",
     "UNAD Mexico – Software Development, Engineering (2021)",
-    "National Autonomous University of Mexico (UNAM) – Visual Communication Design, Bachelor’s Degree (2013)"
+    "National Autonomous University of Mexico (UNAM) – Bachelor’s in Design and Visual Communication (2013)"
   ],
   "habilidades": [
     "Product Design / UX: Figma, User Research, Prototyping, Accessibility, Design Systems, Design Tokens, Usability Testing, DesignOps, Human-Centered Design",
     "AI & Prototyping: Claude Code, Figma MCP, React prototypes on Vercel, Storybook",
-    "Front-End: HTML5, CSS3, SASS, JavaScript (ES6), React (basic), WordPress",
+    "Front-End: HTML5, CSS3, Sass, JavaScript (ES6), React (basic), WordPress",
     "Analytics / Data: GA4, GTM, dataLayer, Power BI (basic), BigQuery, Looker, dbt (basic), Google Sheets, SQL (basic), Python (basic), Streamlit",
     "Collaboration: Git, GitFlow, Jira, Notion, Miro, Agile, Scrum",
-    "Fintech: Digital Banking, Credit, Loans, Investments, Financial UX"
+    "Fintech: Digital Banking, Lending, Investments, Financial UX"
   ],
   "idiomas": [
     "Spanish: Native",

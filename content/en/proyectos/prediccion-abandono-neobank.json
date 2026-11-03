@@ -1,7 +1,7 @@
 {
   "title": "Churn Prediction at Neo Bank",
   "description": "Analysis of more than 19,000 users to identify churn-risk profiles and build a predictive model that could anticipate drop-off and inform targeted retention strategies",
-  "date": "2024-05-01",
+  "date": "2025-05-01",
   "technologies": [
     "Python",
     "Pandas",
@@ -14,7 +14,7 @@
     "Data"
   ],
   "client": "Le Wagon project · Neo Bank dataset",
-  "year": "2024",
+  "year": "2025",
   "role": "Data analysis",
   "videoYoutube": "https://youtu.be/mAniM9yA6z8",
   "reto": "Neo Bank, a global neobank, faced a critical problem: many users signed up but never completed a single transaction. This produced a high early drop-off rate that hurt retention, customer value and product growth. The challenge was to identify which user profiles carried the highest churn risk, and how to anticipate that behaviour in order to design targeted solutions.",

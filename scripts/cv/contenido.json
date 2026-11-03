@@ -1,0 +1,52 @@
+{
+  "nombre": "Marco Antonio De Castilla Vicelis",
+  "titulo": "Product Design Manager",
+  "contacto": {
+    "email": "besprone@gmail.com",
+    "telefono": "+52-55-6487-0007",
+    "web": "https://besprone.com.mx"
+  },
+  "resumen": "Product Design Manager with over 10 years of experience in UX/UI, design systems, and front-end development. Proven track record in fintech delivering scalable solutions for credit, investment, and account management products. Skilled at leading cross-functional teams, implementing data-driven design strategies, and achieving measurable impact on usability and business KPIs.",
+  "experiencia": [
+    {
+      "cargo": "kubo.financiero – Product Design Manager",
+      "fecha": "Mexico City | Aug 2023 – Present",
+      "logros": [
+        "Established governance of the Design System (tokens, components, documentation), reducing inconsistencies.",
+        "Led discovery, prototyping, and usability testing that informed key product decisions and reduced iteration cycles.",
+        "Managed and mentored a team of 4 product designers, aligning deliverables with company strategy and OKRs."
+      ]
+    },
+    {
+      "cargo": "kubo.financiero – UI Lead",
+      "fecha": "Mexico City | May 2022 – Aug 2023",
+      "logros": [
+        "Defined UI patterns and naming conventions, reducing handoff issues to development.",
+        "Improved usability and consistency across web and mobile, raising user satisfaction."
+      ]
+    },
+    {
+      "cargo": "Gentera – UI Manager",
+      "fecha": "Mexico City | Feb 2022 – May 2022",
+      "logros": [
+        "Coordinated UI guidelines for digital initiatives."
+      ]
+    }
+  ],
+  "educacion": [
+    "Le Wagon – Data Analytics, Bootcamp (2025)",
+    "UNAD Mexico – Software Development, Engineering (2021)",
+    "National Autonomous University of Mexico (UNAM) – Visual Communication Design, Bachelor’s Degree (2013)"
+  ],
+  "habilidades": [
+    "Product Design / UX: Figma, User Research, Prototyping, Accessibility, Design Systems, Design Tokens, Usability Testing, DesignOps, Human-Centered Design",
+    "Front-End: HTML5, CSS3, SASS, JavaScript (ES6), React (basic), WordPress",
+    "Analytics / Data: GA4, GTM, dataLayer, Power BI (basic), Big Query, Looker, dbt (basic), Google Sheets, SQL (basic), Python (basic), Streamlit",
+    "Collaboration: Git, GitFlow, Jira, Notion, Miro, Agile, Scrum",
+    "Fintech Expertise: Fintech, Digital Banking, Credits, Loans, Investments, Financial UX"
+  ],
+  "idiomas": [
+    "Spanish: Native",
+    "English: Intermediate"
+  ]
+}

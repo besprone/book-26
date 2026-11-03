@@ -1,6 +1,6 @@
 {
   "title": "Continuous Discovery Framework",
-  "description": "Design and rollout of a collaborative, structured discovery framework that aligned practices across teams and produced actionable weekly insights with full traceability",
+  "description": "A weekly discovery process with UX, PM and Tech, where every insight can be traced back to its evidence",
   "date": "2023-09-01",
   "technologies": [
     "Google Sheets",
@@ -16,7 +16,7 @@
   "client": "kubo.financiero",
   "year": "2023",
   "role": "Product Design Manager · discovery lead",
-  "reto": "When I arrived there was no clear or consistent product discovery process. Each area worked from isolated information, and decisions were driven more by intuition than by data or evidence. The challenge was to design and roll out a continuous, collaborative and structured discovery framework that would align practices across teams (UX, PM, Tech, advisors), produce actionable weekly insights, give traceability from evidence through to learnings, insights, hypotheses and experiments, and be sustainable over time rather than depending on one-off efforts.",
+  "reto": "When I arrived there was no clear or consistent product discovery process. Each area worked from isolated information, and decisions were driven more by intuition than by data or evidence. The challenge was to design and roll out a continuous discovery framework that would align practices across teams (UX, PM, Tech, advisors), produce actionable weekly insights, give traceability from evidence through to learnings, insights, hypotheses and experiments, and be sustainable over time rather than depending on one-off efforts.",
   "proceso": {
     "investigacion": "I rolled out the framework by presenting its core principles: continuous discovery, the UX/PM/Tech product trio, and visualisation through an Opportunity Solution Tree. I ran a walkthrough of the opportunity tree and of the templates for evidence, learnings and insights, and assigned sources and owners.",
     "diseno": "I defined a structured working rhythm. Each week, members analyse one source (Intercom, calls, reviews, interviews) and document evidence and learnings, and on Fridays we hold a synthesis and prioritisation meeting. Each month we choose a desired outcome, for example improving conversion, and update the tree. Each quarter I present a Discovery Digest with key insights, prioritised opportunities, experiments run and roadmap adjustments.",
@@ -40,9 +40,9 @@
   },
   "resultados": [
     "A continuous discovery rhythm established, no longer dependent on isolated projects",
-    "Cross-functional alignment with genuine participation from UX, PM and Tech",
+    "UX, PM and Tech reviewing insights together every month",
     "Living, traceable documentation from evidence to learnings to insights to hypotheses to experiments",
     "First A/B and usability experiments launched from prioritised insights"
   ],
-  "aprendizajes": "The value of discovery is not in accumulating findings, but in turning them into prioritised opportunities that steer the roadmap. Traceability is essential, because every insight has to be traceable back to the original evidence. Involving each area from the start is what secures adoption of the process. Discovery doesn't pause, and it takes consistency and discipline every week."
+  "aprendizajes": "Piling up findings is pointless unless they become prioritised opportunities that steer the roadmap. Every insight has to be traceable back to its original evidence. When each area takes part from the start, it adopts the process. And discovery doesn't pause, it takes consistency every week."
 }

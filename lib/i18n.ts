@@ -87,7 +87,7 @@ const textos = {
     proyectos: {
       titulo: 'Proyectos',
       intro:
-        'Una selección de proyectos donde he combinado diseño, desarrollo y análisis para resolver problemas reales. Puedes filtrar por tipo para explorar casos más específicos.',
+        'Casos en los que diseñé, prototipé en código o analicé datos, casi todos en fintech. Filtra por UX, Dev o Data.',
       filtroTodo: 'Todo',
       verMas: 'Ver más proyectos',
       sinResultados: 'No hay proyectos con el filtro seleccionado.',
@@ -156,7 +156,7 @@ const textos = {
     proyectos: {
       titulo: 'Work',
       intro:
-        'A selection of projects where I combined design, development and analysis to solve real problems. Filter by type to explore specific cases.',
+        'Cases where I designed, prototyped in code or analysed data, most of them in fintech. Filter by UX, Dev or Data.',
       filtroTodo: 'All',
       verMas: 'Load more projects',
       sinResultados: 'No projects match the selected filter.',

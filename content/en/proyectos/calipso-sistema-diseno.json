@@ -22,7 +22,7 @@
   "proceso": {
     "investigacion": "In 2023 I interviewed devs and PMs and reviewed the flows to find the base components. In 2026 I audited the system against real use. I checked text contrast across all 351 Storybook stories, in every brand and theme, and documented every decision with its rationale.",
     "diseno": "Figma is the source of truth. Every change is tried first on a test page, moves into the system with its documentation, and is logged with a script that replicates it. I organised the tokens in layers (base values, brand aliases and light/inverse theme aliases) so a component can switch brands without touching its code.",
-    "desarrollo": "I took the system to code with Claude Code. It now has 55 React and TypeScript components, tokens generated from Figma into CSS and into a React Native theme, and Storybook documentation with concept, web and native for each foundation. AI speeds up the building; the rules, the review in Figma and every decision are mine.",
+    "desarrollo": "I took the system to code with Claude Code. It now has 55 React and TypeScript components, tokens generated from Figma into CSS and into a React Native theme, and Storybook documentation with concept, web and native for each foundation. AI speeds up the building, but the rules, the review in Figma and every decision are mine.",
     "analisisDatos": "Quality checks itself. On every change, CI verifies contrast pairs, that no component uses hard-coded colours, that tokens exist, and that the docs don't mention tokens that no longer exist. If anything fails, it doesn't get in."
   },
   "rolYHerramientas": {

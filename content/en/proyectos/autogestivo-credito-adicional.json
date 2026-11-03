@@ -1,6 +1,6 @@
 {
   "title": "Self-Service Additional Credit Flow",
-  "description": "Redesign of the self-service flow to stop users behind on payments from seeing additional credit offers, with real-time eligibility checks and clear status communication",
+  "description": "Redesign of the self-service flow so people behind on payments don't see additional credit offers, with real-time checks and clear messages about their status",
   "date": "2024-03-01",
   "technologies": [
     "Figma",
@@ -15,7 +15,7 @@
   "client": "kubo.financiero",
   "year": "2024",
   "role": "Product Design Manager",
-  "reto": "At kubo.financiero we found that some users behind on payments could still see active additional credit offers inside the self-service flow, because of a lag in how the system updated. This created confusion and added operational load for the support and collections teams. The challenge was to redesign the flow to prevent these cases, making sure offers only appeared to users who were eligible in real time, and clearly explaining why when no offer was available.",
+  "reto": "At kubo.financiero we found that some people behind on payments could see active additional credit offers in the self-service flow, because of a lag in how the system updated. It caused confusion and extra work for the support and collections teams. The challenge was to redesign the flow so only people eligible at that moment saw offers, and to explain why when there was no offer.",
   "proceso": {
     "investigacion": "I spotted the problem through advisor reports and support monitoring. I mapped the steps of the self-service additional credit process, focusing on how the status of the previous loan was validated.",
     "diseno": "I defined a validation point at the start of the flow to check whether the user was up to date on their loan. I designed a screen that clearly tells them their status has changed and that no offer is available for now. I iterated on the message to make it clearer and more empathetic, and proposed an illustration to reinforce it.",
@@ -43,5 +43,5 @@
     "Clear messages when the status changes, so people understand why they no longer see an offer",
     "Design, engineering, collections and support aligned around one coherent flow"
   ],
-  "aprendizajes": "Clear communication at moments of status change is what keeps frustration down. Business conditions need to be validated not only when an offer is displayed, but also on entry to the flow. Screens that offer no action, such as \"no offer available\", need a positive, empathetic and well-designed message so they do not push people away."
+  "aprendizajes": "When a credit's status changes, a clear message prevents frustration. Business conditions have to be checked on entry to the flow and again when the offer is shown. And a screen with no action, like \"no offer available\", needs an empathetic message so people don't drop off."
 }

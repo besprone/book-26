@@ -22,7 +22,7 @@
   "proceso": {
     "investigacion": "En 2023 entrevisté a devs y PMs y revisé los flujos para encontrar los componentes base. En 2026 audité el sistema contra el uso real. Revisé el contraste del texto en las 351 historias de Storybook, en cada marca y en cada tema, y documenté cada decisión con su porqué.",
     "diseno": "Figma es la fuente de verdad. Cada cambio se prueba primero en una página de pruebas, pasa al sistema con su documentación y queda en un registro con un script que lo replica. Organicé los tokens en capas (valores base, alias por marca y alias por tema claro e inverso) para que un componente cambie de marca sin tocar su código.",
-    "desarrollo": "Llevé el sistema a código con Claude Code. Hoy tiene 55 componentes en React y TypeScript, tokens que se generan desde Figma a CSS y a un tema para React Native, y documentación en Storybook con concepto, web y native para cada foundation. La IA acelera la construcción; las reglas, la revisión en Figma y cada decisión son mías.",
+    "desarrollo": "Llevé el sistema a código con Claude Code. Hoy tiene 55 componentes en React y TypeScript, tokens que se generan desde Figma a CSS y a un tema para React Native, y documentación en Storybook con concepto, web y native para cada foundation. La IA acelera la construcción, pero las reglas, la revisión en Figma y cada decisión son mías.",
     "analisisDatos": "La calidad se revisa sola. En cada cambio, el CI comprueba los pares de contraste, que ningún componente use colores fijos, que los tokens existan y que la documentación no mencione tokens que ya no existen. Si algo falla, no entra."
   },
   "rolYHerramientas": {
@@ -51,5 +51,5 @@
     "Más de 200 cambios desde abril de 2026, cada uno revisado por el CI en contraste, tokens y colores",
     "Probado en un producto real, un flujo completo de transferencias SPEI de 8 etapas construido en 9 días solo con componentes del sistema"
   ],
-  "aprendizajes": "Un sistema solo es fuente de verdad si nadie puede saltárselo; por eso las reglas viven en el CI y no en un documento. Tener los tokens en capas hizo que agregar una marca fuera cambiar alias, no componentes. Y la IA cambió lo que cuesta construir. Hoy probar una idea en código toma días, así que el trabajo de diseño se mueve a definir bien las reglas y a revisar con criterio. El siguiente paso es empaquetarlo como librería para que otros equipos lo instalen."
+  "aprendizajes": "Un sistema solo es fuente de verdad si nadie puede saltárselo. Por eso las reglas viven en el CI y no en un documento. Tener los tokens en capas hizo que agregar una marca fuera cambiar alias, no componentes. Y la IA cambió lo que cuesta construir. Hoy probar una idea en código toma días, así que el trabajo de diseño se mueve a definir bien las reglas y a revisar con criterio. El siguiente paso es empaquetarlo como librería para que otros equipos lo instalen."
 }

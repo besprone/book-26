@@ -143,11 +143,11 @@
           },
           {
             "nombre": "Investigación UX",
-            "descripcion": "Entrevistas, métodos, decisiones centradas en el usuario"
+            "descripcion": "Entrevistas, pruebas de usabilidad y síntesis"
           },
           {
             "nombre": "Pensamiento de diseño",
-            "descripcion": "Enfoque estructurado para resolver problemas reales"
+            "descripcion": "Definir bien el problema antes de diseñar"
           }
         ]
       },
@@ -156,23 +156,23 @@
         "items": [
           {
             "nombre": "HTML",
-            "descripcion": "Base para entender la estructura visual y semántica"
+            "descripcion": "Estructura semántica y accesible"
           },
           {
             "nombre": "Tailwind",
-            "descripcion": "Integración con tokens y diseño basado en utilidades"
+            "descripcion": "Estilos con los tokens del sistema de diseño"
           },
           {
             "nombre": "React",
-            "descripcion": "Colaboración fluida con equipos frontend"
+            "descripcion": "Prototipos y componentes del sistema de diseño"
           },
           {
             "nombre": "Next.js",
-            "descripcion": "Comprensión de arquitectura moderna y previews"
+            "descripcion": "Este sitio y sus previews en Vercel"
           },
           {
             "nombre": "Git",
-            "descripcion": "Trabajo colaborativo en entornos reales"
+            "descripcion": "Ramas, PRs y revisiones con el equipo"
           }
         ]
       },
@@ -181,7 +181,7 @@
         "items": [
           {
             "nombre": "SQL",
-            "descripcion": "Consultas reales, análisis exploratorio (BigQuery)"
+            "descripcion": "Consultas y análisis exploratorio en BigQuery"
           },
           {
             "nombre": "Python",
@@ -189,7 +189,7 @@
           },
           {
             "nombre": "Pandas",
-            "descripcion": "Manipulación eficiente de datasets"
+            "descripcion": "Limpieza y transformación de datos"
           },
           {
             "nombre": "dbt",
@@ -197,7 +197,7 @@
           },
           {
             "nombre": "Power BI",
-            "descripcion": "Dashboards, storytelling para stakeholders"
+            "descripcion": "Dashboards para stakeholders"
           }
         ]
       },

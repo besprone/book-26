@@ -143,11 +143,11 @@
           },
           {
             "nombre": "UX research",
-            "descripcion": "Interviews, methods, user-centred decisions"
+            "descripcion": "Interviews, usability testing and synthesis"
           },
           {
             "nombre": "Design thinking",
-            "descripcion": "A structured approach to solving real problems"
+            "descripcion": "Getting the problem right before designing"
           }
         ]
       },
@@ -156,23 +156,23 @@
         "items": [
           {
             "nombre": "HTML",
-            "descripcion": "The basis for understanding visual and semantic structure"
+            "descripcion": "Semantic, accessible structure"
           },
           {
             "nombre": "Tailwind",
-            "descripcion": "Token integration and utility-based design"
+            "descripcion": "Styling with design system tokens"
           },
           {
             "nombre": "React",
-            "descripcion": "Smooth collaboration with frontend teams"
+            "descripcion": "Prototypes and design system components"
           },
           {
             "nombre": "Next.js",
-            "descripcion": "Understanding of modern architecture and previews"
+            "descripcion": "This site and its Vercel previews"
           },
           {
             "nombre": "Git",
-            "descripcion": "Collaborative work in real environments"
+            "descripcion": "Branches, PRs and reviews with the team"
           }
         ]
       },
@@ -181,7 +181,7 @@
         "items": [
           {
             "nombre": "SQL",
-            "descripcion": "Real-world queries, exploratory analysis (BigQuery)"
+            "descripcion": "Queries and exploratory analysis in BigQuery"
           },
           {
             "nombre": "Python",
@@ -189,7 +189,7 @@
           },
           {
             "nombre": "Pandas",
-            "descripcion": "Efficient dataset manipulation"
+            "descripcion": "Cleaning and transforming data"
           },
           {
             "nombre": "dbt",
@@ -197,7 +197,7 @@
           },
           {
             "nombre": "Power BI",
-            "descripcion": "Dashboards, storytelling for stakeholders"
+            "descripcion": "Dashboards for stakeholders"
           }
         ]
       },

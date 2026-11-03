@@ -1,6 +1,6 @@
 {
   "title": "Predicción de Abandono en Neo Bank",
-  "description": "Análisis de más de 19,000 usuarios para identificar perfiles de riesgo de churn y desarrollar un modelo predictivo que permitiera anticipar el abandono y diseñar estrategias de retención específicas",
+  "description": "Análisis de más de 19,000 usuarios para encontrar quiénes abandonan antes de su primera transacción y un modelo que lo anticipa",
   "date": "2025-05-01",
   "technologies": [
     "Python",
@@ -17,7 +17,7 @@
   "year": "2025",
   "role": "Análisis de datos",
   "videoYoutube": "https://youtu.be/mAniM9yA6z8",
-  "reto": "Neo Bank, un neobanco global, enfrentaba un problema crítico. Muchos usuarios se registraban pero nunca llegaban a realizar una transacción. Esto generaba una alta tasa de abandono temprano, afectando la retención, el valor del cliente y el crecimiento del producto. El reto consistía en identificar qué perfiles de usuarios presentaban mayor riesgo de churn y cómo anticipar ese comportamiento para diseñar soluciones específicas.",
+  "reto": "Neo Bank, un neobanco global, enfrentaba un problema crítico. Muchos usuarios se registraban pero nunca llegaban a realizar una transacción. Eso generaba mucho abandono temprano y frenaba la retención y el crecimiento. El reto consistía en identificar qué perfiles de usuarios presentaban mayor riesgo de churn y cómo anticipar ese comportamiento para diseñar soluciones específicas.",
   "proceso": {
     "investigacion": "Exploramos más de 19,000 registros de usuarios, transacciones y notificaciones para entender patrones de comportamiento. Después clasificamos a los usuarios en tres grandes perfiles según edad, plan, canal y uso de la app.",
     "diseno": "Establecimos que un usuario había abandonado (churn) si no transaccionaba en los últimos 90 días, incluso si aún usaba la app.",
@@ -48,5 +48,5 @@
     "Un modelo de Gradient Boosting que identificó a los usuarios en riesgo con buena precisión",
     "Recomendaciones de campañas PUSH, cashback en consumo diario, onboarding guiado y segmentación geográfica"
   ],
-  "aprendizajes": "Observar patrones de comportamiento en el análisis exploratorio fue clave para enfocar las soluciones. Ajustar la definición de churn nos permitió detectar el abandono \"silencioso\". Las primeras transacciones y el canal usado influyen directamente en la retención, así que son una señal temprana. Una predicción sin acción no sirve, porque el modelo solo es útil si va acompañado de estrategias de intervención. Y aprendí a contar un caso de negocio con una narrativa clara y visualizaciones efectivas."
+  "aprendizajes": "Observar patrones de comportamiento en el análisis exploratorio nos ayudó a enfocar las soluciones. Ajustar la definición de churn nos permitió detectar el abandono \"silencioso\". Las primeras transacciones y el canal usado influyen directamente en la retención, así que son una señal temprana. Una predicción sin acción no sirve, porque el modelo solo es útil si va acompañado de estrategias de intervención. Y aprendí a presentar un caso de negocio con datos y gráficas que cualquiera entiende."
 }

@@ -7,7 +7,7 @@ export const metadata: Metadata = metadataPagina({
   clave: 'proyectos',
   title: 'Proyectos',
   description:
-    'Una selección de proyectos donde he combinado diseño, desarrollo y análisis para resolver problemas reales. Filtra por UX, Dev o Data para explorar casos más específicos.',
+    'Casos en los que diseñé, prototipé en código o analicé datos, casi todos en fintech. Filtra por UX, Dev o Data.',
 })
 
 export default function Page() {

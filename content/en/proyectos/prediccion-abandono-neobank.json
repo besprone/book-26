@@ -1,6 +1,6 @@
 {
   "title": "Churn Prediction at Neo Bank",
-  "description": "Analysis of more than 19,000 users to identify churn-risk profiles and build a predictive model that could anticipate drop-off and inform targeted retention strategies",
+  "description": "Analysis of more than 19,000 users to find who drops off before their first transaction, and a model that anticipates it",
   "date": "2025-05-01",
   "technologies": [
     "Python",
@@ -17,7 +17,7 @@
   "year": "2025",
   "role": "Data analysis",
   "videoYoutube": "https://youtu.be/mAniM9yA6z8",
-  "reto": "Neo Bank, a global neobank, faced a critical problem. Many users signed up but never completed a single transaction. This produced a high early drop-off rate that hurt retention, customer value and product growth. The challenge was to identify which user profiles carried the highest churn risk, and how to anticipate that behaviour in order to design targeted solutions.",
+  "reto": "Neo Bank, a global neobank, faced a critical problem. Many users signed up but never completed a single transaction. That meant a lot of early drop-off, which held back retention and growth. The challenge was to identify which user profiles carried the highest churn risk, and how to anticipate that behaviour in order to design targeted solutions.",
   "proceso": {
     "investigacion": "We explored over 19,000 records of users, transactions and notifications to understand behavioural patterns. Then we grouped users into three broad profiles based on age, plan, channel and app usage.",
     "diseno": "We defined a user as churned if they had not transacted in the last 90 days, even if they were still opening the app.",
@@ -48,5 +48,5 @@
     "A Gradient Boosting model that identified at-risk users with solid precision",
     "Recommendations for PUSH campaigns, cashback on everyday spending, guided onboarding and geographic segmentation"
   ],
-  "aprendizajes": "Spotting behavioural patterns in the exploratory analysis was key to focusing the solutions. Refining how we defined churn let us detect \"silent\" drop-off. The first transactions and the channel used directly influence retention, so they work as an early signal. Prediction without action is useless, because the model only helps when paired with intervention strategies. And I learned to build a business case through clear narrative and effective visualisations."
+  "aprendizajes": "Spotting behavioural patterns in the exploratory analysis helped us focus the solutions. Refining how we defined churn let us detect \"silent\" drop-off. The first transactions and the channel used directly influence retention, so they work as an early signal. Prediction without action is useless, because the model only helps when paired with intervention strategies. And I learned to present a business case with data and charts anyone can follow."
 }

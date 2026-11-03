@@ -25,7 +25,7 @@
     "cards": [
       {
         "title": "10+ years designing digital products",
-        "description": "In fintech since 2022; I've led a team and now own a design system"
+        "description": "In fintech since 2022. I've led a team and now own a design system"
       },
       {
         "title": "Working prototypes, with AI",
@@ -90,7 +90,7 @@
     ]
   },
   "callToAction": {
-    "title": "I'd love to help bring your next product to life",
+    "title": "If you're looking for someone to lead product design, let's talk",
     "buttons": {
       "primary": {
         "text": "View work",

@@ -1,6 +1,6 @@
 {
   "title": "Autogestivo de Crédito Adicional",
-  "description": "Rediseño del flujo autogestivo para prevenir que usuarios en atraso vean ofertas de crédito adicional, implementando validación en tiempo real y comunicación clara del estatus",
+  "description": "Rediseño del flujo autogestivo para que las personas en atraso no vean ofertas de crédito adicional, con validación en tiempo real y mensajes claros sobre su estatus",
   "date": "2024-03-01",
   "technologies": [
     "Figma",
@@ -15,7 +15,7 @@
   "client": "kubo.financiero",
   "year": "2024",
   "role": "Product Design Manager",
-  "reto": "En kubo.financiero, detectamos que algunos usuarios en atraso podían ver ofertas activas de crédito adicional dentro del flujo autogestivo, debido a un desfase en la actualización del sistema. Esta situación generaba confusión e incrementaba la carga operativa para el equipo de atención y cobranza. El reto fue rediseñar el flujo para prevenir estos casos, asegurando que solo se mostraran ofertas a usuarios elegibles en tiempo real, y comunicar de forma clara el motivo en caso de no mostrar ofertas.",
+  "reto": "En kubo.financiero detectamos que algunas personas en atraso podían ver ofertas activas de crédito adicional dentro del flujo autogestivo, por un desfase en la actualización del sistema. Eso generaba confusión y más carga para los equipos de atención y cobranza. El reto fue rediseñar el flujo para que solo vieran ofertas las personas elegibles en ese momento y explicar el motivo cuando no hubiera oferta.",
   "proceso": {
     "investigacion": "Detecté el problema a partir de reportes de asesores y del monitoreo de ATC. Mapeé los pasos del proceso autogestivo para crédito adicional, con foco en cómo se validaba el estatus del crédito anterior.",
     "diseno": "Definí un punto de validación al inicio del flujo para verificar si el usuario ya está al corriente con su crédito. Diseñé una pantalla que le informa con claridad de que su estatus cambió y de que por ahora no hay una oferta disponible. Iteré el mensaje para hacerlo más claro y empático, y propuse una ilustración que lo refuerza.",
@@ -43,5 +43,5 @@
     "Mensajes claros cuando cambia el estatus, para que la persona entienda por qué no ve una oferta",
     "Diseño, tecnología, cobranza y ATC alineados en un flujo coherente"
   ],
-  "aprendizajes": "La comunicación clara en momentos de cambio de estatus es clave para evitar frustración. Es importante validar las condiciones de negocio no solo al momento de mostrar una oferta, sino también al ingresar al flujo. Las pantallas que no ofrecen acción (como \"no hay oferta disponible\") deben tener un mensaje positivo, empático y bien diseñado para no generar abandono."
+  "aprendizajes": "Cuando cambia el estatus de un crédito, un mensaje claro evita la frustración. Las condiciones de negocio hay que validarlas al entrar al flujo y otra vez al mostrar la oferta. Y una pantalla sin acción, como \"no hay oferta disponible\", necesita un mensaje empático para que la persona no abandone."
 }

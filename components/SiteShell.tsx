@@ -75,7 +75,7 @@ export default function SiteShell({
           <main id="contenido" className="min-h-screen">
             {children}
           </main>
-          <Footer />
+          <Footer locale={locale} />
           {/* Widget de debug: se elimina del bundle en producción */}
           {process.env.NODE_ENV === 'development' && <PostHogDebug />}
         </PostHogProvider>

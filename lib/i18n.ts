@@ -117,6 +117,10 @@ const textos = {
       linkedinPie: 'Ver perfil profesional',
       email: 'Enviar un correo',
     },
+    pie: {
+      hecho: 'Diseñado y construido por mí con Claude Code',
+      derechos: 'Todos los derechos reservados.',
+    },
   },
   en: {
     nav: { home: 'Home', sobreMi: 'About', proyectos: 'Work', contacto: 'Contact' },
@@ -180,6 +184,10 @@ const textos = {
       linkedin: "Let's connect on LinkedIn",
       linkedinPie: 'View professional profile',
       email: 'Send an email',
+    },
+    pie: {
+      hecho: 'Designed and built by me with Claude Code',
+      derechos: 'All rights reserved.',
     },
   },
 } as const

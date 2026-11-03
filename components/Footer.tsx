@@ -62,11 +62,8 @@ export default function Footer({ locale }: { locale: Locale }) {
             </a>
           </div>
           
-          <div className="text-sm text-gray-600 dark:text-gray-400 text-center md:text-right">
-            <p>{txt.pie.hecho}</p>
-            <p>
-              Copyright © {new Date().getFullYear()} Besprone. {txt.pie.derechos}
-            </p>
+          <div className="text-sm text-gray-600 dark:text-gray-400">
+            Copyright © {new Date().getFullYear()} Besprone. {txt.pie.derechos}
           </div>
         </div>
       </div>

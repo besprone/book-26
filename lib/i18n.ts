@@ -118,7 +118,6 @@ const textos = {
       email: 'Enviar un correo',
     },
     pie: {
-      hecho: 'Diseñado y construido por mí con Claude Code',
       derechos: 'Todos los derechos reservados.',
     },
   },
@@ -186,7 +185,6 @@ const textos = {
       email: 'Send an email',
     },
     pie: {
-      hecho: 'Designed and built by me with Claude Code',
       derechos: 'All rights reserved.',
     },
   },

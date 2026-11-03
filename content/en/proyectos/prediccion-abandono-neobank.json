@@ -17,9 +17,9 @@
   "year": "2025",
   "role": "Data analysis",
   "videoYoutube": "https://youtu.be/mAniM9yA6z8",
-  "reto": "Neo Bank, a global neobank, faced a critical problem. Many users signed up but never completed a single transaction. That meant a lot of early drop-off, which held back retention and growth. The challenge was to identify which user profiles carried the highest churn risk, and how to anticipate that behaviour in order to design targeted solutions.",
+  "reto": "Neo Bank, a global neobank, faced a critical problem. Many users signed up but never completed a single transaction. That meant a lot of early drop-off, which held back retention and growth. The challenge was to identify which user profiles carried the highest churn risk, and how to anticipate that behavior in order to design targeted solutions.",
   "proceso": {
-    "investigacion": "We explored over 19,000 records of users, transactions and notifications to understand behavioural patterns. Then we grouped users into three broad profiles based on age, plan, channel and app usage.",
+    "investigacion": "We explored over 19,000 records of users, transactions and notifications to understand behavioral patterns. Then we grouped users into three broad profiles based on age, plan, channel and app usage.",
     "diseno": "We defined a user as churned if they had not transacted in the last 90 days, even if they were still opening the app.",
     "desarrollo": "We trained and compared several classification models to predict drop-off based on key variables.",
     "analisisDatos": "We tested the model against real profiles and proposed specific retention actions for each group."
@@ -29,8 +29,8 @@
       "Product research",
       "Data analysis",
       "Machine learning",
-      "Visualisation",
-      "Cross-functional collaboration"
+      "Visualization",
+      "Teamwork"
     ],
     "herramientas": [
       "Python",
@@ -42,11 +42,11 @@
     ]
   },
   "resultados": [
-    "Three user types with distinct behaviours (mass market, premium and age extremes)",
-    "PUSH as the key conversion channel (~95%) versus EMAIL/SMS (~75%)",
-    "A churn rate of 24.36%, users who drop off without transacting within 90 days",
+    "Three user types with distinct behaviors (mass market, premium, and the youngest and oldest users)",
+    "Push notifications as the main conversion channel (~95%) versus email and SMS (~75%)",
+    "24.36% of users dropped off without transacting within 90 days",
     "A Gradient Boosting model that identified at-risk users with solid precision",
-    "Recommendations for PUSH campaigns, cashback on everyday spending, guided onboarding and geographic segmentation"
+    "Recommendations for push campaigns, cashback on everyday spending, guided onboarding and geographic segmentation"
   ],
-  "aprendizajes": "Spotting behavioural patterns in the exploratory analysis helped us focus the solutions. Refining how we defined churn let us detect \"silent\" drop-off. The first transactions and the channel used directly influence retention, so they work as an early signal. Prediction without action is useless, because the model only helps when paired with intervention strategies. And I learned to present a business case with data and charts anyone can follow."
+  "aprendizajes": "Spotting behavioral patterns in the exploratory analysis helped us focus the solutions. Refining how we defined churn let us detect \"silent\" drop-off. The first transactions and the channel used directly influence retention, so they work as an early signal. Prediction without action is useless, because the model only helps when paired with intervention strategies. And I learned to present a business case with data and charts anyone can follow."
 }

@@ -1,7 +1,7 @@
 {
   "hero": {
     "title": "About me",
-    "description": "I'm a Product Design Manager with 10+ years of experience bringing design, technology and strategy together. At kubo.financiero I have led a team of 4 designers and today I own the Calipso design system. I take products from start to finish, from strategy to a prototype tested with real people. I complement my profile with data analysis to make evidence-based decisions.",
+    "description": "I'm a Product Design Manager with 10+ years of experience bringing design, technology and strategy together. At kubo.financiero I led a team of 4 designers and now own the Calipso design system. I take products from start to finish, from strategy to a prototype tested with real people. I also use data analysis to make evidence-based decisions.",
     "image": "/hero-sobre-mi.png",
     "cvButton": {
       "text": "Download CV",
@@ -13,11 +13,11 @@
     "cards": [
       {
         "title": "Strategic thinking",
-        "description": "I work at the intersection of design and business."
+        "description": "I connect design decisions to business goals."
       },
       {
-        "title": "Code prototypes with AI",
-        "description": "I design in Figma and take it to code with Claude Code to test it for real."
+        "title": "Prototyping in code with AI",
+        "description": "I design in Figma, then build it in code with Claude Code to test it for real."
       },
       {
         "title": "Data-informed decisions",
@@ -185,7 +185,7 @@
           },
           {
             "nombre": "Python",
-            "descripcion": "EDA, visualisation, data cleaning"
+            "descripcion": "EDA, visualization, data cleaning"
           },
           {
             "nombre": "Pandas",
@@ -193,7 +193,7 @@
           },
           {
             "nombre": "dbt",
-            "descripcion": "Data modelling, documentation, testing"
+            "descripcion": "Data modeling, documentation, testing"
           },
           {
             "nombre": "Power BI",
@@ -214,7 +214,7 @@
           },
           {
             "nombre": "Vercel",
-            "descripcion": "Published prototypes, tested on the person's own phone"
+            "descripcion": "Live prototypes that people test on their own phones"
           },
           {
             "nombre": "Storybook",

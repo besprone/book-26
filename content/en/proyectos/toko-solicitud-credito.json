@@ -22,7 +22,7 @@
     "investigacion": "I designed a three-task protocol covering all five blocks, with a fictional customer, what to watch for in each task and a script for the facilitator. On the floor we ran it more loosely, and each advisor went through the flow their own way, using the scenario as a reference rather than a fixed instruction.",
     "diseno": "I designed the flow and a second version that simplified it. I removed two steps for the advisor (the customer’s signature and the OTP code), turned the application-details block from a linear wizard into freely navigable chips, made the scanned pay stub fill in the income, and added real-time tracking of the customer’s authentication and signature. The product screens are built on the Calipso design system.",
     "desarrollo": "I built the prototype in React with Claude Code, deployed on Vercel, with serverless functions to save and export sessions. I simulated scanning, biometrics and digital signing so the whole test could run without a real backend.",
-    "analisisDatos": "I instrumented the prototype to record when each task started and ended, the timings, every field change and every validation error. With that I analysed the sessions of four advisors without relying on what the facilitator remembered."
+    "analisisDatos": "I instrumented the prototype to record when each task started and ended, the timings, every field change and every validation error. With that I analyzed the sessions of four advisors without relying on what the facilitator remembered."
   },
   "rolYHerramientas": {
     "rol": [

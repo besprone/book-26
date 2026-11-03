@@ -18,12 +18,12 @@
   "client": "kubo.financiero",
   "year": "2023–2026",
   "role": "Product Design Manager · system owner",
-  "reto": "In 2023 there were several libraries and several ways of doing the same thing, which caused visual inconsistency, duplicated work and friction with development. I unified them into a single system in Figma, documented in Storybook. Three years later the challenge was different. The system had to serve more than one brand, live in code with the same rules as in Figma, and be solid enough to build a complete product on top of it without inventing anything.",
+  "reto": "In 2023 there were several libraries and several ways of doing the same thing, which caused visual inconsistency, duplicated work and friction with development. I unified them into a single system in Figma, documented in Storybook. Three years later the challenge was different. The system had to serve more than one brand, live in code with the same rules as in Figma, and be solid enough to build a whole product on top of it without adding anything outside the system.",
   "proceso": {
     "investigacion": "In 2023 I interviewed devs and PMs and reviewed the flows to find the base components. In 2026 I audited the system against real use. I checked text contrast across all 351 Storybook stories, in every brand and theme, and documented every decision with its rationale.",
-    "diseno": "Figma is the source of truth. Every change is tried first on a test page, moves into the system with its documentation, and is logged with a script that replicates it. I organised the tokens in layers (base values, brand aliases and light/inverse theme aliases) so a component can switch brands without touching its code.",
-    "desarrollo": "I took the system to code with Claude Code. It now has 55 React and TypeScript components, tokens generated from Figma into CSS and into a React Native theme, and Storybook documentation with concept, web and native for each foundation. AI speeds up the building, but the rules, the review in Figma and every decision are mine.",
-    "analisisDatos": "Quality checks itself. On every change, CI verifies contrast pairs, that no component uses hard-coded colours, that tokens exist, and that the docs don't mention tokens that no longer exist. If anything fails, it doesn't get in."
+    "diseno": "Figma is the source of truth. Every change is tried first on a test page, moves into the system with its documentation, and is logged with a script that replicates it. I organized the tokens in layers (base values, brand aliases and light/inverse theme aliases) so a component can switch brands without touching its code.",
+    "desarrollo": "I took the system to code with Claude Code. It now has 55 React and TypeScript components, tokens generated from Figma into CSS and into a React Native theme, and Storybook documentation with concept, web and native for each foundation. AI speeds up the build, but the rules, the review in Figma and every decision are mine.",
+    "analisisDatos": "Quality checks itself. On every change, CI verifies contrast pairs, that no component uses hard-coded colors, that tokens exist, and that the docs don't mention tokens that no longer exist. If anything fails, the change doesn't go in."
   },
   "rolYHerramientas": {
     "rol": [
@@ -48,8 +48,8 @@
     "One library instead of many, with clear rules for development (2023)",
     "Multi-brand, with 2 brands in light and inverse themes from the same tokens",
     "55 React components and a React Native theme generated from the same sources",
-    "200+ changes since April 2026, each one checked by CI for contrast, tokens and colours",
+    "200+ changes since April 2026, each one checked by CI for contrast, tokens and colors",
     "Proven on a real product, a complete 8-stage SPEI transfer flow built in 9 days using only system components"
   ],
-  "aprendizajes": "A system is only a source of truth if nobody can bypass it, which is why the rules live in CI and not in a document. Layered tokens turned adding a brand into changing aliases, not components. And AI changed what it costs to build. Testing an idea in code now takes days, so design work shifts towards defining the rules well and reviewing with judgement. The next step is packaging it as a library so other teams can install it."
+  "aprendizajes": "A system is only a source of truth if nobody can bypass it, which is why the rules live in CI and not in a document. Layered tokens turned adding a brand into changing aliases, not components. And AI changed what it costs to build. Testing an idea in code now takes days, so design work shifts towards defining the rules well and reviewing with judgment. The next step is packaging it as a library so other teams can install it."
 }

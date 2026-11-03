@@ -39,9 +39,9 @@
     ]
   },
   "resultados": [
-    "Real-time credit status check before the offers screen is shown",
+    "Real-time loan status check before the offers screen is shown",
     "Clear messages when the status changes, so people understand why they no longer see an offer",
     "Design, engineering, collections and support aligned around one coherent flow"
   ],
-  "aprendizajes": "When a credit's status changes, a clear message prevents frustration. Business conditions have to be checked on entry to the flow and again when the offer is shown. And a screen with no action, like \"no offer available\", needs an empathetic message so people don't drop off."
+  "aprendizajes": "When a loan's status changes, a clear message prevents frustration. Business conditions have to be checked on entry to the flow and again when the offer is shown. And a screen with no action, like \"no offer available\", needs an empathetic message so people don't drop off."
 }

@@ -156,7 +156,7 @@ const textos = {
     proyectos: {
       titulo: 'Work',
       intro:
-        'Cases where I designed, prototyped in code or analysed data, most of them in fintech. Filter by UX, Dev or Data.',
+        'Cases where I designed, prototyped in code or analyzed data, most of them in fintech. Filter by UX, Dev or Data.',
       filtroTodo: 'All',
       verMas: 'Load more projects',
       sinResultados: 'No projects match the selected filter.',

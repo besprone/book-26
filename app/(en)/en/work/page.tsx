@@ -7,7 +7,7 @@ export const metadata: Metadata = metadataPagina({
   clave: 'proyectos',
   title: 'Work',
   description:
-    'Cases where I designed, prototyped in code or analysed data, most of them in fintech. Filter by UX, Dev or Data.',
+    'Cases where I designed, prototyped in code or analyzed data, most of them in fintech. Filter by UX, Dev or Data.',
 })
 
 export default function Page() {

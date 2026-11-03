@@ -1,7 +1,7 @@
 {
   "hero": {
     "title": "Product Design Manager, from strategy to a product that works",
-    "description": "10+ years in fintech bringing design, development and data together. I take a product from start to finish. I understand the problem, set the strategy, test it with real people and turn it into a system.",
+    "description": "10+ years in fintech bringing design, development and data together. I take a product from start to finish. I get to the root of the problem, set the strategy, test it with real people and turn it into a system.",
     "image": "/hero-home.png",
     "buttons": {
       "primary": {
@@ -28,12 +28,12 @@
         "description": "In fintech since 2022. I've led a team and now own a design system"
       },
       {
-        "title": "Working prototypes, with AI",
-        "description": "From Figma to an app tested on the person's own phone, in days"
+        "title": "Working prototypes, built with AI",
+        "description": "From Figma to an app people test on their own phones, in days"
       },
       {
         "title": "Data-informed decisions",
-        "description": "I measure what I test and analyse it with SQL and Python"
+        "description": "I measure what I test and analyze it with SQL and Python"
       }
     ]
   },

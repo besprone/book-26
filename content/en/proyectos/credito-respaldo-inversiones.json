@@ -14,7 +14,7 @@
   "client": "kubo.financiero",
   "year": "2024",
   "role": "Product Design Manager",
-  "reto": "Many users of the kubo.financiero app hold active investments but still face immediate liquidity needs. The challenge was to design a way to request a loan using those existing investments as collateral, without having to cash them out or lose the returns already earned. It also had to meet regulation and respect how people actually use their investments.",
+  "reto": "Many users of the kubo.financiero app hold active investments but still face immediate liquidity needs. The challenge was to design a way to request a loan using those existing investments as collateral, without having to cash them out or lose the returns already earned. It also had to meet regulatory requirements and respect how people actually use their investments.",
   "proceso": {
     "investigacion": "I explored the opportunity created by connecting two existing products, loans and investments, through internal conversations and potential use cases. I interviewed the product, risk, business and legal teams to understand constraints, validation rules, how amounts are calculated, permitted flows and operational risks. I reviewed comparable products in financial services and studied how other fintechs solve liquidity.",
     "diseno": "I designed an experience that starts from the investments module, where the user sees a new option to borrow up to 90% of their invested value without cashing out. I built high-fidelity prototypes in Figma, including variants for the number of investments held and the state of the loan.",
@@ -41,9 +41,9 @@
   "resultados": [
     "A self-service flow that works with the investments the user already holds",
     "Access to liquidity without cashing out investments or losing returns",
-    "Visual and operational rules established for calculating the available amount, temporarily freezing funds and keeping returns running",
-    "A design that supports one or several investments and a partial or maximum available request",
+    "Visual and operational rules for calculating the available amount, temporarily freezing funds and keeping returns running",
+    "Support for one or several investments, and for borrowing part or all of the available amount",
     "Ready for A/B testing of the module with activation and conversion metrics"
   ],
-  "aprendizajes": "Designing a product that spans two services meant learning the rules of both. Explaining limits, collateral and conditions with no fine print is what builds trust. Every decision balanced the business, the person's safety and what legal allows. And designing the variants from the start avoided redesigns later."
+  "aprendizajes": "Designing a product that spans two services meant learning the rules of both. Explaining limits, collateral and conditions with no fine print is what builds trust. Every decision balanced the business, the person's safety and what the legal team allows. And designing the variants from the start avoided redesigns later."
 }

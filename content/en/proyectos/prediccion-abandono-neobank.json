@@ -9,7 +9,7 @@
     "Streamlit"
   ],
   "image": "/proyectos/prediccion-abandono-neobank/hero.png",
-  "featured": true,
+  "featured": false,
   "type": [
     "Data"
   ],

@@ -1,7 +1,7 @@
 {
   "hero": {
     "title": "About me",
-    "description": "I'm a product designer with over 10 years of experience combining design, technology and strategy to build people-centred products. Along the way I've led teams, design systems and complex projects, and I'm currently adding data analysis to my toolkit to make better-informed decisions.",
+    "description": "I'm a Product Design Manager with 10+ years of experience bringing design, technology and strategy together. At kubo.financiero I have led a team of 4 designers and today I own the Calipso design system; I work with AI to take ideas to working prototypes that are tested with real people. I complement my profile with data analysis to make evidence-based decisions.",
     "image": "/hero-sobre-mi.png",
     "cvButton": {
       "text": "Download CV",
@@ -16,12 +16,12 @@
         "description": "I work at the intersection of design and business."
       },
       {
-        "title": "Technical approach",
-        "description": "I also build what I design."
+        "title": "Code prototypes with AI",
+        "description": "I design in Figma and take it to code with Claude Code to test it for real."
       },
       {
         "title": "Data-informed decisions",
-        "description": "Currently training as a Data Analyst"
+        "description": "Data Analytics at Le Wagon (2025)"
       }
     ]
   },
@@ -68,7 +68,7 @@
         {
           "nombre": "Data Analytics",
           "institucion": "Le Wagon",
-          "año": "In progress"
+          "año": "2025"
         },
         {
           "nombre": "Introduction to SQL",
@@ -198,6 +198,27 @@
           {
             "nombre": "Power BI",
             "descripcion": "Dashboards, storytelling for stakeholders"
+          }
+        ]
+      },
+      {
+        "title": "AI & prototyping",
+        "items": [
+          {
+            "nombre": "Claude Code",
+            "descripcion": "Working prototypes, a design system in code and this site"
+          },
+          {
+            "nombre": "Figma MCP",
+            "descripcion": "From design to code and back, without leaving the system"
+          },
+          {
+            "nombre": "Vercel",
+            "descripcion": "Published prototypes, tested on the person's own phone"
+          },
+          {
+            "nombre": "Storybook",
+            "descripcion": "Living documentation for the design system"
           }
         ]
       }

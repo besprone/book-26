@@ -7,7 +7,7 @@ export const metadata: Metadata = metadataPagina({
   clave: 'sobreMi',
   title: 'About',
   description:
-    'Product & UX Designer with 5+ years designing digital products in fintech. Experience in design systems, UX research, frontend development and data analysis.',
+    'Product Design Manager with 10+ years of experience, in fintech since 2022. Design systems, AI-assisted code prototyping, UX research and data analysis.',
   image: '/hero-sobre-mi.png',
 })
 

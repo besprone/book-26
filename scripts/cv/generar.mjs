@@ -36,6 +36,7 @@ const cuerpo = `
     <p>Email: ${escapar(cv.contacto.email)}</p>
     <p>Phone: ${escapar(cv.contacto.telefono)}</p>
     <p>Web: <a href="${cv.contacto.web}">${escapar(cv.contacto.web)}</a></p>
+    ${cv.contacto.linkedin ? `<p>LinkedIn: <a href="${cv.contacto.linkedin.url}">${escapar(cv.contacto.linkedin.texto)}</a></p>` : ''}
   </div>
 </header>
 ${seccion('Summary', `<p>${escapar(cv.resumen)}</p>`)}
@@ -43,7 +44,7 @@ ${seccion('Work Experience', `<div class="puestos">${cv.experiencia.map(puesto =
   <div class="puesto">
     <div class="cabecera"><p class="cargo">${escapar(puesto.cargo)}</p><p class="fecha">${escapar(puesto.fecha)}</p></div>
     ${lista(puesto.logros)}
-  </div>`).join('')}</div>`)}
+  </div>`).join('')}${cv.experienciaPrevia ? `<p class="previa"><span class="cargo-previa">Earlier experience:</span> ${escapar(cv.experienciaPrevia)}</p>` : ''}</div>`)}
 ${seccion('Education', lista(cv.educacion))}
 ${seccion('Skills', lista(cv.habilidades))}
 ${seccion('Languages', lista(cv.idiomas))}`
@@ -70,6 +71,7 @@ h2{font-weight:400;font-size:14pt;line-height:18pt;color:#172130}
 .cabecera{display:flex;flex-direction:column;gap:2pt}
 .cargo{font-weight:700;font-size:12pt;line-height:15pt}
 .fecha{font-size:12pt;line-height:15pt}
+.cargo-previa{font-weight:700}
 ul{list-style:none}
 li{padding-left:15pt;text-indent:-10pt}
 li::before{content:'•';display:inline-block;width:10pt;text-indent:0}
@@ -85,11 +87,14 @@ try {
   await pagina.evaluate(() => document.fonts.ready)
 
   // Si el contenido crece más allá de una hoja, mejor fallar que cortar texto
-  const desborda = await pagina.evaluate(() => {
+  const sobrante = await pagina.evaluate(() => {
     const fin = Math.max(...[...document.body.children].map(e => e.getBoundingClientRect().bottom))
-    return fin > document.body.getBoundingClientRect().bottom - 32 * (4 / 3)
+    const limite = document.body.getBoundingClientRect().bottom - 32 * (4 / 3)
+    return (fin - limite) * 0.75 // px → pt
   })
-  if (desborda) throw new Error('El contenido ya no cabe en una hoja Letter. Recorta texto en contenido.json.')
+  if (sobrante > 0) {
+    throw new Error(`El contenido ya no cabe en una hoja Letter: sobran ${sobrante.toFixed(1)} pt. Recorta texto en contenido.json.`)
+  }
 
   await pagina.pdf({ path: salida, width: '8.5in', height: '11in', printBackground: true, preferCSSPageSize: true })
   console.log(`✓ CV generado en ${path.relative(raiz, salida)}`)

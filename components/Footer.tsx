@@ -6,9 +6,11 @@ import { usePathname } from 'next/navigation'
 import { analytics } from '@/lib/analytics'
 import { siteConfig } from '@/lib/site'
 import { anilloFoco } from '@/lib/estilos-boton'
+import { t, type Locale } from '@/lib/i18n'
 
-export default function Footer() {
+export default function Footer({ locale }: { locale: Locale }) {
   const pathname = usePathname()
+  const txt = t(locale)
   
   const handleSocialClick = (linkType: string, linkUrl: string) => {
     if (typeof window !== 'undefined') {
@@ -60,8 +62,11 @@ export default function Footer() {
             </a>
           </div>
           
-          <div className="text-sm text-gray-600 dark:text-gray-400">
-            Copyright © {new Date().getFullYear()} Besprone. Todos los derechos reservados.
+          <div className="text-sm text-gray-600 dark:text-gray-400 text-center md:text-right">
+            <p>{txt.pie.hecho}</p>
+            <p>
+              Copyright © {new Date().getFullYear()} Besprone. {txt.pie.derechos}
+            </p>
           </div>
         </div>
       </div>

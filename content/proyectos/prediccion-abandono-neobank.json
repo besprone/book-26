@@ -13,9 +13,9 @@
   "type": [
     "Data"
   ],
-  "client": "Neo Bank",
+  "client": "Proyecto de Le Wagon · dataset de Neo Bank",
   "year": "2024",
-  "role": "Investigación de producto y análisis de datos",
+  "role": "Análisis de datos",
   "videoYoutube": "https://youtu.be/mAniM9yA6z8",
   "reto": "Neo Bank, un neobanco global, enfrentaba un problema crítico: muchos usuarios se registraban pero nunca llegaban a realizar una transacción. Esto generaba una alta tasa de abandono temprano, afectando la retención, el valor del cliente y el crecimiento del producto. El reto consistía en identificar qué perfiles de usuarios presentaban mayor riesgo de churn y cómo anticipar ese comportamiento para diseñar soluciones específicas.",
   "proceso": {

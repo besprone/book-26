@@ -9,9 +9,9 @@ const porIdioma = {
     ogLocale: 'es_MX',
   },
   en: {
-    title: 'Marco De Castilla - Product & UX Designer',
+    title: 'Marco De Castilla · Product Design Manager',
     description:
-      'Product designer with a technical mindset and a data-driven approach. I combine UX, development and analysis to build experiences that are useful, functional and measurable',
+      'Product Design Manager who prototypes in code with AI. 10+ years bringing design, development and data together: I take an idea to a working prototype, test it with real people and turn it into a system.',
     ogLocale: 'en_US',
   },
 } as const

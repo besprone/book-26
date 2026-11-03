@@ -3,9 +3,9 @@
 
 export const siteConfig = {
   name: 'Marco De Castilla',
-  title: 'Marco De Castilla - Product & UX Designer',
+  title: 'Marco De Castilla · Product Design Manager',
   description:
-    'Diseñador de producto con visión técnica y enfoque en datos. Combino UX, desarrollo y análisis para crear experiencias útiles, funcionales y medibles',
+    'Product Design Manager que prototipa en código con IA. Más de 10 años uniendo diseño, desarrollo y datos: llevo una idea a un prototipo que funciona, lo pruebo con personas reales y lo convierto en sistema.',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://www.besprone.com.mx',
   locale: 'es_MX',
   ogImage: '/hero-home.png',

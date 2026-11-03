@@ -11,16 +11,16 @@ import EducationCard from '@/components/EducationCard'
 import ImageWithSkeleton from '@/components/ImageWithSkeleton'
 import ScrollDepthTracker from '@/components/ScrollDepthTracker'
 import SectionViewTracker from '@/components/SectionViewTracker'
-import { User, Code, Target, Wrench, BarChart, Palette, Database, Award, Briefcase, PenTool, Users, Lightbulb, TrendingUp, Layers } from 'lucide-react'
+import { User, Code, Target, Smartphone, Sparkles, BarChart, Palette, Database, Award, Briefcase, PenTool, Users, Lightbulb, TrendingUp, Layers } from 'lucide-react'
 
 // Iconos por posición, alineados con el orden de config.resumenProfesional.cards
-const resumenIcons = [Target, Wrench, BarChart]
+const resumenIcons = [Target, Smartphone, BarChart]
 
 // Iconos por posición, alineados con el orden de config.formacion.certificaciones.items
 const certificacionIcons = [BarChart, Database, Briefcase, Palette, Users, Lightbulb, TrendingUp, Layers]
 
 // Iconos por posición, alineados con el orden de config.stack.categories
-const stackIcons = [Palette, Code, Database]
+const stackIcons = [Palette, Code, Database, Sparkles]
 
 export default function AboutPage({ locale }: { locale: Locale }) {
   const txt = t(locale)
@@ -162,7 +162,7 @@ export default function AboutPage({ locale }: { locale: Locale }) {
         <SectionViewTracker sectionName="stack" className="absolute top-0 left-0 w-full h-1" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader title={config.stack.title} sectionName="stack" />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {config.stack.categories.map((category, index) => {
               const Icon = stackIcons[index]
               return (

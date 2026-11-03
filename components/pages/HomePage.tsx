@@ -10,15 +10,15 @@ import ProjectCard from '@/components/ProjectCard'
 import ImageWithSkeleton from '@/components/ImageWithSkeleton'
 import SectionViewTracker from '@/components/SectionViewTracker'
 import ScrollDepthTracker from '@/components/ScrollDepthTracker'
-import { Image as ImageIcon, Code, Briefcase, GraduationCap, Target, Palette, Database } from 'lucide-react'
+import { Image as ImageIcon, Code, Briefcase, Smartphone, Target, Palette, Database, Sparkles } from 'lucide-react'
 import JsonLd from '@/components/JsonLd'
 import { siteConfig, socials } from '@/lib/site'
 
 // Iconos por posición, alineados con el orden de config.perfil.cards
-const perfilIcons = [Briefcase, GraduationCap, Target]
+const perfilIcons = [Briefcase, Smartphone, Target]
 
 // Iconos por posición, alineados con el orden de config.stack.categories
-const stackIcons = [Palette, Code, Database]
+const stackIcons = [Palette, Code, Database, Sparkles]
 
 export default function HomePage({ locale }: { locale: Locale }) {
   const txt = t(locale)
@@ -168,7 +168,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
             actionHref={config.stack.actionButton.href}
             sectionName="stack"
           />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {config.stack.categories.map((category, index) => {
               const Icon = stackIcons[index]
               return (

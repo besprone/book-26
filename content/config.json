@@ -1,7 +1,7 @@
 {
   "hero": {
-    "title": "Diseñador de producto con visión técnica y enfoque en datos",
-    "description": "Combino UX, desarrollo y análisis para crear experiencias útiles, funcionales y medibles",
+    "title": "Product Design Manager que prototipa en código con IA",
+    "description": "Más de 10 años uniendo diseño, desarrollo y datos. Llevo una idea a un prototipo que funciona, lo pruebo con personas reales y lo convierto en sistema.",
     "image": "/hero-home.png",
     "buttons": {
       "primary": {
@@ -24,16 +24,16 @@
     },
     "cards": [
       {
-        "title": "+5 años diseñando productos digitales",
-        "description": "Experiencia en diseño de interfaces y experiencia de usuario"
+        "title": "+10 años diseñando productos digitales",
+        "description": "Desde 2022 en fintech; he liderado equipo y hoy dirijo el sistema de diseño"
       },
       {
-        "title": "Formación en desarrollo y análisis de datos",
-        "description": "Conocimientos técnicos y analíticos combinados"
+        "title": "Prototipos que funcionan, con IA",
+        "description": "Del Figma a una app que se prueba en el teléfono de la persona, en días"
       },
       {
-        "title": "Experiencia en fintech, diseño estratégico y sistemas complejos",
-        "description": "Especialización en proyectos desafiantes"
+        "title": "Decisiones con datos",
+        "description": "Mido lo que pruebo y lo analizo con SQL y Python"
       }
     ]
   },
@@ -78,6 +78,14 @@
           "Python",
           "Análisis de datos"
         ]
+      },
+      {
+        "title": "IA y prototipado",
+        "items": [
+          "Claude Code",
+          "Figma MCP",
+          "Vercel"
+        ]
       }
     ]
   },
@@ -97,5 +105,3 @@
     }
   }
 }
-
-

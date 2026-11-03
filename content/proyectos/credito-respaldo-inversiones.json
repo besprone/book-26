@@ -17,7 +17,7 @@
   "reto": "Muchos usuarios de la app de kubo.financiero cuentan con inversiones activas, pero enfrentan necesidades de liquidez inmediatas. El reto era diseñar una solución que permitiera solicitar un préstamo utilizando las inversiones existentes como garantía, sin tener que cancelarlas o perder los rendimientos generados. La solución debía ser clara, confiable y escalable, respetando las condiciones regulatorias y el comportamiento financiero de los usuarios.",
   "proceso": {
     "investigacion": "Exploré la oportunidad que abría conectar dos productos existentes, créditos e inversiones, a partir de conversaciones internas y casos de uso potenciales. Entrevisté a los equipos de producto, riesgos, negocio y legal para entender restricciones, reglas de validación, cálculo de montos, flujos permitidos y riesgos operativos. Revisé productos comparables del sector financiero y cómo resuelven la liquidez otras fintechs.",
-    "diseno": "Diseñé una experiencia que parte del módulo de inversiones: el usuario ve una opción nueva para solicitar hasta el 90% del valor invertido como préstamo, sin cancelar su inversión. Construí prototipos de alta fidelidad en Figma, con variantes según el número de inversiones y el estado del préstamo.",
+    "diseno": "Diseñé una experiencia que parte del módulo de inversiones, donde el usuario ve una opción nueva para solicitar hasta el 90% del valor invertido como préstamo, sin cancelar su inversión. Construí prototipos de alta fidelidad en Figma, con variantes según el número de inversiones y el estado del préstamo.",
     "desarrollo": "Probé el flujo en distintos escenarios y refiné mensajes, reglas visuales, compatibilidad con los flujos de préstamos existentes y casos límite. Ajusté con legal y riesgos los textos clave para comunicar el uso de la inversión como garantía, el posible bloqueo de fondos y la política de riesgo.",
     "analisisDatos": ""
   },
@@ -42,7 +42,7 @@
     "Un flujo autogestivo compatible con las inversiones que la persona ya tiene",
     "Liquidez sin cancelar inversiones ni perder rendimientos",
     "Reglas visuales y operativas para el cálculo del monto disponible, el bloqueo temporal de fondos y la continuidad de los rendimientos",
-    "Un diseño que admite varios escenarios: una o varias inversiones, solicitud parcial o máxima disponible",
+    "Un diseño que admite una o varias inversiones y una solicitud parcial o por el máximo disponible",
     "Listo para un A/B test del módulo con métricas de activación y conversión"
   ],
   "aprendizajes": "El diseño de productos que cruzan servicios requiere entender profundamente la lógica y reglas de ambos. Comunicar límites, garantías y condiciones de forma clara es clave para generar confianza. Las decisiones de diseño deben balancear oportunidad de negocio con seguridad del usuario y claridad legal. Incorporar variantes y escenarios desde el inicio permite escalar el flujo sin rediseños innecesarios."

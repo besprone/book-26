@@ -19,7 +19,7 @@
   "role": "Product Design Lead",
   "reto": "El asesor levanta la solicitud de un crédito por descuento vía nómina con el cliente enfrente, en cinco bloques: inicio, identificación y autenticación, cotización, información y documentos. Hay escaneo de documentos, autenticación remota y firma, y todo tiene que caber en el teléfono del asesor. El objetivo era saber dónde se traban los asesores antes de construirlo.",
   "proceso": {
-    "investigacion": "Diseñé un protocolo de tres tareas que recorre los cinco bloques, con una clienta ficticia, qué observar en cada tarea y un guion para el facilitador. En piso lo llevamos de forma más libre: cada asesor recorrió el flujo a su manera, con el escenario como referencia y no como instrucción cerrada.",
+    "investigacion": "Diseñé un protocolo de tres tareas que recorre los cinco bloques, con una clienta ficticia, qué observar en cada tarea y un guion para el facilitador. En piso lo llevamos de forma más libre y cada asesor recorrió el flujo a su manera, con el escenario como referencia y no como instrucción cerrada.",
     "diseno": "Diseñé el flujo y una versión 2 que lo simplificó. Quité dos pasos del asesor (la firma del cliente y el código OTP), pasé el bloque de información de un asistente lineal a chips de navegación libre, hice que el talón de pagos escaneado llenara el ingreso, y añadí el seguimiento en tiempo real de la autenticación y la firma del cliente. Las pantallas de producto van sobre el sistema de diseño Calipso.",
     "desarrollo": "Construí el prototipo en React con Claude Code, desplegado en Vercel, con funciones serverless para guardar y exportar las sesiones. Simulé el escaneo, la biometría y la firma digital para correr la prueba completa sin backend real.",
     "analisisDatos": "Instrumenté el prototipo para registrar el inicio y el fin de cada tarea, los tiempos, cada cambio de campo y cada error de validación. Con eso analicé las sesiones de cuatro asesores sin depender de lo que recordara el facilitador."
@@ -44,8 +44,8 @@
     "Sesiones en piso con cuatro asesores, sobre un prototipo funcional y desde su propio teléfono",
     "Los cuatro abrieron, autenticaron, cotizaron y capturaron la solicitud; tres de cuatro la enviaron completa",
     "El flujo completo en una mediana de 11.8 minutos",
-    "Ningún asesor descubrió que el monto se podía escribir: los cuatro lo fijaron arrastrando el deslizador",
+    "Ningún asesor descubrió que el monto se podía escribir y los cuatro lo fijaron arrastrando el deslizador",
     "La CLABE concentró los errores de captura"
   ],
-  "aprendizajes": "Un control que no parece editable no se usa, aunque funcione: el monto se podía teclear, pero ningún asesor lo intentó, y si escribirlo es la vía rápida tiene que verse como un campo. Los datos de formato estricto, como la CLABE, piden validarse mientras se escriben y no al final. Y la instrumentación demostró su valor: registró avance, tiempos y errores aunque las sesiones fueran libres. Lo que no permite es saber si los datos capturados eran los correctos, así que para la siguiente ronda conviene un escenario cerrado y las preguntas de satisfacción dentro de la propia app."
+  "aprendizajes": "Un control que no parece editable no se usa, aunque funcione. El monto se podía teclear, pero ningún asesor lo intentó, y si escribirlo es la vía rápida tiene que verse como un campo. Los datos de formato estricto, como la CLABE, piden validarse mientras se escriben y no al final. Y la instrumentación demostró su valor, porque registró avance, tiempos y errores aunque las sesiones fueran libres. Lo que no permite es saber si los datos capturados eran los correctos, así que para la siguiente ronda conviene un escenario cerrado y las preguntas de satisfacción dentro de la propia app."
 }

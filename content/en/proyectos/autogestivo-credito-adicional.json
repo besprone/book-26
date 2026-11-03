@@ -43,5 +43,5 @@
     "Clear messages when the status changes, so people understand why they no longer see an offer",
     "Design, engineering, collections and support aligned around one coherent flow"
   ],
-  "aprendizajes": "Clear communication at moments of status change is what keeps frustration down. Business conditions need to be validated not only when an offer is displayed, but also on entry to the flow. Screens that offer no action — such as \"no offer available\" — need a positive, empathetic and well-designed message so they do not push people away."
+  "aprendizajes": "Clear communication at moments of status change is what keeps frustration down. Business conditions need to be validated not only when an offer is displayed, but also on entry to the flow. Screens that offer no action, such as \"no offer available\", need a positive, empathetic and well-designed message so they do not push people away."
 }

@@ -17,7 +17,7 @@
   "reto": "Many users of the kubo.financiero app hold active investments but still face immediate liquidity needs. The challenge was to design a way to request a loan using those existing investments as collateral, without having to cash them out or lose the returns already earned. The solution had to be clear, trustworthy and scalable, while respecting regulatory conditions and how users actually behave with their money.",
   "proceso": {
     "investigacion": "I explored the opportunity created by connecting two existing products, loans and investments, through internal conversations and potential use cases. I interviewed the product, risk, business and legal teams to understand constraints, validation rules, how amounts are calculated, permitted flows and operational risks. I reviewed comparable products in financial services and studied how other fintechs solve liquidity.",
-    "diseno": "I designed an experience that starts from the investments module: the user sees a new option to borrow up to 90% of their invested value without cashing out. I built high-fidelity prototypes in Figma, including variants for the number of investments held and the state of the loan.",
+    "diseno": "I designed an experience that starts from the investments module, where the user sees a new option to borrow up to 90% of their invested value without cashing out. I built high-fidelity prototypes in Figma, including variants for the number of investments held and the state of the loan.",
     "desarrollo": "I tested the flow across scenarios and refined messaging, visual rules, compatibility with existing loan flows and edge cases. I worked with legal and risk to adapt the key copy, so it clearly communicates the use of investments as collateral, the possible freezing of funds and the risk policy.",
     "analisisDatos": ""
   },
@@ -42,7 +42,7 @@
     "A self-service flow that works with the investments the user already holds",
     "Access to liquidity without cashing out investments or losing returns",
     "Visual and operational rules established for calculating the available amount, temporarily freezing funds and keeping returns running",
-    "A design that supports multiple scenarios: one or several investments, partial or maximum available request",
+    "A design that supports one or several investments and a partial or maximum available request",
     "Ready for A/B testing of the module with activation and conversion metrics"
   ],
   "aprendizajes": "Designing products that sit across two services means deeply understanding the logic and rules of both. Communicating limits, collateral and conditions clearly is what builds trust. Design decisions have to balance business opportunity against user safety and legal clarity. Bringing in variants and edge scenarios from the start is what lets the flow scale without unnecessary redesigns."

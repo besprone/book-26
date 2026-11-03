@@ -19,7 +19,7 @@
   "role": "Product Design Lead",
   "reto": "Advisors take payroll-deduction loan applications with the customer sitting in front of them, across five blocks: start, identification and authentication, quoting, application details and documents. The flow includes document scanning, remote authentication and signing, and all of it has to fit on the advisor’s phone. The goal was to find out where advisors get stuck before building it.",
   "proceso": {
-    "investigacion": "I designed a three-task protocol covering all five blocks, with a fictional customer, what to watch for in each task and a script for the facilitator. On the floor we ran it more loosely: each advisor went through the flow their own way, using the scenario as a reference rather than a fixed instruction.",
+    "investigacion": "I designed a three-task protocol covering all five blocks, with a fictional customer, what to watch for in each task and a script for the facilitator. On the floor we ran it more loosely, and each advisor went through the flow their own way, using the scenario as a reference rather than a fixed instruction.",
     "diseno": "I designed the flow and a second version that simplified it. I removed two steps for the advisor (the customer’s signature and the OTP code), turned the application-details block from a linear wizard into freely navigable chips, made the scanned pay stub fill in the income, and added real-time tracking of the customer’s authentication and signature. The product screens are built on the Calipso design system.",
     "desarrollo": "I built the prototype in React with Claude Code, deployed on Vercel, with serverless functions to save and export sessions. I simulated scanning, biometrics and digital signing so the whole test could run without a real backend.",
     "analisisDatos": "I instrumented the prototype to record when each task started and ended, the timings, every field change and every validation error. With that I analysed the sessions of four advisors without relying on what the facilitator remembered."
@@ -44,8 +44,8 @@
     "Field sessions with four advisors, on a working prototype and from their own phone",
     "All four started, authenticated, quoted and filled in the application; three of the four submitted it in full",
     "The full flow in a median of 11.8 minutes",
-    "No advisor discovered the amount could be typed: all four set it by dragging the slider",
+    "No advisor discovered the amount could be typed, and all four set it by dragging the slider",
     "The CLABE bank account number accounted for most entry errors"
   ],
-  "aprendizajes": "A control that doesn’t look editable doesn’t get used, even when it works: the amount could be typed, but no advisor tried, and if typing is the fast path it has to look like a field. Strictly formatted data, like the CLABE, needs validating as it is typed rather than at the end. And the instrumentation proved its worth: it recorded progress, timings and errors even though the sessions were loose. What it can’t tell you is whether the captured data was correct, so the next round calls for a fixed scenario and the satisfaction questions built into the app itself."
+  "aprendizajes": "A control that doesn’t look editable doesn’t get used, even when it works. The amount could be typed, but no advisor tried, and if typing is the fast path it has to look like a field. Strictly formatted data, like the CLABE, needs validating as it is typed rather than at the end. And the instrumentation proved its worth, recording progress, timings and errors even though the sessions were loose. What it can’t tell you is whether the captured data was correct, so the next round calls for a fixed scenario and the satisfaction questions built into the app itself."
 }

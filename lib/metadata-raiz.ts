@@ -11,7 +11,7 @@ const porIdioma = {
   en: {
     title: 'Marco De Castilla · Product Design Manager',
     description:
-      'Product Design Manager who prototypes in code with AI. 10+ years bringing design, development and data together: I take an idea to a working prototype, test it with real people and turn it into a system.',
+      'Product Design Manager: from strategy to a product that works. 10+ years in fintech bringing design, development and data together, from start to finish.',
     ogLocale: 'en_US',
   },
 } as const

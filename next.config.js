@@ -37,6 +37,22 @@ const nextConfig = {
     // AVIF primero: pesa menos que WebP y el navegador elige el que soporte
     formats: ['image/avif', 'image/webp'],
   },
+  // Slugs renombrados: la URL anterior sigue funcionando para no perder
+  // enlaces ni indexación.
+  async redirects() {
+    return [
+      {
+        source: '/proyectos/toko-solicitud-credito',
+        destination: '/proyectos/solicitud-credito-asesores',
+        permanent: true,
+      },
+      {
+        source: '/en/work/toko-solicitud-credito',
+        destination: '/en/work/solicitud-credito-asesores',
+        permanent: true,
+      },
+    ]
+  },
   async headers() {
     return [
       {

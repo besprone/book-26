@@ -1,51 +1,55 @@
 {
-  "title": "Calipso Design System",
-  "description": "A unified, scalable design system that consolidated several existing libraries into a single source of truth for design and engineering",
-  "date": "2023-06-01",
+  "title": "Calipso: a multi-brand design system, from Figma to code",
+  "description": "kubo.financiero's design system. I unified it in 2023 and in 2026 took it to code with AI: multi-brand, for web and React Native, with quality rules that check themselves.",
+  "date": "2026-10-01",
   "technologies": [
     "Figma",
-    "Storybook",
-    "HTML",
-    "CSS"
+    "Claude Code",
+    "React",
+    "TypeScript",
+    "Storybook"
   ],
   "image": "/proyectos/calipso-sistema-diseno/hero.png",
-  "featured": false,
+  "featured": true,
   "type": [
     "UX",
     "Dev"
   ],
   "client": "kubo.financiero",
-  "year": "2023",
-  "role": "UI Design Lead",
-  "reto": "When I joined the team there were several competing libraries and approaches to the design system. This caused visual inconsistency, duplicated effort and friction with engineering. The goal was to consolidate what already existed, keep the good practices, and define new rules that would act as the single source of truth for design and engineering. We wanted: a unified and scalable design system, clear rules for developers, reusable patterns, and documentation the whole team could reach.",
+  "year": "2023–2026",
+  "role": "Product Design Manager · system owner",
+  "reto": "In 2023 there were several libraries and several ways of doing the same thing: visual inconsistency, duplicated work and friction with development. I unified them into a single system in Figma, documented in Storybook. Three years later the challenge was different: the system had to serve more than one brand, live in code with the same rules as in Figma, and be solid enough to build a complete product on top of it without inventing anything.",
   "proceso": {
-    "investigacion": "I interviewed developers and PMs and reviewed the technologies used on the frontend. I analysed the existing flows to identify the base components, and deepened my knowledge of Atomic Design applied to design systems.",
-    "diseno": "I started from the brand guidelines and adjusted the colour palette to meet accessibility criteria. I defined tokens, atoms, molecules, organisms, templates and pages, and prototyped the first animations and state transitions.",
-    "desarrollo": "I documented the do’s and don’ts for each component and built the system’s Storybook with the team. We also laid the groundwork so documentation could later be generated with AI and published on a site accessible to everyone.",
-    "analisisDatos": "I measured consistency, adoption, and design and prototyping times before and after the system."
+    "investigacion": "In 2023 I interviewed devs and PMs and reviewed the flows to find the base components. In 2026 I audited the system against real use: I checked text contrast across all 351 Storybook stories, in every brand and theme, and documented every decision with its rationale.",
+    "diseno": "Figma is the source of truth. Every change is tried first on a test page, moves into the system with its documentation, and is logged with a script that replicates it. I organised the tokens in layers (base values, brand aliases and light/inverse theme aliases) so a component can switch brands without touching its code.",
+    "desarrollo": "I took the system to code with Claude Code: 55 React and TypeScript components, tokens generated from Figma into CSS and into a React Native theme, and Storybook documentation with concept, web and native for each foundation. AI speeds up the building; the rules, the review in Figma and every decision are mine.",
+    "analisisDatos": "Quality checks itself. On every change, CI verifies contrast pairs, that no component uses hard-coded colours, that tokens exist, and that the docs don't mention tokens that no longer exist. If anything fails, it doesn't get in."
   },
   "rolYHerramientas": {
     "rol": [
-      "Stakeholder research",
-      "Flow analysis",
-      "Tokens and components",
-      "System documentation",
-      "Adoption measurement"
+      "System direction and rules",
+      "Multi-brand token architecture",
+      "Components in Figma",
+      "Building in code with AI",
+      "Web and native documentation",
+      "Accessibility audit"
     ],
     "herramientas": [
       "Figma",
-      "FigJam",
+      "Figma MCP",
+      "Claude Code",
+      "React",
+      "TypeScript",
       "Storybook",
-      "Google Sites",
-      "HTML",
-      "CSS"
+      "GitHub Actions"
     ]
   },
   "resultados": [
-    "Libraries and components consolidated into one system",
-    "Greater visual consistency and standardised design patterns",
-    "Reduced UI design and prototyping time",
-    "Smoother collaboration with engineering and clear rules for implementation"
+    "One library instead of many, with clear rules for development (2023)",
+    "Multi-brand: 2 brands, each in light and inverse themes, from the same tokens",
+    "55 React components and a React Native theme generated from the same sources",
+    "200+ changes since April 2026, each one checked by CI: contrast, tokens and colours",
+    "Proven on a real product: a complete 8-stage SPEI transfer flow, built in 9 days using only system components"
   ],
-  "aprendizajes": "The importance of bringing in every perspective — design, engineering, product — before defining new patterns. Keeping documentation alive is what makes a system stay useful. Once developers have clear rules and a shared repository, they can propose and evolve patterns alongside the design team."
+  "aprendizajes": "A system is only a source of truth if nobody can bypass it, which is why the rules live in CI and not in a document. Layered tokens turned adding a brand into changing aliases, not components. And AI changed what it costs to build: testing an idea in code now takes days, so design work shifts towards defining the rules well and reviewing with judgement. The next step is packaging it as a library so other teams can install it."
 }

@@ -10,24 +10,24 @@
       "texto": "Marco De Castilla"
     }
   },
-  "resumen": "Product Design Manager with 10+ years of experience in UX/UI, design systems and front-end development, specialised in fintech (credit, investments and accounts). I have led a team of 4 designers and own a multi-brand design system in code, and I use AI (Claude Code) to turn ideas into working prototypes tested with real users. I measure what I test and analyse it with SQL and Python.",
+  "resumen": "Product Design Manager with 10+ years in UX/UI, design systems and front-end development, focused on fintech (credit, investments and accounts). I led a team of 4 designers, I own a multi-brand design system in code, and I build working prototypes with AI (Claude Code) to test ideas with real users before they are developed. I measure what I test and analyze it with SQL and Python.",
   "experiencia": [
     {
       "cargo": "kubo.financiero – Product Design Manager",
       "fecha": "Mexico City | Aug 2023 – Present",
       "logros": [
         "Own Calipso, a multi-brand design system in code (55 React components, web + React Native, CI checks).",
-        "Built AI-assisted working prototypes (React, Vercel) and validated flows with real users.",
-        "Led discovery, prototyping and usability testing that informed key product decisions.",
-        "Managed and mentored a team of 4 product designers, aligned with company strategy and OKRs."
+        "Built working prototypes with AI (React, Vercel) and field-tested a loan application flow with 4 advisors.",
+        "Led discovery, prototyping and usability testing for credit and investment products.",
+        "Managed and mentored a team of 4 product designers."
       ]
     },
     {
       "cargo": "kubo.financiero – UI Lead",
       "fecha": "Mexico City | May 2022 – Aug 2023",
       "logros": [
-        "Defined UI patterns and naming conventions, reducing handoff issues to development.",
-        "Improved usability and consistency across web and mobile, raising user satisfaction."
+        "Defined the UI patterns and naming conventions shared by design and development.",
+        "Standardized the UI across the web and mobile apps."
       ]
     },
     {
@@ -45,11 +45,11 @@
   ],
   "habilidades": [
     "Product Design / UX: Figma, User Research, Prototyping, Accessibility, Design Systems, Design Tokens, Usability Testing, DesignOps, Human-Centered Design",
-    "AI & Prototyping: Claude Code, Figma MCP, AI-assisted prototyping, React prototypes on Vercel, Storybook",
+    "AI & Prototyping: Claude Code, Figma MCP, React prototypes on Vercel, Storybook",
     "Front-End: HTML5, CSS3, SASS, JavaScript (ES6), React (basic), WordPress",
-    "Analytics / Data: GA4, GTM, dataLayer, Power BI (basic), Big Query, Looker, dbt (basic), Google Sheets, SQL (basic), Python (basic), Streamlit",
+    "Analytics / Data: GA4, GTM, dataLayer, Power BI (basic), BigQuery, Looker, dbt (basic), Google Sheets, SQL (basic), Python (basic), Streamlit",
     "Collaboration: Git, GitFlow, Jira, Notion, Miro, Agile, Scrum",
-    "Fintech Expertise: Fintech, Digital Banking, Credits, Loans, Investments, Financial UX"
+    "Fintech: Digital Banking, Credit, Loans, Investments, Financial UX"
   ],
   "idiomas": [
     "Spanish: Native",

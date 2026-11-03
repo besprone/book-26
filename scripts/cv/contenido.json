@@ -4,17 +4,22 @@
   "contacto": {
     "email": "besprone@gmail.com",
     "telefono": "+52-55-6487-0007",
-    "web": "https://besprone.com.mx"
+    "web": "https://besprone.com.mx",
+    "linkedin": {
+      "url": "https://www.linkedin.com/in/marco-antonio-de-castilla-vicelis-a91863108/",
+      "texto": "Marco De Castilla"
+    }
   },
-  "resumen": "Product Design Manager with over 10 years of experience in UX/UI, design systems, and front-end development. Proven track record in fintech delivering scalable solutions for credit, investment, and account management products. Skilled at leading cross-functional teams, implementing data-driven design strategies, and achieving measurable impact on usability and business KPIs.",
+  "resumen": "Product Design Manager with 10+ years of experience in UX/UI, design systems and front-end development, specialised in fintech (credit, investments and accounts). I have led a team of 4 designers and own a multi-brand design system in code, and I use AI (Claude Code) to turn ideas into working prototypes tested with real users. I measure what I test and analyse it with SQL and Python.",
   "experiencia": [
     {
       "cargo": "kubo.financiero – Product Design Manager",
       "fecha": "Mexico City | Aug 2023 – Present",
       "logros": [
-        "Established governance of the Design System (tokens, components, documentation), reducing inconsistencies.",
-        "Led discovery, prototyping, and usability testing that informed key product decisions and reduced iteration cycles.",
-        "Managed and mentored a team of 4 product designers, aligning deliverables with company strategy and OKRs."
+        "Own Calipso, a multi-brand design system in code (55 React components, web + React Native, CI checks).",
+        "Built AI-assisted working prototypes (React, Vercel) and validated flows with real users.",
+        "Led discovery, prototyping and usability testing that informed key product decisions.",
+        "Managed and mentored a team of 4 product designers, aligned with company strategy and OKRs."
       ]
     },
     {
@@ -40,6 +45,7 @@
   ],
   "habilidades": [
     "Product Design / UX: Figma, User Research, Prototyping, Accessibility, Design Systems, Design Tokens, Usability Testing, DesignOps, Human-Centered Design",
+    "AI & Prototyping: Claude Code, Figma MCP, AI-assisted prototyping, React prototypes on Vercel, Storybook",
     "Front-End: HTML5, CSS3, SASS, JavaScript (ES6), React (basic), WordPress",
     "Analytics / Data: GA4, GTM, dataLayer, Power BI (basic), Big Query, Looker, dbt (basic), Google Sheets, SQL (basic), Python (basic), Streamlit",
     "Collaboration: Git, GitFlow, Jira, Notion, Miro, Agile, Scrum",
@@ -48,5 +54,6 @@
   "idiomas": [
     "Spanish: Native",
     "English: Intermediate"
-  ]
+  ],
+  "experienciaPrevia": "Nuxiba – UI Designer (2018–2022) · Applica2 – Motion Graphic Designer (2013–2018)"
 }

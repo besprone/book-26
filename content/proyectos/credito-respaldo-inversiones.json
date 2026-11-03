@@ -1,6 +1,6 @@
 {
   "title": "Crédito Respaldo por Inversiones",
-  "description": "Solución que permite solicitar un préstamo utilizando inversiones activas como garantía, sin cancelarlas ni perder rendimientos, proporcionando acceso a liquidez inmediata",
+  "description": "Un préstamo con las inversiones activas como garantía, sin cancelarlas ni perder rendimientos",
   "date": "2024-02-01",
   "technologies": [
     "Figma",
@@ -14,7 +14,7 @@
   "client": "kubo.financiero",
   "year": "2024",
   "role": "Product Design Manager",
-  "reto": "Muchos usuarios de la app de kubo.financiero cuentan con inversiones activas, pero enfrentan necesidades de liquidez inmediatas. El reto era diseñar una solución que permitiera solicitar un préstamo utilizando las inversiones existentes como garantía, sin tener que cancelarlas o perder los rendimientos generados. La solución debía ser clara, confiable y escalable, respetando las condiciones regulatorias y el comportamiento financiero de los usuarios.",
+  "reto": "Muchos usuarios de la app de kubo.financiero cuentan con inversiones activas, pero enfrentan necesidades de liquidez inmediatas. El reto era diseñar una solución que permitiera solicitar un préstamo utilizando las inversiones existentes como garantía, sin tener que cancelarlas o perder los rendimientos generados. Además tenía que cumplir con la regulación y respetar cómo la gente usa sus inversiones.",
   "proceso": {
     "investigacion": "Exploré la oportunidad que abría conectar dos productos existentes, créditos e inversiones, a partir de conversaciones internas y casos de uso potenciales. Entrevisté a los equipos de producto, riesgos, negocio y legal para entender restricciones, reglas de validación, cálculo de montos, flujos permitidos y riesgos operativos. Revisé productos comparables del sector financiero y cómo resuelven la liquidez otras fintechs.",
     "diseno": "Diseñé una experiencia que parte del módulo de inversiones, donde el usuario ve una opción nueva para solicitar hasta el 90% del valor invertido como préstamo, sin cancelar su inversión. Construí prototipos de alta fidelidad en Figma, con variantes según el número de inversiones y el estado del préstamo.",
@@ -45,5 +45,5 @@
     "Un diseño que admite una o varias inversiones y una solicitud parcial o por el máximo disponible",
     "Listo para un A/B test del módulo con métricas de activación y conversión"
   ],
-  "aprendizajes": "El diseño de productos que cruzan servicios requiere entender profundamente la lógica y reglas de ambos. Comunicar límites, garantías y condiciones de forma clara es clave para generar confianza. Las decisiones de diseño deben balancear oportunidad de negocio con seguridad del usuario y claridad legal. Incorporar variantes y escenarios desde el inicio permite escalar el flujo sin rediseños innecesarios."
+  "aprendizajes": "Para diseñar un producto que cruza dos servicios tuve que entender las reglas de los dos. Explicar límites, garantías y condiciones sin letra chiquita es lo que genera confianza. Cada decisión equilibró el negocio, la seguridad de la persona y lo que legal permite. Y diseñar las variantes desde el inicio evitó rediseños después."
 }

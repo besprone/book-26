@@ -1,6 +1,6 @@
 {
   "title": "Investment-Backed Credit",
-  "description": "A product that lets customers borrow against their active investments as collateral, without cashing them out or giving up returns, giving them immediate access to liquidity",
+  "description": "A loan backed by active investments, without cashing them out or losing returns",
   "date": "2024-02-01",
   "technologies": [
     "Figma",
@@ -14,7 +14,7 @@
   "client": "kubo.financiero",
   "year": "2024",
   "role": "Product Design Manager",
-  "reto": "Many users of the kubo.financiero app hold active investments but still face immediate liquidity needs. The challenge was to design a way to request a loan using those existing investments as collateral, without having to cash them out or lose the returns already earned. The solution had to be clear, trustworthy and scalable, while respecting regulatory conditions and how users actually behave with their money.",
+  "reto": "Many users of the kubo.financiero app hold active investments but still face immediate liquidity needs. The challenge was to design a way to request a loan using those existing investments as collateral, without having to cash them out or lose the returns already earned. It also had to meet regulation and respect how people actually use their investments.",
   "proceso": {
     "investigacion": "I explored the opportunity created by connecting two existing products, loans and investments, through internal conversations and potential use cases. I interviewed the product, risk, business and legal teams to understand constraints, validation rules, how amounts are calculated, permitted flows and operational risks. I reviewed comparable products in financial services and studied how other fintechs solve liquidity.",
     "diseno": "I designed an experience that starts from the investments module, where the user sees a new option to borrow up to 90% of their invested value without cashing out. I built high-fidelity prototypes in Figma, including variants for the number of investments held and the state of the loan.",
@@ -45,5 +45,5 @@
     "A design that supports one or several investments and a partial or maximum available request",
     "Ready for A/B testing of the module with activation and conversion metrics"
   ],
-  "aprendizajes": "Designing products that sit across two services means deeply understanding the logic and rules of both. Communicating limits, collateral and conditions clearly is what builds trust. Design decisions have to balance business opportunity against user safety and legal clarity. Bringing in variants and edge scenarios from the start is what lets the flow scale without unnecessary redesigns."
+  "aprendizajes": "Designing a product that spans two services meant learning the rules of both. Explaining limits, collateral and conditions with no fine print is what builds trust. Every decision balanced the business, the person's safety and what legal allows. And designing the variants from the start avoided redesigns later."
 }

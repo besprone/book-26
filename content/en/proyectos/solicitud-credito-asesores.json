@@ -1,5 +1,5 @@
 {
-  "title": "Toko · Loan applications for advisors",
+  "title": "Loan applications for advisors",
   "description": "A working prototype and field validation of the flow advisors use to take payroll loan applications from their own phone.",
   "date": "2026-09-01",
   "technologies": [
@@ -8,7 +8,7 @@
     "Claude Code",
     "Vercel"
   ],
-  "image": "/proyectos/toko-solicitud-credito/hero.png",
+  "image": "/proyectos/solicitud-credito-asesores/hero.png",
   "featured": false,
   "type": [
     "UX",

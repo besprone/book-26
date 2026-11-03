@@ -1,5 +1,5 @@
 {
-  "title": "Toko · Solicitud de crédito para asesores",
+  "title": "Solicitud de crédito para asesores",
   "description": "Prototipo funcional y validación en piso del flujo con el que los asesores levantan solicitudes de crédito vía nómina desde su propio teléfono.",
   "date": "2026-09-01",
   "technologies": [
@@ -8,7 +8,7 @@
     "Claude Code",
     "Vercel"
   ],
-  "image": "/proyectos/toko-solicitud-credito/hero.png",
+  "image": "/proyectos/solicitud-credito-asesores/hero.png",
   "featured": false,
   "type": [
     "UX",

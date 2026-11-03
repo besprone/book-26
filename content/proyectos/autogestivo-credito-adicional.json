@@ -14,7 +14,7 @@
   ],
   "client": "kubo.financiero",
   "year": "2024",
-  "role": "Líder de diseño de producto (Product Design Manager)",
+  "role": "Product Design Manager",
   "reto": "En kubo.financiero, detectamos que algunos usuarios en atraso podían ver ofertas activas de crédito adicional dentro del flujo autogestivo, debido a un desfase en la actualización del sistema. Esta situación generaba confusión e incrementaba la carga operativa para el equipo de atención y cobranza. El reto fue rediseñar el flujo para prevenir estos casos, asegurando que solo se mostraran ofertas a usuarios elegibles en tiempo real, y comunicar de forma clara el motivo en caso de no mostrar ofertas.",
   "proceso": {
     "investigacion": "Detecté el problema a partir de reportes de asesores y del monitoreo de ATC. Mapeé los pasos del proceso autogestivo para crédito adicional, con foco en cómo se validaba el estatus del crédito anterior.",
@@ -39,9 +39,8 @@
     ]
   },
   "resultados": [
-    "Menos casos de confusión y reclamos por inconsistencias en las ofertas",
-    "Una validación efectiva antes de mostrar la pantalla de ofertas",
-    "Mayor percepción de confiabilidad de la app, al comunicar con claridad los cambios en el estatus del crédito",
+    "Validación en tiempo real del estatus del crédito antes de mostrar la pantalla de ofertas",
+    "Mensajes claros cuando cambia el estatus, para que la persona entienda por qué no ve una oferta",
     "Diseño, tecnología, cobranza y ATC alineados en un flujo coherente"
   ],
   "aprendizajes": "La comunicación clara en momentos de cambio de estatus es clave para evitar frustración. Es importante validar las condiciones de negocio no solo al momento de mostrar una oferta, sino también al ingresar al flujo. Las pantallas que no ofrecen acción (como \"no hay oferta disponible\") deben tener un mensaje positivo, empático y bien diseñado para no generar abandono."

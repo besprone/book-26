@@ -1,7 +1,7 @@
 {
   "title": "Predicción de Abandono en Neo Bank",
   "description": "Análisis de más de 19,000 usuarios para identificar perfiles de riesgo de churn y desarrollar un modelo predictivo que permitiera anticipar el abandono y diseñar estrategias de retención específicas",
-  "date": "2024-05-01",
+  "date": "2025-05-01",
   "technologies": [
     "Python",
     "Pandas",
@@ -13,9 +13,9 @@
   "type": [
     "Data"
   ],
-  "client": "Neo Bank",
-  "year": "2024",
-  "role": "Investigación de producto y análisis de datos",
+  "client": "Proyecto de Le Wagon · dataset de Neo Bank",
+  "year": "2025",
+  "role": "Análisis de datos",
   "videoYoutube": "https://youtu.be/mAniM9yA6z8",
   "reto": "Neo Bank, un neobanco global, enfrentaba un problema crítico: muchos usuarios se registraban pero nunca llegaban a realizar una transacción. Esto generaba una alta tasa de abandono temprano, afectando la retención, el valor del cliente y el crecimiento del producto. El reto consistía en identificar qué perfiles de usuarios presentaban mayor riesgo de churn y cómo anticipar ese comportamiento para diseñar soluciones específicas.",
   "proceso": {

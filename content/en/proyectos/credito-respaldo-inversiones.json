@@ -39,8 +39,8 @@
     ]
   },
   "resultados": [
-    "A clear, intuitive self-service flow that works with the investments the user already holds",
-    "Less friction, by removing the need to cash out investments to access liquidity",
+    "A self-service flow that works with the investments the user already holds",
+    "Access to liquidity without cashing out investments or losing returns",
     "Visual and operational rules established for calculating the available amount, temporarily freezing funds and keeping returns running",
     "A design that supports multiple scenarios: one or several investments, partial or maximum available request",
     "Ready for A/B testing of the module with activation and conversion metrics"

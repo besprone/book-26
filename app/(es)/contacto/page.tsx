@@ -7,7 +7,7 @@ export const metadata: Metadata = metadataPagina({
   clave: 'contacto',
   title: 'Contacto',
   description:
-    'Disponible para colaboraciones freelance, consultorías y asesorías UX. Cuéntame sobre tu proyecto y te respondo pronto.',
+    'Busco un puesto de liderazgo de diseño de producto y tomo consultorías puntuales. Cuéntame sobre tu equipo o tu proyecto y te respondo pronto.',
 })
 
 export default function Page() {

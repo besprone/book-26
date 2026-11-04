@@ -1,0 +1,53 @@
+/*
+  Hero de Home. El título se lee desde el inicio y solo los teléfonos se mueven.
+  Están en su lugar final por defecto: la animación define de dónde vienen.
+*/
+.composicion {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  aspect-ratio: 560 / 620;
+}
+
+.telefono {
+  position: absolute;
+  height: auto;
+  transform-origin: 0 0;
+  transform: rotate(var(--giro, 0deg));
+  animation: sube var(--motion-slow) var(--motion-ease) var(--pausa, 0ms) both;
+}
+
+.ruta {
+  --giro: -9deg;
+  --pausa: 120ms;
+  left: 3.57%;
+  top: 17.74%;
+  width: 41.07%;
+}
+
+.solicitud {
+  --giro: 9deg;
+  --pausa: 240ms;
+  left: 55.36%;
+  top: 12.9%;
+  width: 41.07%;
+}
+
+.calipso {
+  left: 23.21%;
+  top: 8.06%;
+  width: 53.57%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .telefono {
+    animation: none;
+  }
+}
+
+@keyframes sube {
+  from {
+    opacity: 0;
+    transform: translateY(12%) rotate(var(--giro, 0deg));
+  }
+}

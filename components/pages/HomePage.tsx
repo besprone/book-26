@@ -1,30 +1,36 @@
 import { getAllProyectos, getHomeConfig } from '@/lib/markdown'
-import { t, type Locale } from '@/lib/i18n'
-import { ItemMarcado, ListaMarcada } from '@/components/ListaMarcada'
+import type { Locale } from '@/lib/i18n'
+import { ListaEtiquetas } from '@/components/ListaMarcada'
 import Button from '@/components/Button'
 import SectionHeader from '@/components/SectionHeader'
-import Card from '@/components/Card'
-import CajaIcono from '@/components/CajaIcono'
-import ProfileCard from '@/components/ProfileCard'
 import ProjectCard from '@/components/ProjectCard'
-import ImageWithSkeleton from '@/components/ImageWithSkeleton'
 import SectionViewTracker from '@/components/SectionViewTracker'
 import ScrollDepthTracker from '@/components/ScrollDepthTracker'
-import { Image as ImageIcon, Code, Briefcase, Smartphone, Target, Palette, Database, Sparkles } from 'lucide-react'
+import HeroHome from '@/components/home/HeroHome'
+import { Cifras, Proceso } from '@/components/caso/SeccionesCaso'
 import JsonLd from '@/components/JsonLd'
 import { siteConfig, socials } from '@/lib/site'
 
-// Iconos por posición, alineados con el orden de config.perfil.cards
-const perfilIcons = [Briefcase, Smartphone, Target]
-
-// Iconos por posición, alineados con el orden de config.stack.categories
-const stackIcons = [Palette, Code, Database, Sparkles]
+// La banda de cifras usa los colores del sitio, los mismos que un caso sin `tema`.
+const coloresBanda = {
+  '--case-band': '#172130',
+  '--case-band-value': '#11ced8',
+  '--case-band-text': '#ffffff',
+} as React.CSSProperties
 
 export default function HomePage({ locale }: { locale: Locale }) {
-  const txt = t(locale)
   const config = getHomeConfig(locale)
   const proyectos = getAllProyectos(locale)
-  const featuredProyectos = proyectos.slice(0, config.proyectos.featuredCount)
+  const [principal, ...secundarios] = proyectos.slice(0, config.proyectos.featuredCount)
+
+  // El número de casos sale del contenido para que no se quede viejo.
+  const cifras = {
+    ...config.prueba,
+    items: config.prueba.items.map((item) => ({
+      ...item,
+      valor: item.valor.replace('{casos}', String(proyectos.length)),
+    })),
+  }
 
   // Datos estructurados de la persona: ayudan a Google a relacionar el sitio
   // con el perfil profesional y sus cuentas.
@@ -44,94 +50,14 @@ export default function HomePage({ locale }: { locale: Locale }) {
     <div className="bg-white dark:bg-gray-900">
       <JsonLd data={personaJsonLd} />
       <ScrollDepthTracker />
-      {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20 lg:py-24 relative">
-        <SectionViewTracker sectionName="hero" className="absolute top-0 left-0 w-full h-1" />
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 dark:text-white leading-tight">
-              {config.hero.title}
-            </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
-              {config.hero.description}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
-                href={config.hero.buttons.primary.href} 
-                variant={config.hero.buttons.primary.variant} 
-                size="lg"
-                ctaType="hero_primary"
-                sectionName="hero"
-              >
-                {config.hero.buttons.primary.text}
-              </Button>
-              <Button 
-                href={config.hero.buttons.secondary.href} 
-                variant={config.hero.buttons.secondary.variant} 
-                size="lg"
-                ctaType="hero_secondary"
-                sectionName="hero"
-              >
-                {config.hero.buttons.secondary.text}
-              </Button>
-            </div>
-          </div>
-          <div className="hidden lg:block">
-            {config.hero.image ? (
-              <div className="rounded-2xl overflow-hidden">
-                <ImageWithSkeleton
-                  src={config.hero.image}
-                  alt={config.hero.title}
-                  width={1080}
-                  height={1080}
-                  sizes="(min-width: 1024px) 50vw, 100vw"
-                  priority
-                  errorLabel={txt.imagen.error}
-                  className="w-full h-auto object-cover rounded-2xl"
-                />
-              </div>
-            ) : (
-              <div className="bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-8 flex items-center justify-center h-96 shadow-lg">
-                <div className="text-center text-gray-500 dark:text-gray-400">
-                  <ImageIcon className="w-48 h-48 mx-auto mb-4" />
-                  <p className="text-sm font-medium">{txt.imagen.placeholder}</p>
-                  <p className="text-xs mt-2">Agrega hero.image en content/config.json</p>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
+      <HeroHome hero={config.hero} />
 
-      {/* Perfil Profesional Section */}
-      <section className="bg-gray-50 dark:bg-gray-800 py-14 md:py-16 relative">
-        <SectionViewTracker sectionName="perfil" className="absolute top-0 left-0 w-full h-1" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            title={config.perfil.title}
-            actionLabel={config.perfil.actionButton.text}
-            actionHref={config.perfil.actionButton.href}
-            sectionName="perfil"
-          />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {config.perfil.cards.map((card, index) => {
-              const Icon = perfilIcons[index]
-              return (
-                <ProfileCard
-                  key={index}
-                  title={card.title}
-                  description={card.description}
-                  icon={Icon}
-                />
-              )
-            })}
-          </div>
-        </div>
-      </section>
+      <div style={coloresBanda}>
+        <Cifras cifras={cifras} tituloOculto />
+      </div>
 
-      {/* Proyectos Section */}
-      {featuredProyectos.length > 0 && (
-        <section className="py-14 md:py-16 relative">
+      {principal && (
+        <section className="py-12 md:py-24 relative">
           <SectionViewTracker sectionName="proyectos" className="absolute top-0 left-0 w-full h-1" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <SectionHeader
@@ -140,26 +66,42 @@ export default function HomePage({ locale }: { locale: Locale }) {
               actionHref={config.proyectos.actionButton.href}
               sectionName="proyectos"
             />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
-              {featuredProyectos.map((proyecto) => (
-                <ProjectCard
-                  key={proyecto.slug}
-                  title={proyecto.title}
-                  image={proyecto.image}
-                  slug={proyecto.slug}
-                  locale={locale}
-                  client={proyecto.client}
-                  year={proyecto.year}
-                  type={proyecto.type}
-                />
-              ))}
+            <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,792fr)_minmax(0,400fr)] gap-x-6 gap-y-8">
+              <ProjectCard
+                destacado
+                enSeccion
+                title={principal.title}
+                image={principal.image}
+                slug={principal.slug}
+                locale={locale}
+                client={principal.client}
+                year={principal.year}
+                type={principal.type}
+              />
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-x-6 gap-y-8 content-start">
+                {secundarios.map((proyecto) => (
+                  <ProjectCard
+                    key={proyecto.slug}
+                    title={proyecto.title}
+                    image={proyecto.image}
+                    slug={proyecto.slug}
+                    locale={locale}
+                    client={proyecto.client}
+                    year={proyecto.year}
+                    type={proyecto.type}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </section>
       )}
 
-      {/* Stack Section */}
-      <section className="bg-gray-50 dark:bg-gray-800 py-14 md:py-16 relative">
+      <div className="numeros-sitio bg-gray-50 dark:bg-gray-800">
+        <Proceso titulo={config.comoTrabajo.title} fases={config.comoTrabajo.fases} sectionName="como_trabajo" />
+      </div>
+
+      <section className="py-12 md:py-24 relative">
         <SectionViewTracker sectionName="stack" className="absolute top-0 left-0 w-full h-1" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader
@@ -168,52 +110,36 @@ export default function HomePage({ locale }: { locale: Locale }) {
             actionHref={config.stack.actionButton.href}
             sectionName="stack"
           />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {config.stack.categories.map((category, index) => {
-              const Icon = stackIcons[index]
-              return (
-                <Card key={index} className="p-6">
-                  {Icon && <CajaIcono icon={Icon} tamano="lg" tono="accent" className="mb-4" />}
-                  <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">
-                    {category.title}
-                  </h3>
-                  <ListaMarcada>
-                    {category.items.map((item) => (
-                      <ItemMarcado
-                        key={item}
-                        className="font-semibold text-gray-900 dark:text-white text-sm"
-                      >
-                        {item}
-                      </ItemMarcado>
-                    ))}
-                  </ListaMarcada>
-                </Card>
-              )
-            })}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+            {config.stack.categories.map((category) => (
+              <div key={category.title}>
+                <h3 className="text-xl font-normal mb-3 text-gray-900 dark:text-white">{category.title}</h3>
+                <ListaEtiquetas items={category.items} variant="metadato" />
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Call to Action Section */}
-      <section className="pt-20 pb-12 relative">
+      <section className="bg-primary-500 text-white py-12 md:py-24 relative">
         <SectionViewTracker sectionName="cta" className="absolute top-0 left-0 w-full h-1" />
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-gray-900 dark:text-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-[34px] md:text-[56px] font-semibold leading-[1.12] mb-8 text-balance">
             {config.callToAction.title}
           </h2>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              href={config.callToAction.buttons.primary.href} 
-              variant={config.callToAction.buttons.primary.variant} 
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Button
+              href={config.callToAction.buttons.primary.href}
+              variant={config.callToAction.buttons.primary.variant}
               size="lg"
               ctaType="cta_section"
               sectionName="cta"
             >
               {config.callToAction.buttons.primary.text}
             </Button>
-            <Button 
-              href={config.callToAction.buttons.secondary.href} 
-              variant={config.callToAction.buttons.secondary.variant} 
+            <Button
+              href={config.callToAction.buttons.secondary.href}
+              variant={config.callToAction.buttons.secondary.variant}
               size="lg"
               ctaType="cta_section"
               sectionName="cta"

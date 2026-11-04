@@ -4,6 +4,8 @@
 // un componente cliente que importe un tipo desde allí arrastra el módulo de
 // servidor a su grafo de dependencias.
 
+import type { VarianteBoton } from './estilos-boton'
+
 export interface ContactoConfig {
   hero: {
     title: string
@@ -130,30 +132,17 @@ export interface HomeConfig {
   hero: {
     title: string
     description: string
-    image?: string
+    /** Describe los teléfonos del hero, que se leen como una sola imagen. */
+    alt: string
     buttons: {
-      primary: {
-        text: string
-        href: string
-        variant: 'primary' | 'secondary' | 'tonal' | 'ghost'
-      }
-      secondary: {
-        text: string
-        href: string
-        variant: 'primary' | 'secondary' | 'tonal' | 'ghost'
-      }
+      primary: { text: string; href: string; variant: VarianteBoton }
+      secondary: { text: string; href: string; variant: VarianteBoton }
     }
   }
-  perfil: {
-    title: string
-    actionButton: {
-      text: string
-      href: string
-    }
-    cards: Array<{
-      title: string
-      description: string
-    }>
+  /** Banda de cifras. En `valor`, `{casos}` se cambia por el número de casos publicados. */
+  prueba: {
+    titulo: string
+    items: { valor: string; texto: string }[]
   }
   proyectos: {
     title: string
@@ -162,6 +151,10 @@ export interface HomeConfig {
       href: string
     }
     featuredCount: number
+  }
+  comoTrabajo: {
+    title: string
+    fases: { titulo: string; texto: string }[]
   }
   stack: {
     title: string
@@ -177,16 +170,8 @@ export interface HomeConfig {
   callToAction: {
     title: string
     buttons: {
-      primary: {
-        text: string
-        href: string
-        variant: 'primary' | 'secondary' | 'tonal' | 'ghost'
-      }
-      secondary: {
-        text: string
-        href: string
-        variant: 'primary' | 'secondary' | 'tonal' | 'ghost'
-      }
+      primary: { text: string; href: string; variant: VarianteBoton }
+      secondary: { text: string; href: string; variant: VarianteBoton }
     }
   }
 }

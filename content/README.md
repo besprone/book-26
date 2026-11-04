@@ -23,17 +23,21 @@ El archivo `config.json` contiene toda la configuración de la página principal
 ### Hero Section
 - `hero.title`: Título principal
 - `hero.description`: Descripción debajo del título
+- `hero.alt`: Descripción de los teléfonos para lectores de pantalla
 - `hero.buttons`: Botones del hero (texto, enlace, estilo)
 
-### Perfil Profesional
-- `perfil.title`: Título de la sección
-- `perfil.actionButton`: Botón de acción
-- `perfil.cards`: Array de tarjetas con título y descripción
+### Cifras
+- `prueba.titulo`: Título de la banda, solo para lectores de pantalla
+- `prueba.items`: Tres datos con `valor` y `texto`. En `valor`, `{casos}` se cambia por el número de casos publicados
 
 ### Proyectos
 - `proyectos.title`: Título de la sección
 - `proyectos.actionButton`: Botón de acción
 - `proyectos.featuredCount`: Número de proyectos destacados a mostrar
+
+### Cómo trabajo
+- `comoTrabajo.title`: Título de la sección
+- `comoTrabajo.fases`: Las fases, con `titulo` y `texto`
 
 ### Stack
 - `stack.title`: Título de la sección

@@ -85,6 +85,15 @@ html {
 }
 
 /* Bloque a todo lo ancho dentro del contenedor del caso. */
+/* Fuera de los casos, los números del proceso usan el color del sitio. */
+.numeros-sitio {
+  --case-number: #6244c7;
+}
+
+.dark .numeros-sitio {
+  --case-number: #b39fff;
+}
+
 /* Números del proceso: el color del caso si lo define, si no el del tema. */
 .caso-numero {
   color: var(--case-number, #172130);

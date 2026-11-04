@@ -26,6 +26,11 @@ interface ProjectCardProps {
   destacado?: boolean
   /** Sólo se pinta en la versión destacada. */
   description?: string
+  /**
+   * La tarjeta va dentro de una sección que ya tiene título, como en Home. El
+   * título baja a h3 y no hace falta la etiqueta porque ya se ve más grande.
+   */
+  enSeccion?: boolean
 }
 
 /**
@@ -61,6 +66,7 @@ export default function ProjectCard({
   type,
   destacado = false,
   description,
+  enSeccion = false,
 }: ProjectCardProps) {
   const pathname = usePathname()
 
@@ -81,7 +87,7 @@ export default function ProjectCard({
   }
 
   const contexto = [client, year, type?.join(', ')].filter(Boolean)
-  const Titulo = destacado ? 'h2' : 'h3'
+  const Titulo = destacado && !enSeccion ? 'h2' : 'h3'
 
   return (
     <Link
@@ -93,7 +99,7 @@ export default function ProjectCard({
           lleve: la imagen es el borde de la tarjeta. */}
       <div
         className={`bg-gray-100 dark:bg-gray-700 relative overflow-hidden rounded-xl ${
-          destacado ? 'h-64 md:h-80 lg:h-96' : 'h-48'
+          destacado ? 'h-64 md:h-80 lg:h-[420px]' : 'h-48'
         }`}
       >
         {image ? (
@@ -106,9 +112,9 @@ export default function ProjectCard({
                   ? '(min-width: 1280px) 1216px, 100vw'
                   : '(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw'
               }
-              priority={destacado}
+              priority={destacado && !enSeccion}
               errorLabel={t(locale).imagen.error}
-              className="object-cover group-hover:scale-105 transition-transform duration-300"
+              className="object-cover group-hover:scale-105 transition-transform duration-motion-base"
             />
           </div>
         ) : (
@@ -120,7 +126,7 @@ export default function ProjectCard({
         )}
       </div>
 
-      {destacado && (
+      {destacado && !enSeccion && (
         <div className="mt-5">
           <Badge variant="estado" icon={Star}>
             {t(locale).proyectos.destacado}
@@ -129,8 +135,8 @@ export default function ProjectCard({
       )}
 
       <Titulo
-        className={`font-semibold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition ${
-          destacado ? 'mt-3 text-2xl md:text-3xl leading-tight' : 'mt-4 text-lg'
+        className={`font-normal text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition ${
+          destacado ? `${enSeccion ? 'mt-5' : 'mt-3'} text-xl md:text-[28px] leading-tight` : 'mt-4 text-xl leading-snug'
         }`}
       >
         {title}

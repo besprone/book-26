@@ -8,8 +8,25 @@
       "href": "/cv.pdf"
     }
   },
+  "cifras": {
+    "titulo": "En cifras",
+    "items": [
+      {
+        "valor": "+10 años",
+        "texto": "De experiencia uniendo diseño, tecnología y estrategia."
+      },
+      {
+        "valor": "4 personas",
+        "texto": "El equipo de diseño que he liderado en kubo.financiero."
+      },
+      {
+        "valor": "{cursos} cursos",
+        "texto": "Certificaciones recientes, de 2023 a 2025."
+      }
+    ]
+  },
   "resumenProfesional": {
-    "title": "Resumen profesional",
+    "title": "Lo que aporto",
     "cards": [
       {
         "title": "Pensamiento estratégico",
@@ -235,12 +252,12 @@
       "primary": {
         "text": "Ver proyectos",
         "href": "/proyectos",
-        "variant": "secondary"
+        "variant": "claro"
       },
       "secondary": {
         "text": "Contáctame",
         "href": "/contacto",
-        "variant": "primary"
+        "variant": "noche"
       }
     }
   }

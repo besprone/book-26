@@ -94,10 +94,11 @@ Escribe tu CV en Markdown. Puedes usar:
 
 El archivo `sobre-mi.json` contiene toda la configuración de la página "Sobre Mí". Puedes editar:
 - Hero (nombre de la sección, frase principal, descripción, botón CV)
-- Resumen profesional (tarjetas)
+- Cifras (tres datos; en `valor`, `{cursos}` se cambia por el número de certificaciones)
+- Lo que aporto (`resumenProfesional`, tres tarjetas)
 - Experiencia (los escalones del hero, en orden cronológico; `etiqueta` es lo que dice cada uno)
 - Formación (certificaciones y educación)
-- Stack (categorías con tecnologías)
+- Stack (categorías con tecnologías; hoy solo se muestra el `nombre`, no la `descripcion`)
 - Call to Action
 
 ## 📧 Editar Contacto (`contacto.json`)

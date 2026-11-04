@@ -1,22 +1,15 @@
 import { getAllProyectos, getHomeConfig } from '@/lib/markdown'
 import type { Locale } from '@/lib/i18n'
-import { ListaEtiquetas } from '@/components/ListaMarcada'
-import Button from '@/components/Button'
 import SectionHeader from '@/components/SectionHeader'
 import ProjectCard from '@/components/ProjectCard'
 import SectionViewTracker from '@/components/SectionViewTracker'
 import ScrollDepthTracker from '@/components/ScrollDepthTracker'
 import HeroHome from '@/components/home/HeroHome'
-import { Cifras, Proceso } from '@/components/caso/SeccionesCaso'
+import BandaCierre from '@/components/BandaCierre'
+import StackEtiquetas from '@/components/StackEtiquetas'
+import { Cifras, coloresBandaSitio, Proceso } from '@/components/caso/SeccionesCaso'
 import JsonLd from '@/components/JsonLd'
 import { siteConfig, socials } from '@/lib/site'
-
-// La banda de cifras usa los colores del sitio, los mismos que un caso sin `tema`.
-const coloresBanda = {
-  '--case-band': '#172130',
-  '--case-band-value': '#11ced8',
-  '--case-band-text': '#ffffff',
-} as React.CSSProperties
 
 export default function HomePage({ locale }: { locale: Locale }) {
   const config = getHomeConfig(locale)
@@ -52,7 +45,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
       <ScrollDepthTracker />
       <HeroHome hero={config.hero} />
 
-      <div style={coloresBanda}>
+      <div style={coloresBandaSitio}>
         <Cifras cifras={cifras} tituloOculto />
       </div>
 
@@ -100,54 +93,14 @@ export default function HomePage({ locale }: { locale: Locale }) {
         <Proceso titulo={config.comoTrabajo.title} fases={config.comoTrabajo.fases} sectionName="como_trabajo" />
       </div>
 
-      <section className="py-12 md:py-24 relative">
-        <SectionViewTracker sectionName="stack" className="absolute top-0 left-0 w-full h-1" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            title={config.stack.title}
-            actionLabel={config.stack.actionButton.text}
-            actionHref={config.stack.actionButton.href}
-            sectionName="stack"
-          />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
-            {config.stack.categories.map((category) => (
-              <div key={category.title}>
-                <h3 className="text-xl font-normal mb-3 text-gray-900 dark:text-white">{category.title}</h3>
-                <ListaEtiquetas items={category.items} variant="metadato" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <StackEtiquetas
+        title={config.stack.title}
+        categories={config.stack.categories}
+        actionLabel={config.stack.actionButton.text}
+        actionHref={config.stack.actionButton.href}
+      />
 
-      <section className="bg-primary-500 text-white py-12 md:py-24 relative">
-        <SectionViewTracker sectionName="cta" className="absolute top-0 left-0 w-full h-1" />
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-[34px] md:text-[56px] font-semibold leading-[1.12] mb-8 text-balance">
-            {config.callToAction.title}
-          </h2>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Button
-              href={config.callToAction.buttons.primary.href}
-              variant={config.callToAction.buttons.primary.variant}
-              size="lg"
-              ctaType="cta_section"
-              sectionName="cta"
-            >
-              {config.callToAction.buttons.primary.text}
-            </Button>
-            <Button
-              href={config.callToAction.buttons.secondary.href}
-              variant={config.callToAction.buttons.secondary.variant}
-              size="lg"
-              ctaType="cta_section"
-              sectionName="cta"
-            >
-              {config.callToAction.buttons.secondary.text}
-            </Button>
-          </div>
-        </div>
-      </section>
+      <BandaCierre title={config.callToAction.title} buttons={config.callToAction.buttons} />
     </div>
   )
 }

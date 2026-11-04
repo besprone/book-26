@@ -1,5 +1,5 @@
 import { getImageProps } from 'next/image'
-import { ListaEtiquetas } from '@/components/ListaMarcada'
+import { ListaEtiquetas } from '@/components/ListaEtiquetas'
 import SectionViewTracker from '@/components/SectionViewTracker'
 import Reveal from './Reveal'
 import type { Proyecto } from '@/lib/types'
@@ -52,6 +52,13 @@ export function Reto({ titulo, texto }: { titulo: string; texto: string }) {
     </section>
   )
 }
+
+/** Colores de la banda de cifras fuera de los casos, los mismos de un caso sin `tema`. */
+export const coloresBandaSitio = {
+  '--case-band': '#172130',
+  '--case-band-value': '#11ced8',
+  '--case-band-text': '#ffffff',
+} as React.CSSProperties
 
 /** Banda con las cifras del caso. Sus colores son los de `tema`. */
 export function Cifras({
@@ -130,17 +137,25 @@ export function Proceso({
   )
 }
 
-/** Tres tarjetas con lo que hace distinto a este caso. */
-export function Destacado({ destacado }: { destacado: NonNullable<Proyecto['destacado']> }) {
+/** Tres tarjetas con lo que hace distinto a este caso. Sobre mí las usa para lo que aporto. */
+export function Destacado({
+  destacado,
+  sectionName = 'destacado',
+}: {
+  destacado: { titulo: string; intro?: string; items: { titulo: string; texto: string }[] }
+  sectionName?: string
+}) {
   return (
     <section className="relative bg-gray-50 dark:bg-gray-800">
-      <SectionViewTracker sectionName="destacado" className="absolute top-0 left-0 w-full h-1" />
+      <SectionViewTracker sectionName={sectionName} className="absolute top-0 left-0 w-full h-1" />
       <div className={`${contenedor} ${vertical}`}>
         <Reveal>
-          <h2 className={`${titulo2} mb-4 md:mb-6`}>{destacado.titulo}</h2>
-          <p className="text-base md:text-xl leading-relaxed text-gray-600 dark:text-gray-400 max-w-3xl mb-8 md:mb-10">
-            {destacado.intro}
-          </p>
+          <h2 className={`${titulo2} ${destacado.intro ? 'mb-4 md:mb-6' : 'mb-8 md:mb-10'}`}>{destacado.titulo}</h2>
+          {destacado.intro && (
+            <p className="text-base md:text-xl leading-relaxed text-gray-600 dark:text-gray-400 max-w-3xl mb-8 md:mb-10">
+              {destacado.intro}
+            </p>
+          )}
         </Reveal>
         <ul role="list" className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
           {destacado.items.map((item, i) => (

@@ -8,8 +8,25 @@
       "href": "/cv.pdf"
     }
   },
+  "cifras": {
+    "titulo": "At a glance",
+    "items": [
+      {
+        "valor": "10+ years",
+        "texto": "Of experience bringing design, technology and strategy together."
+      },
+      {
+        "valor": "4 people",
+        "texto": "The design team I've led at kubo.financiero."
+      },
+      {
+        "valor": "{cursos} courses",
+        "texto": "Recent certifications, from 2023 to 2025."
+      }
+    ]
+  },
   "resumenProfesional": {
-    "title": "Professional summary",
+    "title": "What I bring",
     "cards": [
       {
         "title": "Strategic thinking",
@@ -235,12 +252,12 @@
       "primary": {
         "text": "View work",
         "href": "/en/work",
-        "variant": "secondary"
+        "variant": "claro"
       },
       "secondary": {
         "text": "Get in touch",
         "href": "/en/contact",
-        "variant": "primary"
+        "variant": "noche"
       }
     }
   }

@@ -118,6 +118,24 @@ html {
   transform: translateY(24px);
 }
 
+/* La lista de Proyectos aparece de nuevo al cambiar de filtro. */
+.lista-aparece {
+  animation: lista-aparece var(--motion-base) var(--motion-ease) both;
+}
+
+@keyframes lista-aparece {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lista-aparece {
+    animation: none;
+  }
+}
+
 /* Tachado que se dibuja al aparecer. */
 .caso-tachado {
   background: linear-gradient(currentColor, currentColor) no-repeat 0 55% / 100% 2px;

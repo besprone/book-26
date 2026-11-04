@@ -68,8 +68,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
             />
             <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,792fr)_minmax(0,400fr)] gap-x-6 gap-y-8">
               <ProjectCard
-                destacado
-                enSeccion
+                tamano="alta"
                 title={principal.title}
                 image={principal.image}
                 slug={principal.slug}

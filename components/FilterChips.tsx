@@ -1,9 +1,7 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
-import type { LucideIcon } from 'lucide-react'
 import { analytics } from '@/lib/analytics'
-import { baseBoton, tamanosBoton, tamanosIcono, variantesBoton } from '@/lib/estilos-boton'
 
 interface FilterChipsProps {
   filters: string[]
@@ -12,11 +10,8 @@ interface FilterChipsProps {
   /** Traduce la clave del filtro a su etiqueta visible. El valor interno
    *  ("Todo") no cambia entre idiomas para no romper el filtrado. */
   etiqueta?: (filter: string) => string
-  /**
-   * Icono de cada filtro. Va con `aria-hidden`: la etiqueta de al lado ya
-   * dice lo mismo. Un filtro sin icono se dibuja solo con texto.
-   */
-  icono?: (filter: string) => LucideIcon | undefined
+  /** Cuántos casos hay en cada filtro. */
+  conteo: (filter: string) => number
 }
 
 export default function FilterChips({
@@ -24,7 +19,7 @@ export default function FilterChips({
   activeFilter,
   onFilterChange,
   etiqueta = (f) => f,
-  icono,
+  conteo,
 }: FilterChipsProps) {
   const pathname = usePathname()
   
@@ -36,35 +31,27 @@ export default function FilterChips({
     onFilterChange(filter)
   }
   
+  // Van sobre la banda de color de Proyectos, por eso son blancos.
   return (
-    // El icono ensancha cada chip unos 22px y eso bastaba para que los cuatro
-    // saltaran a dos filas en pantallas de 360px, que es la anchura de buena
-    // parte de los Android. Con 8px de separación en móvil vuelven a caber en
-    // una: siguen midiendo 36px de alto, muy por encima del área táctil
-    // mínima, así que lo que se recorta es aire, no accesibilidad.
-    <div className="flex flex-wrap gap-2 sm:gap-3 mb-8">
+    <div className="flex flex-wrap gap-2">
       {filters.map((filter) => {
-        const Icono = icono?.(filter)
+        const activo = activeFilter === filter
         return (
           <button
             key={filter}
+            type="button"
             onClick={() => handleFilterClick(filter)}
-            aria-pressed={activeFilter === filter}
-            className={`${baseBoton} ${tamanosBoton.sm} ${
-              activeFilter === filter
-                ? // El filtro activo usa 'tonal': presencia suficiente para leerse
-                  // como seleccionado sin competir con la acción principal.
-                  variantesBoton.tonal
-                : 'border border-gray-200 bg-white text-gray-700 hover:bg-gray-50 ' +
-                  'dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700'
+            aria-pressed={activo}
+            className={`inline-flex h-9 items-center rounded-full border border-white px-3.5 text-sm transition duration-motion-base focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary-500 ${
+              activo ? 'bg-white text-primary-500' : 'text-white hover:bg-white/15'
             }`}
           >
-            {Icono && <Icono className={tamanosIcono.sm} aria-hidden="true" />}
             {etiqueta(filter)}
+            <span aria-hidden="true" className="mx-1">·</span>
+            {conteo(filter)}
           </button>
         )
       })}
     </div>
   )
 }
-

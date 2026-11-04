@@ -93,7 +93,6 @@ const textos = {
       verMas: 'Ver más proyectos',
       sinResultados: 'No hay proyectos con el filtro seleccionado.',
       vacio: 'No hay proyectos aún. Agrega archivos JSON en la carpeta',
-      destacado: 'Destacado',
       verCaso: 'Ver caso',
     },
     error: {
@@ -161,7 +160,6 @@ const textos = {
       verMas: 'Load more projects',
       sinResultados: 'No projects match the selected filter.',
       vacio: 'No projects yet. Add JSON files to the folder',
-      destacado: 'Featured',
       verCaso: 'View case study',
     },
     error: {

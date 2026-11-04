@@ -25,6 +25,9 @@
   width: calc(var(--u) * var(--pieza-w));
   max-width: none;
   height: auto;
+  /* La silueta se ve mientras carga la captura. */
+  background: var(--pieza-fondo, #15171c);
+  border-radius: calc(var(--u) * var(--pieza-radio, 47));
   animation: sube var(--motion-slow) var(--motion-ease) var(--pieza-pausa) both;
 }
 
@@ -65,6 +68,8 @@
   background: #f4f1ea;
   --pieza-x: 860;
   --pieza-w: 520;
+  --pieza-fondo: #fff;
+  --pieza-radio: 28;
   --pieza-pausa: 1200ms;
 }
 .neo {
@@ -72,6 +77,8 @@
   --pieza-x: 780;
   --pieza-y: 150;
   --pieza-w: 620;
+  --pieza-fondo: #fff;
+  --pieza-radio: 28;
   --pieza-pausa: 900ms;
 }
 
@@ -326,6 +333,7 @@
     --pieza-x: 70;
     --pieza-y: 262;
     --pieza-w: 250;
+    --pieza-radio: 27;
     --corte-x: 50%;
     --corte-y: 23.21%;
     aspect-ratio: 390 / 560;
@@ -341,12 +349,14 @@
     --pieza-x: 53;
     --pieza-y: 270;
     --pieza-w: 284;
+    --pieza-radio: 20;
   }
 
   .neo {
     --pieza-x: 20;
     --pieza-y: 300;
     --pieza-w: 350;
+    --pieza-radio: 20;
   }
 
   .pastilla {

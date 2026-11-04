@@ -127,6 +127,7 @@ export default function ProyectosClient({ initialProyectos, locale }: ProyectosC
               client={featuredProject.client}
               year={featuredProject.year}
               type={featuredProject.type}
+              colorCarga={featuredProject.tema?.bg}
             />
           </div>
         )}
@@ -147,6 +148,7 @@ export default function ProyectosClient({ initialProyectos, locale }: ProyectosC
                   client={proyecto.client}
                   year={proyecto.year}
                   type={proyecto.type}
+                  colorCarga={proyecto.tema?.bg}
                 />
               ))}
             </div>

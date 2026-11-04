@@ -14,6 +14,9 @@
   height: auto;
   transform-origin: 0 0;
   transform: rotate(var(--giro, 0deg));
+  /* La silueta del teléfono se ve mientras carga la captura. */
+  background: #15171c;
+  border-radius: 10.7% / 5.5%;
   animation: sube var(--motion-slow) var(--motion-ease) var(--pausa, 0ms) both;
 }
 

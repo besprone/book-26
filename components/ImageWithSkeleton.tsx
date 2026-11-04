@@ -20,6 +20,8 @@ interface ImageWithSkeletonProps {
   priority?: boolean
   /** Texto del estado de error, para poder traducirlo. */
   errorLabel?: string
+  /** Color del espacio mientras carga, por ejemplo el del caso. */
+  colorCarga?: string
 }
 
 /**
@@ -40,6 +42,7 @@ export default function ImageWithSkeleton({
   sizes,
   priority = false,
   errorLabel = 'Error al cargar imagen',
+  colorCarga,
 }: ImageWithSkeletonProps) {
   const [isLoading, setIsLoading] = useState(true)
   const [hasError, setHasError] = useState(false)
@@ -76,21 +79,13 @@ export default function ImageWithSkeleton({
     <div className={`relative ${isIntrinsic ? '' : 'w-full h-full'}`}>
       {/* Skeleton: se desmonta al cargar para no verse tras los PNG transparentes */}
       {isLoading && (
-      <div
-        className="absolute inset-0 z-0 overflow-hidden bg-gray-300 dark:bg-gray-600 animate-pulse pointer-events-none"
-        aria-hidden="true"
-      >
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 dark:via-gray-300/40 to-transparent animate-shimmer" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <svg
-            className="w-12 h-12 text-gray-500 dark:text-gray-400"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
-          </svg>
+        <div
+          className="absolute inset-0 z-0 overflow-hidden bg-gray-100 dark:bg-gray-800 pointer-events-none"
+          style={colorCarga ? { background: colorCarga } : undefined}
+          aria-hidden="true"
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent animate-shimmer" />
         </div>
-      </div>
       )}
 
       {isIntrinsic ? (

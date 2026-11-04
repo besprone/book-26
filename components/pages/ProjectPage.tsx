@@ -9,11 +9,13 @@ import Button from '@/components/Button'
 import ImageWithSkeleton from '@/components/ImageWithSkeleton'
 import ScrollDepthTracker from '@/components/ScrollDepthTracker'
 import SectionViewTracker from '@/components/SectionViewTracker'
-import BackButton from '@/components/BackButton'
+import Breadcrumb from '@/components/Breadcrumb'
 import ProjectViewTracker from '@/components/ProjectViewTracker'
 import VideoTracker from '@/components/VideoTracker'
 import JsonLd from '@/components/JsonLd'
-import { Image as ImageIcon } from 'lucide-react'
+import HeroRutaIngles from '@/components/caso/HeroRutaIngles'
+import Reveal from '@/components/caso/Reveal'
+import { AprendizajeDestacado, Cifras, Comparador } from '@/components/caso/SeccionesCaso'
 
 export default async function ProjectPage({
   slug,
@@ -48,8 +50,17 @@ export default async function ProjectPage({
     },
   }
 
+  // Un caso con `tema` expone sus colores como variables para sus secciones.
+  const estiloTema = proyecto.tema
+    ? ({
+        '--case-bg': proyecto.tema.bg,
+        '--case-ink': proyecto.tema.ink,
+        '--case-accent': proyecto.tema.accent,
+      } as React.CSSProperties)
+    : undefined
+
   return (
-    <div className="bg-white dark:bg-gray-900 min-h-screen">
+    <div className="bg-white dark:bg-gray-900 min-h-screen overflow-x-clip" style={estiloTema}>
       <JsonLd data={proyectoJsonLd} />
       <ScrollDepthTracker />
       <ProjectViewTracker
@@ -57,13 +68,13 @@ export default async function ProjectPage({
         projectTitle={proyecto.title}
         projectType={proyecto.type}
       />
+      {/* El subtítulo de después del punto medio solo cabe en el título grande. */}
+      <Breadcrumb locale={locale} actual={proyecto.title.split(' · ')[0]} />
+      {proyecto.hero?.tipo === 'ruta-ingles' && (
+        <HeroRutaIngles pantalla={proyecto.hero.pantalla} alt={proyecto.hero.alt} />
+      )}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16 relative">
         <SectionViewTracker sectionName="proyecto_detalle" className="absolute top-0 left-0 w-full h-1" />
-        {/* Botón Volver */}
-        <div className="mb-8">
-          <BackButton locale={locale} />
-        </div>
-
         {/* Header: Título y Metadata */}
         <header className="mb-12 md:mb-16">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-gray-900 dark:text-white leading-tight">
@@ -136,7 +147,7 @@ export default async function ProjectPage({
         </header>
 
         {/* Hero Illustration */}
-        {proyecto.image && (
+        {proyecto.image && !proyecto.hero && (
           <div className="mb-16">
             <div className="w-full h-64 md:h-80 lg:h-96 bg-gray-100 dark:bg-gray-700 rounded-xl overflow-hidden">
               <ImageWithSkeleton
@@ -191,6 +202,8 @@ export default async function ProjectPage({
             </section>
           )}
 
+          {proyecto.cifras && <Cifras cifras={proyecto.cifras} />}
+
           {/* Proceso */}
           {proyecto.proceso && (
             <section className="relative">
@@ -220,6 +233,8 @@ export default async function ProjectPage({
               </ListaPasos>
             </section>
           )}
+
+          {proyecto.comparador && <Comparador comparador={proyecto.comparador} />}
 
           {/* Rol y Herramientas.
 
@@ -294,7 +309,10 @@ export default async function ProjectPage({
           )}
 
           {/* Aprendizajes */}
-          {proyecto.aprendizajes && (
+          {proyecto.aprendizajes && proyecto.tema && (
+            <AprendizajeDestacado titulo={txt.aprendizajes} texto={proyecto.aprendizajes} />
+          )}
+          {proyecto.aprendizajes && !proyecto.tema && (
             <section className="relative">
               <SectionViewTracker sectionName="aprendizajes" className="absolute top-0 left-0 w-full h-1" />
               <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-white">

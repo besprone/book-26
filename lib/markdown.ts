@@ -64,6 +64,10 @@ function normalizeProyecto(slug: string, data: Record<string, any>): Proyecto {
     rolYHerramientas: data.rolYHerramientas,
     resultados: data.resultados,
     aprendizajes: data.aprendizajes,
+    tema: data.tema,
+    hero: data.hero,
+    cifras: data.cifras,
+    comparador: data.comparador,
   }
 }
 

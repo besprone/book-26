@@ -17,6 +17,20 @@ forma de trabajar.
 - Para ver cambios en local: `npm run dev` (la configuración del preview está
   en `.claude/launch.json`).
 
+## Figma
+
+El archivo es `book-2025` (https://www.figma.com/design/uoIuQZVmh0FyQSUOob1Hp0/book-2025),
+en la cuenta personal. La página `sitio-actual` tiene cada página del sitio en
+escritorio y celular, y `propuesta-motion` guarda las exploraciones y la
+documentación.
+
+- Cada cambio visual actualiza su frame de escritorio y de celular en
+  `sitio-actual` dentro del mismo PR. Si no se hace, el PR dice por qué.
+- Los colores por caso viven en la colección `case` y en el campo `tema` del
+  JSON; el movimiento, en la colección `motion` y en `app/globals.css`.
+- El archivo solo se puede editar con el conector `plugin:figma:figma` conectado
+  a la cuenta personal. Si no abre, hay que iniciar sesión con `/mcp`.
+
 ## Contenido
 
 - Todo el texto vive en `content/` (español) y `content/en/` (inglés). Un

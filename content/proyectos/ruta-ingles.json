@@ -45,12 +45,58 @@
     ]
   },
   "resultados": [
-    "La medición de A2+ cambió el punto de partida y la ruta se rehízo con ese nivel",
-    "En la prueba de 60 frases, las correctas marcadas como error bajaron de 20% a 0%, y al corrector nuevo se le escapó 2% de los errores reales",
     "Quité 29 de 150 errores guardados y 28 de 200 ejercicios generados que enseñaban algo mal",
     "La auditoría completa encontró 50 problemas graves y 108 menores, y casi todos los graves estaban en contenido generado por IA",
     "Cuesta cerca de 10 USD al mes, medidos en noviembre",
     "Todavía no hay una segunda medición de nivel, así que aún no puedo decir cuánto subí"
   ],
-  "aprendizajes": "Lo que genera la IA no debería llegar directo a alguien que está aprendiendo. Un error del corrector se repite en el repaso y se multiplica en ejercicios nuevos, y quien aprende no tiene cómo notarlo. También aprendí a desconfiar de mí como usuario. Pedí cosas que no me ayudaban a aprender, y una vez tuve que reclamar «me debiste decir que no». Ahora cada decisión de enseñanza dice si viene de un estudio o de criterio propio."
+  "aprendizajes": "Lo que genera la IA no debería llegar directo a alguien que está aprendiendo. Un error del corrector se repite en el repaso y se multiplica en ejercicios nuevos, y quien aprende no tiene cómo notarlo. También aprendí a desconfiar de mí como usuario. Pedí cosas que no me ayudaban a aprender, y una vez tuve que reclamar «me debiste decir que no». Ahora cada decisión de enseñanza dice si viene de un estudio o de criterio propio.",
+  "tema": {
+    "bg": "#F2672A",
+    "ink": "#2A1206",
+    "accent": "#FFF6EE"
+  },
+  "hero": {
+    "tipo": "ruta-ingles",
+    "pantalla": "/proyectos/ruta-ingles/pantalla-tu-dia.png",
+    "alt": "La frase «I share the usability test by Thursday» con un ’ll agregado a mano, junto a un teléfono con la pantalla Tu día de la app."
+  },
+  "cifras": {
+    "titulo": "Lo que mis datos me contradijeron",
+    "items": [
+      {
+        "valor": "B1 → A2+",
+        "texto": "La app me suponía B1. La medición dio A2+, y por eso rehíce el plan."
+      },
+      {
+        "valor": "1 de 6",
+        "texto": "Errores guardados que marcaban como error algo correcto o enseñaban una regla falsa."
+      },
+      {
+        "valor": "20% → 0%",
+        "texto": "Frases correctas marcadas como error, en una prueba de 60 frases. Al corrector nuevo se le escapó 2% de los errores reales."
+      }
+    ]
+  },
+  "comparador": {
+    "titulo": "La IA corregía lo correcto",
+    "intro": "Tres frases mías que estaban bien. La app las marcó como error y las mandó a mi repaso.",
+    "etiquetaFrase": "Mi frase",
+    "etiquetaCorreccion": "La app pidió",
+    "veredicto": "Las dos son correctas.",
+    "items": [
+      {
+        "frase": "I prefer to work remotely",
+        "correccion": "prefer working"
+      },
+      {
+        "frase": "when you have a chance",
+        "correccion": "get a chance"
+      },
+      {
+        "frase": "Could you send it to me by Monday?",
+        "correccion": "get that to me"
+      }
+    ]
+  }
 }

@@ -33,6 +33,8 @@ const RUTAS_NO_TRADUCIBLES = [
   /^formacion\.certificaciones\.items\.nombre$/,
   /^formacion\.educacion\.items\.institucion$/,
   /^experiencia\.items\.title$/,
+  // Frases en inglés que se citan tal cual en los dos idiomas.
+  /^comparador\.items\.(frase|correccion)$/,
 ]
 
 /** Textos de un objeto, ignorando rutas, fechas y nombres propios. */

@@ -62,6 +62,7 @@ const textos = {
     cambiarIdioma: 'Ver esta página en inglés',
     proyecto: {
       volver: 'Volver a proyectos',
+      migas: 'Ruta de navegación',
       cliente: 'Cliente/Empresa:',
       anio: 'Año:',
       rol: 'Rol:',
@@ -132,6 +133,7 @@ const textos = {
     cambiarIdioma: 'Ver esta página en español',
     proyecto: {
       volver: 'Back to work',
+      migas: 'Breadcrumb',
       cliente: 'Client:',
       anio: 'Year:',
       rol: 'Role:',

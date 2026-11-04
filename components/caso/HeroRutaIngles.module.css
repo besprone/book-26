@@ -1,0 +1,241 @@
+/*
+  Hero animado de Ruta de Inglés.
+
+  Todo está en su estado final por defecto y las animaciones solo definen de
+  dónde vienen. Si una animación no corre, el hero se ve completo.
+  Para ajustar el movimiento en vivo basta con estas variables.
+*/
+.hero {
+  --tel-distancia: 14%; /* Cuánto sube el teléfono al entrar. */
+  --tel-inicio: 900ms; /* Cuándo entra, después de la corrección a mano. */
+  --tel-scroll: -14%; /* Cuánto se adelanta el teléfono con el scroll. */
+  --scroll-recorrido: 70vh; /* En cuánto scroll hace ese recorrido. */
+  --trazo-inicio: 250ms;
+  --tira-inicio: 900ms;
+  --tira-paso: 90ms;
+
+  container-type: inline-size;
+  background: var(--case-bg);
+  color: var(--case-ink);
+  overflow: hidden;
+}
+
+.escena {
+  position: relative;
+  aspect-ratio: 1440 / 640;
+}
+
+.frase {
+  position: absolute;
+  left: 6cqw;
+  top: 25%;
+  font-family: var(--font-hero-frase), sans-serif;
+  font-weight: 800;
+  font-size: 7.2cqw;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+}
+
+.hueco {
+  position: relative;
+  display: inline-block;
+  width: 0.62em;
+  color: var(--case-accent);
+}
+
+.caret {
+  position: absolute;
+  left: 0.1em;
+  bottom: -0.08em;
+  width: 0.46em;
+  height: 0.42em;
+}
+
+.caret path {
+  stroke-dasharray: 1;
+  animation: trazo 360ms var(--motion-ease) var(--trazo-inicio) both;
+}
+
+.mano {
+  position: absolute;
+  left: 0.12em;
+  bottom: 0.3em;
+  font-family: var(--font-hero-mano), cursive;
+  font-weight: 700;
+  font-size: 1.1em;
+  line-height: 1;
+  letter-spacing: 0;
+  transform: rotate(-6deg);
+  animation: escribe 420ms var(--motion-ease) calc(var(--trazo-inicio) + 280ms) both;
+}
+
+.tira {
+  position: absolute;
+  left: -8cqw;
+  white-space: nowrap;
+  display: flex;
+  gap: 4.6cqw;
+  font-size: 3.3cqw;
+  line-height: 1.2;
+}
+
+.tiraArriba {
+  top: 0.7cqw;
+}
+
+.tiraAbajo {
+  bottom: 0.7cqw;
+  left: -3cqw;
+}
+
+.par {
+  --pausa: calc(var(--tira-inicio) + var(--orden) * var(--tira-paso));
+  display: inline-flex;
+  align-items: center;
+  gap: 1.1cqw;
+}
+
+.error {
+  position: relative;
+  font-family: var(--font-hero-frase), sans-serif;
+  font-weight: 800;
+  color: color-mix(in srgb, var(--case-ink) 22%, var(--case-bg));
+}
+
+.error::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 54%;
+  height: 0.09em;
+  background: color-mix(in srgb, var(--case-accent) 80%, var(--case-bg));
+  transform-origin: left;
+  animation: tacha var(--motion-base) var(--motion-ease) var(--pausa) both;
+}
+
+.correccion {
+  font-family: var(--font-hero-mano), cursive;
+  font-weight: 700;
+  font-size: 1.22em;
+  color: color-mix(in srgb, var(--case-accent) 80%, var(--case-bg));
+  animation: aparece var(--motion-base) var(--motion-ease) calc(var(--pausa) + 160ms) both;
+}
+
+.paralaje {
+  position: absolute;
+  z-index: 1;
+  right: 6cqw;
+  top: 11%;
+  width: 30cqw;
+}
+
+.telefono {
+  padding: 1.2cqw;
+  border-radius: 4.4cqw;
+  background: #15171c;
+  animation: sube var(--motion-slow) var(--motion-ease) var(--tel-inicio) both;
+}
+
+.pantalla {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 3.4cqw;
+}
+
+/* El teléfono se adelanta al hacer scroll. Quien no lo soporte lo ve quieto. */
+@supports (animation-timeline: scroll()) {
+  .paralaje {
+    animation: adelanta linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 var(--scroll-recorrido);
+  }
+}
+
+@media (max-width: 767px) {
+  .escena {
+    aspect-ratio: 390 / 560;
+  }
+
+  .frase {
+    left: 7cqw;
+    top: 13%;
+    font-size: 11.6cqw;
+  }
+
+  .tira {
+    font-size: 4.4cqw;
+  }
+
+  .tiraAbajo {
+    display: none;
+  }
+
+  .paralaje {
+    left: 18cqw;
+    right: auto;
+    top: 45%;
+    width: 64cqw;
+  }
+
+  .telefono {
+    padding: 2.4cqw;
+    border-radius: 9cqw;
+  }
+
+  .pantalla {
+    border-radius: 7cqw;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .caret path,
+  .mano,
+  .error::after,
+  .correccion,
+  .telefono,
+  .paralaje {
+    animation: none;
+  }
+}
+
+@keyframes trazo {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+
+@keyframes escribe {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(-20% -20% -20% -20%);
+  }
+}
+
+@keyframes tacha {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes aparece {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes sube {
+  from {
+    opacity: 0;
+    transform: translateY(var(--tel-distancia));
+  }
+}
+
+@keyframes adelanta {
+  to {
+    transform: translateY(var(--tel-scroll));
+  }
+}

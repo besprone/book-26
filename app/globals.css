@@ -6,6 +6,13 @@
   --background: #ffffff;
   --foreground: #171717;
   color-scheme: light;
+
+  /* Base de movimiento: pocas duraciones y una sola curva. */
+  --motion-fast: 160ms;
+  --motion-base: 320ms;
+  --motion-slow: 700ms;
+  --motion-story: 1600ms;
+  --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Las variables siguen a la clase .dark, no a la preferencia del sistema:
@@ -75,6 +82,36 @@ html {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Bloque a todo lo ancho dentro del contenedor del caso. */
+.caso-bleed {
+  margin-inline: calc(50% - 50vw);
+}
+
+/*
+  Aparición al hacer scroll. El estado oculto solo existe cuando el componente
+  Reveal lo pone desde el cliente: sin JavaScript el contenido se ve completo.
+*/
+[data-reveal] {
+  transition:
+    opacity var(--motion-slow) var(--motion-ease) var(--reveal-delay, 0ms),
+    transform var(--motion-slow) var(--motion-ease) var(--reveal-delay, 0ms);
+}
+
+[data-reveal='oculto'] {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+/* Tachado que se dibuja al aparecer. */
+.caso-tachado {
+  background: linear-gradient(currentColor, currentColor) no-repeat 0 55% / 100% 2px;
+  transition: background-size var(--motion-base) var(--motion-ease) calc(var(--reveal-delay, 0ms) + 300ms);
+}
+
+[data-reveal='oculto'] .caso-tachado {
+  background-size: 0% 2px;
 }
 
 /* Custom scrollbar */

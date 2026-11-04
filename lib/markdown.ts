@@ -127,8 +127,9 @@ export function getSobreMiConfig(locale: Locale = defaultLocale): SobreMiConfig 
         description: 'Descripción sobre ti...',
         cvButton: { text: 'Descargar CV', href: '/cv.pdf' },
       },
+      cifras: { titulo: 'En cifras', items: [] },
       resumenProfesional: {
-        title: 'Resumen profesional',
+        title: 'Lo que aporto',
         cards: [],
       },
       experiencia: {
@@ -147,8 +148,8 @@ export function getSobreMiConfig(locale: Locale = defaultLocale): SobreMiConfig 
       callToAction: {
         title: '¿Te interesa saber cómo podría aportar a tu equipo o proyecto?',
         buttons: {
-          primary: { text: 'Ver proyectos', href: '/proyectos', variant: 'secondary' },
-          secondary: { text: 'Contáctame', href: '/contacto', variant: 'primary' },
+          primary: { text: 'Ver proyectos', href: '/proyectos', variant: 'claro' },
+          secondary: { text: 'Contáctame', href: '/contacto', variant: 'noche' },
         },
       },
     }

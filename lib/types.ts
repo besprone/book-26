@@ -188,6 +188,11 @@ export interface SobreMiConfig {
       href: string
     }
   }
+  /** Banda de cifras. En `valor`, `{cursos}` se cambia por el número de certificaciones. */
+  cifras: {
+    titulo: string
+    items: { valor: string; texto: string }[]
+  }
   resumenProfesional: {
     title: string
     cards: Array<{
@@ -231,6 +236,7 @@ export interface SobreMiConfig {
       title: string
       items: Array<{
         nombre: string
+        /** No se muestra hoy: el stack va en etiquetas y el detalle se ve en los casos. */
         descripcion: string
       }>
     }>
@@ -241,12 +247,12 @@ export interface SobreMiConfig {
       primary: {
         text: string
         href: string
-        variant: 'primary' | 'secondary' | 'tonal' | 'ghost'
+        variant: VarianteBoton
       }
       secondary: {
         text: string
         href: string
-        variant: 'primary' | 'secondary' | 'tonal' | 'ghost'
+        variant: VarianteBoton
       }
     }
   }

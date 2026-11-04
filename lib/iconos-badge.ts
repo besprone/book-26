@@ -8,11 +8,6 @@ import { Code, Database, Palette, type LucideIcon } from 'lucide-react'
  * de UX sin que nadie lo decidiera; así, un valor sin entrada aquí se dibuja
  * sin icono, que es el comportamiento correcto por defecto.
  *
- * Son los mismos tres iconos que la sección Stack de Sobre mí usa para Diseño,
- * Desarrollo y Datos (ver `stackIcons` en AboutPage). Repetirlos es deliberado:
- * la etiqueta de un proyecto y la tarjeta de Stack nombran lo mismo y deben
- * verse como lo mismo.
- *
  * Las claves son las tres disciplinas que hoy existen en `type` dentro de
  * `content/proyectos`, y son iguales en español e inglés.
  */

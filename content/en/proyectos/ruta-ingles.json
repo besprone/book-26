@@ -1,0 +1,56 @@
+{
+  "title": "Ruta de Inglés · The app I designed for myself and my data corrected",
+  "description": "An app for learning the English I need at work, where I'm the designer, the developer and the only user. My data showed I was starting from a lower level and that the AI was teaching me false rules.",
+  "date": "2026-10-05",
+  "technologies": [
+    "Next.js",
+    "TypeScript",
+    "Storybook",
+    "Supabase",
+    "Claude Code"
+  ],
+  "image": "/proyectos/ruta-ingles/hero.png",
+  "featured": false,
+  "type": [
+    "UX",
+    "Dev",
+    "Data"
+  ],
+  "client": "Personal project",
+  "year": "2026",
+  "role": "Designer, developer and user",
+  "reto": "I need English for interviews and remote work by January 2027, mostly for speaking in stand-ups, design reviews and calls. I wanted something like Duolingo, built around the situations I actually face at work. I'm the only user, so the data is very detailed and only speaks about me. It doesn't prove the app would work for anyone else.",
+  "proceso": {
+    "investigacion": "The app started out assuming I was at B1. Three weeks later I took a level assessment and scored A2+, which meant I had been practicing one level above my own the whole time. Those 23 days and 56 hours of use also revealed my main problem. I can use auxiliary verbs in writing, but they disappear when I speak. On a call I'd say \"I share the usability test by Thursday,\" with no will. More explanation wasn't going to fix that. I needed to practice speaking under time pressure.",
+    "diseno": "With that data, I rebuilt the plan from scratch. The path became 44 topics in the order of Cambridge's English Grammar Profile, and each one opens with a test, followed by a lesson and a checkpoint. I saw that about 60% of my time went to studying the language and about 1% to hearing or reading English I could understand, while Nation's model splits it into four equal parts. Now every step of the day belongs to one part, and a bar shows how I'm doing. I also let my complaints as a user carry weight. \"I feel like I'm not making progress\" became \"Today's tests,\" and I cut the app down to two tabs so there would be a single path.",
+    "desarrollo": "It began as a Claude artifact, and on October 19 I moved it to Vercel, with Supabase for progress and Whisper to transcribe my voice. I built it with Claude Code, with more than 220 commits in 16 days. I'm now migrating it to a new app in Next.js and TypeScript, with tokens and components in Storybook, while I keep using the old one every day.",
+    "analisisDatos": "One exercise explained the passive voice before I had studied it, so I asked for a full audit. About 1 in 6 saved errors flagged something correct as wrong or taught a false rule. Those corrections went into my review queue, and the AI generated more exercises from them. I tested the grader with 60 sentences, half correct and half with real errors, and used the results to choose the model and the prompt. Now a second model has to confirm before anything counts as an error. Every week a bot reads my data and proposes changes with the evidence and the cost, and I decide which ones to apply."
+  },
+  "rolYHerramientas": {
+    "rol": [
+      "Product design",
+      "Development",
+      "Data analysis",
+      "Design system",
+      "Test user"
+    ],
+    "herramientas": [
+      "Claude Code",
+      "Next.js",
+      "TypeScript",
+      "Storybook",
+      "Supabase",
+      "Whisper",
+      "Vercel"
+    ]
+  },
+  "resultados": [
+    "The A2+ result changed the starting point, and the path was rebuilt for that level",
+    "In the 60-sentence test, correct sentences flagged as errors fell from 20% to 0%, and the new grader missed 2% of the real errors",
+    "I removed 29 of 150 saved errors and 28 of 200 generated exercises that taught something wrong",
+    "The full audit found 50 serious problems and 108 minor ones, and almost all the serious ones were in AI-generated content",
+    "It costs about $10 a month, measured in November",
+    "There's no second level assessment yet, so I can't say how much I've improved"
+  ],
+  "aprendizajes": "What AI generates shouldn't go straight to someone who's learning. A grader's mistake repeats in the review queue and multiplies into new exercises, and the learner has no way to notice. I also learned to distrust myself as a user. I asked for things that didn't help me learn, and once I had to complain, \"you should have told me no.\" Now every teaching decision states whether it comes from a study or from my own judgment."
+}

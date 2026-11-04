@@ -168,7 +168,7 @@ export default function ContactForm({ config }: ContactFormProps) {
           required
           value={formData.name}
           onChange={handleChange}
-          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition"
+          className="w-full px-4 py-3 border border-gray-500 dark:border-gray-500 placeholder:text-gray-500 dark:placeholder:text-gray-400 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition"
           placeholder={config.form.fields.name.placeholder}
         />
       </div>
@@ -184,7 +184,7 @@ export default function ContactForm({ config }: ContactFormProps) {
           required
           value={formData.email}
           onChange={handleChange}
-          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition"
+          className="w-full px-4 py-3 border border-gray-500 dark:border-gray-500 placeholder:text-gray-500 dark:placeholder:text-gray-400 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition"
           placeholder={config.form.fields.email.placeholder}
         />
       </div>
@@ -200,7 +200,7 @@ export default function ContactForm({ config }: ContactFormProps) {
           rows={6}
           value={formData.message}
           onChange={handleChange}
-          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition resize-none"
+          className="w-full px-4 py-3 border border-gray-500 dark:border-gray-500 placeholder:text-gray-500 dark:placeholder:text-gray-400 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition resize-none"
           placeholder={config.form.fields.message.placeholder}
         />
       </div>

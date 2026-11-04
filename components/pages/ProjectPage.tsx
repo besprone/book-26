@@ -97,7 +97,7 @@ export default async function ProjectPage({
             <dl className="mb-6">
               {proyecto.role && (
                 <div className="mb-3">
-                  <dt className="text-xs font-medium uppercase tracking-wider text-accent-700 dark:text-accent-400 mb-1">
+                  <dt className="text-xs font-medium uppercase tracking-wider text-accent-900 dark:text-accent-400 mb-1">
                     {txt.miRol}
                   </dt>
                   <dd className="text-lg md:text-xl font-semibold text-gray-900 dark:text-white leading-snug">

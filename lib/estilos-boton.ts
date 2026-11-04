@@ -31,13 +31,13 @@ export const variantesBoton: Record<VarianteBoton, string> = {
     'dark:bg-primary-500 dark:hover:bg-primary-600',
   secondary:
     'border-2 border-primary-600 text-primary-600 hover:bg-primary-50 hover:border-primary-700 hover:text-primary-700 ' +
-    'dark:border-primary-400 dark:text-primary-400 dark:hover:bg-primary-900/20 dark:hover:border-primary-300 dark:hover:text-primary-300',
+    'dark:border-primary-300 dark:text-primary-300 dark:hover:bg-primary-900/20 dark:hover:border-primary-200 dark:hover:text-primary-200',
   tonal:
     'bg-primary-50 text-primary-700 hover:bg-primary-100 ' +
     'dark:bg-primary-500/15 dark:text-primary-300 dark:hover:bg-primary-500/25',
   ghost:
     'text-primary-600 hover:bg-primary-50 hover:text-primary-700 ' +
-    'dark:text-primary-400 dark:hover:bg-primary-900/20 dark:hover:text-primary-300',
+    'dark:text-primary-300 dark:hover:bg-primary-900/20 dark:hover:text-primary-200',
 }
 
 /**

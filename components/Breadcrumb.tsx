@@ -40,7 +40,7 @@ export default function Breadcrumb({ locale, actual }: { locale: Locale; actual:
             {textos.nav.proyectos}
           </Link>
         </li>
-        <li aria-hidden="true" className="text-gray-400 dark:text-gray-500">
+        <li aria-hidden="true" className="text-gray-500 dark:text-gray-400">
           /
         </li>
         <li aria-current="page" className="truncate text-gray-600 dark:text-gray-400">

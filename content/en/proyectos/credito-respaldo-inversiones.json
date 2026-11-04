@@ -53,7 +53,8 @@
     "bandText": "#FAF6EA"
   },
   "hero": {
-    "tipo": "portada",
+    "tipo": "animada",
+    "idea": "credito",
     "alt": "A 90% with a plant growing on top, next to a phone showing the loan offer backed by investments."
   },
   "cifras": {

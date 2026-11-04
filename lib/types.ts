@@ -93,8 +93,12 @@ export interface Proyecto {
   }
   hero?:
     | { tipo: 'ruta-ingles'; pantalla: string; alt: string }
-    /** Usa portada.png y portada-celular.png de la carpeta del proyecto. */
-    | { tipo: 'portada'; alt: string }
+    /** La idea es una de las de PortadaAnimada. Usa pieza.png de la carpeta del proyecto. */
+    | {
+        tipo: 'animada'
+        idea: 'calipso' | 'solicitud' | 'autogestivo' | 'credito' | 'discovery' | 'neo'
+        alt: string
+      }
   cifras?: {
     titulo: string
     items: { valor: string; texto: string }[]

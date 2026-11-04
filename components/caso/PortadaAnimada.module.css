@@ -1,0 +1,525 @@
+/*
+  Portadas animadas de los casos. Coordenadas en unidades de Figma: --u equivale
+  a 1 px del diseño de 1440 × 640, o del de 390 × 560 en celular.
+  Las duraciones son las del guion de Figma, en propuesta-motion.
+*/
+.portada {
+  --u: calc(100cqw / 1440);
+  --pieza-x: 922;
+  --pieza-y: 70;
+  --pieza-w: 440;
+  --pieza-pausa: 700ms;
+  --corte-x: 29.86%;
+  --corte-y: 50%;
+  position: relative;
+  container-type: inline-size;
+  aspect-ratio: 1440 / 640;
+  width: 100%;
+  overflow: hidden;
+}
+
+.pieza {
+  position: absolute;
+  left: calc(var(--u) * var(--pieza-x));
+  top: calc(var(--u) * var(--pieza-y));
+  width: calc(var(--u) * var(--pieza-w));
+  max-width: none;
+  height: auto;
+  animation: sube var(--motion-slow) var(--motion-ease) var(--pieza-pausa) both;
+}
+
+.idea {
+  position: absolute;
+  left: 0;
+  top: calc(var(--u) * 107);
+  width: calc(var(--u) * 890);
+  aspect-ratio: 890 / 426;
+  container-type: inline-size;
+}
+
+.lamina {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* ---- Fondos ---- */
+.calipso {
+  background: #f7f7f8;
+  --pieza-pausa: 1300ms;
+}
+.solicitud {
+  background: #1b1f27;
+}
+.autogestivo {
+  background: #c9fbec;
+  --pieza-pausa: 1200ms;
+}
+.credito {
+  background: #faf6ea;
+  --pieza-pausa: 1000ms;
+}
+.discovery {
+  background: #f4f1ea;
+  --pieza-x: 860;
+  --pieza-w: 520;
+  --pieza-pausa: 1200ms;
+}
+.neo {
+  background: #0f3f52;
+  --pieza-x: 780;
+  --pieza-y: 150;
+  --pieza-w: 620;
+  --pieza-pausa: 900ms;
+}
+
+/* ---- Calipso: un botón cambia de marca y de tema sin moverse ---- */
+.temas,
+.tema {
+  position: absolute;
+  inset: 0;
+}
+
+.pastilla {
+  position: absolute;
+  left: calc(var(--u) * 140);
+  top: calc(var(--u) * 242);
+  width: calc(var(--u) * 580);
+  height: calc(var(--u) * 156);
+  display: grid;
+  place-items: center;
+  border-radius: calc(var(--u) * 78);
+  font-family: var(--portada-700), sans-serif;
+  font-weight: 700;
+  font-size: calc(var(--u) * 88);
+  letter-spacing: -0.023em;
+  line-height: 1;
+}
+
+.claroMarcaA {
+  background: #f7f7f8;
+}
+.claroMarcaA .pastilla {
+  background: #1f6f21;
+  color: #fff;
+}
+
+.claroMarcaB {
+  background: #faf7f2;
+  clip-path: inset(0 0 calc(100% - var(--corte-y)) var(--corte-x));
+  animation: corteB var(--motion-base) var(--motion-ease) 500ms both;
+}
+.claroMarcaB .pastilla {
+  background: #b21d15;
+  color: #fff;
+}
+
+.inversoMarcaA {
+  background: #2b2a30;
+  clip-path: inset(var(--corte-y) calc(100% - var(--corte-x)) 0 0);
+  animation: corteC var(--motion-base) var(--motion-ease) 900ms both;
+}
+.inversoMarcaA .pastilla {
+  background: #5fc65f;
+  color: #1c1b20;
+}
+
+.inversoMarcaB {
+  background: #2d2a26;
+  clip-path: inset(var(--corte-y) 0 0 var(--corte-x));
+  animation: corteD var(--motion-base) var(--motion-ease) 1000ms both;
+}
+.inversoMarcaB .pastilla {
+  background: #ee746d;
+  color: #1f1c19;
+}
+
+/* ---- Solicitud: cuatro cursores arrastran y nadie escribe ---- */
+@property --miles {
+  syntax: '<integer>';
+  inherits: true;
+  initial-value: 58;
+}
+
+.monto {
+  position: absolute;
+  left: 46.07%;
+  top: 15.02%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  color: #f6f7f9;
+  font-family: var(--portada-800), sans-serif;
+  font-weight: 800;
+  font-size: 13.26cqw;
+  line-height: 1.017;
+  letter-spacing: -0.025em;
+  counter-reset: miles var(--miles);
+  animation: monto 1200ms cubic-bezier(0.3, 0, 0.3, 1) both;
+}
+
+.monto::before {
+  content: '$' counter(miles) ',000';
+}
+
+.relleno {
+  stroke-dasharray: 1;
+  animation: relleno 1200ms cubic-bezier(0.3, 0, 0.3, 1) both;
+}
+
+.arrastre {
+  animation: arrastre 1200ms cubic-bezier(0.3, 0, 0.3, 1) both;
+}
+
+.cursorTexto {
+  animation: parpadeo 1060ms steps(1) infinite;
+}
+
+/* ---- Autogestivo: la compuerta separa a quien tiene oferta ---- */
+.persona {
+  animation: avanza 800ms var(--motion-ease) both;
+}
+
+.sello {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: aparece-sello var(--motion-base) var(--motion-ease) 800ms both;
+}
+
+.salida {
+  animation: desliza 400ms var(--motion-ease) 1100ms both;
+}
+
+.signo {
+  font-family: var(--portada-800), sans-serif;
+  font-weight: 800;
+  font-size: 75px;
+}
+
+/* ---- Crédito: el número se llena y brota ---- */
+.noventa {
+  position: absolute;
+  left: 46.07%;
+  top: 17.14%;
+  transform: translateX(-50%);
+  display: block;
+  white-space: nowrap;
+  font-family: var(--portada-800), sans-serif;
+  font-weight: 800;
+  font-size: 31.46cqw;
+  line-height: 1.143;
+  letter-spacing: -0.014em;
+}
+
+.noventaVacio {
+  color: #d7e4cf;
+}
+
+.noventaLleno {
+  color: #1f6f21;
+  clip-path: inset(26.1% 0 0 0);
+  animation: llena 1000ms cubic-bezier(0.3, 0, 0.3, 1) both;
+}
+
+.tallo {
+  stroke-dasharray: 1;
+  animation: dibuja 400ms var(--motion-ease) 900ms both;
+}
+
+.hoja {
+  transform-box: fill-box;
+  transform-origin: 100% 100%;
+  animation: brota 400ms var(--motion-ease) 1100ms both;
+}
+
+.hoja + .hoja {
+  transform-origin: 0 100%;
+}
+
+/* ---- Discovery: las notas se unen hasta un insight ---- */
+.lineas1 path,
+.lineas2 path,
+.lineas3 path {
+  stroke-dasharray: 1;
+  animation: dibuja 500ms ease-out both;
+}
+
+.lineas2 path {
+  animation-delay: 400ms;
+}
+
+.lineas3 path {
+  animation-delay: 750ms;
+}
+
+.nivel2 {
+  animation: aparece var(--motion-base) ease-out 300ms both;
+}
+
+.nivel3 {
+  animation: aparece var(--motion-base) ease-out 650ms both;
+}
+
+.notaFinal {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: cae var(--motion-base) var(--motion-ease) 1100ms both;
+}
+
+/* ---- Neo: los puntos se vacían mientras sube el número ---- */
+@property --abandono-entero {
+  syntax: '<integer>';
+  inherits: true;
+  initial-value: 24;
+}
+
+@property --abandono-decimal {
+  syntax: '<integer>';
+  inherits: true;
+  initial-value: 36;
+}
+
+.puntos,
+.puntosActivos {
+  position: absolute;
+  inset: 0;
+  background-size: 100% 100%;
+}
+
+.puntos {
+  background-image: url('/proyectos/prediccion-abandono-neobank/usuarios.svg');
+}
+
+.puntosActivos {
+  background-image: url('/proyectos/prediccion-abandono-neobank/usuarios-activos.svg');
+  opacity: 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent 33%, #000 66%);
+  mask-image: linear-gradient(90deg, transparent 33%, #000 66%);
+  -webkit-mask-size: 300% 100%;
+  mask-size: 300% 100%;
+  animation: vacia 1400ms ease-out both;
+}
+
+.abandono {
+  position: absolute;
+  left: calc(var(--u) * 380);
+  top: calc(var(--u) * 320);
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  color: #a6f2a6;
+  font-weight: 700;
+  font-size: calc(var(--u) * 124);
+  line-height: 1;
+  counter-reset: entero var(--abandono-entero) decimal var(--abandono-decimal);
+  animation: abandono 1400ms ease-out both;
+}
+
+.abandono::before {
+  content: counter(entero) '.' counter(decimal, decimal-leading-zero) '%';
+}
+
+/* ---- Celular ---- */
+@media (max-width: 767px) {
+  .portada {
+    --u: calc(100cqw / 390);
+    --pieza-x: 70;
+    --pieza-y: 262;
+    --pieza-w: 250;
+    --corte-x: 50%;
+    --corte-y: 23.21%;
+    aspect-ratio: 390 / 560;
+  }
+
+  .idea {
+    left: calc(var(--u) * -51);
+    top: 0;
+    width: calc(var(--u) * 534);
+  }
+
+  .discovery {
+    --pieza-x: 53;
+    --pieza-y: 270;
+    --pieza-w: 284;
+  }
+
+  .neo {
+    --pieza-x: 20;
+    --pieza-y: 300;
+    --pieza-w: 350;
+  }
+
+  .pastilla {
+    left: calc(var(--u) * 45);
+    top: calc(var(--u) * 85);
+    width: calc(var(--u) * 300);
+    height: calc(var(--u) * 90);
+    border-radius: calc(var(--u) * 45);
+    font-size: calc(var(--u) * 48);
+  }
+
+  .puntos {
+    background-image: url('/proyectos/prediccion-abandono-neobank/usuarios-celular.svg');
+  }
+
+  .puntosActivos {
+    background-image: url('/proyectos/prediccion-abandono-neobank/usuarios-activos-celular.svg');
+  }
+
+  .abandono {
+    left: calc(var(--u) * 195);
+    top: calc(var(--u) * 135);
+    font-size: calc(var(--u) * 78);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pieza,
+  .claroMarcaB,
+  .inversoMarcaA,
+  .inversoMarcaB,
+  .monto,
+  .relleno,
+  .arrastre,
+  .cursorTexto,
+  .persona,
+  .sello,
+  .salida,
+  .noventaLleno,
+  .tallo,
+  .hoja,
+  .lineas1 path,
+  .lineas2 path,
+  .lineas3 path,
+  .nivel2,
+  .nivel3,
+  .notaFinal,
+  .puntosActivos,
+  .abandono {
+    animation: none;
+  }
+}
+
+@keyframes sube {
+  from {
+    opacity: 0;
+    transform: translateY(12%);
+  }
+}
+
+@keyframes corteB {
+  from {
+    clip-path: inset(0 0 calc(100% - var(--corte-y)) 100%);
+  }
+}
+
+@keyframes corteC {
+  from {
+    clip-path: inset(100% calc(100% - var(--corte-x)) 0 0);
+  }
+}
+
+@keyframes corteD {
+  from {
+    clip-path: inset(100% 0 0 var(--corte-x));
+  }
+}
+
+@keyframes monto {
+  from {
+    --miles: 12;
+  }
+}
+
+@keyframes relleno {
+  from {
+    stroke-dashoffset: 0.78;
+  }
+}
+
+@keyframes arrastre {
+  from {
+    transform: translateX(-283px);
+  }
+}
+
+@keyframes parpadeo {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes avanza {
+  from {
+    transform: translateX(-190px);
+  }
+}
+
+@keyframes aparece-sello {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+}
+
+@keyframes desliza {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+}
+
+@keyframes llena {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+}
+
+@keyframes dibuja {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+
+@keyframes brota {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+@keyframes aparece {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes cae {
+  from {
+    opacity: 0;
+    transform: translateY(-40px) rotate(-6deg);
+  }
+}
+
+@keyframes vacia {
+  0% {
+    opacity: 1;
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
+  90% {
+    opacity: 1;
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes abandono {
+  from {
+    --abandono-entero: 0;
+    --abandono-decimal: 0;
+  }
+}

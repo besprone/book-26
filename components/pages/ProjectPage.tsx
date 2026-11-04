@@ -14,12 +14,12 @@ import ProjectViewTracker from '@/components/ProjectViewTracker'
 import VideoTracker from '@/components/VideoTracker'
 import JsonLd from '@/components/JsonLd'
 import HeroRutaIngles from '@/components/caso/HeroRutaIngles'
+import PortadaAnimada from '@/components/caso/PortadaAnimada'
 import {
   AprendizajeDestacado,
   Cifras,
   Comparador,
   Destacado,
-  Portada,
   Proceso,
   Resultados,
   Reto,
@@ -100,7 +100,9 @@ export default async function ProjectPage({
       {proyecto.hero?.tipo === 'ruta-ingles' && (
         <HeroRutaIngles pantalla={proyecto.hero.pantalla} alt={proyecto.hero.alt} />
       )}
-      {proyecto.hero?.tipo === 'portada' && <Portada slug={proyecto.slug} alt={proyecto.hero.alt} />}
+      {proyecto.hero?.tipo === 'animada' && (
+        <PortadaAnimada idea={proyecto.hero.idea} slug={proyecto.slug} alt={proyecto.hero.alt} />
+      )}
       {!proyecto.hero && proyecto.image && (
         <div className="relative aspect-[1440/640] w-full">
           <ImageWithSkeleton

@@ -54,7 +54,8 @@
     "bandText": "#F6F7F9"
   },
   "hero": {
-    "tipo": "portada",
+    "tipo": "animada",
+    "idea": "solicitud",
     "alt": "Un monto de $58,000 con un deslizador y varios cursores encima, junto a un teléfono con la pantalla de solicitudes del asesor."
   },
   "cifras": {

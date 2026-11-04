@@ -52,7 +52,8 @@
     "bandText": "#F4F1EA"
   },
   "hero": {
-    "tipo": "portada",
+    "tipo": "animada",
+    "idea": "discovery",
     "alt": "Many colored sources merging into a single document, next to an impact and effort matrix with notes."
   },
   "cifras": {

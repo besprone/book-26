@@ -58,7 +58,8 @@
     "bandText": "#F7F7F8"
   },
   "hero": {
-    "tipo": "portada",
+    "tipo": "animada",
+    "idea": "calipso",
     "alt": "Un botón Continuar dividido entre los colores de dos marcas y dos temas, junto a un teléfono con la pantalla de inicio de una app hecha con el sistema."
   },
   "cifras": {

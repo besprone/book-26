@@ -53,7 +53,8 @@
     "bandText": "#FAF6EA"
   },
   "hero": {
-    "tipo": "portada",
+    "tipo": "animada",
+    "idea": "credito",
     "alt": "Un 90% con una planta que crece encima, junto a un teléfono con la oferta de préstamo sobre las inversiones."
   },
   "cifras": {

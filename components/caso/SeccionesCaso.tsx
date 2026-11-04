@@ -1,4 +1,3 @@
-import { getImageProps } from 'next/image'
 import { ListaEtiquetas } from '@/components/ListaEtiquetas'
 import SectionViewTracker from '@/components/SectionViewTracker'
 import Reveal from './Reveal'
@@ -8,35 +7,6 @@ import type { Proyecto } from '@/lib/types'
 const contenedor = 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'
 const vertical = 'py-12 md:py-24'
 const titulo2 = 'text-[28px] md:text-[40px] font-normal leading-tight text-gray-900 dark:text-white'
-
-/**
- * Portada del caso. El celular tiene su propia composición, así que no es la
- * misma imagen recortada sino una versión para cada ancho. El navegador solo
- * descarga la que va a usar.
- */
-export function Portada({ slug, alt }: { slug: string; alt: string }) {
-  const comun = { alt, sizes: '100vw', priority: true }
-  const { props: escritorio } = getImageProps({
-    ...comun,
-    src: `/proyectos/${slug}/portada.png`,
-    width: 2160,
-    height: 960,
-  })
-  const { props: celular } = getImageProps({
-    ...comun,
-    src: `/proyectos/${slug}/portada-celular.png`,
-    width: 780,
-    height: 1120,
-  })
-
-  return (
-    <picture>
-      <source media="(min-width: 768px)" srcSet={escritorio.srcSet} sizes={escritorio.sizes} width={2160} height={960} />
-      {/* eslint-disable-next-line jsx-a11y/alt-text -- el alt viene en `celular`. */}
-      <img {...celular} className="block w-full h-auto" />
-    </picture>
-  )
-}
 
 /** El reto: título a la izquierda y el planteamiento a la derecha. */
 export function Reto({ titulo, texto }: { titulo: string; texto: string }) {

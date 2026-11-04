@@ -55,7 +55,8 @@
     "bandText": "#A6F2A6"
   },
   "hero": {
-    "tipo": "portada",
+    "tipo": "animada",
+    "idea": "neo",
     "alt": "A 24.36% surrounded by dots, some of them already empty, next to a dashboard with the analysis charts."
   },
   "cifras": {

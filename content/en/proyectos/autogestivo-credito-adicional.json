@@ -48,7 +48,8 @@
     "bandText": "#C9FBEC"
   },
   "hero": {
-    "tipo": "portada",
+    "tipo": "animada",
+    "idea": "autogestivo",
     "alt": "Two paths going through a check: one reaches the offer and the other a message, next to a phone showing the loan screen."
   },
   "cifras": {

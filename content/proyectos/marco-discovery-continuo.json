@@ -52,7 +52,8 @@
     "bandText": "#F4F1EA"
   },
   "hero": {
-    "tipo": "portada",
+    "tipo": "animada",
+    "idea": "discovery",
     "alt": "Muchas fuentes de colores que se van uniendo hasta un solo documento, junto a una matriz de impacto y esfuerzo con notas."
   },
   "cifras": {

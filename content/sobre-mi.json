@@ -1,8 +1,8 @@
 {
   "hero": {
     "title": "Sobre mí",
-    "description": "Soy Product Design Manager con más de 10 años de experiencia uniendo diseño, tecnología y estrategia. En kubo.financiero he liderado un equipo de 4 diseñadores y hoy dirijo el sistema de diseño Calipso. Acompaño los productos de principio a fin, de la estrategia al prototipo que se prueba con personas reales. Complemento mi perfil con análisis de datos para decidir con evidencia.",
-    "image": "/hero-sobre-mi.png",
+    "statement": "Más de 10 años uniendo diseño, tecnología y estrategia.",
+    "description": "En kubo.financiero he liderado un equipo de 4 diseñadores y hoy dirijo el sistema de diseño Calipso. Acompaño los productos de principio a fin, de la estrategia al prototipo que se prueba con personas reales.",
     "cvButton": {
       "text": "Descargar CV",
       "href": "/cv.pdf"
@@ -32,30 +32,35 @@
         "title": "Motion Graphic Designer",
         "company": "Applica2",
         "period": "2013-2018",
+        "etiqueta": "2013",
         "logo": "/logos/applica2.png"
       },
       {
         "title": "Diseñador UI",
         "company": "Nuxiba",
         "period": "2018-2022",
+        "etiqueta": "2018",
         "logo": "/logos/nuxiba.png"
       },
       {
         "title": "Gerente UI",
         "company": "Gentera",
         "period": "2022",
+        "etiqueta": "2022",
         "logo": "/logos/gentera.png"
       },
       {
         "title": "Líder de diseño UI",
         "company": "kubo.financiero",
         "period": "2022-2023",
+        "etiqueta": "2022",
         "logo": "/logos/kubo.png"
       },
       {
         "title": "Product Design Manager",
         "company": "kubo.financiero",
         "period": "2023-Actualidad",
+        "etiqueta": "2023–Hoy",
         "logo": "/logos/kubo.png"
       }
     ]

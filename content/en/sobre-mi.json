@@ -1,8 +1,8 @@
 {
   "hero": {
     "title": "About me",
-    "description": "I'm a Product Design Manager with 10+ years of experience bringing design, technology and strategy together. At kubo.financiero I led a team of 4 designers and now own the Calipso design system. I take products from start to finish, from strategy to a prototype tested with real people. I also use data analysis to make evidence-based decisions.",
-    "image": "/hero-sobre-mi.png",
+    "statement": "10+ years bringing design, technology and strategy together.",
+    "description": "At kubo.financiero I led a team of 4 designers and now own the Calipso design system. I take products from start to finish, from strategy to a prototype tested with real people.",
     "cvButton": {
       "text": "Download CV",
       "href": "/cv.pdf"
@@ -32,30 +32,35 @@
         "title": "Motion Graphic Designer",
         "company": "Applica2",
         "period": "2013-2018",
+        "etiqueta": "2013",
         "logo": "/logos/applica2.png"
       },
       {
         "title": "UI Designer",
         "company": "Nuxiba",
         "period": "2018-2022",
+        "etiqueta": "2018",
         "logo": "/logos/nuxiba.png"
       },
       {
         "title": "UI Manager",
         "company": "Gentera",
         "period": "2022",
+        "etiqueta": "2022",
         "logo": "/logos/gentera.png"
       },
       {
         "title": "UI Design Lead",
         "company": "kubo.financiero",
         "period": "2022-2023",
+        "etiqueta": "2022",
         "logo": "/logos/kubo.png"
       },
       {
         "title": "Product Design Manager",
         "company": "kubo.financiero",
         "period": "2023-Present",
+        "etiqueta": "2023–Present",
         "logo": "/logos/kubo.png"
       }
     ]

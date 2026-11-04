@@ -11,6 +11,7 @@
  *   secondary  Alternativa de peso comparable a la principal.
  *   tonal      Apoyo frecuente que no debe competir con la principal.
  *   ghost      Terciaria: navegación, acciones dentro de tarjetas.
+ *   noche      La acción principal cuando va sobre un fondo de color.
  *
  * RADIOS (regla del sitio)
  *
@@ -20,10 +21,11 @@
  *   rounded-2xl   media grande: ilustraciones de portada
  */
 
-export type VarianteBoton = 'primary' | 'secondary' | 'tonal' | 'ghost'
+export type VarianteBoton = 'noche' | 'primary' | 'secondary' | 'tonal' | 'ghost'
 export type TamanoBoton = 'sm' | 'md' | 'lg'
 
 export const variantesBoton: Record<VarianteBoton, string> = {
+  noche: 'bg-[#172130] text-white hover:bg-[#0f1620] active:bg-[#0a0f16]',
   primary:
     'bg-primary-500 text-white hover:bg-primary-600 active:bg-primary-700 ' +
     'dark:bg-primary-500 dark:hover:bg-primary-600',

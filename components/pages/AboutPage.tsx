@@ -1,17 +1,16 @@
 import { getSobreMiConfig } from '@/lib/markdown'
-import { t, type Locale } from '@/lib/i18n'
+import type { Locale } from '@/lib/i18n'
 import { ItemMarcado, ListaMarcada } from '@/components/ListaMarcada'
 import Button from '@/components/Button'
 import Card from '@/components/Card'
 import CajaIcono from '@/components/CajaIcono'
 import SectionHeader from '@/components/SectionHeader'
 import ProfileCard from '@/components/ProfileCard'
-import ExperienceTimeline from '@/components/ExperienceTimeline'
 import EducationCard from '@/components/EducationCard'
-import ImageWithSkeleton from '@/components/ImageWithSkeleton'
 import ScrollDepthTracker from '@/components/ScrollDepthTracker'
 import SectionViewTracker from '@/components/SectionViewTracker'
-import { User, Code, Target, Smartphone, Sparkles, BarChart, Palette, Database, Award, Briefcase, PenTool, Users, Lightbulb, TrendingUp, Layers } from 'lucide-react'
+import HeroEscalones from '@/components/sobre-mi/HeroEscalones'
+import { Code, Target, Smartphone, Sparkles, BarChart, Palette, Database, Award, Briefcase, PenTool, Users, Lightbulb, TrendingUp, Layers } from 'lucide-react'
 
 // Iconos por posición, alineados con el orden de config.resumenProfesional.cards
 const resumenIcons = [Target, Smartphone, BarChart]
@@ -23,59 +22,12 @@ const certificacionIcons = [BarChart, Database, Briefcase, Palette, Users, Light
 const stackIcons = [Palette, Code, Database, Sparkles]
 
 export default function AboutPage({ locale }: { locale: Locale }) {
-  const txt = t(locale)
   const config = getSobreMiConfig(locale)
 
   return (
     <div className="bg-white dark:bg-gray-900">
       <ScrollDepthTracker />
-      {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20 lg:py-24 relative">
-        <SectionViewTracker sectionName="hero" className="absolute top-0 left-0 w-full h-1" />
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 dark:text-white leading-tight">
-              {config.hero.title}
-            </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
-              {config.hero.description}
-            </p>
-            <Button
-              href={config.hero.cvButton.href}
-              variant="primary"
-              size="lg"
-              ctaType="cv_download"
-              sectionName="hero"
-            >
-              {config.hero.cvButton.text}
-            </Button>
-          </div>
-          <div className="hidden lg:block">
-            {config.hero.image ? (
-              <div className="rounded-2xl overflow-hidden">
-                <ImageWithSkeleton
-                  src={config.hero.image}
-                  alt={config.hero.title}
-                  width={1080}
-                  height={1080}
-                  sizes="(min-width: 1024px) 50vw, 100vw"
-                  priority
-                  errorLabel={txt.imagen.error}
-                  className="w-full h-auto object-cover rounded-2xl"
-                />
-              </div>
-            ) : (
-              <div className="bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-8 flex items-center justify-center h-96 shadow-lg">
-                <div className="text-center text-gray-500 dark:text-gray-400">
-                  <User className="w-48 h-48 mx-auto mb-4" />
-                  <p className="text-sm font-medium">{txt.imagen.placeholder}</p>
-                  <p className="text-xs mt-2">Agrega hero.image en content/sobre-mi.json</p>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
+      <HeroEscalones hero={config.hero} experiencia={config.experiencia} />
 
       {/* Resumen Profesional Section */}
       <section className="bg-gray-50 dark:bg-gray-800 py-14 md:py-16 relative">
@@ -95,15 +47,6 @@ export default function AboutPage({ locale }: { locale: Locale }) {
               )
             })}
           </div>
-        </div>
-      </section>
-
-      {/* Experiencia Section */}
-      <section className="py-14 md:py-16 relative">
-        <SectionViewTracker sectionName="experiencia" className="absolute top-0 left-0 w-full h-1" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader title={config.experiencia.title} sectionName="experiencia" />
-          <ExperienceTimeline items={config.experiencia.items} locale={locale} />
         </div>
       </section>
 

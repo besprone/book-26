@@ -54,14 +54,25 @@ export function Reto({ titulo, texto }: { titulo: string; texto: string }) {
 }
 
 /** Banda con las cifras del caso. Sus colores son los de `tema`. */
-export function Cifras({ cifras }: { cifras: NonNullable<Proyecto['cifras']> }) {
+export function Cifras({
+  cifras,
+  tituloOculto = false,
+}: {
+  cifras: NonNullable<Proyecto['cifras']>
+  /** Para cuando las cifras se explican solas y el título solo le sirve a un lector de pantalla. */
+  tituloOculto?: boolean
+}) {
   return (
     <section className="relative" style={{ background: 'var(--case-band)', color: 'var(--case-band-text)' }}>
       <SectionViewTracker sectionName="cifras" className="absolute top-0 left-0 w-full h-1" />
       <div className={`${contenedor} ${vertical}`}>
-        <Reveal>
-          <h2 className="text-[28px] md:text-[40px] font-normal leading-tight mb-8 md:mb-10">{cifras.titulo}</h2>
-        </Reveal>
+        {tituloOculto ? (
+          <h2 className="sr-only">{cifras.titulo}</h2>
+        ) : (
+          <Reveal>
+            <h2 className="text-[28px] md:text-[40px] font-normal leading-tight mb-8 md:mb-10">{cifras.titulo}</h2>
+          </Reveal>
+        )}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
           {cifras.items.map((item, i) => (
             <Reveal key={item.valor} delay={i * 100}>
@@ -87,13 +98,15 @@ export function Cifras({ cifras }: { cifras: NonNullable<Proyecto['cifras']> }) 
 export function Proceso({
   titulo,
   fases,
+  sectionName = 'proceso',
 }: {
   titulo: string
   fases: { titulo: string; texto?: string }[]
+  sectionName?: string
 }) {
   return (
     <section className={`${contenedor} ${vertical} relative`}>
-      <SectionViewTracker sectionName="proceso" className="absolute top-0 left-0 w-full h-1" />
+      <SectionViewTracker sectionName={sectionName} className="absolute top-0 left-0 w-full h-1" />
       <h2 className={`${titulo2} mb-6 md:mb-10`}>{titulo}</h2>
       <ol role="list">
         {fases

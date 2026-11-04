@@ -1,39 +1,35 @@
 {
   "hero": {
     "title": "Product Design Manager, from strategy to a product that works",
-    "description": "10+ years in fintech bringing design, development and data together. I take a product from start to finish. I get to the root of the problem, set the strategy, test it with real people and turn it into a system.",
-    "image": "/hero-home.png",
+    "description": "10+ years in digital products bringing design, development and data together, in fintech since 2022. I take a product from start to finish.",
+    "alt": "Three phones showing screens from my projects: a lending app built with the Calipso system, Ruta de Inglés and the loan application for advisors.",
     "buttons": {
       "primary": {
         "text": "View work",
         "href": "/en/work",
-        "variant": "secondary"
+        "variant": "claro"
       },
       "secondary": {
         "text": "Get in touch",
         "href": "/en/contact",
-        "variant": "primary"
+        "variant": "noche"
       }
     }
   },
-  "perfil": {
-    "title": "Professional profile",
-    "actionButton": {
-      "text": "About me",
-      "href": "/en/about"
-    },
-    "cards": [
+  "prueba": {
+    "titulo": "At a glance",
+    "items": [
       {
-        "title": "10+ years designing digital products",
-        "description": "In fintech since 2022. I've led a team and now own a design system"
+        "valor": "10+ years",
+        "texto": "Designing digital products, in fintech since 2022."
       },
       {
-        "title": "Working prototypes, built with AI",
-        "description": "From Figma to an app people test on their own phones, in days"
+        "valor": "4 people",
+        "texto": "The design team I've led at kubo.financiero."
       },
       {
-        "title": "Data-informed decisions",
-        "description": "I measure what I test and analyze it with SQL and Python"
+        "valor": "{casos} case studies",
+        "texto": "Across design, code prototypes and data."
       }
     ]
   },
@@ -44,6 +40,27 @@
       "href": "/en/work"
     },
     "featuredCount": 3
+  },
+  "comoTrabajo": {
+    "title": "How I work",
+    "fases": [
+      {
+        "titulo": "Understand the problem",
+        "texto": "A weekly discovery with UX, PM and Tech, where every insight can be traced back to its evidence."
+      },
+      {
+        "titulo": "Set the strategy",
+        "texto": "I connect design decisions to business goals."
+      },
+      {
+        "titulo": "Test it with real people",
+        "texto": "From Figma to an app people test on their own phones, in days."
+      },
+      {
+        "titulo": "Turn it into a system",
+        "texto": "I now own the Calipso design system."
+      }
+    ]
   },
   "stack": {
     "title": "Stack",
@@ -95,12 +112,12 @@
       "primary": {
         "text": "View work",
         "href": "/en/work",
-        "variant": "secondary"
+        "variant": "claro"
       },
       "secondary": {
         "text": "Get in touch",
         "href": "/en/contact",
-        "variant": "primary"
+        "variant": "noche"
       }
     }
   }

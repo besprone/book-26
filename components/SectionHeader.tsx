@@ -16,8 +16,8 @@ export default function SectionHeader({
   sectionName,
 }: SectionHeaderProps) {
   return (
-    <div className={`flex justify-between items-center mb-12 ${className}`}>
-      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
+    <div className={`flex justify-between items-center gap-4 mb-7 md:mb-12 ${className}`}>
+      <h2 className="text-[28px] md:text-[40px] font-normal leading-tight text-gray-900 dark:text-white">
         {title}
       </h2>
       {actionLabel && actionHref && (

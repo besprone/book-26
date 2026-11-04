@@ -82,21 +82,19 @@ export function getHomeConfig(locale: Locale = defaultLocale): HomeConfig {
       hero: {
         title: 'Diseñador de producto con visión técnica y enfoque en datos',
         description: 'Combino UX, desarrollo y análisis para crear experiencias útiles, funcionales y medibles',
+        alt: '',
         buttons: {
-          primary: { text: 'Ver proyectos', href: '/proyectos', variant: 'secondary' },
-          secondary: { text: 'Contáctame', href: '/contacto', variant: 'primary' },
+          primary: { text: 'Ver proyectos', href: '/proyectos', variant: 'claro' },
+          secondary: { text: 'Contáctame', href: '/contacto', variant: 'noche' },
         },
       },
-      perfil: {
-        title: 'Perfil profesional',
-        actionButton: { text: 'Sobre mí', href: '/sobre-mi' },
-        cards: [],
-      },
+      prueba: { titulo: 'En cifras', items: [] },
       proyectos: {
         title: 'Proyectos',
         actionButton: { text: 'Ver proyectos', href: '/proyectos' },
         featuredCount: 3,
       },
+      comoTrabajo: { title: 'Cómo trabajo', fases: [] },
       stack: {
         title: 'Stack',
         actionButton: { text: 'Sobre mí', href: '/sobre-mi' },
@@ -105,8 +103,8 @@ export function getHomeConfig(locale: Locale = defaultLocale): HomeConfig {
       callToAction: {
         title: 'Me encantaría ayudarte a dar vida a tu próximo producto',
         buttons: {
-          primary: { text: 'Ver proyectos', href: '/proyectos', variant: 'secondary' },
-          secondary: { text: 'Contáctame', href: '/contacto', variant: 'primary' },
+          primary: { text: 'Ver proyectos', href: '/proyectos', variant: 'claro' },
+          secondary: { text: 'Contáctame', href: '/contacto', variant: 'noche' },
         },
       },
     }

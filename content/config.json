@@ -1,39 +1,35 @@
 {
   "hero": {
     "title": "Product Design Manager, de la estrategia a un producto que funciona",
-    "description": "Más de 10 años en fintech uniendo diseño, desarrollo y datos. Acompaño un producto de principio a fin. Entiendo el problema, defino la estrategia, lo pruebo con personas reales y lo convierto en sistema.",
-    "image": "/hero-home.png",
+    "description": "Más de 10 años en productos digitales uniendo diseño, desarrollo y datos, desde 2022 en fintech. Acompaño un producto de principio a fin.",
+    "alt": "Tres teléfonos con pantallas de mis proyectos: una app de crédito hecha con el sistema Calipso, Ruta de Inglés y la solicitud de crédito para asesores.",
     "buttons": {
       "primary": {
         "text": "Ver proyectos",
         "href": "/proyectos",
-        "variant": "secondary"
+        "variant": "claro"
       },
       "secondary": {
         "text": "Contáctame",
         "href": "/contacto",
-        "variant": "primary"
+        "variant": "noche"
       }
     }
   },
-  "perfil": {
-    "title": "Perfil profesional",
-    "actionButton": {
-      "text": "Sobre mí",
-      "href": "/sobre-mi"
-    },
-    "cards": [
+  "prueba": {
+    "titulo": "En cifras",
+    "items": [
       {
-        "title": "+10 años diseñando productos digitales",
-        "description": "Desde 2022 en fintech. He liderado equipo y hoy dirijo el sistema de diseño"
+        "valor": "+10 años",
+        "texto": "Diseñando productos digitales, desde 2022 en fintech."
       },
       {
-        "title": "Prototipos que funcionan, con IA",
-        "description": "Del Figma a una app que se prueba en el teléfono de la persona, en días"
+        "valor": "4 personas",
+        "texto": "El equipo de diseño que he liderado en kubo.financiero."
       },
       {
-        "title": "Decisiones con datos",
-        "description": "Mido lo que pruebo y lo analizo con SQL y Python"
+        "valor": "{casos} casos",
+        "texto": "De diseño, prototipos en código y datos."
       }
     ]
   },
@@ -44,6 +40,27 @@
       "href": "/proyectos"
     },
     "featuredCount": 3
+  },
+  "comoTrabajo": {
+    "title": "Cómo trabajo",
+    "fases": [
+      {
+        "titulo": "Entiendo el problema",
+        "texto": "Un discovery semanal con UX, PM y Tech, donde cada insight se puede rastrear hasta su evidencia."
+      },
+      {
+        "titulo": "Defino la estrategia",
+        "texto": "Trabajo alineando diseño y negocio."
+      },
+      {
+        "titulo": "Lo pruebo con personas reales",
+        "texto": "Del Figma a una app que se prueba en el teléfono de la persona, en días."
+      },
+      {
+        "titulo": "Lo convierto en sistema",
+        "texto": "Hoy dirijo el sistema de diseño Calipso."
+      }
+    ]
   },
   "stack": {
     "title": "Stack",
@@ -95,12 +112,12 @@
       "primary": {
         "text": "Ver proyectos",
         "href": "/proyectos",
-        "variant": "secondary"
+        "variant": "claro"
       },
       "secondary": {
         "text": "Contáctame",
         "href": "/contacto",
-        "variant": "primary"
+        "variant": "noche"
       }
     }
   }

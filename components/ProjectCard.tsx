@@ -30,6 +30,8 @@ interface ProjectCardProps {
   nivel?: 'h2' | 'h3'
   /** Para la imagen más grande que se ve al cargar la página. */
   prioridad?: boolean
+  /** Color del espacio mientras carga la portada. Es el del caso. */
+  colorCarga?: string
 }
 
 export type TamanoTarjeta = 'chica' | 'mediana' | 'alta' | 'ancha'
@@ -79,6 +81,7 @@ export default function ProjectCard({
   description,
   nivel: Titulo = 'h3',
   prioridad = false,
+  colorCarga,
 }: ProjectCardProps) {
   const pathname = usePathname()
 
@@ -119,6 +122,7 @@ export default function ProjectCard({
               alt={title}
               sizes={medida.sizes}
               priority={prioridad}
+              colorCarga={colorCarga}
               errorLabel={t(locale).imagen.error}
               className="object-cover group-hover:scale-105 transition-transform duration-motion-base"
             />

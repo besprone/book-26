@@ -69,6 +69,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
                 client={principal.client}
                 year={principal.year}
                 type={principal.type}
+                colorCarga={principal.tema?.bg}
               />
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-x-6 gap-y-8 content-start">
                 {secundarios.map((proyecto) => (
@@ -81,6 +82,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
                     client={proyecto.client}
                     year={proyecto.year}
                     type={proyecto.type}
+                    colorCarga={proyecto.tema?.bg}
                   />
                 ))}
               </div>

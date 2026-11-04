@@ -54,7 +54,11 @@
   "tema": {
     "bg": "#F2672A",
     "ink": "#2A1206",
-    "accent": "#FFFFFF"
+    "accent": "#FFFFFF",
+    "band": "#2A1206",
+    "bandValue": "#F2672A",
+    "bandText": "#FFFFFF",
+    "number": "#F2672A"
   },
   "hero": {
     "tipo": "ruta-ingles",

@@ -40,10 +40,55 @@
   },
   "resultados": [
     "Un flujo autogestivo compatible con las inversiones que la persona ya tiene",
-    "Liquidez sin cancelar inversiones ni perder rendimientos",
-    "Reglas visuales y operativas para el cálculo del monto disponible, el bloqueo temporal de fondos y la continuidad de los rendimientos",
     "Un diseño que admite una o varias inversiones y una solicitud parcial o por el máximo disponible",
     "Listo para un A/B test del módulo con métricas de activación y conversión"
   ],
-  "aprendizajes": "Para diseñar un producto que cruza dos servicios tuve que entender las reglas de los dos. Explicar límites, garantías y condiciones sin letra chiquita es lo que genera confianza. Cada decisión equilibró el negocio, la seguridad de la persona y lo que legal permite. Y diseñar las variantes desde el inicio evitó rediseños después."
+  "aprendizajes": "Para diseñar un producto que cruza dos servicios tuve que entender las reglas de los dos. Explicar límites, garantías y condiciones sin letra chiquita es lo que genera confianza. Cada decisión equilibró el negocio, la seguridad de la persona y lo que legal permite. Y diseñar las variantes desde el inicio evitó rediseños después.",
+  "tema": {
+    "bg": "#FAF6EA",
+    "ink": "#1F6F21",
+    "accent": "#5FC65F",
+    "band": "#1F6F21",
+    "bandValue": "#FAF6EA",
+    "bandText": "#FAF6EA"
+  },
+  "hero": {
+    "tipo": "portada",
+    "alt": "Un 90% con una planta que crece encima, junto a un teléfono con la oferta de préstamo sobre las inversiones."
+  },
+  "cifras": {
+    "titulo": "La propuesta en tres datos",
+    "items": [
+      {
+        "valor": "Hasta 90%",
+        "texto": "Del valor invertido se puede solicitar como préstamo."
+      },
+      {
+        "valor": "2 productos",
+        "texto": "Créditos e inversiones, conectados en un solo flujo."
+      },
+      {
+        "valor": "Sin cancelar",
+        "texto": "La inversión sigue activa y conserva sus rendimientos."
+      }
+    ]
+  },
+  "destacado": {
+    "titulo": "Reglas que hubo que diseñar",
+    "intro": "Explicar límites y garantías sin letra chiquita es lo que genera confianza.",
+    "items": [
+      {
+        "titulo": "Monto disponible",
+        "texto": "Cómo se calcula lo que la persona puede pedir."
+      },
+      {
+        "titulo": "Bloqueo temporal",
+        "texto": "Qué pasa con los fondos mientras dura el préstamo."
+      },
+      {
+        "titulo": "Rendimientos",
+        "texto": "Cómo siguen corriendo durante el préstamo."
+      }
+    ]
+  }
 }

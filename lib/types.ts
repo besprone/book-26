@@ -81,15 +81,26 @@ export interface Proyecto {
     bg: string
     ink: string
     accent: string
+    /** Fondo, valores y texto de la banda de cifras. */
+    band: string
+    bandValue: string
+    bandText: string
+    /** Color de los números del proceso. Sin él, siguen el tema claro u oscuro. */
+    number?: string
   }
-  hero?: {
-    tipo: 'ruta-ingles'
-    pantalla: string
-    alt: string
-  }
+  hero?:
+    | { tipo: 'ruta-ingles'; pantalla: string; alt: string }
+    /** Usa portada.png y portada-celular.png de la carpeta del proyecto. */
+    | { tipo: 'portada'; alt: string }
   cifras?: {
     titulo: string
     items: { valor: string; texto: string }[]
+  }
+  /** Tres tarjetas con lo que hace distinto al caso. */
+  destacado?: {
+    titulo: string
+    intro: string
+    items: { titulo: string; texto: string }[]
   }
   comparador?: {
     titulo: string

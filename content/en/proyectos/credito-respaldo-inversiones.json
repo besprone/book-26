@@ -40,10 +40,55 @@
   },
   "resultados": [
     "A self-service flow that works with the investments the user already holds",
-    "Access to liquidity without cashing out investments or losing returns",
-    "Visual and operational rules for calculating the available amount, temporarily freezing funds and keeping returns running",
     "Support for one or several investments, and for borrowing part or all of the available amount",
     "Ready for A/B testing of the module with activation and conversion metrics"
   ],
-  "aprendizajes": "Designing a product that spans two services meant learning the rules of both. Explaining limits, collateral and conditions with no fine print is what builds trust. Every decision balanced the business, the person's safety and what the legal team allows. And designing the variants from the start avoided redesigns later."
+  "aprendizajes": "Designing a product that spans two services meant learning the rules of both. Explaining limits, collateral and conditions with no fine print is what builds trust. Every decision balanced the business, the person's safety and what the legal team allows. And designing the variants from the start avoided redesigns later.",
+  "tema": {
+    "bg": "#FAF6EA",
+    "ink": "#1F6F21",
+    "accent": "#5FC65F",
+    "band": "#1F6F21",
+    "bandValue": "#FAF6EA",
+    "bandText": "#FAF6EA"
+  },
+  "hero": {
+    "tipo": "portada",
+    "alt": "A 90% with a plant growing on top, next to a phone showing the loan offer backed by investments."
+  },
+  "cifras": {
+    "titulo": "The proposal in three facts",
+    "items": [
+      {
+        "valor": "Up to 90%",
+        "texto": "Of the invested amount can be requested as a loan."
+      },
+      {
+        "valor": "2 products",
+        "texto": "Loans and investments, connected in one flow."
+      },
+      {
+        "valor": "No cash-out",
+        "texto": "The investment stays active and keeps earning."
+      }
+    ]
+  },
+  "destacado": {
+    "titulo": "Rules we had to design",
+    "intro": "Explaining limits and collateral with no fine print is what builds trust.",
+    "items": [
+      {
+        "titulo": "Available amount",
+        "texto": "How the amount a person can borrow is calculated."
+      },
+      {
+        "titulo": "Temporary hold",
+        "texto": "What happens to the funds while the loan is active."
+      },
+      {
+        "titulo": "Returns",
+        "texto": "How they keep running during the loan."
+      }
+    ]
+  }
 }

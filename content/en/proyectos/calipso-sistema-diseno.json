@@ -46,10 +46,54 @@
   },
   "resultados": [
     "One library instead of many, with clear rules for development (2023)",
-    "Multi-brand, with 2 brands in light and inverse themes from the same tokens",
-    "55 React components and a React Native theme generated from the same sources",
-    "200+ changes since April 2026, each one checked by CI for contrast, tokens and colors",
     "Proven on a real product, a complete 8-stage SPEI transfer flow built in 9 days using only system components"
   ],
-  "aprendizajes": "A system is only a source of truth if nobody can bypass it, which is why the rules live in CI and not in a document. Layered tokens turned adding a brand into changing aliases, not components. And AI changed what it costs to build. Testing an idea in code now takes days, so design work shifts towards defining the rules well and reviewing with judgment. The next step is packaging it as a library so other teams can install it."
+  "aprendizajes": "A system is only a source of truth if nobody can bypass it. That's why the rules live in CI and not in a document. Layered tokens turned adding a brand into changing aliases, not components. And AI changed what it costs to build. Testing an idea in code now takes days, so design work shifts towards defining the rules well and reviewing with judgment. The next step is packaging it as a library so other teams can install it.",
+  "tema": {
+    "bg": "#F7F7F8",
+    "ink": "#1F6F21",
+    "accent": "#B21D15",
+    "band": "#1F6F21",
+    "bandValue": "#F7F7F8",
+    "bandText": "#F7F7F8"
+  },
+  "hero": {
+    "tipo": "portada",
+    "alt": "A button split across the colors of two brands and two themes, next to a phone showing the home screen of an app built with the system."
+  },
+  "cifras": {
+    "titulo": "The system in numbers",
+    "items": [
+      {
+        "valor": "55",
+        "texto": "React components built from the same sources as Figma."
+      },
+      {
+        "valor": "2 brands",
+        "texto": "In light and inverse themes, from the same tokens."
+      },
+      {
+        "valor": "200+",
+        "texto": "Changes since April 2026, each one checked by CI."
+      }
+    ]
+  },
+  "destacado": {
+    "titulo": "Layered tokens",
+    "intro": "Adding a brand means changing aliases, not components.",
+    "items": [
+      {
+        "titulo": "Base values",
+        "texto": "The raw color, spacing and radius values."
+      },
+      {
+        "titulo": "Brand aliases",
+        "texto": "Each brand picks which value it uses, and the component stays the same."
+      },
+      {
+        "titulo": "Theme aliases",
+        "texto": "The same component works in light and inverse."
+      }
+    ]
+  }
 }

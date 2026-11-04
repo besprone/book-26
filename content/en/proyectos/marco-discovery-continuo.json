@@ -39,10 +39,55 @@
     ]
   },
   "resultados": [
-    "A steady discovery rhythm that no longer depends on one-off projects",
     "UX, PM and Tech reviewing insights together every month",
-    "Living, traceable documentation that links evidence, learnings, insights, hypotheses and experiments",
-    "First A/B and usability experiments launched from prioritized insights"
+    "Living, traceable documentation that links evidence, learnings, insights, hypotheses and experiments"
   ],
-  "aprendizajes": "Piling up findings is pointless unless they become prioritized opportunities that steer the roadmap. Every insight has to be traceable back to its original evidence. Teams adopt the process when they take part from the start. And discovery never stops. It takes consistency every week."
+  "aprendizajes": "Piling up findings is pointless unless they become prioritized opportunities that steer the roadmap. Every insight has to be traceable back to its original evidence. Teams adopt the process when they take part from the start. And discovery never stops. It takes consistency every week.",
+  "tema": {
+    "bg": "#F4F1EA",
+    "ink": "#2B2A30",
+    "accent": "#FFCB3D",
+    "band": "#2B2A30",
+    "bandValue": "#F4F1EA",
+    "bandText": "#F4F1EA"
+  },
+  "hero": {
+    "tipo": "portada",
+    "alt": "Many colored sources merging into a single document, next to an impact and effort matrix with notes."
+  },
+  "cifras": {
+    "titulo": "The discovery rhythm",
+    "items": [
+      {
+        "valor": "Every week",
+        "texto": "One source gets analyzed, and evidence and learnings get documented."
+      },
+      {
+        "valor": "Every month",
+        "texto": "We pick a desired outcome and update the tree."
+      },
+      {
+        "valor": "Every quarter",
+        "texto": "A Discovery Digest with insights, opportunities and roadmap changes."
+      }
+    ]
+  },
+  "destacado": {
+    "titulo": "From evidence to experiment",
+    "intro": "Every insight can be traced back to its original evidence.",
+    "items": [
+      {
+        "titulo": "Evidence",
+        "texto": "Intercom, calls, reviews and interviews."
+      },
+      {
+        "titulo": "Insights",
+        "texto": "Synthesis and prioritization in the Friday meeting."
+      },
+      {
+        "titulo": "Experiments",
+        "texto": "The first A/B and usability tests."
+      }
+    ]
+  }
 }

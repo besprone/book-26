@@ -24,9 +24,9 @@ forma de trabajar.
 - El inglés usa ortografía americana y suena natural, no traducido.
 - Nada de frases de plantilla o que suenen a IA: pocos dos puntos, sin
   enumeraciones de tres en paralelo, sin muletillas.
-- No se nombra a clientes ni marcas de productos de terceros en los casos de
-  estudio; se describen de forma genérica (por ejemplo «Financiera de crédito
-  vía nómina»).
+- El caso de solicitud de crédito no nombra la marca del producto ni a la
+  financiera; se describe de forma genérica («Financiera de crédito vía
+  nómina»). Los casos de kubo.financiero sí la nombran.
 - El CV (`content/cv.md`) tiene que ser legible para ATS; el PDF se genera
   con `npm run cv`.
 

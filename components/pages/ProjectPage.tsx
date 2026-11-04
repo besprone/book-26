@@ -11,7 +11,7 @@ import ScrollDepthTracker from '@/components/ScrollDepthTracker'
 import SectionViewTracker from '@/components/SectionViewTracker'
 import Breadcrumb from '@/components/Breadcrumb'
 import ProjectViewTracker from '@/components/ProjectViewTracker'
-import VideoTracker from '@/components/VideoTracker'
+import VideoCaso from '@/components/caso/VideoCaso'
 import JsonLd from '@/components/JsonLd'
 import HeroRutaIngles from '@/components/caso/HeroRutaIngles'
 import PortadaAnimada from '@/components/caso/PortadaAnimada'
@@ -171,23 +171,12 @@ export default async function ProjectPage({
         {proyecto.videoYoutube && (
           <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 md:pb-24">
             <div className="w-full max-w-4xl">
-              <VideoTracker projectSlug={proyecto.slug} videoUrl={proyecto.videoYoutube} />
-              <div className="relative aspect-video rounded-xl overflow-hidden shadow-lg">
-                <iframe
-                  src={`${proyecto.videoYoutube.includes('youtu.be')
-                    ? `https://www.youtube.com/embed/${proyecto.videoYoutube.split('/').pop()?.split('?')[0]}`
-                    : proyecto.videoYoutube.includes('youtube.com/watch')
-                    ? `https://www.youtube.com/embed/${proyecto.videoYoutube.split('v=')[1]?.split('&')[0]}`
-                    : proyecto.videoYoutube.includes('youtube.com/embed')
-                    ? proyecto.videoYoutube
-                    : `https://www.youtube.com/embed/${proyecto.videoYoutube}`
-                  }?enablejsapi=1`}
-                  title={txt.videoDe(proyecto.title)}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="absolute top-0 left-0 w-full h-full"
-                />
-              </div>
+              <VideoCaso
+                projectSlug={proyecto.slug}
+                videoUrl={proyecto.videoYoutube}
+                titulo={txt.videoDe(proyecto.title)}
+                etiqueta={txt.verVideo(proyecto.title)}
+              />
             </div>
           </section>
         )}

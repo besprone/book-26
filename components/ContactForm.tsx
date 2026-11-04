@@ -156,9 +156,9 @@ export default function ContactForm({ config }: ContactFormProps) {
   }
 
   return (
-    <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+    <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
       <div>
-        <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <label htmlFor="name" className="block text-sm text-gray-900 dark:text-white mb-2">
           {config.form.fields.name.label}
         </label>
         <input
@@ -168,13 +168,13 @@ export default function ContactForm({ config }: ContactFormProps) {
           required
           value={formData.name}
           onChange={handleChange}
-          className="w-full px-4 py-3 border border-gray-500 dark:border-gray-500 placeholder:text-gray-500 dark:placeholder:text-gray-400 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition"
+          className="w-full h-12 px-4 border border-gray-500 dark:border-gray-500 placeholder:text-gray-500 dark:placeholder:text-gray-400 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition"
           placeholder={config.form.fields.name.placeholder}
         />
       </div>
 
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <label htmlFor="email" className="block text-sm text-gray-900 dark:text-white mb-2">
           {config.form.fields.email.label}
         </label>
         <input
@@ -184,13 +184,13 @@ export default function ContactForm({ config }: ContactFormProps) {
           required
           value={formData.email}
           onChange={handleChange}
-          className="w-full px-4 py-3 border border-gray-500 dark:border-gray-500 placeholder:text-gray-500 dark:placeholder:text-gray-400 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition"
+          className="w-full h-12 px-4 border border-gray-500 dark:border-gray-500 placeholder:text-gray-500 dark:placeholder:text-gray-400 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition"
           placeholder={config.form.fields.email.placeholder}
         />
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <label htmlFor="message" className="block text-sm text-gray-900 dark:text-white mb-2">
           {config.form.fields.message.label}
         </label>
         <textarea
@@ -200,7 +200,7 @@ export default function ContactForm({ config }: ContactFormProps) {
           rows={6}
           value={formData.message}
           onChange={handleChange}
-          className="w-full px-4 py-3 border border-gray-500 dark:border-gray-500 placeholder:text-gray-500 dark:placeholder:text-gray-400 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition resize-none"
+          className="w-full h-[180px] px-4 py-3 border border-gray-500 dark:border-gray-500 placeholder:text-gray-500 dark:placeholder:text-gray-400 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition resize-none"
           placeholder={config.form.fields.message.placeholder}
         />
       </div>

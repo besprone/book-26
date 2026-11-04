@@ -104,7 +104,7 @@ El archivo `sobre-mi.json` contiene toda la configuración de la página "Sobre 
 
 El archivo `contacto.json` contiene toda la configuración de la página de contacto. Puedes editar:
 - Hero (título y descripción)
-- Formulario (labels, placeholders, mensajes)
+- Formulario (título, labels, placeholders, mensajes)
 - CTA (título y botón)
 - Texto final motivacional
 

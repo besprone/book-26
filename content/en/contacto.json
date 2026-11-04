@@ -4,6 +4,7 @@
     "description": "I'm looking for a product design leadership role and take on selected consulting work. Drop me a line and let's talk."
   },
   "form": {
+    "title": "Tell me more",
     "fields": {
       "name": {
         "label": "Name",
@@ -32,7 +33,7 @@
     "button": {
       "text": "Book a call",
       "href": "mailto:besprone@gmail.com?subject=Schedule a call&body=Hi Marco,%0D%0A%0D%0AI%27d like to schedule a call to talk about...",
-      "variant": "secondary"
+      "variant": "claro"
     }
   },
   "final": {

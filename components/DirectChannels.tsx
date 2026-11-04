@@ -1,6 +1,5 @@
 'use client'
 
-import { Linkedin, Mail, ArrowUpRight } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { analytics } from '@/lib/analytics'
 import { siteConfig } from '@/lib/site'
@@ -22,7 +21,6 @@ export default function DirectChannels({ locale }: { locale: Locale }) {
 
   const canales = [
     {
-      icono: Linkedin,
       etiqueta: txt.linkedin,
       pie: txt.linkedinPie,
       href: siteConfig.linkedin,
@@ -30,7 +28,6 @@ export default function DirectChannels({ locale }: { locale: Locale }) {
       nombre: 'LinkedIn',
     },
     {
-      icono: Mail,
       etiqueta: txt.email,
       pie: siteConfig.email,
       href: `mailto:${siteConfig.email}`,
@@ -40,46 +37,25 @@ export default function DirectChannels({ locale }: { locale: Locale }) {
   ]
 
   return (
-    <div className="mt-10">
-      <h2 className="text-sm font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
-        {txt.titulo}
-      </h2>
-      <p className="mt-1 text-gray-600 dark:text-gray-400">{txt.intro}</p>
-
-      <ul className="mt-5 space-y-3">
-        {canales.map((c) => {
-          const Icono = c.icono
-          return (
-            <li key={c.nombre}>
-              <a
-                href={c.href}
-                {...(c.externo ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                onClick={() => registrar(c.nombre, c.href)}
-                className="group flex items-center gap-4 rounded-xl border border-gray-200 bg-white p-4
-                  transition hover:border-primary-300 hover:shadow-sm
-                  dark:border-gray-700 dark:bg-gray-800 dark:hover:border-primary-800
-                  focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
-              >
-                <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-primary-50 text-primary-500 dark:bg-primary-500/15 dark:text-primary-400">
-                  <Icono className="h-5 w-5" aria-hidden="true" />
-                </span>
-                <span className="min-w-0 flex-1">
-                  <span className="block font-medium text-gray-900 dark:text-white">
-                    {c.etiqueta}
-                  </span>
-                  {/* truncate: el correo y la URL del perfil son largos en móvil */}
-                  <span className="block truncate text-sm text-gray-600 dark:text-gray-400">
-                    {c.pie}
-                  </span>
-                </span>
-                <ArrowUpRight
-                  className="h-4 w-4 flex-shrink-0 text-gray-400 transition group-hover:text-primary-500 dark:group-hover:text-primary-400"
-                  aria-hidden="true"
-                />
-              </a>
-            </li>
-          )
-        })}
+    <div className="mt-7">
+      <h2 className="text-xl font-normal leading-snug">{txt.titulo}</h2>
+      <ul className="mt-3 space-y-3">
+        {canales.map((c) => (
+          <li key={c.nombre}>
+            <a
+              href={c.href}
+              {...(c.externo ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              onClick={() => registrar(c.nombre, c.href)}
+              className="group block rounded-2xl bg-white px-5 py-4 transition duration-motion-base hover:bg-primary-50
+                dark:bg-gray-900 dark:hover:bg-gray-800
+                focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary-500"
+            >
+              <span className="block text-base text-gray-900 dark:text-white">{c.etiqueta}</span>
+              {/* truncate: el correo y la URL del perfil son largos en móvil */}
+              <span className="mt-1 block truncate text-sm text-gray-600 dark:text-gray-400">{c.pie}</span>
+            </a>
+          </li>
+        ))}
       </ul>
     </div>
   )

@@ -206,6 +206,7 @@ export function getContactoConfig(locale: Locale = defaultLocale): ContactoConfi
         description: 'Estoy disponible para colaboraciones freelance, consultorías, asesorías UX o simplemente para charlar sobre ideas.',
       },
       form: {
+        title: 'Cuéntame',
         fields: {
           name: {
             label: 'Nombre',
@@ -234,7 +235,7 @@ export function getContactoConfig(locale: Locale = defaultLocale): ContactoConfi
         button: {
           text: 'Agendar una llamada',
           href: 'mailto:besprone@gmail.com?subject=Agendar una llamada&body=Hola Marco,%0D%0A%0D%0AMe gustaría agendar una llamada para hablar sobre...',
-          variant: 'secondary' as const,
+          variant: 'claro' as const,
         },
       },
       final: {

@@ -12,6 +12,7 @@ export interface ContactoConfig {
     description: string
   }
   form: {
+    title: string
     fields: {
       name: {
         label: string
@@ -40,7 +41,7 @@ export interface ContactoConfig {
     button: {
       text: string
       href: string
-      variant: 'primary' | 'secondary' | 'tonal' | 'ghost'
+      variant: VarianteBoton
     }
   }
   final: {

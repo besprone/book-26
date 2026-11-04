@@ -111,7 +111,6 @@ const textos = {
     imagen: { error: 'Error al cargar imagen', placeholder: 'Ilustración placeholder' },
     directo: {
       titulo: 'O escríbeme directo',
-      intro: 'Si prefieres no llenar el formulario.',
       linkedin: 'Conectemos en LinkedIn',
       linkedinPie: 'Ver perfil profesional',
       email: 'Enviar un correo',
@@ -177,7 +176,6 @@ const textos = {
     imagen: { error: 'Failed to load image', placeholder: 'Illustration placeholder' },
     directo: {
       titulo: 'Or reach me directly',
-      intro: "If you'd rather skip the form.",
       linkedin: "Let's connect on LinkedIn",
       linkedinPie: 'View professional profile',
       email: 'Send an email',

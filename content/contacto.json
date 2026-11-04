@@ -4,6 +4,7 @@
     "description": "Busco un puesto de liderazgo de diseño de producto y tomo consultorías puntuales. Escríbeme y lo platicamos."
   },
   "form": {
+    "title": "Cuéntame",
     "fields": {
       "name": {
         "label": "Nombre",
@@ -32,7 +33,7 @@
     "button": {
       "text": "Agendar una llamada",
       "href": "mailto:besprone@gmail.com?subject=Agendar una llamada&body=Hola Marco,%0D%0A%0D%0AMe gustaría agendar una llamada para hablar sobre...",
-      "variant": "secondary"
+      "variant": "claro"
     }
   },
   "final": {

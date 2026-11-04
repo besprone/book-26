@@ -62,7 +62,7 @@ El script:
 Son opcionales. Un caso sin ellos se ve completo, con los colores del sitio y la imagen `hero.png` como portada.
 
 - `tema`: colores del caso (`bg`, `ink`, `accent`, `band`, `bandValue`, `bandText` y `number` si los números del proceso llevan color). Son los mismos de la colección `case` en Figma.
-- `hero`: `{ "tipo": "portada", "alt": "…" }` usa `portada.png` (2160×960) y `portada-celular.png` (780×1120) de `public/proyectos/[slug]/`.
+- `hero`: `{ "tipo": "animada", "idea": "…", "alt": "…" }` usa una de las ideas de `components/caso/PortadaAnimada.tsx` y `pieza.png` de `public/proyectos/[slug]/`. Un caso nuevo agrega su idea ahí.
 - `cifras`: banda con un título y tres datos (`valor` y `texto`).
 - `destacado`: un título, una `intro` y tres tarjetas (`titulo` y `texto`) con lo que hace distinto al caso.
 - `aprendizajes`: la primera frase se muestra en grande, así que tiene que funcionar sola.

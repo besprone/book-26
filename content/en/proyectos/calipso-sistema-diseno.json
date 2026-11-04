@@ -58,7 +58,8 @@
     "bandText": "#F7F7F8"
   },
   "hero": {
-    "tipo": "portada",
+    "tipo": "animada",
+    "idea": "calipso",
     "alt": "A button split across the colors of two brands and two themes, next to a phone showing the home screen of an app built with the system."
   },
   "cifras": {

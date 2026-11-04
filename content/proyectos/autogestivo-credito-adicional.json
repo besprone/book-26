@@ -48,7 +48,8 @@
     "bandText": "#C9FBEC"
   },
   "hero": {
-    "tipo": "portada",
+    "tipo": "animada",
+    "idea": "autogestivo",
     "alt": "Dos caminos que pasan por una validación: uno llega a la oferta y el otro a un mensaje, junto a un teléfono con la pantalla de crédito."
   },
   "cifras": {

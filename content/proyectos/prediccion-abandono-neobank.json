@@ -55,7 +55,8 @@
     "bandText": "#A6F2A6"
   },
   "hero": {
-    "tipo": "portada",
+    "tipo": "animada",
+    "idea": "neo",
     "alt": "Un 24.36% rodeado de puntos en los que algunos ya se vaciaron, junto a un tablero con las gráficas del análisis."
   },
   "cifras": {

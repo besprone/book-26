@@ -54,7 +54,8 @@
     "bandText": "#F6F7F9"
   },
   "hero": {
-    "tipo": "portada",
+    "tipo": "animada",
+    "idea": "solicitud",
     "alt": "A $58,000 amount with a slider and several cursors on it, next to a phone showing the advisor's applications screen."
   },
   "cifras": {

@@ -11,7 +11,9 @@ forma de trabajar.
   en código. Los ajustes sin cambio visual van directo a código.
 - Cada ajuste va en su propia rama y su propio PR contra `main`. Se mergea con
   squash y se borra la rama; Vercel publica solo al llegar a `main`.
-- Cuando el CI pasa, se mergea sin pedir confirmación y se confirma en producción.
+- Al abrir el PR se deja con `gh pr merge --auto --squash`: entra solo cuando pasa
+  `verificar`, la revisión obligatoria de `main`, y GitHub borra la rama. Después
+  se confirma en producción.
   Solo se pregunta antes si hay un dato de la carrera por confirmar o algo que no
   se pueda deshacer.
 - Commits y PRs en español. Título con el formato `Sección: qué cambia`

@@ -85,8 +85,13 @@ html {
 }
 
 /* Bloque a todo lo ancho dentro del contenedor del caso. */
-.caso-bleed {
-  margin-inline: calc(50% - 50vw);
+/* Números del proceso: el color del caso si lo define, si no el del tema. */
+.caso-numero {
+  color: var(--case-number, #172130);
+}
+
+.dark .caso-numero {
+  color: var(--case-number, #ffffff);
 }
 
 /*

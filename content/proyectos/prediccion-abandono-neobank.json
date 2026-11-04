@@ -43,10 +43,54 @@
   },
   "resultados": [
     "Tres tipos de usuario con comportamientos distintos (masivo, premium y extremos de edad)",
-    "PUSH como canal clave de conversión (~95%) frente a EMAIL/SMS (~75%)",
-    "Una tasa de churn de 24.36%, usuarios que abandonan sin transaccionar en 90 días",
-    "Un modelo de Gradient Boosting que identificó a los usuarios en riesgo con buena precisión",
-    "Recomendaciones de campañas PUSH, cashback en consumo diario, onboarding guiado y segmentación geográfica"
+    "Un modelo de Gradient Boosting que identificó a los usuarios en riesgo con buena precisión"
   ],
-  "aprendizajes": "Observar patrones de comportamiento en el análisis exploratorio nos ayudó a enfocar las soluciones. Ajustar la definición de churn nos permitió detectar el abandono \"silencioso\". Las primeras transacciones y el canal usado influyen directamente en la retención, así que son una señal temprana. Una predicción sin acción no sirve, porque el modelo solo es útil si va acompañado de estrategias de intervención. Y aprendí a presentar un caso de negocio con datos y gráficas que cualquiera entiende."
+  "aprendizajes": "Observar patrones de comportamiento en el análisis exploratorio nos ayudó a enfocar las soluciones. Ajustar la definición de churn nos permitió detectar el abandono \"silencioso\". Las primeras transacciones y el canal usado influyen directamente en la retención, así que son una señal temprana. Una predicción sin acción no sirve, porque el modelo solo es útil si va acompañado de estrategias de intervención. Y aprendí a presentar un caso de negocio con datos y gráficas que cualquiera entiende.",
+  "tema": {
+    "bg": "#0F3F52",
+    "ink": "#A6F2A6",
+    "accent": "#52C896",
+    "band": "#0F3F52",
+    "bandValue": "#52C896",
+    "bandText": "#A6F2A6"
+  },
+  "hero": {
+    "tipo": "portada",
+    "alt": "Un 24.36% rodeado de puntos en los que algunos ya se vaciaron, junto a un tablero con las gráficas del análisis."
+  },
+  "cifras": {
+    "titulo": "El abandono en números",
+    "items": [
+      {
+        "valor": "19,000+",
+        "texto": "Registros de usuarios, transacciones y notificaciones."
+      },
+      {
+        "valor": "24.36%",
+        "texto": "Usuarios que no transaccionaron en 90 días."
+      },
+      {
+        "valor": "~95% vs ~75%",
+        "texto": "Conversión por PUSH frente a EMAIL y SMS."
+      }
+    ]
+  },
+  "destacado": {
+    "titulo": "Qué propusimos",
+    "intro": "Una predicción sin acción no sirve, así que el modelo llegó con estrategias.",
+    "items": [
+      {
+        "titulo": "Campañas PUSH",
+        "texto": "Sobre el canal con mayor conversión."
+      },
+      {
+        "titulo": "Cashback en consumo diario",
+        "texto": "Para impulsar las primeras transacciones."
+      },
+      {
+        "titulo": "Onboarding guiado",
+        "texto": "Para quienes se registran y no transaccionan."
+      }
+    ]
+  }
 }

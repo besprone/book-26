@@ -38,10 +38,52 @@
       "Google Sites"
     ]
   },
-  "resultados": [
-    "Validación en tiempo real del estatus del crédito antes de mostrar la pantalla de ofertas",
-    "Mensajes claros cuando cambia el estatus, para que la persona entienda por qué no ve una oferta",
-    "Diseño, tecnología, cobranza y ATC alineados en un flujo coherente"
-  ],
-  "aprendizajes": "Cuando cambia el estatus de un crédito, un mensaje claro evita la frustración. Las condiciones de negocio hay que validarlas al entrar al flujo y otra vez al mostrar la oferta. Y una pantalla sin acción, como \"no hay oferta disponible\", necesita un mensaje empático para que la persona no abandone."
+  "aprendizajes": "Cuando cambia el estatus de un crédito, un mensaje claro evita la frustración. Las condiciones de negocio hay que validarlas al entrar al flujo y otra vez al mostrar la oferta. Y una pantalla sin acción, como \"no hay oferta disponible\", necesita un mensaje empático para que la persona no abandone.",
+  "tema": {
+    "bg": "#C9FBEC",
+    "ink": "#06382E",
+    "accent": "#1F6F21",
+    "band": "#06382E",
+    "bandValue": "#C9FBEC",
+    "bandText": "#C9FBEC"
+  },
+  "hero": {
+    "tipo": "portada",
+    "alt": "Dos caminos que pasan por una validación: uno llega a la oferta y el otro a un mensaje, junto a un teléfono con la pantalla de crédito."
+  },
+  "cifras": {
+    "titulo": "Qué cambió en el flujo",
+    "items": [
+      {
+        "valor": "Al entrar",
+        "texto": "Se valida el estatus del crédito antes de mostrar ofertas."
+      },
+      {
+        "valor": "Sin oferta",
+        "texto": "Un mensaje claro explica por qué la persona no ve una oferta."
+      },
+      {
+        "valor": "4 equipos",
+        "texto": "Diseño, tecnología, cobranza y ATC, alineados en un flujo."
+      }
+    ]
+  },
+  "destacado": {
+    "titulo": "Antes y después",
+    "intro": "El problema era un desfase del sistema, y el usuario lo veía como una oferta real.",
+    "items": [
+      {
+        "titulo": "Antes",
+        "texto": "Personas en atraso podían ver ofertas activas de crédito adicional."
+      },
+      {
+        "titulo": "Después",
+        "texto": "Solo ven ofertas las personas elegibles en ese momento."
+      },
+      {
+        "titulo": "Sin acción",
+        "texto": "Una pantalla sin salida necesita un mensaje empático para que nadie abandone."
+      }
+    ]
+  }
 }

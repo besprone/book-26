@@ -43,10 +43,54 @@
   },
   "resultados": [
     "Three user types with distinct behaviors (mass market, premium, and the youngest and oldest users)",
-    "Push notifications as the main conversion channel (~95%) versus email and SMS (~75%)",
-    "24.36% of users dropped off without transacting within 90 days",
-    "A Gradient Boosting model that identified at-risk users with solid precision",
-    "Recommendations for push campaigns, cashback on everyday spending, guided onboarding and geographic segmentation"
+    "A Gradient Boosting model that identified at-risk users with solid precision"
   ],
-  "aprendizajes": "Spotting behavioral patterns in the exploratory analysis helped us focus the solutions. Refining how we defined churn let us detect \"silent\" drop-off. The first transactions and the channel used directly influence retention, so they work as an early signal. Prediction without action is useless, because the model only helps when paired with intervention strategies. And I learned to present a business case with data and charts anyone can follow."
+  "aprendizajes": "Spotting behavioral patterns in the exploratory analysis helped us focus the solutions. Refining how we defined churn let us detect \"silent\" drop-off. The first transactions and the channel used directly influence retention, so they work as an early signal. Prediction without action is useless, because the model only helps when paired with intervention strategies. And I learned to present a business case with data and charts anyone can follow.",
+  "tema": {
+    "bg": "#0F3F52",
+    "ink": "#A6F2A6",
+    "accent": "#52C896",
+    "band": "#0F3F52",
+    "bandValue": "#52C896",
+    "bandText": "#A6F2A6"
+  },
+  "hero": {
+    "tipo": "portada",
+    "alt": "A 24.36% surrounded by dots, some of them already empty, next to a dashboard with the analysis charts."
+  },
+  "cifras": {
+    "titulo": "Churn in numbers",
+    "items": [
+      {
+        "valor": "19,000+",
+        "texto": "User, transaction and notification records."
+      },
+      {
+        "valor": "24.36%",
+        "texto": "Users who didn't transact within 90 days."
+      },
+      {
+        "valor": "~95% vs ~75%",
+        "texto": "Push conversion compared with email and SMS."
+      }
+    ]
+  },
+  "destacado": {
+    "titulo": "What we proposed",
+    "intro": "A prediction without action is useless, so the model came with strategies.",
+    "items": [
+      {
+        "titulo": "Push campaigns",
+        "texto": "On the highest-converting channel."
+      },
+      {
+        "titulo": "Everyday cashback",
+        "texto": "To drive first transactions."
+      },
+      {
+        "titulo": "Guided onboarding",
+        "texto": "For people who sign up and never transact."
+      }
+    ]
+  }
 }

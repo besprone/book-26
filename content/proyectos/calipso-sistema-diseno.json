@@ -46,10 +46,54 @@
   },
   "resultados": [
     "Una sola librería en lugar de varias, con reglas claras para desarrollo (2023)",
-    "Multimarca, con 2 marcas en tema claro e inverso desde los mismos tokens",
-    "55 componentes React y un tema para React Native que salen de las mismas fuentes",
-    "Más de 200 cambios desde abril de 2026, cada uno revisado por el CI en contraste, tokens y colores",
     "Probado en un producto real, un flujo completo de transferencias SPEI de 8 etapas construido en 9 días solo con componentes del sistema"
   ],
-  "aprendizajes": "Un sistema solo es fuente de verdad si nadie puede saltárselo. Por eso las reglas viven en el CI y no en un documento. Tener los tokens en capas hizo que agregar una marca fuera cambiar alias, no componentes. Y la IA cambió lo que cuesta construir. Hoy probar una idea en código toma días, así que el trabajo de diseño se mueve a definir bien las reglas y a revisar con criterio. El siguiente paso es empaquetarlo como librería para que otros equipos lo instalen."
+  "aprendizajes": "Un sistema solo es fuente de verdad si nadie puede saltárselo. Por eso las reglas viven en el CI y no en un documento. Tener los tokens en capas hizo que agregar una marca fuera cambiar alias, no componentes. Y la IA cambió lo que cuesta construir. Hoy probar una idea en código toma días, así que el trabajo de diseño se mueve a definir bien las reglas y a revisar con criterio. El siguiente paso es empaquetarlo como librería para que otros equipos lo instalen.",
+  "tema": {
+    "bg": "#F7F7F8",
+    "ink": "#1F6F21",
+    "accent": "#B21D15",
+    "band": "#1F6F21",
+    "bandValue": "#F7F7F8",
+    "bandText": "#F7F7F8"
+  },
+  "hero": {
+    "tipo": "portada",
+    "alt": "Un botón Continuar dividido entre los colores de dos marcas y dos temas, junto a un teléfono con la pantalla de inicio de una app hecha con el sistema."
+  },
+  "cifras": {
+    "titulo": "El sistema en números",
+    "items": [
+      {
+        "valor": "55",
+        "texto": "Componentes React que salen de las mismas fuentes que Figma."
+      },
+      {
+        "valor": "2 marcas",
+        "texto": "En tema claro e inverso, desde los mismos tokens."
+      },
+      {
+        "valor": "200+",
+        "texto": "Cambios desde abril de 2026, cada uno revisado por el CI."
+      }
+    ]
+  },
+  "destacado": {
+    "titulo": "Tokens en capas",
+    "intro": "Agregar una marca es cambiar alias, no componentes.",
+    "items": [
+      {
+        "titulo": "Valores base",
+        "texto": "Los valores en crudo de color, espacio y radio."
+      },
+      {
+        "titulo": "Alias por marca",
+        "texto": "Cada marca decide qué valor usa, y el componente no cambia."
+      },
+      {
+        "titulo": "Alias por tema",
+        "texto": "El mismo componente funciona en claro e inverso."
+      }
+    ]
+  }
 }

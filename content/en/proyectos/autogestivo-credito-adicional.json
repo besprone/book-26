@@ -38,10 +38,52 @@
       "Google Sites"
     ]
   },
-  "resultados": [
-    "Real-time loan status check before the offers screen is shown",
-    "Clear messages when the status changes, so people understand why they no longer see an offer",
-    "Design, engineering, collections and support aligned around one coherent flow"
-  ],
-  "aprendizajes": "When a loan's status changes, a clear message prevents frustration. Business conditions have to be checked on entry to the flow and again when the offer is shown. And a screen with no action, like \"no offer available\", needs an empathetic message so people don't drop off."
+  "aprendizajes": "When a loan's status changes, a clear message prevents frustration. Business conditions have to be checked on entry to the flow and again when the offer is shown. And a screen with no action, like \"no offer available\", needs an empathetic message so people don't drop off.",
+  "tema": {
+    "bg": "#C9FBEC",
+    "ink": "#06382E",
+    "accent": "#1F6F21",
+    "band": "#06382E",
+    "bandValue": "#C9FBEC",
+    "bandText": "#C9FBEC"
+  },
+  "hero": {
+    "tipo": "portada",
+    "alt": "Two paths going through a check: one reaches the offer and the other a message, next to a phone showing the loan screen."
+  },
+  "cifras": {
+    "titulo": "What changed in the flow",
+    "items": [
+      {
+        "valor": "On entry",
+        "texto": "Loan status is checked before any offer is shown."
+      },
+      {
+        "valor": "No offer",
+        "texto": "A clear message explains why the person doesn't see an offer."
+      },
+      {
+        "valor": "4 teams",
+        "texto": "Design, engineering, collections and support, aligned on one flow."
+      }
+    ]
+  },
+  "destacado": {
+    "titulo": "Before and after",
+    "intro": "The problem was a system lag, and people saw it as a real offer.",
+    "items": [
+      {
+        "titulo": "Before",
+        "texto": "People behind on payments could see active additional credit offers."
+      },
+      {
+        "titulo": "After",
+        "texto": "Only people eligible at that moment see offers."
+      },
+      {
+        "titulo": "No action",
+        "texto": "A dead-end screen needs an empathetic message so people don't drop off."
+      }
+    ]
+  }
 }

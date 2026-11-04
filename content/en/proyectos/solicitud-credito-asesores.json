@@ -42,10 +42,54 @@
   },
   "resultados": [
     "Field sessions with four advisors, on a working prototype and from their own phone",
-    "All four started, authenticated, quoted and filled in the application, and three of the four submitted it in full",
-    "The full flow in a median of 11.8 minutes",
-    "No advisor discovered the amount could be typed, and all four set it by dragging the slider",
     "The CLABE bank account number accounted for most entry errors"
   ],
-  "aprendizajes": "A control that doesn’t look editable doesn’t get used, even when it works. The amount could be typed, but no advisor tried, and if typing is the fast path it has to look like a field. Strictly formatted data, like the CLABE, needs validating as it is typed rather than at the end. And the instrumentation proved its worth, recording progress, timings and errors even though the sessions were loose. What it can’t tell you is whether the captured data was correct, so the next round calls for a fixed scenario and the satisfaction questions built into the app itself."
+  "aprendizajes": "A control that doesn’t look editable doesn’t get used, even when it works. The amount could be typed, but no advisor tried, and if typing is the fast path it has to look like a field. Strictly formatted data, like the CLABE, needs validating as it is typed rather than at the end. And the instrumentation proved its worth, recording progress, timings and errors even though the sessions were loose. What it can’t tell you is whether the captured data was correct, so the next round calls for a fixed scenario and the satisfaction questions built into the app itself.",
+  "tema": {
+    "bg": "#1B1F27",
+    "ink": "#F6F7F9",
+    "accent": "#F5C518",
+    "band": "#1B1F27",
+    "bandValue": "#F5C518",
+    "bandText": "#F6F7F9"
+  },
+  "hero": {
+    "tipo": "portada",
+    "alt": "A $58,000 amount with a slider and several cursors on it, next to a phone showing the advisor's applications screen."
+  },
+  "cifras": {
+    "titulo": "What happened in the field",
+    "items": [
+      {
+        "valor": "0 of 4",
+        "texto": "Advisors discovered the amount could be typed."
+      },
+      {
+        "valor": "3 of 4",
+        "texto": "Submitted the full application."
+      },
+      {
+        "valor": "11.8 min",
+        "texto": "Median time for the full flow."
+      }
+    ]
+  },
+  "destacado": {
+    "titulo": "What version 2 simplified",
+    "intro": "Changes to the flow before building it.",
+    "items": [
+      {
+        "titulo": "Two fewer steps",
+        "texto": "The client signature and the OTP code stopped being the advisor's job."
+      },
+      {
+        "titulo": "Free navigation",
+        "texto": "The information block went from a linear wizard to chips."
+      },
+      {
+        "titulo": "Less data entry",
+        "texto": "The scanned pay stub fills in the income."
+      }
+    ]
+  }
 }

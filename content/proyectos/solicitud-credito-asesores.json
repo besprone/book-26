@@ -42,10 +42,54 @@
   },
   "resultados": [
     "Sesiones en piso con cuatro asesores, sobre un prototipo funcional y desde su propio teléfono",
-    "Los cuatro abrieron, autenticaron, cotizaron y capturaron la solicitud, y tres de cuatro la enviaron completa",
-    "El flujo completo en una mediana de 11.8 minutos",
-    "Ningún asesor descubrió que el monto se podía escribir y los cuatro lo fijaron arrastrando el deslizador",
     "La CLABE concentró los errores de captura"
   ],
-  "aprendizajes": "Un control que no parece editable no se usa, aunque funcione. El monto se podía teclear, pero ningún asesor lo intentó, y si escribirlo es la vía rápida tiene que verse como un campo. Los datos de formato estricto, como la CLABE, piden validarse mientras se escriben y no al final. Y la instrumentación demostró su valor, porque registró avance, tiempos y errores aunque las sesiones fueran libres. Lo que no permite es saber si los datos capturados eran los correctos, así que para la siguiente ronda conviene un escenario cerrado y las preguntas de satisfacción dentro de la propia app."
+  "aprendizajes": "Un control que no parece editable no se usa, aunque funcione. El monto se podía teclear, pero ningún asesor lo intentó, y si escribirlo es la vía rápida tiene que verse como un campo. Los datos de formato estricto, como la CLABE, piden validarse mientras se escriben y no al final. Y la instrumentación demostró su valor, porque registró avance, tiempos y errores aunque las sesiones fueran libres. Lo que no permite es saber si los datos capturados eran los correctos, así que para la siguiente ronda conviene un escenario cerrado y las preguntas de satisfacción dentro de la propia app.",
+  "tema": {
+    "bg": "#1B1F27",
+    "ink": "#F6F7F9",
+    "accent": "#F5C518",
+    "band": "#1B1F27",
+    "bandValue": "#F5C518",
+    "bandText": "#F6F7F9"
+  },
+  "hero": {
+    "tipo": "portada",
+    "alt": "Un monto de $58,000 con un deslizador y varios cursores encima, junto a un teléfono con la pantalla de solicitudes del asesor."
+  },
+  "cifras": {
+    "titulo": "Lo que pasó en piso",
+    "items": [
+      {
+        "valor": "0 de 4",
+        "texto": "Asesores descubrieron que el monto se podía escribir."
+      },
+      {
+        "valor": "3 de 4",
+        "texto": "Enviaron la solicitud completa."
+      },
+      {
+        "valor": "11.8 min",
+        "texto": "Mediana del flujo completo."
+      }
+    ]
+  },
+  "destacado": {
+    "titulo": "Lo que simplificó la versión 2",
+    "intro": "Cambios al flujo antes de construirlo.",
+    "items": [
+      {
+        "titulo": "Dos pasos menos",
+        "texto": "La firma del cliente y el código OTP dejaron de ser tarea del asesor."
+      },
+      {
+        "titulo": "Navegación libre",
+        "texto": "El bloque de información pasó de un asistente lineal a chips."
+      },
+      {
+        "titulo": "Menos captura",
+        "texto": "El talón de pagos escaneado llena el ingreso."
+      }
+    ]
+  }
 }

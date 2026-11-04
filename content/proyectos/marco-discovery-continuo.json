@@ -39,10 +39,55 @@
     ]
   },
   "resultados": [
-    "Un ritmo continuo de discovery, ya no dependiente de proyectos aislados",
     "UX, PM y Tech revisando juntos los insights cada mes",
-    "Documentación viva y trazable, de las evidencias a los aprendizajes, insights, hipótesis y experimentos",
-    "Los primeros experimentos A/B y de usabilidad, lanzados a partir de insights priorizados"
+    "Documentación viva y trazable, de las evidencias a los aprendizajes, insights, hipótesis y experimentos"
   ],
-  "aprendizajes": "Acumular hallazgos no sirve si no se convierten en oportunidades priorizadas que guíen el roadmap. Cada insight tiene que poder rastrearse hasta su evidencia original. Cuando las áreas participan desde el inicio, adoptan el proceso. Y el discovery no se pausa, pide constancia cada semana."
+  "aprendizajes": "Acumular hallazgos no sirve si no se convierten en oportunidades priorizadas que guíen el roadmap. Cada insight tiene que poder rastrearse hasta su evidencia original. Cuando las áreas participan desde el inicio, adoptan el proceso. Y el discovery no se pausa, pide constancia cada semana.",
+  "tema": {
+    "bg": "#F4F1EA",
+    "ink": "#2B2A30",
+    "accent": "#FFCB3D",
+    "band": "#2B2A30",
+    "bandValue": "#F4F1EA",
+    "bandText": "#F4F1EA"
+  },
+  "hero": {
+    "tipo": "portada",
+    "alt": "Muchas fuentes de colores que se van uniendo hasta un solo documento, junto a una matriz de impacto y esfuerzo con notas."
+  },
+  "cifras": {
+    "titulo": "El ritmo del discovery",
+    "items": [
+      {
+        "valor": "Cada semana",
+        "texto": "Se analiza una fuente y se documentan evidencias y aprendizajes."
+      },
+      {
+        "valor": "Cada mes",
+        "texto": "Se elige un resultado deseado y se actualiza el árbol."
+      },
+      {
+        "valor": "Cada trimestre",
+        "texto": "Un Discovery Digest con insights, oportunidades y ajustes al roadmap."
+      }
+    ]
+  },
+  "destacado": {
+    "titulo": "De la evidencia al experimento",
+    "intro": "Cada insight se puede rastrear hasta su evidencia original.",
+    "items": [
+      {
+        "titulo": "Evidencias",
+        "texto": "Intercom, llamadas, reseñas y entrevistas."
+      },
+      {
+        "titulo": "Insights",
+        "texto": "Síntesis y priorización en la reunión de los viernes."
+      },
+      {
+        "titulo": "Experimentos",
+        "texto": "Los primeros A/B y pruebas de usabilidad."
+      }
+    ]
+  }
 }

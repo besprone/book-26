@@ -2,8 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Image as ImageIcon, Star } from 'lucide-react'
-import Badge from './Badge'
+import { Image as ImageIcon } from 'lucide-react'
 import ImageWithSkeleton from './ImageWithSkeleton'
 import { analytics } from '@/lib/analytics'
 import { rutaProyecto, t, type Locale } from '@/lib/i18n'
@@ -19,42 +18,54 @@ interface ProjectCardProps {
   year?: string
   type?: string[]
   /**
-   * La versión grande que encabeza la lista. Crece la imagen y el título,
-   * añade la etiqueta "Destacado" y deja sitio a la descripción, que en la
-   * rejilla sobra pero aquí es el argumento de venta del proyecto.
+   * chica: columnas estrechas, como la lateral de Home.
+   * mediana: las dos columnas de Proyectos.
+   * alta: el caso grande de Home.
+   * ancha: el destacado de Proyectos, a todo el ancho.
    */
-  destacado?: boolean
-  /** Sólo se pinta en la versión destacada. */
+  tamano?: TamanoTarjeta
+  /** Sólo se pinta si llega. La usa el destacado de Proyectos, que es su argumento de venta. */
   description?: string
-  /**
-   * La tarjeta va dentro de una sección que ya tiene título, como en Home. El
-   * título baja a h3 y no hace falta la etiqueta porque ya se ve más grande.
-   */
-  enSeccion?: boolean
+  /** El nivel depende de la página: bajo el h1 en Proyectos, bajo un h2 en Home. */
+  nivel?: 'h2' | 'h3'
+  /** Para la imagen más grande que se ve al cargar la página. */
+  prioridad?: boolean
+}
+
+export type TamanoTarjeta = 'chica' | 'mediana' | 'alta' | 'ancha'
+
+const tamanos: Record<TamanoTarjeta, { imagen: string; titulo: string; sizes: string }> = {
+  chica: {
+    imagen: 'h-48',
+    titulo: 'text-xl leading-snug',
+    sizes: '(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw',
+  },
+  mediana: {
+    imagen: 'h-48 md:h-[300px]',
+    titulo: 'text-xl md:text-[28px] leading-tight',
+    sizes: '(min-width: 768px) 50vw, 100vw',
+  },
+  alta: {
+    imagen: 'h-48 md:h-80 lg:h-[420px]',
+    titulo: 'text-xl md:text-[28px] leading-tight',
+    sizes: '(min-width: 1024px) 792px, 100vw',
+  },
+  ancha: {
+    imagen: 'h-[300px] lg:h-[420px]',
+    titulo: 'text-[28px] leading-tight',
+    sizes: '(min-width: 1280px) 1216px, 100vw',
+  },
 }
 
 /**
- * Tarjeta de proyecto, en sus dos tamaños.
+ * Tarjeta de proyecto, en sus cuatro tamaños. Es un solo enlace, así que hacer
+ * clic en la imagen o en el título lleva a la ficha.
  *
- * Antes eran dos componentes, y no sólo se veían distintos:
+ * Ninguna lleva caja. El borde, el fondo y el padding competían con lo único
+ * que importa en un portafolio, que es el trabajo. La jerarquía la da el tamaño.
  *
- *   - La destacada era un `<div>` con un botón dentro, así que de toda la
- *     tarjeta más grande de la página sólo el botón llevaba a la ficha: hacer
- *     clic en la imagen o en el título no hacía nada.
- *   - Usaba `next/image` en crudo, sin skeleton ni estado de error, siendo la
- *     imagen más pesada del sitio y por tanto la que más lo necesitaba.
- *
- * Ahora las dos son el mismo enlace y comparten el mismo manejo de imagen.
- *
- * Ninguna lleva caja. El borde, el fondo y el padding eran cromo que competía
- * con lo único que importa en un portafolio, que es el trabajo; sin ellos la
- * imagen manda y a igual altura se ve más grande. La jerarquía de la
- * destacada la dan su tamaño y la etiqueta, no un marco.
- *
- * En la rejilla no hay descripción: eran dos líneas recortadas con puntos
- * suspensivos que nadie lee. En su lugar va una línea de contexto —cliente ·
- * año · disciplina— que son los tres datos por los que alguien filtra al
- * hojear.
+ * Debajo del título va una línea de contexto con cliente, año y disciplina, los
+ * tres datos por los que alguien filtra al hojear.
  */
 export default function ProjectCard({
   title,
@@ -64,9 +75,10 @@ export default function ProjectCard({
   client,
   year,
   type,
-  destacado = false,
+  tamano = 'chica',
   description,
-  enSeccion = false,
+  nivel: Titulo = 'h3',
+  prioridad = false,
 }: ProjectCardProps) {
   const pathname = usePathname()
 
@@ -87,7 +99,7 @@ export default function ProjectCard({
   }
 
   const contexto = [client, year, type?.join(', ')].filter(Boolean)
-  const Titulo = destacado && !enSeccion ? 'h2' : 'h3'
+  const medida = tamanos[tamano]
 
   return (
     <Link
@@ -98,21 +110,15 @@ export default function ProjectCard({
       {/* El redondeo y el recorte viven aquí porque ya no hay caja que los
           lleve: la imagen es el borde de la tarjeta. */}
       <div
-        className={`bg-gray-100 dark:bg-gray-700 relative overflow-hidden rounded-xl ${
-          destacado ? 'h-64 md:h-80 lg:h-[420px]' : 'h-48'
-        }`}
+        className={`bg-gray-100 dark:bg-gray-700 relative overflow-hidden rounded-xl ${medida.imagen}`}
       >
         {image ? (
           <div className="absolute inset-0 w-full h-full">
             <ImageWithSkeleton
               src={image}
               alt={title}
-              sizes={
-                destacado
-                  ? '(min-width: 1280px) 1216px, 100vw'
-                  : '(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw'
-              }
-              priority={destacado && !enSeccion}
+              sizes={medida.sizes}
+              priority={prioridad}
               errorLabel={t(locale).imagen.error}
               className="object-cover group-hover:scale-105 transition-transform duration-motion-base"
             />
@@ -120,24 +126,14 @@ export default function ProjectCard({
         ) : (
           <div className="w-full h-full flex items-center justify-center">
             <ImageIcon
-              className={`text-gray-500 dark:text-gray-400 ${destacado ? 'w-24 h-24' : 'w-16 h-16'}`}
+              className="text-gray-500 dark:text-gray-400 w-16 h-16"
             />
           </div>
         )}
       </div>
 
-      {destacado && !enSeccion && (
-        <div className="mt-5">
-          <Badge variant="estado" icon={Star}>
-            {t(locale).proyectos.destacado}
-          </Badge>
-        </div>
-      )}
-
       <Titulo
-        className={`font-normal text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition ${
-          destacado ? `${enSeccion ? 'mt-5' : 'mt-3'} text-xl md:text-[28px] leading-tight` : 'mt-4 text-xl leading-snug'
-        }`}
+        className={`mt-5 font-normal text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition ${medida.titulo}`}
       >
         {title}
       </Titulo>
@@ -146,8 +142,8 @@ export default function ProjectCard({
         <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">{contexto.join(' · ')}</p>
       )}
 
-      {destacado && description && (
-        <p className="mt-3 text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl">
+      {description && (
+        <p className="mt-3 text-base text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl">
           {description}
         </p>
       )}

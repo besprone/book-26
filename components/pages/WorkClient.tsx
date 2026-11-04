@@ -9,7 +9,6 @@ import ScrollDepthTracker from '@/components/ScrollDepthTracker'
 import SectionViewTracker from '@/components/SectionViewTracker'
 import { analytics } from '@/lib/analytics'
 import { t, type Locale } from '@/lib/i18n'
-import { iconoDeFiltro } from '@/lib/iconos-badge'
 
 const PROJECTS_PER_PAGE = 6
 
@@ -26,6 +25,8 @@ export default function ProyectosClient({ initialProyectos, locale }: ProyectosC
 
   const filters = ['Todo', 'UX', 'Dev', 'Data']
   const etiquetaFiltro = (f: string) => (f === 'Todo' ? txt.proyectos.filtroTodo : f)
+  const conteoFiltro = (f: string) =>
+    f === 'Todo' ? initialProyectos.length : initialProyectos.filter((p) => p.type?.includes(f)).length
 
   // Separar proyecto destacado
   const featuredProject = useMemo(() => {
@@ -93,32 +94,31 @@ export default function ProyectosClient({ initialProyectos, locale }: ProyectosC
   return (
     <div className="bg-white dark:bg-gray-900">
       <ScrollDepthTracker />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-16 relative">
+      <section className="bg-primary-500 text-white relative">
         <SectionViewTracker sectionName="proyectos" className="absolute top-0 left-0 w-full h-1" />
-        {/* Header */}
-        <div className="mb-12">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-gray-900 dark:text-white leading-tight">
-            {txt.proyectos.titulo}
-          </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl">
-            {txt.proyectos.intro}
-          </p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-10 md:pt-[88px] md:pb-[72px]">
+          <h1 className="text-[44px] md:text-[72px] font-semibold leading-tight">{txt.proyectos.titulo}</h1>
+          <p className="mt-5 md:mt-6 text-xl leading-snug max-w-[50rem]">{txt.proyectos.intro}</p>
+          <div className="mt-6">
+            <FilterChips
+              filters={filters}
+              activeFilter={activeFilter}
+              onFilterChange={handleFilterChange}
+              etiqueta={etiquetaFiltro}
+              conteo={conteoFiltro}
+            />
+          </div>
         </div>
+      </section>
 
-        {/* Filtros */}
-        <FilterChips
-          filters={filters}
-          activeFilter={activeFilter}
-          onFilterChange={handleFilterChange}
-          etiqueta={etiquetaFiltro}
-          icono={iconoDeFiltro}
-        />
-
-        {/* Proyecto destacado: sólo en la vista sin filtrar (ver mostrarDestacado) */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-14 md:pt-[72px] md:pb-24">
+        {/* El destacado solo se ve sin filtrar (ver mostrarDestacado). */}
         {featuredProject && mostrarDestacado && (
-          <div className="mb-14">
+          <div className="mb-9 md:mb-14">
             <ProjectCard
-              destacado
+              tamano="ancha"
+              nivel="h2"
+              prioridad
               title={featuredProject.title}
               description={featuredProject.description}
               image={featuredProject.image}
@@ -131,13 +131,15 @@ export default function ProyectosClient({ initialProyectos, locale }: ProyectosC
           </div>
         )}
 
-        {/* Grid de Proyectos */}
         {visibleProyectos.length > 0 ? (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12 mb-8">
+            {/* La llave reinicia la aparición cada vez que cambia el filtro. */}
+            <div key={activeFilter} className="lista-aparece grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-9 md:gap-y-14">
               {visibleProyectos.map((proyecto) => (
                 <ProjectCard
                   key={proyecto.slug}
+                  tamano="mediana"
+                  nivel="h2"
                   title={proyecto.title}
                   image={proyecto.image}
                   slug={proyecto.slug}
@@ -149,9 +151,8 @@ export default function ProyectosClient({ initialProyectos, locale }: ProyectosC
               ))}
             </div>
 
-            {/* Botón Ver más proyectos */}
             {hasMore && (
-              <div className="text-center mt-8">
+              <div className="text-center mt-10">
                 <Button
                   onClick={handleLoadMore}
                   variant="tonal"
@@ -166,9 +167,7 @@ export default function ProyectosClient({ initialProyectos, locale }: ProyectosC
           </>
         ) : (
           <div className="text-center py-12">
-            <p className="text-gray-600 dark:text-gray-400 text-lg">
-              {txt.proyectos.sinResultados}
-            </p>
+            <p className="text-gray-600 dark:text-gray-400 text-lg">{txt.proyectos.sinResultados}</p>
           </div>
         )}
       </div>

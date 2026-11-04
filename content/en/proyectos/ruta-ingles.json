@@ -45,12 +45,58 @@
     ]
   },
   "resultados": [
-    "The A2+ result changed the starting point, and the path was rebuilt for that level",
-    "In the 60-sentence test, correct sentences flagged as errors fell from 20% to 0%, and the new grader missed 2% of the real errors",
     "I removed 29 of 150 saved errors and 28 of 200 generated exercises that taught something wrong",
     "The full audit found 50 serious problems and 108 minor ones, and almost all the serious ones were in AI-generated content",
     "It costs about $10 a month, measured in November",
     "There's no second level assessment yet, so I can't say how much I've improved"
   ],
-  "aprendizajes": "What AI generates shouldn't go straight to someone who's learning. A grader's mistake repeats in the review queue and multiplies into new exercises, and the learner has no way to notice. I also learned to distrust myself as a user. I asked for things that didn't help me learn, and once I had to complain, \"you should have told me no.\" Now every teaching decision states whether it comes from a study or from my own judgment."
+  "aprendizajes": "What AI generates shouldn't go straight to someone who's learning. A grader's mistake repeats in the review queue and multiplies into new exercises, and the learner has no way to notice. I also learned to distrust myself as a user. I asked for things that didn't help me learn, and once I had to complain, \"you should have told me no.\" Now every teaching decision states whether it comes from a study or from my own judgment.",
+  "tema": {
+    "bg": "#F2672A",
+    "ink": "#2A1206",
+    "accent": "#FFF6EE"
+  },
+  "hero": {
+    "tipo": "ruta-ingles",
+    "pantalla": "/proyectos/ruta-ingles/pantalla-tu-dia.png",
+    "alt": "The sentence \"I share the usability test by Thursday\" with a handwritten 'll added, next to a phone showing the app's daily screen."
+  },
+  "cifras": {
+    "titulo": "What my data contradicted",
+    "items": [
+      {
+        "valor": "B1 → A2+",
+        "texto": "The app assumed I was at B1. The assessment came back A2+, so I rebuilt the plan."
+      },
+      {
+        "valor": "1 in 6",
+        "texto": "Saved errors that flagged something correct as wrong or taught a false rule."
+      },
+      {
+        "valor": "20% → 0%",
+        "texto": "Correct sentences flagged as errors, in a 60-sentence test. The new grader missed 2% of the real errors."
+      }
+    ]
+  },
+  "comparador": {
+    "titulo": "The AI was correcting what was already right",
+    "intro": "Three of my sentences that were fine. The app flagged them as errors and sent them to my review queue.",
+    "etiquetaFrase": "What I wrote",
+    "etiquetaCorreccion": "What the app wanted",
+    "veredicto": "Both are correct.",
+    "items": [
+      {
+        "frase": "I prefer to work remotely",
+        "correccion": "prefer working"
+      },
+      {
+        "frase": "when you have a chance",
+        "correccion": "get a chance"
+      },
+      {
+        "frase": "Could you send it to me by Monday?",
+        "correccion": "get that to me"
+      }
+    ]
+  }
 }

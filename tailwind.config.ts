@@ -43,6 +43,16 @@ const config: Config = {
           900: '#056164',
         },
       },
+      // Base de movimiento. Los valores viven en globals.css para que también
+      // los use el CSS que no pasa por Tailwind.
+      transitionDuration: {
+        'motion-fast': 'var(--motion-fast)',
+        'motion-base': 'var(--motion-base)',
+        'motion-slow': 'var(--motion-slow)',
+      },
+      transitionTimingFunction: {
+        motion: 'var(--motion-ease)',
+      },
       fontFamily: {
         // La variable ya incluye la fuente, el fallback ajustado por métricas
         // que genera next/font y la cadena de fuentes de sistema.

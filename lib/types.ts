@@ -75,6 +75,30 @@ export interface Proyecto {
   }
   resultados?: string[]
   aprendizajes?: string
+  // Colores del caso. Los nombres son los mismos en todos los proyectos y solo
+  // cambia el valor, así que un caso nuevo no agrega tokens.
+  tema?: {
+    bg: string
+    ink: string
+    accent: string
+  }
+  hero?: {
+    tipo: 'ruta-ingles'
+    pantalla: string
+    alt: string
+  }
+  cifras?: {
+    titulo: string
+    items: { valor: string; texto: string }[]
+  }
+  comparador?: {
+    titulo: string
+    intro: string
+    etiquetaFrase: string
+    etiquetaCorreccion: string
+    veredicto: string
+    items: { frase: string; correccion: string }[]
+  }
   // No hay campos de imagen por sección. El generador de proyectos reservaba
   // nueve huecos (investigación, diseño, galería de resultados, imágenes entre
   // secciones…) pero la ficha nunca llegó a pintarlos, así que el contenido

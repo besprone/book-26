@@ -36,6 +36,21 @@ export const hostPostHog = process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://us.p
 
 let cargando: Promise<DiagnosticoPostHog> | null = null
 
+/**
+ * Espera a que la página termine de pintar. La analítica no le aporta nada a
+ * quien está viendo el sitio, así que no debe competir con él en celulares lentos.
+ */
+function cuandoHayaReposo() {
+  return new Promise<void>((resolver) => {
+    const pedir = () =>
+      'requestIdleCallback' in window
+        ? window.requestIdleCallback(() => resolver(), { timeout: 2000 })
+        : setTimeout(resolver, 1000)
+    if (document.readyState === 'complete') pedir()
+    else window.addEventListener('load', pedir, { once: true })
+  })
+}
+
 /** Estado de la analítica, con el motivo cuando no está disponible. */
 export function diagnosticarPostHog(): Promise<DiagnosticoPostHog> {
   if (typeof window === 'undefined') return Promise.resolve({ estado: 'sin-clave' })
@@ -46,7 +61,8 @@ export function diagnosticarPostHog(): Promise<DiagnosticoPostHog> {
     if (!CLAVE) {
       cargando = Promise.resolve({ estado: 'sin-clave' })
     } else {
-      cargando = import('posthog-js')
+      cargando = cuandoHayaReposo()
+        .then(() => import('posthog-js'))
         .then(({ default: posthog }): DiagnosticoPostHog => {
           if (!(posthog as unknown as { __loaded?: boolean }).__loaded) {
             posthog.init(CLAVE, {

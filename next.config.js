@@ -36,6 +36,8 @@ const nextConfig = {
   images: {
     // AVIF primero: pesa menos que WebP y el navegador elige el que soporte
     formats: ['image/avif', 'image/webp'],
+    // Miniaturas de los videos, que se muestran antes de cargar el reproductor.
+    remotePatterns: [{ protocol: 'https', hostname: 'i.ytimg.com', pathname: '/vi/**' }],
   },
   // Slugs renombrados: la URL anterior sigue funcionando para no perder
   // enlaces ni indexación.

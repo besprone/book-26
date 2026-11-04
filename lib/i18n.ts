@@ -84,6 +84,7 @@ const textos = {
       enDesarrollo: 'Proyecto en desarrollo...',
       ctaTitulo: '¿Te gustó este proyecto?',
       videoDe: (t: string) => `Video del proyecto ${t}`,
+      verVideo: (t: string) => `Reproducir el video de ${t}`,
     },
     proyectos: {
       titulo: 'Proyectos',
@@ -150,6 +151,7 @@ const textos = {
       enDesarrollo: 'Project in progress...',
       ctaTitulo: 'Liked this project?',
       videoDe: (t: string) => `${t} project video`,
+      verVideo: (t: string) => `Play the video for ${t}`,
     },
     proyectos: {
       titulo: 'Work',

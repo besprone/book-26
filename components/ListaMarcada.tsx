@@ -143,13 +143,12 @@ export function Paso({ numero, titulo, children }: PasoProps) {
       {/* La cifra es decorativa: el <ol> ya comunica la posición, y leerla
           además haría que un lector de pantalla dijera "cero uno
           Investigación". */}
-      {/* Dos tonos distintos y no una sola clase con opacidad: el acento al
-          30% sobre blanco se queda en 1.25:1 de contraste y la cifra casi
-          desaparece, mientras que sobre el fondo oscuro se lee bien. En claro
-          hace falta un tono más hondo para llegar a la misma presencia. */}
+      {/* Sin opacidad: con ella la cifra quedaba en 1.6:1 en claro y 2:1 en
+          oscuro. Este tono llega a 3:1 en los dos temas, lo que pide el texto
+          grande. */}
       <span
         aria-hidden="true"
-        className="block text-3xl md:text-4xl font-bold leading-none tabular-nums mb-2 text-accent-600/50 dark:text-accent-400/30"
+        className="block text-3xl md:text-4xl font-bold leading-none tabular-nums mb-2 text-accent-700"
       >
         {String(numero).padStart(2, '0')}
       </span>

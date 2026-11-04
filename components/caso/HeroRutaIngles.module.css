@@ -99,7 +99,7 @@
   position: relative;
   font-family: var(--font-hero-frase), sans-serif;
   font-weight: 800;
-  color: color-mix(in srgb, var(--case-ink) 22%, var(--case-bg));
+  color: color-mix(in srgb, var(--case-ink) 85%, var(--case-bg));
 }
 
 .error::after {
@@ -109,7 +109,7 @@
   right: 0;
   top: 54%;
   height: 0.09em;
-  background: color-mix(in srgb, var(--case-accent) 80%, var(--case-bg));
+  background: var(--case-accent);
   transform-origin: left;
   animation: tacha var(--motion-base) var(--motion-ease) var(--pausa) both;
 }
@@ -118,7 +118,7 @@
   font-family: var(--font-hero-mano), cursive;
   font-weight: 700;
   font-size: 1.22em;
-  color: color-mix(in srgb, var(--case-accent) 80%, var(--case-bg));
+  color: var(--case-accent);
   animation: aparece var(--motion-base) var(--motion-ease) calc(var(--pausa) + 160ms) both;
 }
 

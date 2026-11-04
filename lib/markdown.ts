@@ -124,6 +124,7 @@ export function getSobreMiConfig(locale: Locale = defaultLocale): SobreMiConfig 
     return {
       hero: {
         title: 'Sobre mí',
+        statement: 'Tu frase principal...',
         description: 'Descripción sobre ti...',
         cvButton: { text: 'Descargar CV', href: '/cv.pdf' },
       },

@@ -1,0 +1,643 @@
+/*
+  Hero de Sobre mí: la carrera como una escalera y el muñeco que la sube.
+
+  Todo está en su estado final por defecto y las animaciones solo definen de
+  dónde vienen. Si una animación no corre, el hero se ve completo.
+
+  Escritorio escala a partir del diseño de 1440 con --u, que nunca pasa de 1 px.
+  En pantallas más anchas la escena se queda centrada y los escalones de los
+  extremos se prolongan hasta la orilla. Debajo de 1024 px es otra composición.
+*/
+.hero {
+  --u: min(calc(100cqw / 1440), 1px);
+  /* El mismo margen que el contenedor del header: max-w-7xl con lg:px-8. */
+  --margen: max(2rem, calc((100cqw - 80rem) / 2 + 2rem));
+
+  --entrada: 500ms; /* Cuándo aparece el muñeco. */
+  --camino: 2800ms; /* De la entrada a quedar quieto. */
+  --ciclo: 306ms; /* Una zancada completa. */
+  --zancadas: 8; /* entrada + ciclo × zancadas coincide con el último aterrizaje. */
+  --paso: 120ms; /* Separación entre escalones al subir. */
+  --paralaje: 14; /* Cuánto se adelanta cada nivel con el scroll. */
+  --scroll-recorrido: 60vh;
+
+  position: relative;
+  container-type: inline-size;
+  overflow: hidden;
+  background: #6244c7;
+  color: #fff;
+}
+
+.marco {
+  position: relative;
+  height: calc(var(--u) * 840);
+}
+
+.texto {
+  position: absolute;
+  z-index: 2;
+  left: var(--margen);
+  top: calc(var(--u) * 72);
+  width: calc(var(--u) * 760);
+}
+
+.seccion {
+  font-size: max(16px, calc(var(--u) * 20));
+  line-height: 1.4;
+}
+
+.titulo {
+  margin-top: calc(var(--u) * 10);
+  font-weight: 600;
+  font-size: calc(var(--u) * 60);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.bio {
+  margin-top: calc(var(--u) * 16);
+  width: calc(var(--u) * 640);
+  font-size: max(16px, calc(var(--u) * 20));
+  line-height: 1.4;
+}
+
+.accion {
+  margin-top: calc(var(--u) * 20);
+}
+
+.escena {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: calc(var(--u) * 1440);
+  height: 100%;
+  transform: translateX(-50%);
+}
+
+/* La escalera está pensada para cinco puestos. */
+.escalon {
+  --alto: calc(210 + var(--i) * 65);
+  position: absolute;
+  left: calc(var(--i) * 20%);
+  bottom: 0;
+  width: 20%;
+  height: calc(var(--u) * var(--alto));
+}
+
+.escalon:nth-child(1) {
+  --color: #5236bd;
+  --pisa: 0ms;
+}
+.escalon:nth-child(2) {
+  --color: #4529ad;
+  --pisa: 1250ms;
+}
+.escalon:nth-child(3) {
+  --color: #3a209d;
+  --pisa: 1700ms;
+}
+.escalon:nth-child(4) {
+  --color: #2c1785;
+  --pisa: 2400ms;
+}
+.escalon:nth-child(5) {
+  --color: #172130;
+  --pisa: 2950ms;
+}
+
+/* Sigue por debajo del hero para que el paralaje no deje un hueco. */
+.bloque {
+  position: absolute;
+  inset: 0 0 calc(var(--u) * -120);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: calc(var(--u) * 22) calc(var(--u) * 20) 0 calc(var(--u) * 28);
+  background: var(--color);
+  animation:
+    sube var(--motion-slow) var(--motion-ease) calc(var(--i) * var(--paso)) both,
+    pisa var(--motion-base) ease-out var(--pisa) both;
+}
+
+.escalon:first-child .bloque {
+  padding-left: calc(var(--margen) - max(0px, (100cqw - 1440px) / 2));
+  padding-right: calc(var(--u) * 16);
+}
+
+.escalon:first-child .bloque::before,
+.escalon:last-child .bloque::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100vw;
+  background: inherit;
+}
+
+.escalon:first-child .bloque::before {
+  right: 100%;
+}
+
+.escalon:last-child .bloque::before {
+  left: 100%;
+}
+
+.logo {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: calc(var(--u) * 44);
+  height: calc(var(--u) * 44);
+  border-radius: 50%;
+  background: #fff;
+}
+
+.logo img {
+  width: 68%;
+  height: 68%;
+  object-fit: contain;
+}
+
+.datos {
+  display: flex;
+  flex-direction: column;
+  margin-top: calc(var(--u) * 10);
+}
+
+.anio {
+  font-weight: 700;
+  font-size: max(20px, calc(var(--u) * 30));
+  line-height: 1.07;
+}
+
+.escalon:last-child .anio {
+  font-size: max(18px, calc(var(--u) * 26));
+}
+
+.rol {
+  margin-top: calc(var(--u) * 8);
+  font-size: max(13px, calc(var(--u) * 16));
+  line-height: 1.4;
+}
+
+.empresa {
+  margin-top: calc(var(--u) * 4);
+  font-size: max(12px, calc(var(--u) * 14));
+  line-height: 1.3;
+}
+
+/* El muñeco está en su lugar final. Cada capa anima una sola cosa. */
+.muneco {
+  position: absolute;
+  z-index: 1;
+  left: calc(var(--u) * 1085);
+  top: calc(var(--u) * 22);
+  width: calc(var(--u) * 360);
+  pointer-events: none;
+}
+
+.avance {
+  animation: avance var(--camino) linear var(--entrada) both;
+}
+
+.salto {
+  animation: salto var(--camino) linear var(--entrada) both;
+}
+
+.escala {
+  transform-origin: 50% 97.4%;
+  animation: escala var(--camino) linear var(--entrada) both;
+}
+
+.figura {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.bote,
+.piernaI,
+.piernaD,
+.brazoI,
+.brazoD {
+  transform-box: view-box;
+  animation-duration: var(--ciclo);
+  animation-delay: var(--entrada);
+  animation-iteration-count: var(--zancadas);
+  animation-timing-function: ease-in-out;
+}
+
+.bote {
+  animation-name: bote;
+  animation-duration: calc(var(--ciclo) / 2);
+  animation-iteration-count: calc(var(--zancadas) * 2);
+}
+
+.piernaI {
+  transform-origin: 427px 905px;
+  animation-name: zancadaI;
+}
+
+.piernaD {
+  transform-origin: 736px 870px;
+  animation-name: zancadaD;
+}
+
+.brazoI {
+  transform-origin: 285px 688px;
+  animation-name: bracearI;
+}
+
+.brazoD {
+  transform-origin: 772px 586px;
+  animation-name: bracearD;
+}
+
+/* Con el scroll, cada nivel se adelanta más que el anterior. */
+@supports (animation-timeline: scroll()) {
+  .escalon,
+  .muneco {
+    animation: adelanta linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 var(--scroll-recorrido);
+  }
+
+  .muneco {
+    --i: 4;
+  }
+}
+
+@media (max-width: 1023px) {
+  .hero {
+    --u: 1px;
+    --margen: 1rem;
+    --entrada: 400ms;
+    --camino: 2150ms;
+    --zancadas: 7;
+  }
+
+  .marco {
+    height: auto;
+  }
+
+  .texto {
+    position: static;
+    width: auto;
+    padding: 40px var(--margen) 0;
+  }
+
+  .titulo {
+    margin-top: 6px;
+    max-width: 40rem;
+    font-size: clamp(36px, 6.4cqw, 52px);
+  }
+
+  .bio {
+    width: auto;
+    max-width: 40rem;
+  }
+
+  .escena {
+    position: relative;
+    left: auto;
+    width: auto;
+    height: auto;
+    margin-top: 186px;
+    transform: none;
+  }
+
+  /* Del puesto actual al más antiguo, cada barra un poco más corta. */
+  .escalera {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .escalon {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    width: calc(74.4% + var(--i) * 6.4%);
+    height: auto;
+    min-height: 92px;
+    animation: none;
+  }
+
+  .bloque,
+  .escalon:first-child .bloque {
+    position: relative;
+    inset: auto;
+    min-height: 92px;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    padding: 12px var(--margen);
+    animation: entra var(--motion-slow) var(--motion-ease) calc(var(--i) * var(--paso)) both;
+  }
+
+  .escalon:first-child .bloque::before,
+  .escalon:last-child .bloque::before {
+    content: none;
+  }
+
+  .datos {
+    margin-top: 0;
+    min-width: 0;
+  }
+
+  .anio,
+  .escalon:last-child .anio {
+    font-size: 18px;
+  }
+
+  .rol {
+    margin-top: 4px;
+    font-size: 16px;
+  }
+
+  /* Dos puestos comparten empresa, así que se sigue leyendo en lector de pantalla. */
+  .empresa {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .muneco {
+    left: auto;
+    right: 10px;
+    top: auto;
+    bottom: calc(100% - 6px);
+    width: 190px;
+    animation: none;
+  }
+
+  .avance {
+    animation-name: llega;
+  }
+
+  .salto {
+    animation: none;
+  }
+
+  .escala {
+    animation-name: asienta;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .hero {
+    --margen: 1.5rem;
+  }
+}
+
+/*
+  En celular el muñeco queda abajo de la bio. Espera a estar en pantalla para no
+  correr sin que nadie lo vea. Sin JavaScript no hay quién le avise, así que
+  solo espera cuando los scripts están activos.
+*/
+@media (max-width: 1023px) and (scripting: enabled) {
+  .hero:not([data-en-vista]) .muneco * {
+    animation-play-state: paused;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bloque,
+  .avance,
+  .salto,
+  .escala,
+  .bote,
+  .piernaI,
+  .piernaD,
+  .brazoI,
+  .brazoD,
+  .escalon,
+  .muneco {
+    animation: none;
+  }
+}
+
+@keyframes sube {
+  from {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes entra {
+  from {
+    transform: translateX(-101%);
+  }
+}
+
+@keyframes pisa {
+  35% {
+    translate: 0 calc(var(--u) * 9);
+  }
+}
+
+@keyframes adelanta {
+  to {
+    translate: 0 calc(var(--u) * var(--paralaje) * -1 * (var(--i) + 1));
+  }
+}
+
+@keyframes bote {
+  50% {
+    transform: translateY(-22px);
+  }
+}
+
+@keyframes zancadaD {
+  25% {
+    transform: rotate(-30deg);
+  }
+  75% {
+    transform: rotate(26deg);
+  }
+}
+
+@keyframes zancadaI {
+  25% {
+    transform: rotate(-26deg);
+  }
+  75% {
+    transform: rotate(30deg);
+  }
+}
+
+@keyframes bracearI {
+  25% {
+    transform: rotate(24deg);
+  }
+  75% {
+    transform: rotate(-20deg);
+  }
+}
+
+@keyframes bracearD {
+  25% {
+    transform: rotate(20deg);
+  }
+  75% {
+    transform: rotate(-24deg);
+  }
+}
+
+/* Celular: entra desde afuera de la pantalla y sigue corriendo en su lugar. */
+@keyframes llega {
+  0% {
+    transform: translateX(calc(-100cqw - 30px));
+    animation-timing-function: var(--motion-ease);
+  }
+  40%,
+  100% {
+    transform: none;
+  }
+}
+
+@keyframes asienta {
+  0%,
+  84% {
+    transform: rotate(6deg);
+  }
+  90% {
+    transform: scale(1.08, 0.88);
+  }
+  95% {
+    transform: scale(0.98, 1.04);
+  }
+  100% {
+    transform: none;
+  }
+}
+
+/*
+  El recorrido de escritorio. Cada porcentaje es un momento del camino: corre,
+  salta al siguiente escalón y crece, porque a su tamaño final taparía la bio.
+*/
+@keyframes avance {
+  0.00% {
+    transform: translateX(calc(var(--u) * -1325));
+  }
+  16.07% {
+    transform: translateX(calc(var(--u) * -1015));
+  }
+  26.79% {
+    transform: translateX(calc(var(--u) * -920));
+  }
+  33.93% {
+    transform: translateX(calc(var(--u) * -745));
+  }
+  42.86% {
+    transform: translateX(calc(var(--u) * -615));
+  }
+  51.79% {
+    transform: translateX(calc(var(--u) * -435));
+  }
+  67.86% {
+    transform: translateX(calc(var(--u) * -257));
+  }
+  71.43% {
+    transform: translateX(calc(var(--u) * -225));
+  }
+  87.50% {
+    transform: translateX(calc(var(--u) * 0));
+  }
+  100% {
+    transform: none;
+  }
+}
+
+@keyframes salto {
+  0.00% {
+    transform: translateY(calc(var(--u) * 260));
+  }
+  16.07% {
+    transform: translateY(calc(var(--u) * 260));
+    animation-timing-function: cubic-bezier(0.2, 0.6, 0.4, 1);
+  }
+  21.43% {
+    transform: translateY(calc(var(--u) * 175));
+    animation-timing-function: cubic-bezier(0.6, 0, 0.8, 0.4);
+  }
+  26.79% {
+    transform: translateY(calc(var(--u) * 195));
+  }
+  33.93% {
+    transform: translateY(calc(var(--u) * 195));
+    animation-timing-function: cubic-bezier(0.2, 0.6, 0.4, 1);
+  }
+  38.93% {
+    transform: translateY(calc(var(--u) * 120));
+    animation-timing-function: cubic-bezier(0.6, 0, 0.8, 0.4);
+  }
+  42.86% {
+    transform: translateY(calc(var(--u) * 130));
+  }
+  51.79% {
+    transform: translateY(calc(var(--u) * 130));
+    animation-timing-function: cubic-bezier(0.2, 0.6, 0.4, 1);
+  }
+  59.64% {
+    transform: translateY(calc(var(--u) * 25));
+    animation-timing-function: cubic-bezier(0.6, 0, 0.8, 0.4);
+  }
+  67.86% {
+    transform: translateY(calc(var(--u) * 65));
+  }
+  71.43% {
+    transform: translateY(calc(var(--u) * 65));
+    animation-timing-function: cubic-bezier(0.2, 0.6, 0.4, 1);
+  }
+  79.64% {
+    transform: translateY(calc(var(--u) * -50));
+    animation-timing-function: cubic-bezier(0.6, 0, 0.8, 0.4);
+  }
+  87.50% {
+    transform: translateY(calc(var(--u) * 0));
+  }
+  100% {
+    transform: none;
+  }
+}
+
+@keyframes escala {
+  0.00% {
+    transform: scale(0.233) rotate(6deg);
+  }
+  26.79% {
+    transform: scale(0.233) rotate(6deg);
+  }
+  33.93% {
+    transform: scale(0.244) rotate(6deg);
+  }
+  42.86% {
+    transform: scale(0.256) rotate(6deg);
+  }
+  51.79% {
+    transform: scale(0.256) rotate(6deg);
+  }
+  67.86% {
+    transform: scale(0.667) rotate(6deg);
+  }
+  71.43% {
+    transform: scale(0.667) rotate(6deg);
+  }
+  87.50% {
+    transform: scale(1.000) rotate(0deg);
+  }
+  91.07% {
+    transform: scale(1.08, 0.88);
+  }
+  95.71% {
+    transform: scale(0.98, 1.04);
+  }
+  100% {
+    transform: none;
+  }
+}
+

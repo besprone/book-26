@@ -181,9 +181,11 @@ export interface HomeConfig {
 }
 export interface SobreMiConfig {
   hero: {
+    /** Nombre de la sección, arriba del título. */
     title: string
+    /** El h1 de la página. */
+    statement: string
     description: string
-    image?: string
     cvButton: {
       text: string
       href: string
@@ -202,6 +204,8 @@ export interface SobreMiConfig {
       title: string
       company: string
       period: string
+      /** Lo que dice el escalón del hero: el año de inicio, o el rango si sigue vigente. */
+      etiqueta: string
       logo?: string
     }>
   }

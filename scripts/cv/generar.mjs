@@ -35,7 +35,7 @@ const cuerpo = `
   <div class="contacto">
     <p>Email: ${escapar(cv.contacto.email)}</p>
     <p>Phone: ${escapar(cv.contacto.telefono)}</p>
-    <p>Web: <a href="${cv.contacto.web}">${escapar(cv.contacto.web)}</a></p>
+    <p>Web: <a href="${cv.contacto.webEnlace}">${escapar(cv.contacto.web)}</a></p>
     ${cv.contacto.linkedin ? `<p>LinkedIn: <a href="${cv.contacto.linkedin.url}">${escapar(cv.contacto.linkedin.texto)}</a></p>` : ''}
   </div>
 </header>

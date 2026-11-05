@@ -32,7 +32,6 @@ devuelve error y no se envía analítica.
 | `RESEND_API_KEY` | Sí, para el formulario | API key de Resend |
 | `CONTACT_EMAIL` | Sí, para el formulario | Dirección que recibe los mensajes |
 | `NEXT_PUBLIC_POSTHOG_PROJECT_API_KEY` | No | Sin ella no se envía analítica |
-| `NEXT_PUBLIC_POSTHOG_HOST` | No | Por defecto `https://us.posthog.com` |
 | `NEXT_PUBLIC_SITE_URL` | No | Sobreescribe la URL canónica. Útil en previews; en producción se usa el valor de `lib/site.ts` |
 | `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | No | Activa el CAPTCHA del formulario. Va junto con la siguiente |
 | `TURNSTILE_SECRET_KEY` | No | Verifica el token en servidor. Va junto con la anterior |

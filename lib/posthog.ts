@@ -32,7 +32,8 @@ export type DiagnosticoPostHog =
   | { estado: 'bloqueado' }
 
 const CLAVE = process.env.NEXT_PUBLIC_POSTHOG_PROJECT_API_KEY
-export const hostPostHog = process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://us.posthog.com'
+// Ruta del propio sitio; next.config.js la reenvía a PostHog.
+export const hostPostHog = '/vista'
 
 let cargando: Promise<DiagnosticoPostHog> | null = null
 
@@ -67,6 +68,8 @@ export function diagnosticarPostHog(): Promise<DiagnosticoPostHog> {
           if (!(posthog as unknown as { __loaded?: boolean }).__loaded) {
             posthog.init(CLAVE, {
               api_host: hostPostHog,
+              // Los enlaces del toolbar sí abren PostHog directamente.
+              ui_host: 'https://us.posthog.com',
               // Los $pageview los emite PostHogProvider en cada cambio de
               // ruta. Con la captura automática activada además, la carga
               // inicial se contaba dos veces.

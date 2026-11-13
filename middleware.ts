@@ -19,7 +19,7 @@ export function middleware(req: NextRequest) {
     return res
   }
 
-  if (esPanel && /^(www\.)?besprone\.com\.mx$/.test(host)) {
+  if (esPanel && /^((www\.)?besprone\.com\.mx|besprone\.vercel\.app)$/.test(host)) {
     return NextResponse.rewrite(new URL('/no-existe', req.url))
   }
 

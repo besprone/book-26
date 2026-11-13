@@ -21,7 +21,11 @@ export async function GET(req: NextRequest) {
   const periodo: Periodo = p === 'hoy' || p === '30d' ? p : '7d'
 
   if (!llavePostHog()) {
-    if (process.env.NODE_ENV === 'development') return NextResponse.json(datosDeMuestra(periodo))
+    if (process.env.NODE_ENV === 'development') {
+      // Una pausa corta para ver el estado de carga como en producción.
+      await new Promise((r) => setTimeout(r, 700))
+      return NextResponse.json(datosDeMuestra(periodo))
+    }
     return NextResponse.json({ error: 'Falta POSTHOG_PERSONAL_API_KEY' }, { status: 503 })
   }
 

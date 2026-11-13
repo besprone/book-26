@@ -78,27 +78,36 @@ function Barras({ items, vacio }: { items: [string, number][]; vacio: string }) 
 
 export default function Panel() {
   const [periodo, setPeriodo] = useState<Periodo>('7d')
-  const [datos, setDatos] = useState<DatosPanel | null>(null)
+  // Datos guardados por periodo: al cambiar de pestaña nunca se muestran los
+  // números de otro periodo.
+  const [porPeriodo, setPorPeriodo] = useState<Partial<Record<Periodo, DatosPanel>>>({})
+  const [cargando, setCargando] = useState(true)
   const [fallo, setFallo] = useState(false)
   const [ahora, setAhora] = useState(() => Date.now())
-  const pidiendo = useRef(false)
+  const pedido = useRef<AbortController | null>(null)
+  const datos = porPeriodo[periodo] ?? null
 
   const cargar = useCallback(async (p: Periodo) => {
-    if (pidiendo.current) return
-    pidiendo.current = true
+    // Si había una consulta en curso, sobre todo de otro periodo, se cancela.
+    pedido.current?.abort()
+    const control = new AbortController()
+    pedido.current = control
+    setCargando(true)
     try {
-      const res = await fetch(`/api/panel/datos?periodo=${p}`, { cache: 'no-store' })
+      const res = await fetch(`/api/panel/datos?periodo=${p}`, { cache: 'no-store', signal: control.signal })
       if (res.status === 401) {
         window.location.reload()
         return
       }
       if (!res.ok) throw new Error(String(res.status))
-      setDatos((await res.json()) as DatosPanel)
+      const nuevos = (await res.json()) as DatosPanel
+      setPorPeriodo((antes) => ({ ...antes, [p]: nuevos }))
       setFallo(false)
-    } catch {
+    } catch (error) {
+      if (control.signal.aborted) return
       setFallo(true)
     } finally {
-      pidiendo.current = false
+      if (pedido.current === control) setCargando(false)
     }
   }, [])
 
@@ -121,6 +130,11 @@ export default function Panel() {
     return () => clearInterval(reloj)
   }, [])
 
+  // Bloques de carga al cambiar de periodo o al volver tras más de un minuto.
+  // La actualización de cada 30 s no los muestra, para que no parpadee.
+  const viejos = !datos || ahora - new Date(datos.actualizado).getTime() > 2 * CADA_MS
+  const mostrarBloques = !datos || (cargando && viejos)
+
   const comparacion = PERIODOS.find((p) => p.valor === periodo)!.comparacion
   const destacadas = new Set(['cv', 'mensajes'])
 
@@ -131,13 +145,13 @@ export default function Panel() {
           <Logo href="/" rastrear={false} />
           <div className="hidden lg:block">
             <h1 className="text-2xl font-semibold">Tu portafolio</h1>
-            <Actualizado datos={datos} ahora={ahora} />
+            <Actualizado datos={mostrarBloques ? null : datos} cargando={cargando} ahora={ahora} />
           </div>
           <EnVivo fallo={fallo} className="lg:hidden" />
         </div>
         <div className="lg:hidden">
           <h1 className="text-[28px] font-semibold leading-tight">Tu portafolio</h1>
-          <Actualizado datos={datos} ahora={ahora} />
+          <Actualizado datos={mostrarBloques ? null : datos} cargando={cargando} ahora={ahora} />
         </div>
         <div className="flex items-center gap-3">
           <div role="tablist" aria-label="Periodo" className="flex flex-1 gap-1 rounded-full bg-[#e6ecf5] p-1 lg:flex-none">
@@ -163,7 +177,7 @@ export default function Panel() {
         <p className="rounded-lg bg-amber-50 px-4 py-2 text-sm text-amber-900">Datos de ejemplo: falta la llave de PostHog en local.</p>
       )}
 
-      {fallo && datos && (
+      {fallo && datos && !mostrarBloques && (
         <section className={tarjeta} aria-live="polite">
           <h2 className="flex items-center gap-2 text-lg font-semibold">
             <Punto color="bg-[#e4765e]" /> No se pudo actualizar
@@ -174,8 +188,12 @@ export default function Panel() {
         </section>
       )}
 
-      {!datos ? (
-        <p className="py-16 text-center text-gray-600">{fallo ? 'No se pudieron cargar los datos. Reintentando…' : 'Cargando…'}</p>
+      {mostrarBloques || !datos ? (
+        fallo && !cargando ? (
+          <p className="py-16 text-center text-gray-600">No se pudieron cargar los datos. Lo volvemos a intentar solos.</p>
+        ) : (
+          <Esqueleto />
+        )
       ) : (
         <>
           {/* En celular «Ahora mismo» va primero; en escritorio, las cifras. */}
@@ -285,11 +303,52 @@ function Titulo({ texto, extra }: { texto: string; extra?: string }) {
   )
 }
 
-function Actualizado({ datos, ahora }: { datos: DatosPanel | null; ahora: number }) {
+function Actualizado({ datos, cargando, ahora }: { datos: DatosPanel | null; cargando: boolean; ahora: number }) {
   return (
     <p className="mt-1 text-[13px] text-gray-600">
-      {datos ? `Actualizado ${haceCuanto(datos.actualizado, ahora)}` : 'Conectando…'} · sin bots ni tus visitas
+      {!datos || cargando ? 'Actualizando…' : `Actualizado ${haceCuanto(datos.actualizado, ahora)}`} · sin bots ni tus visitas
     </p>
+  )
+}
+
+/** Bloque gris con el brillo de los skeletons del sitio. */
+function Bloque({ className }: { className: string }) {
+  return (
+    <span aria-hidden className={`relative block overflow-hidden rounded-md bg-[#e6ecf5] ${className}`}>
+      <span className="absolute inset-0 animate-shimmer bg-gradient-to-r from-transparent via-white/60 to-transparent" />
+    </span>
+  )
+}
+
+function Esqueleto() {
+  const caja = `${tarjeta} flex flex-col gap-3.5`
+  return (
+    <div role="status" aria-label="Actualizando datos" className="flex flex-col gap-4 lg:grid lg:grid-cols-[392px_1fr] lg:gap-x-4 lg:gap-y-6">
+      <div className="order-2 grid grid-cols-2 gap-3 lg:order-1 lg:col-span-2 lg:grid-cols-4 lg:gap-4">
+        {[0, 1, 2, 3].map((i) => (
+          <div key={i} className="flex flex-col gap-2.5 rounded-xl border border-gray-300 bg-white p-4">
+            <Bloque className="h-3 w-24" />
+            <Bloque className="h-8 w-12" />
+            <Bloque className="h-2.5 w-28" />
+          </div>
+        ))}
+      </div>
+      <div className={`order-1 lg:order-2 ${caja}`}>
+        <Bloque className="h-4 w-32" />
+        <Bloque className="h-10 w-16" />
+        <Bloque className="h-3 w-60 max-w-full" />
+        <Bloque className="h-3 w-44" />
+      </div>
+      <div className={`order-3 ${caja}`}>
+        <Bloque className="h-4 w-44" />
+        {[0, 1, 2].map((i) => (
+          <div key={i} className="flex flex-col gap-2">
+            <Bloque className="h-3 w-64 max-w-full" />
+            <Bloque className="h-2.5 w-40" />
+          </div>
+        ))}
+      </div>
+    </div>
   )
 }
 

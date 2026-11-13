@@ -35,6 +35,9 @@ devuelve error y no se envía analítica.
 | `NEXT_PUBLIC_SITE_URL` | No | Sobreescribe la URL canónica. Útil en previews; en producción se usa el valor de `lib/site.ts` |
 | `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | No | Activa el CAPTCHA del formulario. Va junto con la siguiente |
 | `TURNSTILE_SECRET_KEY` | No | Verifica el token en servidor. Va junto con la anterior |
+| `POSTHOG_PERSONAL_API_KEY` | Para el panel | Llave personal de PostHog con permiso `query:read`, solo para este proyecto |
+| `PANEL_SECRET` | Para el panel | Cadena aleatoria larga que firma el enlace de acceso y la sesión (`openssl rand -hex 32`) |
+| `PANEL_EMAIL` | No | Correo que puede entrar al panel. Por defecto, `CONTACT_EMAIL` |
 
 ### Protección anti-spam del formulario
 
@@ -312,3 +315,12 @@ servidor de desarrollo.
 
 **Falla el build.** `npm run lint` y `npx tsc --noEmit` suelen señalar la
 causa antes que el build completo.
+
+## Panel privado
+
+`panel.besprone.com.mx` muestra las cifras del portafolio en tiempo real: quién está en el sitio, de dónde llega, qué casos ve y quién abrió los enlaces con seguimiento. Vive en este mismo proyecto: `middleware.ts` reescribe el subdominio a `app/(panel)/panel`, y en el dominio del portafolio `/panel` da 404.
+
+- Se entra con un enlace que llega al correo autorizado; la sesión dura 30 días.
+- Las consultas a PostHog corren en el servidor con `POSTHOG_PERSONAL_API_KEY` y aplican los filtros internos del proyecto (sin bots ni visitas propias).
+- Se actualiza cada 30 segundos mientras está abierto, con caché de 30 segundos en el servidor.
+- En local, sin `PANEL_SECRET`, abre directo en `/panel` con datos de ejemplo.

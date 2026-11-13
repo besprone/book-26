@@ -15,9 +15,11 @@ interface LogoProps {
   href?: string
   /** Reacciona una vez por visita al entrar al sitio. */
   saluda?: boolean
+  /** El panel privado no carga analítica, así que su logo no registra clics. */
+  rastrear?: boolean
 }
 
-export default function Logo({ ctaType = 'header_logo', href = '/', saluda = false }: LogoProps) {
+export default function Logo({ ctaType = 'header_logo', href = '/', saluda = false, rastrear = true }: LogoProps) {
   const pathname = usePathname()
   const [reaccionando, setReaccionando] = useState(false)
 
@@ -36,7 +38,7 @@ export default function Logo({ ctaType = 'header_logo', href = '/', saluda = fal
   }, [saluda])
 
   const handleClick = () => {
-    if (typeof window !== 'undefined') {
+    if (rastrear && typeof window !== 'undefined') {
       const ctaLocation = pathname || 'unknown'
       analytics.ctaClicked('Logo', ctaType, ctaLocation, href)
     }

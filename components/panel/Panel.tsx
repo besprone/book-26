@@ -44,8 +44,16 @@ function cambio(c: Cifra, comparacion: string): { texto: string; sube: boolean }
   return { texto: `${d > 0 ? '+' : ''}${d} ${comparacion}`, sube: d > 0 }
 }
 
-function Punto({ color }: { color: string }) {
-  return <span aria-hidden className={`inline-block h-2.5 w-2.5 shrink-0 rounded-full ${color}`} />
+function Punto({ color, pulso = false }: { color: string; pulso?: boolean }) {
+  return (
+    <span aria-hidden className="relative inline-flex h-2.5 w-2.5 shrink-0">
+      {/* Anillo que crece y se desvanece mientras hay gente en el sitio. */}
+      {pulso && (
+        <span className={`absolute inset-0 rounded-full opacity-60 motion-safe:animate-ping motion-safe:[animation-duration:2s] motion-reduce:hidden ${color}`} />
+      )}
+      <span className={`relative inline-block h-2.5 w-2.5 rounded-full ${color}`} />
+    </span>
+  )
 }
 
 function Barras({ items, vacio }: { items: [string, number][]; vacio: string }) {
@@ -299,7 +307,7 @@ function AhoraMismo({ datos, ahora }: { datos: DatosPanel; ahora: number }) {
   return (
     <section className={`h-full ${tarjeta}`} aria-live="polite">
       <h2 className="flex items-center gap-2 text-lg font-semibold">
-        <Punto color={n ? 'bg-[#108512]' : 'bg-gray-400'} /> Ahora mismo
+        <Punto color={n ? 'bg-[#108512]' : 'bg-gray-400'} pulso={n > 0} /> Ahora mismo
       </h2>
       {n ? (
         <>
